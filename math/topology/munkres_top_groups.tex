@@ -1,0 +1,215 @@
+\documentclass[10pt, oneside]{amsart} 
+\usepackage{amsmath, amsthm, amssymb, wasysym, verbatim, bbm, color, graphics, geometry, hyperref, biblatex, mathtools}
+\usepackage{tcolorbox}
+\usepackage{tikz-cd} 
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	urlcolor=blue
+}
+
+
+\geometry{tmargin=1.25in, bmargin=1.25in, lmargin=1.25in, rmargin =1.25in}
+\setlength\parindent{0pt}
+
+\tcbuselibrary{theorems}
+\newtcbtheorem
+    []% init options
+    {problem}% name
+    {Problem}% title
+    {%
+      fonttitle=\bfseries,
+    }% options
+    {prob}% prefix
+
+    \newcommand{\R}{\mathbb{R}}
+    \newcommand{\C}{\mathbb{C}}
+    \newcommand{\Z}{\mathbb{Z}}
+    \newcommand{\N}{\mathbb{N}}
+    \newcommand{\Q}{\mathbb{Q}}
+    \newcommand{\Cdot}{\boldsymbol{\cdot}}
+    \newcommand{\U}{\mathcal{U}}
+    \newcommand{\V}{\mathcal{V}}
+
+    \newtheorem{thm}{Theorem}
+    \newtheorem{defn}{Definition}
+    \newtheorem{conv}{Convention}
+    \newtheorem{rem}{Remark}
+    \newtheorem{lem}{Lemma}
+    \newtheorem{cor}{Corollary}
+    \newtheorem{prop}{Proposition}
+    \newtheorem{prob}{Problem}
+
+    \newcommand{\tr}{\mathrm{Tr}}
+    \newcommand{\bm}{\boldsymbol}
+    \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+
+    \title{Munkres Topology Solutions}
+    \author{Jack Ceroni}
+    \date{December 2021}
+
+    \begin{document}
+
+    \maketitle
+
+    \tableofcontents
+
+    \vspace{.25in}
+
+    \newpage
+
+    \hrulefill
+
+    \section{Problem TG.1}
+
+    \textit{Let $H$ denote a group that is a topological space satyisfying the $T_1$ axiom. Show that $H$ is a topological group if and only if the map $f$ sending $x \times y$ to $x \cdot y^{-1}$
+      is continuous.}
+    \newline
+
+    Suppose the original definition of a topological group holds. Then the above map is a composition of continuous maps, so it is continuous.
+    \newline
+
+    Suppose the alternate definition holds. Let $e$ be the identity element of $H$. Then, the map:
+
+    $$y \mapsto e \times y \mapsto e \cdot y^{-1} = y^{-1}$$
+
+    is clearly continuous,
+    as it is the composition of continuous maps. Then, the map:
+
+    $$x \times y \rightarrow x \times y^{-1} \mapsto x \cdot (y^{-1})^{-1} = x \cdot y$$
+
+    as inversion is continuous, and maps into product that are continuous are themselves continuous.
+
+    \hrulefill
+
+    \section{Problem TG.3}
+
+    \textit{Let $H$ be a subspace of $G$. Show that if $H$ is also a subgroup of $G$, then both $H$ and $\overline{H}$ are topological groups.}
+    \newline
+
+    Let $f : G \times G \rightarrow G$ be defined as $f(x, y) = x \cdot y$ and $g : G \rightarrow G$ be defined as $g(x) = x^{-1}$. Clearly, the restrictions $f|_{H \times H} : H \times H \rightarrow H$ and
+    $g|_{H} : H \rightarrow H$ are well-defined, as $H$ is a subgroup. In addition, they are continuous, as restrictions of continuous functions are continuous.
+    \newline
+
+    Finally, it is clear that a subspace of a $T_1$ space is $T_1$. Thus, $H$ is a topological group.
+    \newline
+
+    It remains to show that $\overline{H}$ is a topological group. Clearly, $\overline{H}$ is $T_1$. We need to show that the restrictions of the binary operation and inversion maps
+    are well-defined. Indeed, note that for continuous $p$, we have $h(\overline{A}) \subset \overline{h(A)}$, for any set $A$. Setting $A = H$, note that $g(H) \subset H$, so $\overline{g(H)} \subset \overline{H}$. Thus:
+
+    $$g(\overline{H}) \subset \overline{g(H)} \subset \overline{H}$$
+
+    In addition, recall that a product of closures is a closure of products, so:
+
+    $$f(\overline{H} \times \overline{H}) = f(\overline{H \times H}) \subset \overline{f(H \times H)} \subset \overline{H}$$
+
+    Thus, the restrictions of $f$ and $g$ to $\overline{H}$ are both well-defined and continuous, from the same logic as above, so $\overline{H}$ is a topological group as well.
+
+    \hrulefill
+
+    \section{Problem TG.4}
+
+
+    \textit{Let $\alpha \in G$. Show that the maps $f_{\alpha}, g_{\alpha} : G \rightarrow G$ defined by $f_{\alpha}(x) = \alpha \cdot x$ and $g_{\alpha}(x) = x \cdot \alpha$ are homeomorphisms
+      of $G$.}
+    \newline
+
+    Clearly, both maps are continuous, as the binary operation map is continuous, so this map is effectively $x \mapsto (\alpha, x) \mapsto \alpha \cdot x$ or $x \mapsto (x, \alpha) \mapsto x \cdot \alpha$.
+    \newline
+
+    Clearly, both these maps are bijective, as $f_{\alpha}^{-1}(x) = \alpha^{-1} \cdot x$ and $g_{\alpha}^{-1}(x) = x \cdot \alpha^{-1}$ are well-defined inverses of $f_{\alpha}$ and $g_{\alpha}$. Finally, it
+    is easy to see that both these maps are continuous, from the same logic as above.
+
+    \hrulefill
+
+    \section{Problem TG.5}
+
+    \textit{Let $H$ be a subgroup of $G$. If $x \in G$, define $xH = \{x \cdot h \ | \ h \in H\}$. This set is called a \textbf{left coset} of $H$ in $G$. Let $G/H$ denote the collection of left cosets
+      of $H$ in $G$: it is a partition of $G$. Give $G/H$ the quotient topology.}
+
+    \hrulefill
+
+    \subsection{Part A}
+
+    \textit{Show that if $\alpha \in G$, the map $f_{\alpha}$ induces a homeomorphism of $G/H$ carrying $xH$ to $(\alpha \cdot x)H$.}
+    \newline
+
+    Let $p$ be the quotient map which sends elements of $G$ to elements of $G/H$. Let $g : G \rightarrow G/H$ be defined as $g(x) = (p \circ f_{\alpha})(x)$. Clearly, this is a quotient map,
+    as both $p$ and $f_{\alpha}$ are quotient maps.
+    \newline
+
+    Note that given some $xH \in G/H$, we have:
+
+    $$g^{-1}(\{xH\}) = (f_{\alpha}^{-1} \circ p^{-1})(\{xH\}) = f^{-1}_{\alpha} \{x \cdot h \ | \ h \in H\} = \{(\alpha^{-1} \cdot x) \cdot h \ | \ h \in H\} = (\alpha^{-1} \cdot x)H$$
+    \vspace{5pt}
+
+    Taking the collection of all such cosets clearly gives $G/H$, again.
+    \newline
+
+    Finally, let $r$ be the map from $G/H$ to $G/H$ induced by $p$ and $p \circ f_{\alpha}$ (in other words, $r \circ p = p \circ f_{\alpha}$), which we know exist from Corollary 22.3 of the previous section. We also
+    know from this Corollary that this map will be a homeomorphism.
+
+    \hrulefill
+
+    \subsection{Part B}
+
+    \textit{Show that if $H$ is a closed set in the topology of $G$, then one-point sets are closed in $G/H$.}
+    \newline
+
+    Let $p$ be the quotient map from $G$ to $G/H$. Note that $p^{-1}(xH) = \{x \cdot h \ | \ h \in H\} = f_x(H)$. Since $f_x$ is a homeomorphism and $H$ is closed,
+    it follows that $p^{-1}(xH)$ is closed. Thus, since $p$ is a quotient map, $\{xH\}$ is also closed.
+
+    \hrulefill
+
+    \subsection{Part C}
+
+    Let $U$ be open in $G$. It follows that 
+
+    \hrulefill
+
+    \subsection{Part D}
+
+    First, we know from Part B that $G/H$ satisfies the $T_1$ axiom. It remains to check that $G/H$ is indeed a group, and the binary operation/inversion operations are continuous.
+    \newline
+
+    Since $H$ is normal, we know that $G/H$ is a group, under the operations $xH \cdot yH = (x \cdot y)H$ and $(xH)^{-1} = x^{-1}H$. This is more of an exercise in algebra, so
+    we won't do it here, but we will sketch the proof at the end of the document.
+    \newline
+
+    \hrulefill
+
+    \section{Problem TG.6}
+
+    \textit{Quotienting $\mathbb{Z}$ out of $(\mathbb{R}, +)$ gives a familiar topological group. What is it?}
+    \newline
+
+    This topological group is isomorphic to the circle group. \textbf{To do: Proof}
+
+    \hrulefill
+
+    \section{Problem TG.7}
+
+    \hrulefill
+
+    \subsection{Part A}
+
+    \textit{Show that there exists a symmetric neighbourhood $V$ of $e$ such that $V \cdot V \subset U$.
+
+    \hrulefill
+
+    \subsection{Part B}
+
+    \hrulefill
+
+    \subsection{Part C}
+
+    \hrulefill
+
+    \subsection{Part D}
+
+
+    \hrulefill
+
+    \end{document}
