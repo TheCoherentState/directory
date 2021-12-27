@@ -1,0 +1,161 @@
+\documentclass[10pt, oneside]{amsart} 
+\usepackage{amsmath, amsthm, amssymb, wasysym, verbatim, bbm, color, graphics, geometry, hyperref, biblatex, mathtools}
+\usepackage{tcolorbox}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	urlcolor=blue
+}
+
+
+\geometry{tmargin=1.25in, bmargin=1.25in, lmargin=1.25in, rmargin =1.25in}
+\setlength\parindent{0pt}
+
+\tcbuselibrary{theorems}
+\newtcbtheorem
+    []% init options
+    {problem}% name
+    {Problem}% title
+    {%
+      fonttitle=\bfseries,
+    }% options
+    {prob}% prefix
+
+    \newcommand{\R}{\mathbb{R}}
+    \newcommand{\C}{\mathbb{C}}
+    \newcommand{\Z}{\mathbb{Z}}
+    \newcommand{\N}{\mathbb{N}}
+    \newcommand{\Q}{\mathbb{Q}}
+    \newcommand{\Cdot}{\boldsymbol{\cdot}}
+    \newcommand{\U}{\mathcal{U}}
+    \newcommand{\V}{\mathcal{V}}
+
+    \newcommand{\vs}{\vspace{0.1pt}}
+    \newcommand{\hl}{\vspace{4pt} \hrule \vspace{4pt}}
+
+    \newtheorem{thm}{Theorem}
+    \newtheorem{defn}{Definition}
+    \newtheorem{conv}{Convention}
+    \newtheorem{rem}{Remark}
+    \newtheorem{lem}{Lemma}
+    \newtheorem{cor}{Corollary}
+    \newtheorem{prop}{Proposition}
+    \newtheorem{prob}{Problem}
+
+    \newcommand{\tr}{\mathrm{Tr}}
+    \newcommand{\bm}{\boldsymbol}
+    \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+
+    \title{Calculus on Manifolds}
+    \author{Jack Ceroni}
+    \date{October 2021}
+
+    \begin{document}
+
+    \maketitle
+
+    \tableofcontents
+
+    \vspace{.25in}
+
+    \newpage
+
+    \section{Introduction}
+
+    \section{Chapter 2}
+
+    \subsection{Notes}
+
+    \begin{rem}[Motivating the Chain Rule]
+      The chain rule is a very natural statement. More specifically, it states that given a the composition of two functions, $g \circ f$, we will have:
+
+      $$[D(g \circ f)](a) = [Dg](f(a)) \circ [Df](a)$$
+      \vs
+
+      which amounts to the statement that a linear approximation near the point $a$ of the function $g \circ f$ is the same as taking a linear approximation
+      of $f$ near $a$, and then mapping the points given from this linear approximation using the linear approximation of $g$ near $f(a)$.
+    \end{rem}
+
+    \hl
+
+    \begin{thm}[General Chain Rule]
+      Given functions $f$ and $g$, such that $f$ is differentiable at $a$, and $g$ is differentiable at $f(a)$, then $g \circ f$ is differentiable at $a$, with:
+
+      \begin{equation}
+        [D(g \circ f)](a) = [Dg](f(a)) \circ [Df](a)
+        \end{equation}
+    \end{thm}
+
+    \vspace{1pt}
+
+    \begin{proof}
+      Our goal is to show that in some neighbourhood around $a$, we have:
+
+      $$(g \circ f)(a + h) = (g \circ f)(a) + \left( [Dg](f(a)) \circ [Df](a) \right) h + o(h)$$
+      \vs
+
+      where $o(h)$ is small. We first note that in a neighbourhood around $f(a)$, and a neighbourhood around $a$, we have:
+
+      $$g(f(a) + h) = g(f(a)) + [Dg](f(a)) h + q(h) \ \ \ \ \ \ f(a + h) = f(a) + [Df](a) h + p(h)$$
+      \vs
+
+      where $q(h)$ and $p(h)$ are small. It follows that in this neighbourhood, we have:
+
+      $$g(f(a + h)) = g \left( f(a) + [Df](a)h + p(h) \right)$$
+      \vs
+
+      Since $[Df](a)h + p(h) \rightarrow 0$ as $h \rightarrow 0$, we can choose $h$ small enough such that $f(a) + [Df](a)h + p(h)$ is in the neighbourhood of
+      $f(a)$ for which the previous statement holds. In this neighbourhood around $a$, we have:
+
+      $$(g \circ f)(a + h) = (g \circ f)(a) + [Dg](f(a)) \left( [Df](a)h + p(h) \right) + q\left( [Df](a)h + p(h) \right)$$
+      \vs
+      $$\Rightarrow (g \circ f)(a + h) - (g \circ f)(a) - \left( [Dg](f(a)) \circ [Df](a) \right) h = [Dg](f(a)) p(h) + q\left( [Df](a)h + p(h) \right)$$
+      \vs
+
+      so all that is left to do is to show the right-hand side of the above equation is small. Indeed, we have $| [Dg](f(a)) p(h) | \leq M |p(h)|$, for some $M$. Thus:
+
+      $$\frac{ | [Dg](f(a)) p(h) | }{|h|} \leq \frac{M | p(h) |}{|h|}$$
+
+      Clearly, the right-hand side of the inequality goes to $0$ as $h \rightarrow 0$, so the left-hand side does as well. Finally, we prove the final function is small.
+      \newline
+
+      Note that $| [Df](a)h| \leq M |h|$ for some $M$, and since $p(h)/|h| \rightarrow 0$, we can choose
+      $|h| < r_1$ such that $|p(h)| < |h|$. Thus, for $|h| < r_1$, we have $|[Df](a)h + p(h)| \leq (M + 1)|h|$.
+      \newline
+
+      Given some $\epsilon > 0$, we choose $|t| < \delta$ such that $\frac{|q(t)|}{|t|} < \frac{\epsilon}{M + 1}$. We also choose $r_2$ such that for $|h| < r_2$,
+      we have $|[Df](a)h + p(h)| < \delta$. We then note that for $|h| < r = \min\{r_1, r_2\}$, we have:
+
+      $$\frac{q \left( [Df](a)h + p(h) \right)}{|h|} \leq (M + 1)  \frac{q \left( [Df](a)h + p(h) \right)}{|[Df](a)h + p(h)|} < (M + 1) \frac{\epsilon}{M + 1} = \epsilon$$
+
+      Thus, this function is small as well.
+    \end{proof}
+
+    \hl
+
+    \begin{thm}
+      If $f$ is differentiable, then all of the partial derivatives exist and the matrix of $[Df](a)$ with respect to the standard basis is precisely the matrix of partial derivatives.
+    \end{thm}
+
+    \begin{proof}
+      For some $a$, we can define a function of the form $h(x) = (a_1, \ ..., \ a_{k - 1}, x, a_{k + 1}, \ ..., \ a_n)$ We then note that the function $f \circ h$ is differentiable,
+      as it is the composition of two differentiable functions. It is also easy to see that:
+
+      $$(f \circ h) = (f_1 \circ h, \ ..., \ f_m \circ h)$$
+
+      where each $f_j \circ h$ is differentiable. It is easy to see that $(f_j \circ h)'(a_k) = D_k f_j(a)$, from the definition of the partial derivative, so the partial derivatives exist. In addition, we have that:
+
+      $$D_k f_j(a) = [D (f_j \circ h)](a_k) = [D f_j](a) \circ e_k$$
+
+      which is the $k$-entry of $[D f_j](a)$. But since $[D f_j](a)$ is the $j$-th row of the matrix for $[Df](a)$, it follows that $D_k f_j(a)$ is the entry at the $k$-column and $j$-th row.
+    \end{proof}
+
+    \hl
+
+    \subsection{Problems and Solutions}
+
+
+
+    \end{document}

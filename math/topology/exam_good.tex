@@ -1,0 +1,195 @@
+\documentclass[10pt, oneside]{amsart} 
+\usepackage{amsmath, amsthm, amssymb, wasysym, verbatim, bbm, color, graphics, geometry, hyperref, biblatex, mathtools}
+\usepackage{tcolorbox}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	urlcolor=blue
+}
+
+
+\geometry{tmargin=1.25in, bmargin=1.25in, lmargin=1.25in, rmargin =1.25in}
+\setlength\parindent{0pt}
+
+\tcbuselibrary{theorems}
+\newtcbtheorem
+    []% init options
+    {problem}% name
+    {Problem}% title
+    {%
+      fonttitle=\bfseries,
+    }% options
+    {prob}% prefix
+
+    \newcommand{\R}{\mathbb{R}}
+    \newcommand{\C}{\mathbb{C}}
+    \newcommand{\Z}{\mathbb{Z}}
+    \newcommand{\N}{\mathbb{N}}
+    \newcommand{\Q}{\mathbb{Q}}
+    \newcommand{\Cdot}{\boldsymbol{\cdot}}
+    \newcommand{\U}{\mathcal{U}}
+    \newcommand{\V}{\mathcal{V}}
+
+    \newtheorem{thm}{Theorem}
+    \newtheorem{defn}{Definition}
+    \newtheorem{conv}{Convention}
+    \newtheorem{rem}{Remark}
+    \newtheorem{lem}{Lemma}
+    \newtheorem{cor}{Corollary}
+    \newtheorem{prop}{Proposition}
+    \newtheorem{prob}{Problem}
+
+    \newcommand{\tr}{\mathrm{Tr}}
+    \newcommand{\bm}{\boldsymbol}
+    \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+
+    \title{Introduction to Algebraic Topology}
+    \author{Jack Ceroni}
+    \date{November 2021}
+
+    \begin{document}
+
+    \maketitle
+
+    \tableofcontents
+
+    \vspace{.25in}
+
+    \newpage
+
+    \section{Introduction}
+
+    The goal of this collection of notes is to simultaneously provide an understandable primer on basic topics in algebraic topology, as well as help me review for my topology exam! I'm planning on posting
+    these to my website, and I hope that someone finds them useful. If you come across any mistakes/have any questions, please send an email to \texttt{jackceroni@gmail.com}.
+
+    \section{Homotopy and Path-Homotopy}
+
+    \section{The Fundamental Group}
+
+    \section{Covering Spaces}
+
+    Covering spaces are one of the most important constructs that we will utilize to compute fundamental groups, as well as for a variety of other tasks.
+    \newline
+
+    To motivate the notion of a covering space, we will begin with an example: computing the fundamental group of $S^1$.
+    \newline
+
+    It seems intuitively clear that we can only unravel a loop in one way, such that we can place it into our covering space and roll it back into the original loop. However, we have to prove this formally. To be honest,
+    I haven't managed to make much intuitive sense of this proof, but I've come to realize that it's more of a technicality, and that the really important stuff is actually applying these ideas to calculating fundamental groups.
+    \newline
+
+    Nevertheless, we should still prove this stuff.
+    \newline
+
+    
+
+    \section{The Fundamental Group of $S^1$ and Minor Applications}
+
+    In this section, we will put all of the machinery we developed in the previous section to good use: we will prove that the fundamental group of $S^1$ is in fact $\mathbb{Z}$.
+    \newline
+
+    We basically already outlined how we are going to do this, but I'll summarize again here:
+
+    \begin{enumerate}
+    \item Define a space in which we can ``unravel'' loops (this is a covering space), along with a map that re-winds our unravelled loops back in the origin space (this is a covering map).
+    \item Use the idea of a path-lifting to actually perform this unraveling in our covering space, for some loop
+    \item Consider the endpoint of the unraveled loop. This tells us how many times/in which directions the original loop was wound. We define a map from the space of collection
+      of loops (which is just the fundamental group), to the collection of all possible unraveled loop endpoints in the covering space. This will hopefully allow us to define a bijection between
+      the loops and the space of endpoints, which should have a nice structure (hopefully)!
+    \end{enumerate}
+
+    Anyways, let's get to actually proving stuff.
+
+    \begin{prop}
+      Let $p : E \rightarrow B$ be a covering map. The map:
+
+      $$\phi : \pi_1(B, b_0) \rightarrow p^{-1}(b_0)$$
+
+      such that $\phi([f]) = \tilde{f}(1)$, is well-defined.
+    \end{prop}
+
+    \begin{proof}
+
+    \end{proof}
+
+    \begin{prop}
+      In the above case, if $E$ is path-connected, $\phi$ is a surjection. If it is simply-connected, it is a bijection.
+    \end{prop}
+
+    \begin{proof}
+    Why is this true? Well, for $\phi$ to be a surjection, it follows that for every ``possible endpoint'' of an unraveled loop, there has to be a loop that actually has that
+    point as its endpoint.
+    \newline
+
+    Indeed, if the space is path-connected, we can always join any two points by string, and then wound the string into a loop in the base space. Picking some $e_1 \in p^{-1}(b_0)$, we let
+    $g$ be a path that connects $e_0$ and $e_1$. Since $g(1) = e_1 \in p^{-1}(b_0)$, it follows that $f = p \circ g$ is a loop in $B$. By uniqueness of path-lifting, $g = \tilde{f}$. Thus:
+
+    $$\phi([f]) = \tilde{f}(1) = g(1) = e_1$$
+
+    so $\phi$ is surjective.
+    \newline
+
+    We can also prove that $\phi$ is a bijection in the case of simple-connectedness. Once again, we can aks why this holds, intuitively? Well, the idea is that in a simply-connected space, any two paths
+    are path-homotopic, as long as they start and end at the same place. Thus, knowing the starting/end points of paths provide enough information to decide whether paths are homotopic. This exactly the information
+    that $\phi$ provides to us.
+    \newline
+
+    More formally, suppose $[f]$ and $[g]$ are elements of $\pi_1(B, b_0)$ such that $\phi([f]) = \phi([g]) \Rightarrow \tilde{f}(1) = \tilde{g}(1)$. In a simply connected space, recall that everything is path-homotopic,
+    as long as the paths share the same starting end end points. Thus, we have $[\tilde{f}] = [\tilde{g}]$. But then:
+
+    $$p_{*}([\tilde{f}]) = [p \circ \tilde{f}] = [f] = p_{*}([\tilde{g}]) = [p \circ \tilde{g}] = [g]$$
+
+    and we are done.
+    \end{proof}
+
+    Now, we are within stirking distance of proving that $\pi_1(S^1) = \mathbb{Z}$.
+    \newline
+
+    \begin{prop}
+      $\pi_1(S^1) = \mathbb{Z}$ (more accurately, they are isomorphic).
+    \end{prop}
+
+    \begin{proof}
+      As you probably guessed, we will use the bijection constructed above (obviously, $E = \mathbb{R}$ is simply connected). It is easy to see that $p^{-1}(1, 0) = \mathbb{Z}$ (we choose
+      this as our base point for convenience, but remember, it doesn't really matter which base point we pick).
+      \newline
+
+      All that is left to show is that $\phi : \pi_1(S^1, (1, 0)) \rightarrow \mathbb{Z}$ is a group isomorphism. We need to show that:
+
+      $$\phi([f] * [g]) = \phi([f * g]) = \phi([g]) + \phi([f]) = m + n$$
+
+      It should be immediately obvious why this is true: the $*$ operation effectively glues two loops together. If we go around the circle $m$ and then $n$ times, it follows that the new glued loop will go around $m + n$ times.
+      \newline
+
+      To say this formally, we use our favourite tool: uniqueness of path-lifting. Let $h$ be a path in $\mathbb{R}$ with $h(x) = \tilde{g}(x) + \tilde{f}(1) = g(x) + n$. Note that:
+
+      $$p \circ (\tilde{f} * \tilde{h}) = p \circ \tilde{f} * p \circ \tilde{h} = f * g$$
+
+      as $p$ is invariant under adding an integer (in this case, $n$). In addition, the $*$ operation is well-defined in the above line, as $\tilde{h}$ begins where $\tilde{f}$ ends. Thus, by uniqueness
+      of path-lifting, $\tilde{f} * \tilde{h} = \tilde{f * g}$.
+      \newline
+
+      It follows that:
+
+      $$\phi([f * g]) = \tilde{f * g}(1) = (\tilde{f} * \tilde{h})(1) = \tilde{h}(1) = \tilde{g} + n = m + n$$
+
+      and we are done!
+      \end{proof}
+
+    \section{Borsuk-Ulam Theorem}
+
+    Armed with newfound knowledge of the fundamental group of 
+
+    \section{Deformation Retracts and Homotopy Type}
+
+    \section{Seifert-van Kampen Theorem}
+
+    \section{The General Lifting Lemma}
+
+    \section{Exercises: Munkres}
+
+    \section{Exercises: Hatcher}
+
+\end{document}

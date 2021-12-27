@@ -1,0 +1,153 @@
+\documentclass[10pt, oneside]{amsart} 
+\usepackage{amsmath, amsthm, amssymb, wasysym, verbatim, bbm, color, graphics, geometry, hyperref, biblatex, mathtools}
+\usepackage{tcolorbox}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	urlcolor=blue
+}
+
+
+\geometry{tmargin=1.25in, bmargin=1.25in, lmargin=1.25in, rmargin =1.25in}
+\setlength\parindent{0pt}
+
+\tcbuselibrary{theorems}
+\newtcbtheorem
+    []% init options
+    {problem}% name
+    {Problem}% title
+    {%
+      fonttitle=\bfseries,
+    }% options
+    {prob}% prefix
+
+    \newcommand{\R}{\mathbb{R}}
+    \newcommand{\C}{\mathbb{C}}
+    \newcommand{\Z}{\mathbb{Z}}
+    \newcommand{\N}{\mathbb{N}}
+    \newcommand{\Q}{\mathbb{Q}}
+    \newcommand{\Cdot}{\boldsymbol{\cdot}}
+    \newcommand{\U}{\mathcal{U}}
+    \newcommand{\V}{\mathcal{V}}
+
+    \newtheorem{thm}{Theorem}
+    \newtheorem{defn}{Definition}
+    \newtheorem{conv}{Convention}
+    \newtheorem{rem}{Remark}
+    \newtheorem{lem}{Lemma}
+    \newtheorem{cor}{Corollary}
+    \newtheorem{prop}{Proposition}
+    \newtheorem{prob}{Problem}
+
+    \newcommand{\tr}{\mathrm{Tr}}
+    \newcommand{\bm}{\boldsymbol}
+    \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+
+    \title{Munkres Topology Solutions}
+    \author{Jack Ceroni}
+    \date{December 2021}
+
+    \begin{document}
+
+    \maketitle
+
+    \tableofcontents
+
+    \vspace{.25in}
+
+    \newpage
+
+    \section{Topological Groups}
+
+    \hrulefill
+
+    \hrulefill
+
+    \section{Section 30}
+
+    \hrulefill
+
+    \subsection{Problem 16a} \textit{Show that the product space $\mathbb{R}^{I}$ with $I$ the unit interval has a countable dense subset.}
+    \newline
+
+    We let $S$ be the set of all points that are rational for finitely many coordinates, and $0$ at all other coordinates. Clearly, such a set is countable, as
+    the rationals are countable, and:
+
+    $$S = \displaystyle\bigcup_{n \in \mathbb{N}} S_n$$
+
+    where $S_n$ is the set of all points such that $n$ coordinates are rational, and the rest are $0$. It is easy to check that
+    this is a dense set: given some $\bm{x} \in \mathbb{R}^{I}$, and some basis element $U = \prod_{\alpha \in I} U_{\alpha}$, with $U_{\alpha}$
+    open in $\mathbb{R}$, we will have $U_{\alpha} = \mathbb{R}$ except for finitely many $\alpha \in \{\alpha_1, \ ..., \ \alpha_n\}$.
+    \newline
+
+    We then pick a rational point in each $U_{\alpha_j}$ for $\alpha_j \in \{\alpha_1, \ ..., \ \alpha_n\}$, and let $\bm{y}$ be
+    equal to these rational points at the corresponding coordinates, and $0$ otherwise. Clearly, $\bm{y} \in S$ and $\bm{y} \in U$. Thus,
+    $\bm{x} \in \overline{S}$, so $S$ is dense.
+
+    \hrulefill
+
+    \subsection{Problem 16b} \textit{Show that if $J$ has cardinality greater than $\mathcal{P}(\mathbb{Z}^{+})$, then $\mathbb{R}^{J}$ does not have a
+      countable dense subset as a product space.}
+    \newline
+
+    Our strategy is to show that if $\mathbb{R}^{J}$ has a countable dense subset, then there exists some injection of $J$ into $\mathcal{P}(\mathbb{Z}^{+})$.
+    \newline
+
+    Let $A$ be the countable dense subset of $\mathbb{R}^{J}$. It follows that for every $\bm{x} \in \mathbb{R}^{J}$, and every neighbourhood $U$ of $\bm{x}$,
+    $U$ intersects $A$. We define a map $g : J \rightarrow \mathcal{P}(A)$ as:
+
+    $$g(\alpha) = A \cap \pi^{-1}_{\alpha}((a, b))$$
+
+    where $(a, b) \in \mathbb{R}$ is chosen arbitrarily. Clearly, $g(\alpha) \in \mathcal{P}(A)$, for each $\alpha$, as $g(\alpha)$ is a subset of $A$. We show
+    that $g$ is an injection. Suppose:
+
+    $$A \cap \pi^{-1}_{\alpha}((a, b)) = A \cap \pi^{-1}_{\beta}((a, b))$$
+
+    Suppose $\alpha \neq \beta$. Let $B = A \cap \pi^{-1}_{\alpha}((a, b)) \cap \pi^{-1}_{\beta}((c, d))$, where $(c, d) \cap (a, b) = \emptyset$. Clearly, $B$ is non-empty as $A$ is dense. Thus,
+    there exists some $\bm{y} \in A$ such that $y_{\alpha} \in (a, b)$, but $y_{\beta} \notin (a, b)$, contradicting the above. It follows that $\alpha = \beta$, so our map is injective.
+    \newline
+
+    Finally, since $A$ is countable, there is a bijection $h : A \rightarrow \mathbb{Z}^{+}$. Hence, there is a bijection $h' : \mathcal{P}(A) \rightarrow \mathcal{P}(\mathbb{Z}^{+})$.
+    Thus, letting $f = h' \circ g$, and we have our desired injection.
+
+    \hrulefill
+
+    \subsection{Problem 17} \textit{Give $\mathbb{R}^{\omega}$ the box topology, and let $\mathbb{Q}^{\infty}$ be the set of all rational sequences which end in a string of $0$s. Which of the
+      four countability axioms does this space satisfy?}
+    \newline
+
+    Note that $\mathbb{Q}^{\infty}$ is itself countable. Thus, it has a countable dense subset (itself), and is clearly Lindelof.
+    \newline
+
+    However, this space is \textbf{not} first-countable, and is therefore not second-countable. Let $\bm{x}$ be an arbitrary point, and let $\mathcal{B}$ be a countable collection
+    of non-empty open neighbourhoods of $\bm{x}$. We claim that this set is not a basis at $\bm{x}$.
+    \newline
+
+    Clearly, we will have $B_n = V_n \cap \mathbb{Q}^{\infty}$, for $V_n$ open in $\mathbb{R}^{\omega}$, for each $n$. Clearly, we then have:
+
+    $$\displaystyle\prod_{k \in \mathbb{N}} (a^{n}_k, b^{n}_k) \subset V_n$$
+
+    by definition of the box topology. We define $U$ open in $\mathbb{Q}^{\infty}$ as follows:
+
+    $$U = \displaystyle\prod_{n \in \mathbb{N}} U_n \cap \mathbb{Q}^{\infty}$$
+
+    where $U_n$ is chosen such that $U_n$ is an interval strictly contained in $(a^{n}_{n}, b^{n}_{n})$ (which was defined above). We can guarantee strict containment, as we are working in the box
+    topology.
+    \newline
+
+    We claim that $U$ contains no $B_n$. Indeed, suppose we have $B_N \subset U$. Then, from above, we must have $(a^{N}_k, b^{N}_k) \subset U_k$ for all $k$. But this is not true for $k = N$.
+    Thus, $U$ cannot contain any element of $\mathcal{B}$.
+
+    \hrulefill
+
+    \section{Section 31}
+
+    \hrulefill
+
+    \subsection{Problem 9a}
+
+    \hrulefill
+
+    \end{document}

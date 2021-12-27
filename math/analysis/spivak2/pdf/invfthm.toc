@@ -1,0 +1,69 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\tocsection {}{1}{Introduction}}{2}{section.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\tocsection {}{2}{Open Sets, Compactness, and the Basic Stuff}}{2}{section.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\tocsection {}{3}{Differentiation}}{2}{section.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\tocsection {}{4}{The Chain Rule}}{3}{section.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\tocsection {}{5}{Rules for Taking Derivatives}}{3}{section.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\tocsection {}{6}{The Inverse Function Theorem}}{3}{section.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\tocsubsection {}{6.1}{Introduction}}{3}{subsection.6.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\tocsubsection {}{6.2}{The Proof}}{3}{subsection.6.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\tocsection {}{7}{The Implicit Function Theorem}}{7}{section.7}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\tocsection {}{8}{Integration}}{8}{section.8}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\tocsection {}{9}{Munkres Exercises}}{8}{section.9}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\tocsubsection {}{9.1}{Munkres Problem 1.3}}{8}{subsection.9.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\tocsubsection {}{9.2}{Munkres Problem 2.5.2}}{8}{subsection.9.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\tocsubsection {}{9.3}{Munkres Problem 2.5.3}}{8}{subsection.9.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\tocsubsection {}{9.4}{Munkres Problem 2.5.4}}{9}{subsection.9.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\tocsubsection {}{9.5}{Munkres Problem 2.5.5}}{9}{subsection.9.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\tocsubsection {}{9.6}{Munkres Problem 2.5.6}}{9}{subsection.9.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\tocsubsection {}{9.7}{Munkres Problem 2.5.7}}{9}{subsection.9.7}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\tocsubsection {}{9.8}{Munkres Problem 2.6.1}}{10}{subsection.9.8}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\tocsubsection {}{9.9}{Munkres Problem 2.6.4}}{10}{subsection.9.9}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\tocsubsection {}{9.10}{Munkres Problem 2.7.4}}{10}{subsection.9.10}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\tocsection {}{10}{Spivak Exercises}}{10}{section.10}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\tocsection {}{11}{Other Stuff}}{10}{section.11}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\tocsection {}{12}{MAT257: 2020 Term Test 1 Rejects}}{11}{section.12}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\tocsection {}{13}{MAT257: 2020 Term Test}}{11}{section.13}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\tocsubsection {}{13.1}{Problem 1}}{11}{subsection.13.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\tocsubsection {}{13.2}{Problem 2}}{11}{subsection.13.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\tocsubsection {}{13.3}{Problem 3}}{11}{subsection.13.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\tocsubsection {}{13.4}{Problem 4}}{11}{subsection.13.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\tocsubsection {}{13.5}{Problem 5}}{11}{subsection.13.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\tocsection {}{14}{MAT257: 2020 Final Exam Rejects}}{12}{section.14}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\tocsection {}{15}{MAT257: 2016 Term Test}}{12}{section.15}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\tocsection {}{16}{Axis Crawl Stuff}}{13}{section.16}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\tocsection {}{17}{Proof of Inverse Function Theorem and Implicit Function Theorem (Again)}}{13}{section.17}%
