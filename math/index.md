@@ -12,7 +12,7 @@ permalink: /math/
 
 **Munkres Introduction to Topology Problems and Solutions**
 
-- Introduction to Topological Groups: Problems 1, 3, 4 [[pdf](/topology/pdf/munkres_top_groups.pdf)]
+- Introduction to Topological Groups: Problems 1, 3, 4 [[pdf](./topology/pdf/munkres_top_groups.pdf)]
 - Section 30: Problems 16, 17 [[pdf](#)]
 - Section 31: Problem 9 [[pdf](#)]
 
