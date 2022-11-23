@@ -1,0 +1,131 @@
+\documentclass[
+ 10pt,
+ amsmath,amssymb,
+ notitlepage,
+]{revtex4-1}
+
+\usepackage{amsthm}
+\usepackage{xcolor}
+\usepackage{graphicx}% Include figure files
+\usepackage{bm}% bold math
+\usepackage{bbm}% math symbols
+
+\usepackage{hyperref}% add hypertext capabilities
+\hypersetup{backref=true,       
+  pagebackref=true,               
+  hyperindex=true,                
+  colorlinks=true,                
+  breaklinks=true,                
+  urlcolor= black,                
+  linkcolor= blue,                
+  bookmarks=true,                 
+  bookmarksopen=false,
+  filecolor=black,
+  citecolor=blue,
+  linkbordercolor=blue,
+}
+
+\usepackage{qcircuit}
+
+\newcommand{\comment}[1]{\textcolor{red}{#1}}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Cdot}{\boldsymbol{\cdot}}
+\newcommand{\vs}{\vspace{6pt}}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}{Definition}
+\newtheorem{conv}{Convention}
+\newtheorem{rem}{Remark}
+\newtheorem{lem}{Lemma}
+\newtheorem{cor}{Corollary}
+\newtheorem{prop}{Proposition}
+
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\title{Quantum Computation and Quantum Information}
+
+\author{Jack Ceroni}
+\affiliation{Xanadu, Toronto, ON, M5G 2C8, Canada}
+
+\date{\today}
+
+\begin{abstract}
+  The purpose of these notes is two-fold: to provide a primer on some foundational and cutting-edge techniques in quantum computation and quantum information, and
+  to help me develop my own understanding of these concepts.
+\end{abstract}
+
+\maketitle
+
+
+\tableofcontents
+
+\vspace{.25in}
+
+\newpage
+
+\section{Basic Quantum Information}
+
+\subsection{The Schmidt Decomposition}
+
+One of the things that we wish to do in the field of quantum information is characterize the amount of entanglement contained in some quantum system. We will come back to this topic later, when
+we discuss entanglement measures. However, for the time-being, we will highlight a more simple/intuitive technique. The \textbf{Bell state} is defined as the following state of a two-qubit system:
+
+\begin{equation}
+  |\psi\rangle = \frac{|00\rangle + |11\rangle}{\sqrt{2}}
+  \end{equation}
+
+Unsurprisingly, this state is said to be \textbf{maximally entangled}: possesing the largest possible ``amount'' of entanglement. We can define ``higher-order'' analogues of the Bell state for systems of qudits,
+by simply considering states of the form $\frac{1}{\sqrt{2}} (|00\rangle + |11\rangle + |22\rangle + \cdots + |nn\rangle)$. The Schmidt decomposition essentially says that for a bipartite system of this form, for any $|\psi\rangle$,
+we can always choose local unitaries $U_A$ and $U_B$ such that we have:
+
+\begin{equation}
+|\psi\rangle = (U_A \otimes U_B) \displaystyle\sum_{j} \lambda_j |jj\rangle
+\end{equation}
+
+The implications of this statement are far-reaching. We effectively know ``how much'' entanglement is contained in a state of the form $\sum_{j} \lambda_j |jj\rangle$. We also know, intuitively, that application of local unitaries
+will not affect the amount of entanglement in a system. Thus, writing a state in this form immediately tells us ``how entangled'' it is.
+\newline
+
+The proof of this statement is simple: we simply write $|\psi\rangle = \sum_{i, j} \chi_{ij} |ij\rangle$, and treating $\chi_{ij}$ as the elements of a matrix $\bm{\chi}$, which we can identify with linear transformation $T_{\bm{\chi}}$
+(with respect to the computational/standard basis). We can take the singular-value decomposition of the matrix, which allows us to write $\bm{\chi} = U \Lambda V^{\dagger}$, where both $U$ and $V^{\dagger}$
+are unitary matrices, and $\Lambda$ is diagonal, containing the singular values of $T_{\bm{\chi}}$. This yields:
+
+$$\chi_{ij} = \displaystyle\sum_{k} U_{ik} \Lambda_{kk} V_{jk}^{*} = \displaystyle\sum_{k} U_{ik} s_{k} V_{jk}^{*}$$
+
+where $s_k$ is the $k$-th singular value. From this formula, it follows that:
+
+$$|\psi\rangle = \displaystyle\sum_{i, j} \chi_{ij} |ij\rangle = \displaystyle\sum_{i, j} \left( \displaystyle\sum_{k} U^{\dagger}_{ik} s_{k} V_{kj} \right) |ij\rangle$$
+
+\section{Deutsch-Josza Algorithm}
+
+\section{Quantum Phase Estimation}
+
+\section{Shor's Algorithm}
+
+\section{Grover's Algorithm}
+
+\section{Appendix A: Linear Algebra}
+
+In this section, we review some basic techniques in linear algebra, which allow us to prove certain facts.
+\newline
+
+\subsection{Singular Value Decomposition}
+
+We know from the polar decomposition that we can write $T$ in the form $S \sqrt{T^{*} T}$. Since $\sqrt{T^{*} T}$ is self-adjoint, it is diagonalizable. If we let $v_j$ be an orthonormal
+basis of eigenvectors for $\sqrt{T^{*} T}$, and let $e_j$ be the standard basis, we let $T' e_j = s_j e_j$, and let $U$ be the map which sends $v_j$ to $e_j$. Clearly, $U$ is an isometry. Thus:
+
+$$T = S \sqrt{T^{*} T} = S U^{-1} T' U$$
+
+If we let $\mathcal{M}(\cdot)$ denote the matrix of a linear operator, with respect to the standard basis, then we have:
+
+$$\mathcal{M}(T) = \mathcal{M}(S U^{-1}) \mathcal{M}(T') \mathcal{M}(U)$$
+
+where both $\mathcal{M}(S U^{-1})$ and $\mathcal{M}(U)$ are unitary matrices, and $\mathcal{M}(T')$ is diagonal, with the singular values along the diagonal.
+
+\end{document}

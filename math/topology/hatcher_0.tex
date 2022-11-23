@@ -46,7 +46,7 @@
     \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 
 
-    \title{Hatcher Topology Solutions}
+    \title{Hatcher Algebraic Topology: Chapter 0}
     \author{Jack Ceroni}
     \date{December 2021}
 
@@ -62,8 +62,54 @@
 
     \hrulefill
 
-    \section{Problem 
+    \section{Quotient Spaces}
 
+    \textit{Strictly speaking, this is not a section in Hatcher. However, quotient spaces are so important that we will spend some time going over the basic results outlined in Munkres.}
+    \newline
+
+    
+
+    \hrulefill
+
+    \section{Cell Complexes}
+
+    A cell-complex is a way that we can build a space by succesively gluing together $n$-dimensional disks. This can be accomplished as follows:
+
+    \begin{itemize}
+    \item We start with a collection of points, which we call $X^0$. We can regard each of these points as a $0$-cell.
+    \item Glue lines (which we call $1$-cells) to the points in $X^0$.
+      Formally, we denote these $1$-cells by $e^{1}_{\alpha}$. For each $1$-cell,
+      we can define a corresponding attaching map $\phi_{\alpha} : S^{0} \rightarrow X^0$, which simply takes the boundary points of $e^{1}_{\alpha}$ and sends them to points in $X^0$.
+      In this case, this will simply be the end points of the line. We then can define $X^1$ as:
+
+      $$X^1 = \left( X^0 \displaystyle\bigsqcup_{\alpha} e^{1}_{\alpha} \right) / \sim$$
+
+      \noindent
+      where $\sim$ is the equivalence relation defined by identifying point $x \in X^0$ with all $y$ such that $\phi_{\alpha}(y) = x$, for some $\alpha$.
+    \item Inductively continue the above procedure, for the case of $n$-cells, defined to by $n$-dimensional disks. Thus, a $2$-cell is an open disk, a $3$-cell an open, solid ball,
+      and so on. We define each $X^n$ an an analogous way.
+    \item Terminate this procedure after a finite number of steps (say, $N$), and take our final topological space to be $X^N$, or continue indefinitely and take the final topological
+      space to be $\cup_{n \in \mathbb{Z}^{+}} X^{n}$.
+    \end{itemize}
+
+    One of the more interesting examples of cell-complexes in action is constructing projective spaces.
+    \newline
+
+    We define the real projective space $\mathbb{R} P^n$ to be the quotient space formed by taking all lines through the origin in $\mathbb{R}^{n + 1} - \{0\}$.
+    That is to say, $x \sim y$ if and only if $x = \lambda y$ for some $\lambda \neq 0$. Clearly, this topological space is homeomorphic to $S^{n}$ with antipodal points identified, take:
+
+    $$f : \mathbb{R}^{n + 1} - \{0\} \rightarrow S^{n} \ \ \ \ \ f(x) = \frac{x}{||x||}$$
+
+    and let $\tilde{f} : \mathbb{R}P^n \rightarrow S^{n}/\sim$ be defined as $\tilde{f}([x]) = [f(x)]$, for $x \in \mathbb{R}P^n$, where we take $S^n/\sim$ to be a subspace of the projective space.
+    It is easy to check this is a homeomorphism, using the facts about quotient spaces proved in the first section.
+    \newline
+
+    Now, brining together the antipodal points of $S^n$, it is clear that $S^n / \sim$ is homeomorphic to the disk $B^{n}$ with antipodal boundary points identified (we will not formally write out why this
+    is the case, but it is geometrically obvious).
+    \newline
+
+    We wish to define a cell-structure which gives $\mathbb{R}P^{n}$. 
+    
     \hrulefill
 
     \end{document}
