@@ -1,7 +1,0 @@
-\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\tocsection {}{1}{Introduction: What is this?}}{2}{section.1}%
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\tocsection {}{2}{Stuff}}{2}{section.2}%
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\tocsubsection {}{2.1}{A cool problem from a previous MAT327 midterm}}{2}{subsection.2.1}%
