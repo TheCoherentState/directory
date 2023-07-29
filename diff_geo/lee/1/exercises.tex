@@ -1,0 +1,171 @@
+\documentclass[aps,pra,showpacs,notitlepage,onecolumn,superscriptaddress,nofootinbib]{revtex4-1}
+\usepackage[utf8]{inputenc}
+\usepackage[tmargin=1in, bmargin=1.25in, lmargin=1.5in, rmargin=1.5in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{datetime}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{import}
+\usepackage{mathtools}
+
+
+% package for commutative diagrams
+% \usepackage{tikz-cd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{crimson}{RGB}{186,0,44}
+\definecolor{moss}{RGB}{0, 186, 111}
+\newcommand{\pop}[1]{\textcolor{crimson}{#1}}
+\newcommand{\zcom}[1]{\noindent\textcolor{crimson}{(Z): #1}}
+\newcommand{\jcom}[1]{\noindent\textcolor{moss}{(J): #1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\pqeq}{\succcurlyeq}
+\newcommand{\pleq}{\preccurlyeq}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+    colorlinks,
+    linkcolor={crimson},
+    citecolor={crimson},
+    urlcolor={crimson}
+}
+
+\usepackage{qcircuit}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{reminder}{Reminder}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{answer}{Answer}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{claim}{Claim}[section]
+\newtheorem{exercise}{Exercise}[section]
+
+\usepackage{geometry}
+\geometry{
+  left=25mm,
+  right=25mm,
+  top=20mm,
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{unsrt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{Lee's Introduction to Smooth Manifolds: Chapter 1 Assorted Notes, Proofs and Exercises}
+
+\author{Jack Ceroni}
+\email{jackceroni@gmail.com}
+
+\date{\today}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exercise 1.1}
+\label{sec:11}
+
+\noindent
+For both definitions, it is clear that the new subsumes the old, as both open balls and $\mathbb{R}^{n}$ are open neighbourhoods around every point of $\mathbb{R}^{n}$.
+Conversely, if we assume the original definition, then given some point $p \in M$ and local homeomorphism $\varphi : U \rightarrow \widehat{U}$, then we can find an open ball
+$B$ around $\varphi(p)$, and note that the restriction $\varphi : \varphi^{-1}(B) \rightarrow B$ is a homeomorphism, so $p$ has a neighbourhood homeomorphic to an open ball.
+As for the other case, this follows from the fact that open $n$-balls are homeomorphic to $\mathbb{R}^{n}$.
+
+\hrulefill
+
+\section{Example 1.4}
+
+\noindent
+We wish to show that the $n$-sphere is a manifold. The Hausdorff condition and second-countability are clearly inherited from the global space. As for the local Euclidean condition,
+the general strategy is to separate the sphere into different parts. Let $p = (p_1, \dots, p_{n + 1})$ be a point on the $n$-sphere. Clearly, there must exist some coordinate $p_k \neq 0$. We let
+\begin{equation}
+  U_p = \left\{ (x_1, \dots, x_{n + 1}) \ | \ x_{k}^2 = 1 - x_{n + 1}^2 - \cdots - x_{k + 1}^2 - x_{k - 1}^2 - \cdots - x_1^2 \ \text{and} \ \text{sign}(x_k) = \text{sign}(p_k) \right\}
+  \end{equation}
+Clearly, $U_p = S^{n} \cap \mathbb{R}_k^{\text{sign}(p_k)}$, which is open in the subspace topology. Let $\pi_k : U_p \rightarrow \pi_k(U_p)$ be the projection onto all coordinates \textit{except for the $k$-th}.
+Define
+\begin{equation}
+  \pi_k^{-1}(x) = \pi_k^{-1}(x_1, \dots, x_{k - 1}, x_{k + 1}, \dots, x_{n + 1}) = (x_1, \dots, f_k(x), \dots, x_{n + 1})
+\end{equation}
+where $f_k(x) = \text{sign}(p_k) \sqrt{1 - x_{n + 1}^2 - \cdots - x_1^{2}}$ is clearly continuous. It is easy to check that $\pi_k^{-1}$ is the well-defined inverse of $\pi_k$, and both maps are continuous,
+so $\pi_k(U_p)$ is open, and $\pi_k$ is the desired local homeomorphism.
+
+\hrulefill
+
+\section{Lemma 1.10}
+
+\noindent
+Note that $M$ is second-countable, let $\mathcal{B}$ be the countable basis. For each $p \in M$, note that there exists a local homeomorphism $\varphi : U \rightarrow \widehat{U}$, where $U$
+contains $p$. Since there exists some $B \in \mathcal{B}$ with $p \in B \subset U$, $B$ is homeomorphic to an open subset of $\mathbb{R}^{n}$. Thus, we have a countable subcollection $\mathcal{B}'$ of elements of $\mathcal{B}$
+such that each $p \in M$ is contained in some element of $\mathcal{B}'$ and each element of $\mathcal{B}'$ is homeomorphic (via some $\varphi_B$) to an open subset of $\mathbb{R}^{n}$.
+
+For each $B \in \mathcal{B}'$, let $S_B$ denote the countable collection of all open balls of rational radius contained in $\varphi_B(B)$, centred at rational points. Let $\varphi_B^{-1}(S_B)$ denote the inverse image of
+each of these balls, which are all open. Clearly, given some $p \in U$ open in $M$, $p$ is contained in some $B \in \mathcal{B}'$, and $B \cap U$ is an open subset of $B$, so $\varphi_B(B \cap U)$ is open in $\varphi_B(B)$.
+We can pick an open ball in $S_B$ containing $\varphi_B(p)$, so $p$ is contained in some element of $\varphi_B^{-1}(S_B)$ which is contained in $B$. Let $S = \cup_{B \in \mathcal{B}'} S_B$. Suppose $\varphi_{B_1}^{-1}(B_1), \varphi_{B_2}^{-1}(B_2) \in S$ are two preimages of open balls with non-empty (thus open) intersection, $U$. Then the images $\varphi_{B_1}(U)$ and $\varphi_{B_2}(U)$ will intersect as and be open, so we can find some open ball $B$ at a rational point, of rational radius, in this intersection, so $\varphi_{B_1}^{-1}(B)$ (and $\varphi_{B_2}^{-1}(B)$) are in $U$. Thus, $S$ satisfies the intersection condition, and is in fact a countable basis of coordinate balls (as it is a countable intersection of countable sets).
+
+Finally, note that since each $\varphi_B$ is a homeomorphism, $\overline{\varphi^{-1}_B(B)} = \varphi^{-1}_B(\overline{B})$. Since $\overline{B}$ is compact, so too is $\varphi^{-1}_B(\overline{B})$ and thus $\overline{\varphi^{-1}_B(B)}$.
+
+\hrulefill
+
+\section{Exercise 1.14}
+
+\noindent
+We begin with the first claim. Suppose $\mathcal{X}$ is locally finite, let $x$ be a point of the topological space. Then there exists a neighbourhood $U$ intersecting only $X_1, \dots, X_N$. Suppose $U$ intersects
+some $\overline{X_M}$ not in this set. Then by definition, $U$ contains a point $y$ where every neighbourhood of $y$ intersects $X_M$, so $U$ intersects $X_M$, a contradiction. Thus, $\overline{\mathcal{X}}$ is locally finite.
+
+Next, note that $\cup_{X \mathcal{X}} \overline{X} \subset \overline{\cup_{X \in \mathcal{X}} X}$ trivially. To prove inclusion the other way, given $x \in \overline{\cup_{X \in \mathcal{X}} X}$, note that every open set of $x$ intersects the union at a finite number of $X$. If there isn't some $X'$ intersected by all neighbourhoods, we can pick some neighbourhood $U$ which intersects $X_1, \dots X_M$ and neighbourhood $U_1, \dots, U_M$ where $U_k$ does not intersect $X_k$. Then $U \cap U_1 \cap \cdots U_M$ does not intersect any element of $\mathcal{X}$, which is a contradiction.
+
+\hrulefill
+
+\section{Proposition 1.16}
+
+\noindent
+\textit{This result is very simple when it is understood diagramatically}
+\newline
+
+\noindent
+We first require a lemma.
+\begin{lemma}[Lebesgue Number Lemma]
+Suppose $X$ is a compact set in a metric space and $\mathcal{A}$ is an open cover. Then there exists some $\delta > 0$ such that every subset of $X$ having diameter less than $\delta$ is contained in an element of $\mathcal{A}$.
+\end{lemma}
+\begin{proof}
+  Let $A_1, \dots, A_N$ be a finite subcover. The key idea is to use extreme value theorem. Define the function $f : X \rightarrow \mathbb{R}$ as
+  \begin{equation}
+    f(x) = \frac{1}{N} \displaystyle\sum_{k = 1}^{N} d(x, X - A_k),
+    \end{equation}
+  the average distance from $x$ to the exterior of each $A_k$. Clearly, $x \in A_k$, for some $A_k$ open, so the minimum value of $f$ must be greater than $0$. Set it to $\delta$. Suppose $U$ has diameter less than
+  $\delta$. Suppose $U$ is not contained in a single $A_k$. Then, there exist points $x$ and $y$ of $U$ not contained in a common $A_k$, with $d(x, y) \leq \delta$. Then, clearly, $d(x, y) \geq d(x, X - A_k)$ for each $A_k$.
+  But then, $f(x) < \delta$, a contraidction. It follows that $U$ must be contained in a single $A_k$, so the lemma holds.
+  \end{proof}
+
+\noindent
+Let $\mathcal{B}$ be a countable basis for $M$, let $B, B' \in \mathcal{B}$ such that $B \cap B'$ is non-empty. Since $B \cap B'$ is a manifold, it has a finite number of connected components, which
+are also path-connected. Pick some $x$ from each component. Then, for all pairs of $B, B' \in \mathcal{B}$, take all such points $x$ and combine them into a set $\mathcal{X}$. For each pair of points $x, x' \in \mathcal{X}$ where $x, x' \in B$,
+let $h_{x, x'}^{B}(t)$ be a path between them.
+
+Assume $M$ is path-connected. Let us pick some $p \in \mathcal{X}$. Let $f : [0, 1] \rightarrow M$ be a loop in $\pi_1(M, p)$. The collection of $f^{-1}(B)$ for $B \in \mathcal{B}$. will clearly cover $[0, 1]$,
+so there exists a finite subcover, $f^{-1}(B_1), \dots, f^{-1}(B_N)$. \textbf{WIP}
+
+
+\hrulefill
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
