@@ -1,8 +1,0 @@
-#+TITLE:Differential Geometry 
-#+DESCRIPTION:Differential geometry 
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
-#+HTML_HEAD: <style> body {font-size:15px;} </style>
-
-* Lee's Introduction to Smooth Manifolds: Solution Manual (Incomplete)
-
-+ Chapter 1

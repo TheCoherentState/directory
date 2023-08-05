@@ -1,0 +1,15 @@
+#+TITLE:Directory
+#+DESCRIPTION:Directory
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+
+Welcome to the *directory*, the place where I store most of the academic work/content that I create. This includes all notes and solution sets, among other things.
+Linked below are the subpages of this website, grouped by category.
+
+* Mathematics
+
++ [[https://thecoherentstate.github.io/directory/diff_geo/lee][Solution manual for Lee's /Introduction to Smooth Manifolds/]]
+
+* Physics
+
+* Computation

@@ -2,8 +2,8 @@ This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded forma
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**exercises.tex
-(./exercises.tex
+**notes.tex
+(./notes.tex
 LaTeX2e <2020-10-01> patch level 4
 L3 programming layer <2021-02-18>
 (/usr/local/texlive/2021/texmf-dist/tex/latex/revtex4-1/revtex4-1.cls
@@ -636,8 +636,8 @@ File: l3backend-pdftex.def 2021-03-18 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count343
 \l__pdf_internal_box=\box71
 )
-(pdf/exercises.aux)
-\openout1 = `exercises.aux'.
+No file notes.aux.
+\openout1 = `notes.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 70.
 LaTeX Font Info:    ... okay on input line 70.
@@ -657,7 +657,6 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 70.
 LaTeX Font Info:    ... okay on input line 70.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 70.
 LaTeX Font Info:    ... okay on input line 70.
-
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -734,14 +733,12 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 70.
 LaTeX Info: Redefining \pageref on input line 70.
 LaTeX Info: Redefining \nameref on input line 70.
- (pdf/exercises.out) (pdf/exercises.out)
 \@outlinefile=\write5
-\openout5 = `exercises.out'.
+\openout5 = `notes.out'.
 
 LaTeX Font Info:    Trying to load font information for U+msa on input line 70.
 
-
-(/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd
+ (/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Trying to load font information for U+msb on input line 70.
@@ -752,7 +749,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 Package xypdf Info: Line width: 0.39998pt on input line 70.
 Class revtex4-1 Info: Taking \maketitle back from hyperref on input line 70.
-\openout3 = `exercisesNotes.bib'.
+\openout3 = `notesNotes.bib'.
 
 
 
@@ -763,19 +760,28 @@ Underfull \hbox (badness 10000) in paragraph at lines 139--142
 
  []
 
-No file exercises.bbl.
-[2] (pdf/exercises.aux)
-Package rerunfilecheck Info: File `exercises.out' has not changed.
-(rerunfilecheck)             Checksum: CC5166488F0AB5D122B67CF66D2595B5;1097.
+No file notes.bbl.
+[2] (pdf/notes.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `notes.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `notes.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  CC5166488F0AB5D122B67CF66D2595B5;1097.
  ) 
 Here is how much of TeX's memory you used:
- 16679 strings out of 478994
- 232700 string characters out of 5858184
- 647636 words of memory out of 5000000
- 33891 multiletter control sequences out of 15000+600000
+ 16666 strings out of 478994
+ 232481 string characters out of 5858184
+ 647378 words of memory out of 5000000
+ 33884 multiletter control sequences out of 15000+600000
  412214 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 83i,8n,88p,1404b,379s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 83i,8n,88p,1400b,379s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></
@@ -795,10 +801,10 @@ mf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2021/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2021/texmf-d
 ist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2021/texmf-di
 st/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on pdf/exercises.pdf (2 pages, 195908 bytes).
+Output written on pdf/notes.pdf (2 pages, 195217 bytes).
 PDF statistics:
- 129 PDF objects out of 1000 (max. 8388607)
- 104 compressed objects within 2 object streams
+ 109 PDF objects out of 1000 (max. 8388607)
+ 85 compressed objects within 1 object stream
  14 named destinations out of 1000 (max. 500000)
- 49 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
