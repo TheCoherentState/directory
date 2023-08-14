@@ -1,0 +1,23 @@
+#+TITLE:Munkres Problem 26.10
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+
+*Part A:* We give a couple proofs, both of which are very different.
+
+/Proof 1:/ This is likely the proof that Munkres is looking for.
+
+For each $x$, choose some $n_x$ such that for all $n \geq n_x$, $|f_n(x) - f(x)| < \epsilon$. Note that $U_x = f_{n_x}^{-1}(B_{\epsilon}(f(x)) \cap f^{-1}(B_{\epsilon}(f(x))$ contains $x$. We pick a finite subcover of
+all the $U_x$ open sets, each of which has a corresponding $n_x$. Let $n = \max(n_x)$. Now, note that for some $x \in X$, we have $x \in U_{x'}$ with corresponding $n_{x'}$, so that $|f_{n_{x'}}(x) - f(x')| < \epsilon$ and
+$|f(x) - f(x')| < \epsilon$. It follows that $|f_{n_{x'}}(x) - f(x)| < 2\epsilon$. Finally, since the sequence of $f_n$ is monotone, $|f_{n}(x) - f(x)| \leq |f_{n_{x'}}(x) - f(x)|$ and the proof is complete.
+
+/Proof 2:/ Since $X$ is compact and $f_n, f$ are continuous, each function $g_n = f - f_n$ is continuous. By extreme value theorem, $M_n = \max(g_n)$
+is well-defined. Moreover, because $f_n$ is monotone, $M_n$ is a weakly decreasing sequence. Given $\epsilon > 0$, there must exist $n$ such that $M_n < \epsilon$,
+as if this weren't the case, we would violate the convergence of $f_n(x) \rightarrow f(x)$ for each $x$ individually. Since M_n$ is weakly decreasing, $M_k < \epsilon$
+for all $k \geq n$, so $M_n \rightarrow 0$. From here, it is easy to see that uniform convergence follows.
+
+--------------------
+
+*Part B:* Failure of compactness is easy. Take $f(x) = \frac{1}{x}$ on $(0, 1)$, and let $f_n(x) = \frac{n}{n + 1} \frac{1}{x}$. Note that $f(x) - f_n(x) = \frac{1}{nx}$. Note that for some $\epsilon > 0$, and any $N$,
+we will always have $f(1/n\epsilon) - f_n(1/n\epsilon) = \epsilon$ and since $1/n\epsilon \in (0, 1)$, we cannot have uniform convergence.
+
+The example of a sequence lacking the monotonicity condition comes from a previous exercise.

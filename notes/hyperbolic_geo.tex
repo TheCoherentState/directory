@@ -29,6 +29,7 @@
 \newcommand{\wt}[1]{\widetilde{#1}}
 \newcommand{\pgeq}{\succcurlyeq}
 \newcommand{\pleq}{\preccurlyeq}
+\newcommand{\Wedge}{\bigwedge}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hypersetup{
@@ -62,6 +63,7 @@
 \newtheorem{answer}{Answer}[section]
 \newtheorem{fact}{Fact}[section]
 \newtheorem{claim}{Claim}[section]
+\newtheorem{exercise}{Exercise}[section]
 
 \usepackage{geometry}
 \geometry{
@@ -90,12 +92,71 @@
 
 \section{Introduction}
 
-\subsection{Brief Reivew on Differential Forms}
+\noindent
+These notes will be in much more of a ``stream-of-concious'' style than many of my others.
+
+\subsection{Brief reivew on differential forms}
 
 \noindent
-\textit{The material for this section is mostly drawn from Spivak's Calculus on Manifolds.}
+\textit{The material for this section is mostly drawn from Spivak's Calculus on Manifolds. This section is a work-in-progress.}
+
+\hrulefill
 
 \noindent
 To begin, we review some simple notions in differential geometry.
+\begin{definition}[Differential Form]
+  A \emph{differential $k$-form} on a manifold $M$ is a map $\omega : M \rightarrow \Wedge^{k}(TM)$, where $\Wedge^{k}(TM)$ denotes the disjoint union of all collections of alternating $k$-tensors
+  at each tangent space of the manifold, such that $\omega(x) \in \Wedge^{k}(T_x M)$. Let $\Omega^{k}(M)$ denote the collection of all $k$-forms on manifold $M$.
+\end{definition}
+
+\noindent
+Recall that we are able to write a particular $k$-form in terms of a sum over wedge products of the standard coordinate $1$-forms,
+\begin{equation}
+  \label{eq:expansion}
+  \omega(p) = \displaystyle\sum_{I} f_{I}(p) dx_{i_1} \wedge \cdots \wedge dx_{i_k}
+\end{equation}
+where the sum is over all ascending $k$-tuples drawn from $\{1, \dots, n\}$, and we recall that coordinate one-forms are defined locally via pullback of the coordinate one-forms in $\mathbb{R}^{n}$
+via the chat at a particular point.
+
+\begin{definition}[Differential]
+  The \emph{differential} is a map $d : \Omega^k(M) \rightarrow \Omega^{k + 1}(M)$ such that $d\omega$ takes the differential of each coefficients function
+  when $\omega$ is expanded, as in Eq.~\eqref{eq:expansion},
+  \begin{equation}
+    d\omega = \displaystyle\sum_{I} \displaystyle\sum_{k = 1}^{n} \frac{\partial f_I}{\partial x_k} dx_k \wedge dx_{i_1} \wedge \cdots \wedge dx_{i_k}
+    \end{equation}
+\end{definition}
+
+\subsection{Chapter 1}
+
+\begin{lemma}
+  Any complex analytic map with non-singular derivative is conformal.
+\end{lemma}
+\begin{proof}
+  TODO
+\end{proof}
+
+\begin{exercise}[Series 1.12]
+  We summarize in a list:
+  \begin{itemize}
+  \item This is clear in the case of $\hat{\mathbb{C}}$: take the rotation action about point $a$, and note that it fixes $a$.
+  \item In the case of two-variable tuples of distinct points, the transitive property is obvious: given $(z_1, z_2)$ and $(z_1', z_2')$, we rotate so that $z_1$ is real non-zero 
+    we can
+  take the action which performs the exchange $z \mapsto 1/z$, followed by rotation of $\pi$ about a point $\frac{1}{2} \left(a + \frac{1}{a} \right)$. It is easy to check that this action will
+  fix $(a, 1/a)$, and is not the identity.
+  \end{itemize}
+\end{exercise}
+
+\begin{proposition}[Series 1.13]
+  $\text{Aut}(\hat{\mathbb{C}})$ acts transitively and freely on ordered, distinct triples in $\hat{\mathbb{C}}$. More specifically, given $(z_1, z_2, z_3)$ and $(w_1, w_2, w_3)$, there is a unique $T \in \text{Aut}(\hat{\mathbb{C}})$ such
+  that $T(z_1, z_2, z_3) = (w_1, w_2, w_3)$.
+\end{proposition}
+\begin{proof}
+  We will 
+  \end{proof}
 
 \end{document}
+
+
+
+
+

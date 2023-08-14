@@ -1,0 +1,16 @@
+#+TITLE: Big List Problem 7.14
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+
+*Part A:* Clearly, this holds for $n = -1$. Assume it holds for $n - 1$, let $X$ be a topological space with inductive dimension $n$, let $f : X \rightarrow Y$ be a homeomorphism. Let $f(x)$ be a point of $Y$,
+let $U$ be an open neighbourhood of $f(x)$, so $f^{-1}(U)$ is a neighbourhood of $x$. Then there exists $x \in \overline{V} \subset f^{-1}(U)$ with $\text{ind}(\partial V) \leq n - 1$.
+Then $f(x) \in f(\overline{V}) = \overline{f(V)} \subset U$. Also note $\partial f(V) = f(\partial V)$, so by the inductive hypothesis, $\text{ind}(f(\partial V)) = \text{ind}(\partial V) \leq n - 1$, so
+$\text{ind}(Y) \leq n$.
+
+Similar logic shows that $\text{ind}(Y) > n - 1$, and $\text{ind}(Y) = n$. This completes the proof.
+
+*Part B:* Clopen sets have closures equal to themselves, and therefore have empty boundaries. If our space has a basis of clopen sets, then given $x$, we can always choose a basis element $B$ with $x \in \overline{B} \subset B$
+and $\text{ind}(\partial B) = -1$. Thus, $\text{ind}(X) \leq 0$, by definition, so $\text{ind}(X) = 0$ for $X$ non-empty.
+
+*Part C:* Note that $\text{ind}(\mathbb{R}) \leq 1$ as given some $x \in U$, we can place $x$ in an interval which has boundary $\{a\} \cup \{b\}$, which itself is a subspace with a basis of clopen sets and thus has dimension $0$.
+Moreover, given $x$ in $U \neq \mathbb{R}$, any open subset of $U$ containing $x$ will have non-zero boundary, so $\text{ind}(\mathbb{R}) = 1$. The other examples follow trivially from this one, by repeatedly applying the definition.

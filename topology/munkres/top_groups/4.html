@@ -3,14 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-08-10 Thu 14:57 -->
+<!-- 2023-08-13 Sun 07:20 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Directory</title>
+<title>Munkres Topological Groups Problem 4</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="Jack Ceroni" />
-<meta name="description" content="Directory"
- />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -219,68 +217,48 @@
     /*]]>*///-->
 // @license-end
 </script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
-<h1 class="title">Directory</h1>
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#org6b765d2">1. Mathematics</a>
-<ul>
-<li><a href="#org5289af2">1.1. Solution Manuals</a></li>
-<li><a href="#org34d15b7">1.2. Notes</a></li>
-</ul>
-</li>
-<li><a href="#orgaae770b">2. Physics</a></li>
-<li><a href="#orgd15447d">3. Computation</a></li>
-</ul>
-</div>
-</div>
+<h1 class="title">Munkres Topological Groups Problem 4</h1>
 <p>
-Welcome to the <b>directory</b>, the place where I store most of the academic work/content that I create. This includes all notes and solution sets, among other things.
-Linked below are the subpages of this website, grouped by category.
+Clearly, both of these maps are continuous, as they are restrictions of continuous maps. Moreover, we can easily write down their inverses
 </p>
 
-<div id="outline-container-org6b765d2" class="outline-2">
-<h2 id="org6b765d2"><span class="section-number-2">1</span> Mathematics</h2>
-<div class="outline-text-2" id="text-1">
-</div>
-<div id="outline-container-org5289af2" class="outline-3">
-<h3 id="org5289af2"><span class="section-number-3">1.1</span> Solution Manuals</h3>
-<div class="outline-text-3" id="text-1-1">
-<ul class="org-ul">
-<li><a href="./diff_geo/lee/index.html">Solution manual for Lee's <i>Introduction to Smooth Manifolds</i></a></li>
-<li><a href="./topology/munkres/index.html">Solution manual for Munkres' <i>Topology</i></a></li>
-<li><a href="./topology/big_list/index.html">Solutions to topology "Big List" problems</a></li>
-<li><a href="./topology/hatcher/index.html">Solution manual for Hatcher's <i>Introduction to Algebraic Topology</i></a></li>
-</ul>
-</div>
-</div>
+<p>
+\[f_{\alpha}^{-1}(x) = \alpha^{-1} \cdot x \ \ \ \text{and} \ \ \ g_{\alpha}^{-1}(x) = x \cdot \alpha^{-1}\].
+</p>
 
-<div id="outline-container-org34d15b7" class="outline-3">
-<h3 id="org34d15b7"><span class="section-number-3">1.2</span> Notes</h3>
-<div class="outline-text-3" id="text-1-2">
-<ul class="org-ul">
-<li><a href="./notes/pdf/hyperbolic_geo.pdf">Hyperbolic geometry (preparing for MAT1305)</a></li>
-</ul>
-</div>
-</div>
-</div>
-
-
-<div id="outline-container-orgaae770b" class="outline-2">
-<h2 id="orgaae770b"><span class="section-number-2">2</span> Physics</h2>
-</div>
-
-<div id="outline-container-orgd15447d" class="outline-2">
-<h2 id="orgd15447d"><span class="section-number-2">3</span> Computation</h2>
-</div>
+<p>
+Both are obviously continuous, via the same logic. The fact that \(G\) is homogeneous comes from the fact that given \(x\), we can write down homeomorphism \(f_{y \cdot x^{-1}}\), where
+\(f_{y \cdot x^{-1}}(x) = y\).
+</p>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jack Ceroni</p>
-<p class="date">Created: 2023-08-10 Thu 14:57</p>
+<p class="date">Created: 2023-08-13 Sun 07:20</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

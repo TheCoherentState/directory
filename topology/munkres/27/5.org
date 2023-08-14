@@ -1,0 +1,12 @@
+#+TITLE:Munkres Problem 27.5
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+
+Our strategy is, given some open $U$ which intersects $A$, to construct a point of $U$ which is not contained in $A$.
+
+Clearly, $U$ cannot be contained in $A_1$, as $A_1$ has empty interior, so we can pick point $x \in A - A_1$ with $x \in U$. Since $X$ is compact Hausdorff,
+we can choose neighbourhoods $V_1$ of $x$ (with $V_1$ contained in $U$), and $U_1$ of $A_1$ which are disjoint. Since $V_1 \subset X - U_1$, which is closed, $\overline{V}_1$ is also disjoint of $U_1$ and $A_1$.
+
+We proceed inductively, replacing $U$ with $V_1$, where $V_1$ now intersects $A - A_1$. This yields a sequence of closed sets $\overline{V}_1 \supset \overline{V}_2 \supset \cdots$, possesing the finite intersection property.
+
+Thus, their intersection must be non-empty, and we are left with a point of $\overline{U}$ which is not contained within $A$.

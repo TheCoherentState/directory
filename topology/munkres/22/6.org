@@ -1,0 +1,19 @@
+#+TITLE:Munkres Problem 22.6
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+
+Recall the definition of the $K$ topology, which has as a basis all intervals $(a, b)$ and all sets of the form $(a, b) - K$.
+
+*Part A:* To see that this space is not Hausdorff, note that the points $0$ and $\overline{k}$ cannot be placed in disjoint open sets. Suppose $U$ contains $0$ and $V$ contains $\overline{k}$.
+Then $p^{-1}(V)$ is open and contains $K$, and $p^{-1}(U)$ is open containing $0$. Each $k \in K$ must be contained in some interval $(a, b) \subset p^{-1}(V)$, so $p^{-1}(V)$ contains $0$,
+and so $U \cap V \neq \emptyset$.
+
+To check that this space is $T_1$, note that each $\{x\}$ for $x \neq \overline{k}$ is closed, as $p^{-1}(Y - \{x\}) = \mathbb{R} - \{x\}$ which is open. In addition, $p^{-1}(Y - \overline{k}) = Y - K$ is clearly open,
+so $\{\overline{k}\}$ is closed as well.
+
+*Part B:* Recall that a surjective map is a quotient map when $p^{-1}(U)$ is closed if and only if $U$ is closed. Consider the diagonal of $Y \times Y$: Consider the point
+$(0, \overline{k})$. Such a point is not in the diagonal. However, let $U$ be an open neighbourhood: $p^{-1}(U)$ must be open in $\mathbb{R}_K \times \mathbb{R}_K$ and will contain $(0, 1/n)$
+for all integer $n$. Thus, $p^{-1}(U)$ must contain $(0, 0)$, and thus $U$ contains $(0, 0)$ as well. It follows that $\text{diag}(Y \times Y) \neq \overline{\text{diag}(Y \times Y)}$, so
+$\text{diag}(Y \times Y)$ is not closed. Nevertheless, $p^{-1}(\text{diag}(Y \times Y))$ is closed, as it is the diagonal of $\mathbb{R} \times \mathbb{R}$. Thus, $p$ cannot be a quotient map.
+
+

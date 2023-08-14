@@ -4,4 +4,4 @@
 #+HTML_HEAD: <style> body {font-size:15px;} </style>
 
 * Chapter 1
-[[./1/pdf/notes.pdf][Chapter notes]] (includes Exercise 1.1, Example 1.4, Lemma 1.10, Exercise 1.14, Proposition 1.16)
+[[./1/pdf/notes.pdf][Chapter notes]], [[https://google.com][]]

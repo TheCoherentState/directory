@@ -1,0 +1,11 @@
+#+TITLE:Munkres Topological Groups Problem 5
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+
+*Part A:* Let $\pi$ be the projection of $G \rightarrow G/H$. Let $\pi_{\alpha} = \pi \circ f_{\alpha}$ be the map from $G \rightarrow G/H$ (which is surjective continuous, as it is the composition of surjective continuous functions).
+The inverse image of coset $xH$ under $\pi \circ f_{\alpha}$ is the collection of $\{\alpha^{-1} \cdot x \cdot h \ | \ h \in H\}$. All such collections will give the set $G/H$. Thus, by Corollary 22.3 (an immediate consequence
+of the universal property of the quotient topology), the induced map from $G/H$ to $G/H$ which sends $xH$ to $(\alpha \cdot x)H$ is a homeomorphism.
+
+*Part B:* Given a one-point set $\{xH\} \in G/H$, note that $\pi^{-1}(\{xH\}) = xH = f_x(H) \in G$. Since $H$ is closed and $f_x$ is a homeomorphism, $f_X(H)$ must be closed, so $\{xH\}$ must be closed in $G/H$.
+
+*Part C:* 

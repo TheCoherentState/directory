@@ -1,0 +1,9 @@
+#+TITLE:Munkres Problem 23.12
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+
+Suppose we can separate $Y \cup A$ as $U$ and $V$ open in $Y \cup A$. Suppose neither $U$ nor $V$ are contained in $A$: then both intersect $Y$.
+It follows that $U \cap Y$ and $V \cap Y$ are open in $Y$ and separate it, a contradiction to the connectedness of $Y$.
+
+Thus, suppose without loss of generality that $U$ open in $Y \cup A$ is contained entirely in $A$, which is open in $X$. Note that $U$ is open in $A$ when $A$ is a subspace,
+so $U$ is open in $X$. Moreover, $V$ 

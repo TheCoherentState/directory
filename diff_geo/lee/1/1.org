@@ -1,0 +1,14 @@
+#+TITLE:Lee Problem 1.1
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+
+This space is topolgized by taking all $U$ open in $M$ where $\pi^{-1}(U)$ is open in $X = X^{+} \cup X^{-}$. Let $\varphi$ be the obvious homeomorphism between $X^{+}$ and $X^{-}$.
+
+Clearly, taking all open intervals $U$ of rational radius around each of the individual points of $M$ will have $\pi^{-1}(U)$ open in $X$. In the case that $(0, \pm 1) \notin U$, then
+$\pi^{-1}(U) = U \cup \varphi(U)$ (we abuse notation, but it is clear what is meant). If $(0, 1) \in U$, then $\pi^{-1}(U) = U \cup \left(\varphi(U) - \{(0, -1)\}\right)$, which is clearly open. Similar applies
+to when $(0, -1) \in U$. It is obvious that this collection is a countable basis.
+
+As for the local Euclidean property, we simply take as charts $(x, \pm 1) \mapsto x$ on $M - (0, -1)$ and on $M - (0, 1)$, both of which are clearly open as their inverse images under $\pi^{-1}$ are open.
+
+Finally, note that this space is not Hausdorff. Suppose $U$ contains $(0, 1)$ and $V$ contains $(0, -1)$. Then $\pi^{-1}(U)$ and $\pi^{-1}(V)$ are open and saturated, so each contain all $(x, \pm 1)$ for $0 < x < \epsilon$ and
+$0 < x < \epsilon'$ repsectively. Thus, $\pi^{-1}(U) \cap \pi^{-1}(V) \neq \emptyset$, and so $U \cap V \neq \emptyset$.

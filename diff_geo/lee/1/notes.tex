@@ -53,6 +53,7 @@
 \newtheorem{fact}{Fact}[section]
 \newtheorem{claim}{Claim}[section]
 \newtheorem{exercise}{Exercise}[section]
+\newtheorem{proposition}{Proposition}[section]
 
 \usepackage{geometry}
 \geometry{
@@ -80,20 +81,16 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Exercise 1.1}
-\label{sec:11}
+\section{Chapter 1}
 
-\noindent
-For both definitions, it is clear that the new subsumes the old, as both open balls and $\mathbb{R}^{n}$ are open neighbourhoods around every point of $\mathbb{R}^{n}$.
+\begin{exercise}[Lee Exercise 1.1]
+  For both definitions, it is clear that the new subsumes the old, as both open balls and $\mathbb{R}^{n}$ are open neighbourhoods around every point of $\mathbb{R}^{n}$.
 Conversely, if we assume the original definition, then given some point $p \in M$ and local homeomorphism $\varphi : U \rightarrow \widehat{U}$, then we can find an open ball
 $B$ around $\varphi(p)$, and note that the restriction $\varphi : \varphi^{-1}(B) \rightarrow B$ is a homeomorphism, so $p$ has a neighbourhood homeomorphic to an open ball.
 As for the other case, this follows from the fact that open $n$-balls are homeomorphic to $\mathbb{R}^{n}$.
+\end{exercise}
 
-\hrulefill
-
-\section{Example 1.4}
-
-\noindent
+\begin{example}[Lee Example 1.4: the Sphere]
 We wish to show that the $n$-sphere is a manifold. The Hausdorff condition and second-countability are clearly inherited from the global space. As for the local Euclidean condition,
 the general strategy is to separate the sphere into different parts. Let $p = (p_1, \dots, p_{n + 1})$ be a point on the $n$-sphere. Clearly, there must exist some coordinate $p_k \neq 0$. We let
 \begin{equation}
@@ -106,12 +103,18 @@ Define
 \end{equation}
 where $f_k(x) = \text{sign}(p_k) \sqrt{1 - x_{n + 1}^2 - \cdots - x_1^{2}}$ is clearly continuous. It is easy to check that $\pi_k^{-1}$ is the well-defined inverse of $\pi_k$, and both maps are continuous,
 so $\pi_k(U_p)$ is open, and $\pi_k$ is the desired local homeomorphism.
+\end{example}
 
-\hrulefill
+\begin{example}[Lee Example 1.5: Projective spaces]
 
-\section{Lemma 1.10}
+Another example of an $n$-manifold is a projective space. Indeed, define $\mathbb{R} P^{n}$ to be the collection of all $1$-dimensional linear subspaces of $\mathbb{R}^{n + 1}$. For example, $\mathbb{R}P$ is merely the collection
+of all lines passing through the origin in $\mathbb{R}^2$, which can be identified with the upper half-open circle, which itself can be identified with $S^1$, which we already know is a manifold.
 
-\noindent
+A bit more formally, we must prove Hausdorff, second-countability, as well as the existence of an atlas. We topologize $\mathbb{R}P^{n}$ by taking the quotient topology on $\mathbb{R}^{n + 1} - \{0\}$ via the quotient map $\pi$ which
+sends $x$ to its corresponding linear subspace.
+\end{example}
+
+\begin{lemma}[Lee Lemma 1.10]
 Note that $M$ is second-countable, let $\mathcal{B}$ be the countable basis. For each $p \in M$, note that there exists a local homeomorphism $\varphi : U \rightarrow \widehat{U}$, where $U$
 contains $p$. Since there exists some $B \in \mathcal{B}$ with $p \in B \subset U$, $B$ is homeomorphic to an open subset of $\mathbb{R}^{n}$. Thus, we have a countable subcollection $\mathcal{B}'$ of elements of $\mathcal{B}$
 such that each $p \in M$ is contained in some element of $\mathcal{B}'$ and each element of $\mathcal{B}'$ is homeomorphic (via some $\varphi_B$) to an open subset of $\mathbb{R}^{n}$.
@@ -121,22 +124,16 @@ each of these balls, which are all open. Clearly, given some $p \in U$ open in $
 We can pick an open ball in $S_B$ containing $\varphi_B(p)$, so $p$ is contained in some element of $\varphi_B^{-1}(S_B)$ which is contained in $B$. Let $S = \cup_{B \in \mathcal{B}'} S_B$. Suppose $\varphi_{B_1}^{-1}(B_1), \varphi_{B_2}^{-1}(B_2) \in S$ are two preimages of open balls with non-empty (thus open) intersection, $U$. Then the images $\varphi_{B_1}(U)$ and $\varphi_{B_2}(U)$ will intersect as and be open, so we can find some open ball $B$ at a rational point, of rational radius, in this intersection, so $\varphi_{B_1}^{-1}(B)$ (and $\varphi_{B_2}^{-1}(B)$) are in $U$. Thus, $S$ satisfies the intersection condition, and is in fact a countable basis of coordinate balls (as it is a countable intersection of countable sets).
 
 Finally, note that since each $\varphi_B$ is a homeomorphism, $\overline{\varphi^{-1}_B(B)} = \varphi^{-1}_B(\overline{B})$. Since $\overline{B}$ is compact, so too is $\varphi^{-1}_B(\overline{B})$ and thus $\overline{\varphi^{-1}_B(B)}$.
+\end{lemma}
 
-\hrulefill
-
-\section{Exercise 1.14}
-
-\noindent
+\begin{exercise}[Lee Exercise 1.14]
 We begin with the first claim. Suppose $\mathcal{X}$ is locally finite, let $x$ be a point of the topological space. Then there exists a neighbourhood $U$ intersecting only $X_1, \dots, X_N$. Suppose $U$ intersects
 some $\overline{X_M}$ not in this set. Then by definition, $U$ contains a point $y$ where every neighbourhood of $y$ intersects $X_M$, so $U$ intersects $X_M$, a contradiction. Thus, $\overline{\mathcal{X}}$ is locally finite.
 
 Next, note that $\cup_{X \mathcal{X}} \overline{X} \subset \overline{\cup_{X \in \mathcal{X}} X}$ trivially. To prove inclusion the other way, given $x \in \overline{\cup_{X \in \mathcal{X}} X}$, note that every open set of $x$ intersects the union at a finite number of $X$. If there isn't some $X'$ intersected by all neighbourhoods, we can pick some neighbourhood $U$ which intersects $X_1, \dots X_M$ and neighbourhood $U_1, \dots, U_M$ where $U_k$ does not intersect $X_k$. Then $U \cap U_1 \cap \cdots U_M$ does not intersect any element of $\mathcal{X}$, which is a contradiction.
+\end{exercise}
 
-\hrulefill
-
-\section{Proposition 1.16}
-
-\noindent
+\begin{proposition}[Lee Proposition 1.16]
 \textit{This result is very simple when it is understood diagramatically, which is basically as far as we made it in third-year algebraic topology! Nevertheless, a formal proof is required.}
 \newline
 
@@ -161,10 +158,74 @@ are also path-connected. Pick some $x$ from each component. Then, for all pairs 
 let $h_{x, x'}^{B}(t)$ be a path between them.
 
 Assume $M$ is path-connected. Let us pick some $p \in \mathcal{X}$. Let $f : [0, 1] \rightarrow M$ be a loop in $\pi_1(M, p)$. The collection of $f^{-1}(B)$ for $B \in \mathcal{B}$. will clearly cover $[0, 1]$,
-so there exists a finite subcover, $f^{-1}(B_1), \dots, f^{-1}(B_N)$. \textbf{WIP}
+so there exists a finite subcover, $f^{-1}(B_1), \dots, f^{-1}(B_N)$. \textbf{WIP: will finish soon, apologies}
+\end{proposition}
 
+  \begin{lemma}
+   If $f : U \rightarrow \mathbb{R}^{n}$ is smooth and injective with non-singular Jacobian at each point, then $f : U \rightarrow f(U)$ is a diffeomorphism. \emph{Note: this was a homework question in MAT257!}
+  \end{lemma}
+  \begin{proof}
+    Because of the fact that $f$ has non-singular Jacobian, it is locally invertible at every point, via inverse function theorem, and in fact, this inverse function is itself $C^{\infty}$
+    with $D f^{-1}(x) = [D f](f^{-1}(x))^{-1}$. Let $f(x) \in f(U)$, by uniqueness of inverses, there must exist an open set $V_x \subset f(U)$ around $f(x)$ in $\mathbb{R}$ such that $f^{-1} : V_x \rightarrow W_x$, with
+    $W_x$ open in $U$ is smooth. This holds for every point of $f(U)$. Taking the union of all such open sets implies $f(U)$ is open, and that $f : U \rightarrow f(U)$ is a diffeomorphism.
+  \end{proof}
 
-\hrulefill
+  \noindent A smooth atlas is said to be \emph{maximal} if it is not properly contained within any larger smooth atlas.
+
+  \begin{example}[Lee Example 1.36: Grassmann manifolds]
+    \textit{My goal is to reconstruct the technique of Lee utilized to prove that $G_k(V)$ is in fact a smooth manifold of dimension $k(n-k)$.}
+    \newline
+
+    \noindent The main idea is to construct a smooth atlas and topologize the space with respect to this atlas by considering direct sum decompositions of $V$. Indeed, if $P$ is a dimension-$k$
+    vector subspace of $V$, then there exists a space of dimension $n - k$ such that $V = P \oplus Q$. Each $v \in V$ can be written uniquely as $v = p + q$.
+
+    Given a linear map $X : P \rightarrow Q$, the graph of $X$ can be identified with the space $\{v + Xv \ | \ v \in P\}$ of dimension-$k$. Clearly, this subspace intersects $Q$ only trivially,
+    as if it had a non-trivial intersection with $Q$, then we would have $Xv \neq 0$ when $v = 0$, a contradiction. Given any dimension-$k$ subspace $S \subset V$ which intersects $Q$ trivially, it is
+    possible to show that $S$ is the graph of a map from $P$ to $Q$. Let $\pi_P$ and $\pi_Q$ be projections onto $P$ and $Q$. Clearly, $\pi_Q(S) = 0$. Thus, $\pi_P : S \rightarrow P$ must be an injection, as
+    if $\pi_1(v) = \pi_1(v')$, then $v = p \oplus q$ and $v' = p \oplus q'$ are in $S$, implying $q - q'$ is as well, so $q = q'$ and $v = v'$. Rank-nullity implies $\pi_P$ is a vector space isomorphism.
+
+    From here, define $X(p) = \pi_Q \circ \pi_{P}^{-1}$, where $\pi_P$ is restricted to domain $S$. It is clear that the graph of $X$ is $S$. Now, consider the collection of all dimension-$k$ subspaces which intersect
+    $Q$ trivially, $U_Q$: these are in bijective correspondence
+    with linear maps from $P$ to $Q$, for a particular pair of $P$ and $Q$. More formally, let $\Gamma$ send an element of $\mathcal{L}(P, Q)$ to its graph, which can be identified with $U_Q$. We can then define
+    \begin{equation}
+      \varphi_Q = \Gamma : U_Q \rightarrow \mathcal{L}(P, Q) \simeq M((n - k) \times k, \mathbb{R}) \simeq \mathbb{R}^{k(n - k)}
+    \end{equation}
+    by inverting $\Gamma$. Repeating this process for each $Q$ gives a collection of $\varphi_Q$: we take these to define our charts.
+
+    Our goal is to show that we can apply Lemma 1.35, to define a smooth structure, using the collection of charts $(U_Q, \varphi_Q)$. We will go through the necessary conditions point-by-point. \textbf{WIP}
+  \end{example}
+
+  \begin{proposition}[Lee Proposition 1.38]
+    We go point-by-point:
+    
+    \begin{itemize}
+    \item Note that for $p \in \text{Int}(M)$, there exists $U$ open in $M$ such that $U$ is homeomorphic via $\varphi$ with an open subset of $\mathbb{R}^{n}$. Given any other $q \in U$, note that
+      $q$ is also an interior point via the same local homeomorphism. Thus, $U \subset \text{Int}(M)$, so $\text{Int}(M)$ is open (here, we did invoke invariance of interior/boundary). Clearly,
+      this set is an $n$-manifold.
+    \item $\partial M$ is the complement in $M$ of $\text{Int}(M)$ via invariance of boundary/interior, so it is closed. This set is an $(n - 1)$-manifold via local homeomorphisms from open sets in the subspace
+      topology induced on $\partial M$ and $\partial \mathbb{H}^{n} = \mathbb{R}^{n - 1}$.
+
+      More specifically, take $p \in \partial M$. Note that $p$ is contained in $U$ open in $M$ where $\varphi(U)$ is open in $\mathbb{H}^{n}$ with non-trivial intersection with $\partial \mathbb{H}$ and $\varphi(p) \in \partial \mathbb{H}^{n}$.
+      Then the open set $U \cap \partial M$ in the subspace topology is sent to $\varphi(U) \cap \mathbb{H}^{n}$, which is open in $\mathbb{H}^{n} = \mathbb{R}^{n - 1}$.
+    \item If $\partial M = \emptyset$, $M = \text{Int}(M)$ and the result follows. If $M$ is a manifold, every point is in neighbourhood locally homeomorphic to an open set in $\mathbb{R}$, meaning there is no
+      open set which is homeomorphic to open set in $\mathbb{H}^{n}$ with non-trivial intersection with $\partial \mathbb{H}^{n}$, as this set will not be open in $\mathbb{R}^{n}$.
+      \item Trivial.
+    \end{itemize}
+  \end{proposition}
+
+  \begin{theorem}[Lee Theorem 1.46: Smooth invariance of boundary]
+    Let us assume that we are given a point $p$ such that $(U, \varphi)$ is a chart having $p \in U$ with $\varphi(p) \in \partial \mathbb{H}^{n}$ and $\varphi(U) \subset \mathbb{H}^{n}$. Suppose
+    we also have a chart $(V, \psi)$ for which $\psi(p) \in \text{Int}(\mathbb{H}^{n})$.
+
+    Let $x = \psi(p)$, note that $f = \varphi \circ \psi^{-1}$ is a diffeomorphism between $\psi(U \cap V)$ and $\varphi(U \cap V)$. Clearly, since $x = \psi(p)$ is in the interior of $\mathbb{H}^{n}$, there
+    exists an open ball $B$ around $x$ for which $f$ is smooth. Moreover, $f(x) = \varphi(p)$ is on the boundary, so there exists an open set $W$ in $\mathbb{R}^{n}$ and an extension $\tau : W \rightarrow \mathbb{R}^{n}$
+    for which $\tau$ is smooth, an such that $\tau$ agrees with $f^{-1}$ on $W \cap \varphi(U \cap V)$.
+
+    From here, note that $\tau(W)$ contains $x$, so without loss of generality, we can assume $B \subset \tau(W)$. Thus, $B$ is a subset of $f^{-1}(W \cap \varphi(U \cap V))$.
+    The map from $B$ to $W$ to $\mathbb{R}^{n}$ given by $\tau \circ f$ is therefore equal to $f^{-1} \circ f$, as any element of $B$ can be written as $f^{-1}(z)$, implying that $Df$
+    is non-singular on $B$. Thus, $f$ is an open map, so $f(B)$ is open in $\mathbb{R}^{n}$ and contains $f(x)$. Moreover, it must be contained in $\psi(U \cap V)$. But this contradicts the fact that
+    $\psi(U \cap V)$ is contained in $\mathbb{H}^{n}$, as any open neighbourhood of $f(x) \in \partial \mathbb{H}^{n}$ will intersect a point outside $\mathbb{H}^{n}$.
+    \end{theorem}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

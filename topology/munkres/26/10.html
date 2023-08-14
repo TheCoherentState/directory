@@ -3,14 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-08-10 Thu 14:57 -->
+<!-- 2023-08-12 Sat 18:06 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Directory</title>
+<title>Munkres Problem 26.10</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="Jack Ceroni" />
-<meta name="description" content="Directory"
- />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -219,68 +217,67 @@
     /*]]>*///-->
 // @license-end
 </script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
-<h1 class="title">Directory</h1>
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#org6b765d2">1. Mathematics</a>
-<ul>
-<li><a href="#org5289af2">1.1. Solution Manuals</a></li>
-<li><a href="#org34d15b7">1.2. Notes</a></li>
-</ul>
-</li>
-<li><a href="#orgaae770b">2. Physics</a></li>
-<li><a href="#orgd15447d">3. Computation</a></li>
-</ul>
-</div>
-</div>
+<h1 class="title">Munkres Problem 26.10</h1>
 <p>
-Welcome to the <b>directory</b>, the place where I store most of the academic work/content that I create. This includes all notes and solution sets, among other things.
-Linked below are the subpages of this website, grouped by category.
+<b>Part A:</b> We give a couple proofs, both of which are very different.
 </p>
 
-<div id="outline-container-org6b765d2" class="outline-2">
-<h2 id="org6b765d2"><span class="section-number-2">1</span> Mathematics</h2>
-<div class="outline-text-2" id="text-1">
-</div>
-<div id="outline-container-org5289af2" class="outline-3">
-<h3 id="org5289af2"><span class="section-number-3">1.1</span> Solution Manuals</h3>
-<div class="outline-text-3" id="text-1-1">
-<ul class="org-ul">
-<li><a href="./diff_geo/lee/index.html">Solution manual for Lee's <i>Introduction to Smooth Manifolds</i></a></li>
-<li><a href="./topology/munkres/index.html">Solution manual for Munkres' <i>Topology</i></a></li>
-<li><a href="./topology/big_list/index.html">Solutions to topology "Big List" problems</a></li>
-<li><a href="./topology/hatcher/index.html">Solution manual for Hatcher's <i>Introduction to Algebraic Topology</i></a></li>
-</ul>
-</div>
-</div>
+<p>
+<i>Proof 1:</i> This is likely the proof that Munkres is looking for.
+</p>
 
-<div id="outline-container-org34d15b7" class="outline-3">
-<h3 id="org34d15b7"><span class="section-number-3">1.2</span> Notes</h3>
-<div class="outline-text-3" id="text-1-2">
-<ul class="org-ul">
-<li><a href="./notes/pdf/hyperbolic_geo.pdf">Hyperbolic geometry (preparing for MAT1305)</a></li>
-</ul>
-</div>
-</div>
-</div>
+<p>
+For each \(x\), choose some \(n_x\) such that for all \(n \geq n_x\), \(|f_n(x) - f(x)| < \epsilon\). Note that \(U_x = f_{n_x}^{-1}(B_{\epsilon}(f(x)) \cap f^{-1}(B_{\epsilon}(f(x))\) contains \(x\). We pick a finite subcover of
+all the \(U_x\) open sets, each of which has a corresponding \(n_x\). Let \(n = \max(n_x)\). Now, note that for some \(x \in X\), we have \(x \in U_{x'}\) with corresponding \(n_{x'}\), so that \(|f_{n_{x'}}(x) - f(x')| < \epsilon\) and
+\(|f(x) - f(x')| < \epsilon\). It follows that \(|f_{n_{x'}}(x) - f(x)| < 2\epsilon\). Finally, since the sequence of \(f_n\) is monotone, \(|f_{n}(x) - f(x)| \leq |f_{n_{x'}}(x) - f(x)|\) and the proof is complete.
+</p>
 
+<p>
+<i>Proof 2:</i> Since \(X\) is compact and \(f_n, f\) are continuous, each function \(g_n = f - f_n\) is continuous. By extreme value theorem, \(M_n = \max(g_n)\)
+is well-defined. Moreover, because \(f_n\) is monotone, \(M_n\) is a weakly decreasing sequence. Given \(\epsilon > 0\), there must exist \(n\) such that \(M_n < \epsilon\),
+as if this weren't the case, we would violate the convergence of \(f_n(x) \rightarrow f(x)\) for each \(x\) individually. Since M<sub>n</sub>$ is weakly decreasing, \(M_k < \epsilon\)
+for all \(k \geq n\), so \(M_n \rightarrow 0\). From here, it is easy to see that uniform convergence follows.
+</p>
 
-<div id="outline-container-orgaae770b" class="outline-2">
-<h2 id="orgaae770b"><span class="section-number-2">2</span> Physics</h2>
-</div>
+<hr />
 
-<div id="outline-container-orgd15447d" class="outline-2">
-<h2 id="orgd15447d"><span class="section-number-2">3</span> Computation</h2>
-</div>
+<p>
+<b>Part B:</b> Failure of compactness is easy. Take \(f(x) = \frac{1}{x}\) on \((0, 1)\), and let \(f_n(x) = \frac{n}{n + 1} \frac{1}{x}\). Note that \(f(x) - f_n(x) = \frac{1}{nx}\). Note that for some \(\epsilon > 0\), and any \(N\),
+we will always have \(f(1/n\epsilon) - f_n(1/n\epsilon) = \epsilon\) and since \(1/n\epsilon \in (0, 1)\), we cannot have uniform convergence.
+</p>
+
+<p>
+The example of a sequence lacking the monotonicity condition comes from a previous exercise.
+</p>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jack Ceroni</p>
-<p class="date">Created: 2023-08-10 Thu 14:57</p>
+<p class="date">Created: 2023-08-12 Sat 18:06</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

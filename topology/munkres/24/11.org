@@ -1,0 +1,10 @@
+#+TITLE:Munkres Problem 24.11
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+
+Connectedness of $A$ does not imply connectedness of $\text{Int}(A)$ nor $\partial A$. Suppose $A = [0, 1]$, this set is connected with separated boundary $\{0\} \cup \{1\}$.
+Suppose $A = B_{1}((-1, 0)) \cup \{(0, 0)\} \cup B_{1}((1, 0))$ in $\mathbb{R}^{2}$: the union of two open balls of radius $1$ at $(\pm 1, 0)$, along with the origin. This set is
+connected, because it is path-connected, but its interior, which is just the two balls, is obviously disconnected.
+
+Conversely, if $\text{Int}(A)$ is connected, then $A$ must be as well, as a separation of $A$ would separate $\text{Int}(A)$ via taking intersections. Finally, consider the set $A = (-\infty, 0) \cup (0, \infty)$.
+The boundary, $\{0\}$, is connected while the set $A$ isn't.

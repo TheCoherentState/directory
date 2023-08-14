@@ -1,0 +1,10 @@
+#+TITLE:Munkres Topological Groups Problem 4
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+
+Clearly, both of these maps are continuous, as they are restrictions of continuous maps. Moreover, we can easily write down their inverses
+
+$$f_{\alpha}^{-1}(x) = \alpha^{-1} \cdot x \ \ \ \text{and} \ \ \ g_{\alpha}^{-1}(x) = x \cdot \alpha^{-1}$$.
+
+Both are obviously continuous, via the same logic. The fact that $G$ is homogeneous comes from the fact that given $x$, we can write down homeomorphism $f_{y \cdot x^{-1}}$, where
+$f_{y \cdot x^{-1}}(x) = y$.

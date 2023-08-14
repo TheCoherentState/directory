@@ -1,0 +1,8 @@
+#+TITLE:Munkres Solution Manual
+#+DESCRIPTION:Directory
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+
+Solutions to problem on the MAT367 [[https://www.math.toronto.edu/ivan/mat327/docs/biglist.pdf]["Big List"]]
+
+*Section 7 (Subspaces):* [[./7/14.html][Problem 14]]

@@ -8,8 +8,16 @@ Linked below are the subpages of this website, grouped by category.
 
 * Mathematics
 
-+ [[https://thecoherentstate.github.io/directory/diff_geo/lee][Solution manual for Lee's /Introduction to Smooth Manifolds/]]
+** Solution Manuals
+   + [[./diff_geo/lee/index.html][Solution manual for Lee's /Introduction to Smooth Manifolds/]]
+   + [[./topology/munkres/index.html][Solution manual for Munkres' /Topology/]]
+   + [[./topology/big_list/index.html][Solutions to topology "Big List" problems]]
+   + [[./topology/hatcher/index.html][Solution manual for Hatcher's /Introduction to Algebraic Topology/]]
 
+** Notes
+   + [[./notes/pdf/hyperbolic_geo.pdf][Hyperbolic geometry (preparing for MAT1305)]]
+   
+  
 * Physics
 
 * Computation

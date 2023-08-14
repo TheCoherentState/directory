@@ -1,0 +1,11 @@
+#+TITLE:Munkres Problem 26.10
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+
+Since $X$ is connected, the function $f(x) = \inf d(X - \{x\}, x)$ must equal $0$ for each $x$. If this weren't the case and for some $x_0$ we have $\inf d(X - \{x\}, x_0) = \epsilon > 0$,
+then the open sets $B_{\epsilon/2}(x_0)$ and $\cup_{x \in X - \{x\}} B_{\epsilon/2}(x)$ would separate $X$.
+
+Suppose $X$ is countable, let $x$ and $y$ be distinct points, so $d(x, y) > 0$. We have bijection $f : \mathbb{N} \rightarrow X - \{x, y\}$. Clearly, the sequence $f(1), f(2), \dots$ must get arbitrarily close to $x$ and $y$,
+which will contradict the fact that $x$ and $y$ are distinct and separated by non-zero distance.
+
+It follows that $X$ must be uncountable.

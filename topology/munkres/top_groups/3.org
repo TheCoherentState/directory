@@ -1,0 +1,12 @@
+#+TITLE:Munkres Topological Groups Problem 3
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+
+Clearly, if $H$ is a subgroup/subspace of $G$, then the multiplication and inversion operations restricted to it are automatically well-defined and continuous.
+
+As for $\overline{H}$, note that $\overline{H}$ clearly satisfies the $T_1$ axiom, and the restrictions of of the product/inverse to this domain will be continuous. We simply need
+to demonstrate that elements of $\overline{H}$ are mapped to elements of $\overline{H}$ (i.e. that it is a subgroup). This follows from the fact that
+
+$$\cdot(\overline{H}, \overline{H}) = \cdot(\overline{H \times H}) \subset \overline{\cdot(H \times H)} = \overline{H}$$
+
+with a similar proof showing the inverse is also closed.
