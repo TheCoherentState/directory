@@ -2,11 +2,14 @@
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
 #+HTML_HEAD: <style> body {font-size:15px;} </style>
 
-Our strategy is, given some open $U$ which intersects $A$, to construct a point of $U$ which is not contained in $A$.
+Given some open set $U$ such that $U \cap \cup_{n} A_n = U \cap A \neq \emptyset$, our strategy is to construct a sequence of sets in $U$ which imply the existence of a point of $U$ not lying in $A$.
 
-Clearly, $U$ cannot be contained in $A_1$, as $A_1$ has empty interior, so we can pick point $x \in A - A_1$ with $x \in U$. Since $X$ is compact Hausdorff,
-we can choose neighbourhoods $V_1$ of $x$ (with $V_1$ contained in $U$), and $U_1$ of $A_1$ which are disjoint. Since $V_1 \subset X - U_1$, which is closed, $\overline{V}_1$ is also disjoint of $U_1$ and $A_1$.
+Clearly, $U \not\subset A_1$, as $\text{Int}(A_1) = \emptyset$. Therefore, we can choose a point $x_1$ such that $x_1 \in U$ and $x_1 \notin A_1$. From here, since $X$ is compact Hausdorff, we can choose
+open neighbourhood $V_1$ and $W_1$ which are disjoint, where $V_1$ contains $x_1$ and $W_1$ contains the compact subspace $(X - U) \cup A_1$, as it is closed. Thus, $V_1$ is in the closed set $X - W_1$, which is in $U$.
 
-We proceed inductively, replacing $U$ with $V_1$, where $V_1$ now intersects $A - A_1$. This yields a sequence of closed sets $\overline{V}_1 \supset \overline{V}_2 \supset \cdots$, possesing the finite intersection property.
+Thus, $x_1 \in V_1 \subset \overline{V}_1 \subset U$, and $\overline{V}_1$ is disjoint from $A_1$.
 
-Thus, their intersection must be non-empty, and we are left with a point of $\overline{U}$ which is not contained within $A$.
+We repeat this protocol inductively, with $V_1$ taking the place of $U$, and $A_2$ taking the place of $A_1$, then $V_n$ taking the place of $V_{n - 1}$ and $A_{n + 1}$ replacing $A_n$. This yields a set of nested closed sets $\overline{V}_n$
+which posses the finite intersection property. Since the space is compact, their infinite intersection must be non-empty, containing some $x$. Clearly, $x \notin A_n$ for any $A_n$, by construction of the above sequence.
+
+Thus, $U \not\subset A$, and $\text{Int}(A)$ must be the empty set.

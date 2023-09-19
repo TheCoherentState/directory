@@ -1,0 +1,30 @@
+#+TITLE:Proposition 1.17
+#+DESCRIPTION:Directory
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px; background-color:black; color:white;} .title {color:white;} h2, h3, h4 {color:white;} a{color:red} </style>
+
+*Part A:* /Every smooth atlas $\mathcal{A}$ for $M$ is contained in a unique maximal smooth atlas, called the smooth structure determined by $\mathcal{A}$./
+
+Note that $\mathcal{A}$ is itself only a collection of smooth charts $(U, \varphi)$ covering all point of $M$, such that all charts are smoothly compatible.
+Let $\overline{\mathcal{A}}$ be the collection of *all* charts defined on $M$ which are smoothly compatible with all elements of $\mathcal{A}$. We claim
+that $\overline{\mathcal{A}}$ is the desired, unique, maximal, smooth atlas.
+
+Obviously, $\mathcal{A} \subset \overline{\mathcal{A}}$. Given $(U, \varphi)$ and $(V, \phi)$ of $\overline{\mathcal{A}}$, both are compatible with every element of $\mathcal{A}$.
+In the case that $U \cap V = \emptyset$, these charts are compatible. Otherwise, if they intersect non-trivially, choose some $x \in U \cap V$, and we can choose a chart $(W, \theta)$ with $x \in W$, such that
+
+$$(\varphi \circ \theta^{-1}) : \theta(W \cap U) \rightarrow \varphi(W \cap U) \ \ \ \text{and} \ \ \ (\phi \circ \theta^{-1}) : \theta(W \cap V) \rightarrow \phi(W \cap V)$$
+
+are diffeomorphisms. It follows that $(\varphi \circ \theta^{-1}) \circ (\phi \circ \theta^{-1})^{-1} = \varphi \circ \phi^{-1}$ is a diffeomorphism between $\phi(W \cap V \cap U)$
+and $\varphi(W \cap V \cap U)$.
+
+Now, given $\phi(x) \in \phi(U \cap V)$, note that we can choose open $W$ with $x \in W$, such that $(\varphi^{-1} \circ \phi)$ is a diffeomorphism on $\phi(x) \in \phi(V \cap W) \cap \phi(U \cap V)$, so
+$(\varphi^{-1} \circ \phi)$ is a diffeomorphism in a neighbourhood around each point in the domain. It follows that it is a diffeomorphism on the whole domain: we have differentiability at each point, and clearly
+the map is a bijection with smooth inverse.
+
+Suppose $\mathcal{B}$ were an smooth atlas containing $\mathcal{A}$: then every chart in $\mathcal{B}$ must be smoothly compatible with every chart of $\mathcal{A}$, so $\mathcal{B} \subset \overline{\mathcal{A}}$,
+and $\overline{\mathcal{A}}$ is maximal. This fact also proves uniqueness.
+
+*Part B:* /Two smooth atlases determine the same smooth structure if and only if their union is a smooth atlas./
+
+In the case that the union of two atlases $\mathcal{A}_1$ and $\mathcal{A}_2$ is a smooth atlas, the two atlases must be smoothly compatible, and thus $\mathcal{A}_2 \subset \overline{\mathcal{A}_1}$
+and $\mathcal{A}_1 \subset \overline{\mathcal{A}_2}$. By uniqueness of smooth structures, $\overline{\mathcal{A}_1} = \overline{\mathcal{A}_2}$. The converse is trivial.

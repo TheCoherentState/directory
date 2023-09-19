@@ -1,0 +1,5 @@
+#+TITLE:Munkres Problem 32.3
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px; background-color:black; color:white;} .title {color:white;} h2, h3, h4 {color:white;} </style>
+
+

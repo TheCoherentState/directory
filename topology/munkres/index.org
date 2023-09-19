@@ -1,7 +1,7 @@
 #+TITLE:Munkres Solution Manual
 #+DESCRIPTION:Directory
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
-#+HTML_HEAD: <style> body {font-size:15px;} </style>
+#+HTML_HEAD: <style> body {font-size:15px; background-color:black; color:white;} .title {color:white;} h2, h3, h4 {color:white;} a{color:red} </style>
 
 Check out the [[https://lucaman99.github.io/munkres][older version]] of this website, which contains solutions to problems generally found earlier in the textbook.
 
@@ -16,3 +16,5 @@ Check out the [[https://lucaman99.github.io/munkres][older version]] of this web
 *Chapter 27* (Compact Subspaces of $\mathbb{R}$): [[./27/4.html][Problem 4]], [[./27/5.html][Problem 5]]
 
 *Chapter 28* (Limit Point Compactness): [[./28/7.html][Problem 7]]
+
+*Chapter 33* (Urysohn's Lemma): [[./33/urysohn.html][My proof of Urysohn's Lemma]]

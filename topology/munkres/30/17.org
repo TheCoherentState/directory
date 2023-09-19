@@ -1,0 +1,14 @@
+#+TITLE:Munkres Problem 30.17
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+
+Clearly, $\mathbb{Q}^{\infty}$ is a countable union of countable sets, so it is itself a countable dense subset of itself. Moreover, given an open cover of $\mathbb{Q}^{\infty}$, for each $x \in \mathbb{Q}^{\infty}$,
+we simply pick an element of the cover containing $x$. Such a subcover will be countable, so the space is Lindelof.
+
+This space is, however, \textbf{not even first-countable}. Given a point $x \in \mathbb{Q}^{\infty}$, suppose $\mathcal{B} = \{B_1, B_2, \dots\}$ is a countable local basis at $x$. Let $B_k' = \pi_k(B_k)$.
+Note that $B_k'$ is open in $\mathbb{Q}$, so it is equal to $U_k \cap \mathbb{Q}$ for $U_k$ open in $\mathbb{R}$. We choose some $U_k' \subset U_k$ open, where $U_k'$ contains $x_k$ and does not contain $B_k'$.
+
+Then, $U' = U'_1 \times U'_2 \times \cdots$ is open in $\mathbb{R}^{\omega}$ and its intersection with $\mathbb{Q}^{\infty}$ is open in this subspace.
+This is an open neighbourhood of $x$. Moreover, we do note have $x \in B_k \subset U' \cap \mathbb{Q}^{\infty}$. Note that $B_k$ cannot be a subset because $\pi_k(B_k) = B_k' \not\subset \pi_k(U') = U_k' \cap \mathbb{Q}$.
+
+Thus, the subspace is not first or second-countable, yet it is separable and Lindelof. What a nice counterexample (considering second-countable = separable = Lindelof when the space is metrizable)!

@@ -1,0 +1,36 @@
+#+TITLE:Chapter 1 Problem 8
+#+DESCRIPTION:Directory
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px; </style>
+
+*Claim:* $\mathbb{S}^1$ with a single point deleted is homeomorphic to $(0, 2\pi)$.
+
+/Proof./ Without loss of generality, assume the missing point is $(0, 1)$. Verifying that $f : \theta \mapsto \cos(\theta) + i \sin(\theta)$ is a bijection
+follows from the properties of $\sin$ and $\cos$, continuity follows from the fact that the component functions are continuous on this interval. As for continuity
+of the inverse, it is easy to verify that $f(U)$ is open for any open $U \subset (0, 2\pi)$.
+
+-------------------------------------------
+
+Now, given $U \subset \mathbb{S}^{1}$, if $U \neq \mathbb{S}^{1}$, we can rotate $U$ via $r$ so that some $x \in U$ with $x \notin \mathbb{S}^{1}$ is sent to $(0, 1)$.
+The resulting set is open in $\mathbb{S}^{1} - (0, 1)$, and is thus homeomorphic to its image in $(0, 2\pi)$ via the map constructed previously, which is precisely
+an angle map that we desire.
+
+Conversely, suppose $U = \mathbb{S}^{1}$, we must demonstrate that there can exist no continuous angle function. Suppose $\theta(z)$ were such a function. Let $A$ be the intersection of $\mathbb{H}^{n}$ with
+$\mathbb{S}^{1}$. Let $B$ be the intersection of $-\mathbb{H}^{n}$ with $\mathbb{S}^{1}$. Note that $\theta(-1, 0) \neq \theta(1, 0)$. WLOG, suppose $\theta(-1, 0) < \theta(1, 0)$. Pick $c$ such that $\theta(-1, 0) < c < \theta(1, 0)$.
+Since $A$ and $B$ are connected, from intermediate value theorem, there must exist some $a \in A$ such that $\theta|_A(a) = c$ and $b \in B$ such that $\theta|_{B}(b) = c$, a clear contradiction. Thus, no such $\theta$ can exist.
+
+--------------------------------------------
+
+To demonstrate that $(U, \theta)$ is a smooth coordinate chart contained in the standard smooth structure, it suffices to show that it is smoothly
+compatible with all elements of an atlas inducing the standard smooth structure. Recall the standard smooth sturcture for $\mathbb{S}^{n}$: it is constructed via $2n$ local coordinate charts, defined on the regions
+where each coordinate of $\mathbb{S}^{n}$ has fixed sign. In the case of $\mathbb{S}^{1}$, this will consist of 4 charts, $\varphi_{\pm}(x, y) = y$ for $x < 0$ or $x > 0$, as well as $\psi_{\pm}(x, y) = x$ for $y < 0$ and $y > 0$. Without loss of generality, suppose $U$ is contained
+in one of the four open sets, as we can just intersect it with each to get another open set. We must verify that the transition maps are smooth. For example, note that
+
+\begin{equation}
+e^{i \theta(z)} = (\cos(\theta(z)), \sin(\theta(z))) = z
+\end{equation}
+
+The function $F(\theta) = (\cos(\theta), \sin(\theta))$ locally invertible, with a smooth inverse, and thus $\theta(z)$ is locally 
+
+
+

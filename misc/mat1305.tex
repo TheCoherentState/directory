@@ -1,0 +1,109 @@
+\documentclass[aps,pra,showpacs,notitlepage,onecolumn,superscriptaddress,nofootinbib]{revtex4-1}
+\usepackage[utf8]{inputenc}
+\usepackage[tmargin=1in, bmargin=1.25in, lmargin=1.5in, rmargin=1.5in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{datetime}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{import}
+\usepackage{mathtools}
+\usepackage{thmtools,thm-restate}
+
+
+% package for commutative diagrams
+% \usepackage{tikz-cd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{crimson}{RGB}{186,0,44}
+\definecolor{moss}{RGB}{0, 186, 111}
+\newcommand{\pop}[1]{\textcolor{crimson}{#1}}
+\newcommand{\zcom}[1]{\noindent\textcolor{crimson}{(Z): #1}}
+\newcommand{\jcom}[1]{\noindent\textcolor{moss}{(J): #1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\pqeq}{\succcurlyeq}
+\newcommand{\pleq}{\preccurlyeq}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+    colorlinks,
+    linkcolor={crimson},
+    citecolor={crimson},
+    urlcolor={crimson}
+}
+
+\usepackage{qcircuit}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{reminder}{Reminder}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{answer}{Answer}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{claim}{Claim}[section]
+
+\usepackage{geometry}
+\geometry{
+  left=25mm,
+  right=25mm,
+  top=20mm,
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{unsrt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{MAT354 Problem Set 1}
+\author{Jack Ceroni}
+
+\date{\today}
+
+\maketitle
+
+\section{Problem 1}
+
+\noindent Note that
+\begin{equation}
+  |z + w|^2 = (z + w)^{*} (z + w) = z^{*} z + w^{*} z + z^{*} w + w^{*} w = (w^{*} z + z^{*} w) + |z|^2 + |w|^2,
+\end{equation}
+where distributitivity of the conjugation operation over addition is trivial to demonstrate. This equation also implies upon $w \mapsto -w$,
+we have $|z - w|^2 = -(w^{*} z + z^{*} w) + |z|^2 + |w|^2$, where commutativity of scalar multiplication and conjugation is also trivial to show.
+Thus, we have the desired equality via cancellation,
+\begin{equation}
+  |z + w|^2 + |z - w|^2 = 2(|z|^2 + |w|^2).
+\end{equation}
+Geometrically, we know that addition of complex numbers in $\mathbb{C}$ can be thought of as ``geometric'' vector addition in $\mathbb{R}^2$. Think of $z$
+and $w$ as vectors in $\mathbb{R}^2$: these vectors define a triangle in $\mathbb{R}^2$ with vertices at $(0, 0)$, $z + w$, and $z - w$. Let
+$\langle \cdot, \cdot \rangle$ be the standard inner product on $\mathbb{R}^2$, note that $\langle z + w, z - w \rangle = |z|^2 + |w|^2$. Also recall that for $a, b \in \mathbb{R}^2$,
+$\langle a, b \rangle = |a| |b| \cos(\theta)$, where $\cos(\theta)$ is the standard angle between the vectors. Therefore,
+
+\begin{align}
+  |z + w|^2 + |z - w|^2 &= 2 (|z|^2 + |w|^2) = 2 \langle z + w, z - w \rangle
+  \\ &\Longleftrightarrow |z + w|^2 + |z - w|^2 = 2 |z + w| |z - w| \cos(\theta)
+\end{align}
+where $\cos(\theta)$ is the angle between $z + w$ and $z - w$. Hence, the formula proved is just the standard \emph{cosine law} of trigonometry is disguise (this
+is the best geometric interpretation I can conjure). See below for a diagram.
+
+\section{Problem 2}
+
+\section{Problem 5}
+
+Let $f(z) = \frac{az + b}{cz + d}$ be a fractional linear transformation. Suppose $f$ preserves $\mathbb{R} \times \{0\} \subset \mathbb{C} \simeq \mathbb{R}^2$.
+
+\end{document}

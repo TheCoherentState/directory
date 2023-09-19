@@ -1,0 +1,5 @@
+#+TITLE:Chapter 2 Proposition 25
+#+DESCRIPTION:Directory
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px; </style>
+

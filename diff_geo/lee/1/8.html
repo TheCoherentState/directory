@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-08-21 Mon 13:59 -->
+<!-- 2023-08-27 Sun 17:46 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Munkres Solution Manual</title>
+<title>Chapter 1 Problem 8</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="Jack Ceroni" />
 <meta name="description" content="Directory"
@@ -196,7 +196,7 @@
   /*]]>*/-->
 </style>
 <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
-<style> body {font-size:15px; background-color:black; color:white;} .title {color:white;} h2, h3, h4 {color:white;} a{color:red} </style>
+<style> body {font-size:15px; </style>
 <script type="text/javascript">
 // @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
@@ -244,42 +244,47 @@
 </head>
 <body>
 <div id="content">
-<h1 class="title">Munkres Solution Manual</h1>
+<h1 class="title">Chapter 1 Problem 8</h1>
 <p>
-Check out the <a href="https://lucaman99.github.io/munkres">older version</a> of this website, which contains solutions to problems generally found earlier in the textbook.
+<b>Claim:</b> \(\mathbb{S}^1\) with a single point deleted is homeomorphic to \((0, 2\pi)\).
 </p>
 
 <p>
-<b>Supplementary Exercises 1</b> (Topological Groups): <a href="./top_groups/3.html">Problem 3</a>, <a href="./top_groups/4.html">Problem 4</a>, <a href="./top_groups/5.html">Problem 5</a>
+<i>Proof.</i> Without loss of generality, assume the missing point is \((0, 1)\). Verifying that \(f : \theta \mapsto \cos(\theta) + i \sin(\theta)\) is a bijection
+follows from the properties of \(\sin\) and \(\cos\), continuity follows from the fact that the component functions are continuous on this interval. As for continuity
+of the inverse, it is easy to verify that \(f(U)\) is open for any open \(U \subset (0, 2\pi)\).
+</p>
+
+<hr />
+
+<p>
+Now, given \(U \subset \mathbb{S}^{1}\), if \(U \neq \mathbb{S}^{1}\), we can rotate \(U\) via \(r\) so that some \(x \in U\) with \(x \notin \mathbb{S}^{1}\) is sent to \((0, 1)\).
+The resulting set is open in \(\mathbb{S}^{1} - (0, 1)\), and is thus homeomorphic to its image in \((0, 2\pi)\) via the map constructed previously, which is precisely
+an angle map that we desire.
 </p>
 
 <p>
-<b>Chapter 22</b> (Quotient Maps and Quotient Topology): <a href="./22/6.html">Problem 6</a>
+Conversely, suppose \(U = \mathbb{S}^{1}\), we must demonstrate that there can exist no continuous angle function. Suppose \(\theta(z)\) were such a function. Let \(A\) be the intersection of \(\mathbb{H}^{n}\) with
+\(\mathbb{S}^{1}\). Let \(B\) be the intersection of \(-\mathbb{H}^{n}\) with \(\mathbb{S}^{1}\). Note that \(\theta(-1, 0) \neq \theta(1, 0)\). WLOG, suppose \(\theta(-1, 0) < \theta(1, 0)\). Pick \(c\) such that \(\theta(-1, 0) < c < \theta(1, 0)\).
+Since \(A\) and \(B\) are connected, from intermediate value theorem, there must exist some \(a \in A\) such that \(\theta|_A(a) = c\) and \(b \in B\) such that \(\theta|_{B}(b) = c\), a clear contradiction. Thus, no such \(\theta\) can exist.
+</p>
+
+<hr />
+
+<p>
+To demonstrate that \((U, \theta)\) is a smooth coordinate chart contained in the standard smooth structure, it suffices to show that it is smoothly
+compatible with all elements of an atlas inducing the standard smooth structure. Recall the standard smooth sturcture for \(\mathbb{S}^{n}\): it is constructed via \(2n\) local coordinate charts, defined on the regions
+where each coordinate of \(\mathbb{S}^{n}\) has fixed sign.
 </p>
 
 <p>
-<b>Chapter 24</b> (Connected Subspaces of \(\mathbb{R}\)): <a href="./24/11.html">Problem 11</a>
-</p>
-
-<p>
-<b>Chapter 26</b> (Compactness): <a href="./26/10.html">Problem 10</a>
-</p>
-
-<p>
-<b>Chapter 27</b> (Compact Subspaces of \(\mathbb{R}\)): <a href="./27/4.html">Problem 4</a>, <a href="./27/5.html">Problem 5</a>
-</p>
-
-<p>
-<b>Chapter 28</b> (Limit Point Compactness): <a href="./28/7.html">Problem 7</a>
-</p>
-
-<p>
-<b>Chapter 33</b> (Urysohn's Lemma): <a href="./33/urysohn.html">My proof of Urysohn's Lemma</a>
+In the case of \(\mathbb{S}^{1}\), this will consist of 4 charts, \(\varphi_{\pm}(x, y) = y\) for \(x < 0\) or \(x > 0\), as well as \(\psi_{\pm}(x, y) = x\) for \(y < 0\) and \(y > 0\). Without loss of generality, suppose \(U\) is contained
+in one of the four open sets, as we can just intersect it with each to get another open set.
 </p>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jack Ceroni</p>
-<p class="date">Created: 2023-08-21 Mon 13:59</p>
+<p class="date">Created: 2023-08-27 Sun 17:46</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

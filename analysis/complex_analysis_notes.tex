@@ -1,0 +1,164 @@
+\documentclass[aps,pra,showpacs,notitlepage,onecolumn,superscriptaddress,nofootinbib]{revtex4-1}
+\usepackage[utf8]{inputenc}
+\usepackage[tmargin=1in, bmargin=1.25in, lmargin=1.5in, rmargin=1.5in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{datetime}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{import}
+\usepackage{mathtools}
+\usepackage{thmtools,thm-restate}
+
+
+% package for commutative diagrams
+% \usepackage{tikz-cd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{crimson}{RGB}{186,0,44}
+\definecolor{moss}{RGB}{0, 186, 111}
+\newcommand{\pop}[1]{\textcolor{crimson}{#1}}
+\newcommand{\zcom}[1]{\noindent\textcolor{crimson}{(Z): #1}}
+\newcommand{\jcom}[1]{\noindent\textcolor{moss}{(J): #1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\pqeq}{\succcurlyeq}
+\newcommand{\pleq}{\preccurlyeq}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+    colorlinks,
+    linkcolor={crimson},
+    citecolor={crimson},
+    urlcolor={crimson}
+}
+
+\usepackage{qcircuit}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{reminder}{Reminder}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{answer}{Answer}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{claim}{Claim}[section]
+
+\newcommand{\hhrulefill}{\hspace{-1em} \hrulefill}
+
+\usepackage{geometry}
+\geometry{
+  left=25mm,
+  right=25mm,
+  top=20mm,
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{unsrt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{Complex Analysis}
+\author{Jack Ceroni}
+\email{jackceroni@gmail.com}
+\affiliation{Department of Mathematics, University of Toronto}
+
+\date{\today}
+
+\maketitle
+
+\section{Introduction}
+
+\noindent The goal of these notes is to follow a basic first course in complex analysis, following Edward Bierstone's course at the University of Toronto (MAT354), in the Fall of 2023. I will
+also be adding information from my own readings/other resources. I hope that someone finds these notes useful. However, in the event that no one does, I certainly will!
+
+Here is a list of other resources that I will draw from in these notes:
+
+\begin{itemize}
+  \item Edward Bierstone's lectures (MAT354, University of Toronto, Fall 2023)
+  \item Cartan, \textit{Elementary theory of analytic functions of one or several complex variables}
+  \item Ahlfors, \textit{Complex analysis}
+  \end{itemize}
+
+\section{Basics and notation}
+
+\noindent We begin our discussion of complex analysis by introducing the complex plane, $\mathbb{C}$. Of course, $\mathbb{C}$ can be constructed via taking $\mathbb{R}^{2}$ and imposing a particular
+complex structure over it, which tells us how to multiply by the imaginary unit $i$. We can also construct $\mathbb{C}$ via taking $\mathbb{R}[x]$ and quotienting by the ideal $(x^2 + 1)$.
+For the purposes of these introductory notes, it is not particularly important to dwell on this point: all that
+we need to know is that there are many different ways to construct $\mathbb{C}$, each of which are equivalent, and are topologically identical to $\mathbb{R}^2$.
+
+We will assume basic familiarity with fundamental notions related to the manipulation of complex numbers. As for notation, we let $\overline{z}$ denote the complex conjugate of $z \in \mathbb{C}$.
+We let $|z|$ denote the absolute value or modulus. We let $\Re[z]$ and $\Im[z]$ denote the real and complex components in $\mathbb{R}$ of $z \in \mathbb{C}$, respectively. Assuming that
+we have already constructed the function $\sin(t)$ and $\cos(t)$, and know their basic properties, it is straightforward to show that any $(x, y) \in \mathbb{C}$ can be expressed as $(r \cos(\theta), r \sin(\theta))$:
+we simply set $r = \sqrt{x^2 + y^2}$ and apply the Pythagorean identity to $\cos(\theta)$ and $\sin(\theta)$, which allows us to choose $\theta \in [0, 2\pi)$ satisfying the desired equality.
+
+\begin{definition}[Polar coordinates]
+  The map going from $\mathbb{R}^2$ to $\mathbb{R} \times [0, 2\pi)$ which sends $(x, y) \mapsto (r, \theta)$ via the above protocol is a bijection where the imagine of $(x, y)$ is refered to as the \textit{polar coordinate representation}
+    of a pair of coordinates $(x, y)$.
+\end{definition}
+
+\begin{definition}[Complex exponential]
+  We define the map $t \mapsto  \cos(t) + i \sin(t) \coloneqq e^{it}$ from $\mathbb{R}$ to $\mathbb{C}$ and refer to it as the \textit{complex exponential}. It is easy to demonstrate that
+  the complex exponential has all the standard properties of a regular exponential function, when it comes to the inverse, multiplication, powers, etc. This definition also agrees
+  with the series definition of the exponential function mapping from $\mathbb{R}$ to $\mathbb{R}$, where we substitute an imaginary number, and utilize the multiplication rule
+  for repeatedly multiplying $i$ with itself.
+\end{definition}
+
+\noindent \jcom{I may revise this section in the future, if I think of any extra, basic information that must be exposited/notation that must be explained.}
+
+\section{The Riemann sphere and complex projective space}
+
+\noindent We are now able to move on to a discussion of different representations of the complex plane.
+
+\begin{definition}[Riemann sphere]
+  Rather than strictly working with the standard complex plane $\mathbb{C}$, we will often consider its one-point compactification $\overline{\mathbb{C}} = \mathbb{C} \cup \{\infty\}$, where $\infty$ is refered to as the ``point at infinity''.
+  $\overline{\mathbb{C}}$ is called the Riemann sphere, as it is homeomorphic to a sphere (topologically, the one-point compactification of $\mathbb{R}^2$ is homeomorphic to $S^2$).
+
+  Of course, the function addition $+ : \mathbb{C} \times \mathbb{C} \rightarrow \mathbb{C}$ and multiplication, $\cdot : \mathbb{C} \times \mathbb{C} \rightarrow \mathbb{C}$ must be extended to functions from $\overline{\mathbb{C}} \times \overline{\mathbb{C}}$ 
+  to $\overline{\mathbb{C}}$ (to the greatest extent possible). We take
+  \begin{align}
+    a + \infty = \infty + a = \infty \ \ \ \text{for all} \ a \neq \infty \\
+    b \cdot \infty = \infty \cdot b = \infty \ \ \ \text{for all} \ b \neq 0
+  \end{align}
+  Now, when we say ``to the greatest extent possible'' it is clear what we mean: we cannot define $0 \cdot \infty$ or $\infty + \infty$, or else we will violate the standard laws of addition and multiplication that we wish to satisfy with our new, extended arithmetic.
+  For example, one may be inclined to say that $\infty + \infty = \infty$, but then if additive cancellation holds, $\infty = 0$, a contradiction.
+\end{definition}
+
+\begin{definition}[Stereographic projection]
+  \end{definition}
+
+\begin{claim}
+  The one-point compactification of $\mathbb{R}^2$ is homeomorphic to $S^2$ via the stereographic projection.
+\end{claim}
+
+\begin{definition}[Complex projective space]
+\end{definition}
+
+\noindent Now, let us move back to the discussion of the Riemann sphere, which is the representation of the complex numbers we will work with the most. It is natural
+to ask what the correspondence is between basic objects in $\overline{\mathbb{C}}$ and $S^2$, via the stereographic projection. We begin with a result.
+
+\begin{theorem}
+  All circles in the Riemann sphere correspond to lines or circles in $\overline{\mathbb{C}}$. Conversely, all lines and
+  circles in $\overline{\mathbb{C}}$ correspond to circles in the Riemann sphere.
+\end{theorem}
+
+\section{Linear, polynomial, and rational complex functions}
+
+\begin{theorem}[Representation of rational functions by partial fractions]
+
+  \end{theorem}
+
+\end{document}

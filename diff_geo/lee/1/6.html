@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-08-21 Mon 13:59 -->
+<!-- 2023-08-24 Thu 15:49 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Munkres Solution Manual</title>
+<title>Chapter 1 Problem 6</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="Jack Ceroni" />
 <meta name="description" content="Directory"
@@ -244,42 +244,51 @@
 </head>
 <body>
 <div id="content">
-<h1 class="title">Munkres Solution Manual</h1>
+<h1 class="title">Chapter 1 Problem 6</h1>
 <p>
-Check out the <a href="https://lucaman99.github.io/munkres">older version</a> of this website, which contains solutions to problems generally found earlier in the textbook.
+Recall that two atlases yield the same smooth structure if and only if their union is a smooth atlas.
 </p>
 
 <p>
-<b>Supplementary Exercises 1</b> (Topological Groups): <a href="./top_groups/3.html">Problem 3</a>, <a href="./top_groups/4.html">Problem 4</a>, <a href="./top_groups/5.html">Problem 5</a>
+Suppose \(\mathcal{A}\) is an atlas, yielding smooth structure \(\overline{\mathcal{A}}\). Pick \((U, \phi) \in \mathcal{A}\). Suppose
+without loss of generality that \(\phi : U \rightarrow \widehat{U} \subset \mathbb{B}^{n}\): the $n$-ball. Define \(F_s(x) = |x|^{s - 1} x\) as a map
+from \(\mathbb{B}^{n}\) to \(\mathbb{B}^{n}\).
 </p>
 
 <p>
-<b>Chapter 22</b> (Quotient Maps and Quotient Topology): <a href="./22/6.html">Problem 6</a>
+Our strategy will be to show that \(F_s \circ \phi\) is a valid local homeomorphism, but that \(F_s\) is not a diffeomorphism. Thus, letting \(\mathcal{A}_s\)
+consist of all \((U, F_s \circ \phi)\) will be a smooth atlas, but \(\mathcal{A}_{s'} \cup \mathcal{A}_s\) is not for \(s' \neq s\), as
 </p>
 
 <p>
-<b>Chapter 24</b> (Connected Subspaces of \(\mathbb{R}\)): <a href="./24/11.html">Problem 11</a>
+\[(F_s \circ \phi) \circ (\phi^{-1} \circ F_{s'}^{-1}) = F_s \circ F_{s'}^{-1} = |x|^{s - s'} x\]
 </p>
 
 <p>
-<b>Chapter 26</b> (Compactness): <a href="./26/10.html">Problem 10</a>
+is not a smooth map. We then note that there are an uncountable number of \(\mathcal{A}_s\) for \(s \in \mathbb{R}^{+}\), defining an uncountable number of distinct smooth structures, \(\overline{\mathcal{A}_s}\).
+</p>
+
+<hr />
+
+<p>
+It is simple to demonstrate that \(F_s(x)\) is a homeomorphism, it is clearly continuous as its component functions are continuous. Moreover, it is obviously bijective, as it has a well-defined inverse \(F_s^{-1}(x) = |x|^{\frac{1 - s}{s}} x\)
+for \(x \neq 0\) and \(F_s^{-1}(0) = 0\).
 </p>
 
 <p>
-<b>Chapter 27</b> (Compact Subspaces of \(\mathbb{R}\)): <a href="./27/4.html">Problem 4</a>, <a href="./27/5.html">Problem 5</a>
+Finally, the inverse is continuous everywhere for \(x \neq 0\), as the components are, and at \(0\), note that \(|F_s^{-1}(x)| = |x|^{1/s}\), so \(F_s^{-1}(B_{\epsilon^s}(0)) \subset B_{\epsilon}(0)\) for any \(\epsilon > 0\), and we have continuity at \(0\).
 </p>
 
-<p>
-<b>Chapter 28</b> (Limit Point Compactness): <a href="./28/7.html">Problem 7</a>
-</p>
+<hr />
 
 <p>
-<b>Chapter 33</b> (Urysohn's Lemma): <a href="./33/urysohn.html">My proof of Urysohn's Lemma</a>
+This function is not a diffeomorphism, however, because \(F_s^{-1}(x)\) is not everywhere-differentiable for \(s \neq 1\). In particular, recall \(|F_s^{-1}(x)| = |x|^{1/s}\). If the function were differentiable, there would
+exist linear \(L\) such that \(|F_s^{-1}(h) - L h|/|h|\) goes to \(0\) for \(h \to 0\), but alas this will always blow-up.
 </p>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jack Ceroni</p>
-<p class="date">Created: 2023-08-21 Mon 13:59</p>
+<p class="date">Created: 2023-08-24 Thu 15:49</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

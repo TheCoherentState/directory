@@ -1,0 +1,14 @@
+#+TITLE:Munkres Problem 30.14
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+
+Let $\{A_k\}$ be an open cover. For each point $y \in Y$, note that the slice $X \times y$ can be covered by a countable collection: we simply take the subcollection of
+all $A_k$ which intersect the slice, project them onto $X$, take a countable subcover of this open cover, and then map this countable projection back onto the slice.
+
+Let $\{A_k^{(x)}\}$ denote the countable subcover covering the slice. By the tube lemma, we can find open $W^{(x)} \subset X$ containing $x$ such that $W^{(x)} \times Y$ is contained in $\cup_k A^{(x)}_k$.
+
+
+We repeat this procedure for each $x \in X$. We then take a finite subcover of the sets $W^{(x)}$, and take the union of the corresponding collections $\{A_k^{(x)}\}$, which will itself be a countable collection.
+
+Given $x \times y \in X \times Y$, $x \in W^{(x_k)}$ for some $W^{(x_k)}$ is the finite subcover, and so $x \times y \in W^{(x_k)} \times Y$, which is covered by the countable collection. Thus, we have a countable subcover,
+and $X \times Y$ is Lindelof.

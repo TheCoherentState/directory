@@ -3,14 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-08-21 Mon 13:59 -->
+<!-- 2023-08-15 Tue 08:21 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Munkres Solution Manual</title>
+<title>Munkres Problem 30.17</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="Jack Ceroni" />
-<meta name="description" content="Directory"
- />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -196,7 +194,7 @@
   /*]]>*/-->
 </style>
 <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
-<style> body {font-size:15px; background-color:black; color:white;} .title {color:white;} h2, h3, h4 {color:white;} a{color:red} </style>
+<style> body {font-size:15px;} </style>
 <script type="text/javascript">
 // @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
@@ -244,42 +242,29 @@
 </head>
 <body>
 <div id="content">
-<h1 class="title">Munkres Solution Manual</h1>
+<h1 class="title">Munkres Problem 30.17</h1>
 <p>
-Check out the <a href="https://lucaman99.github.io/munkres">older version</a> of this website, which contains solutions to problems generally found earlier in the textbook.
+Clearly, \(\mathbb{Q}^{\infty}\) is a countable union of countable sets, so it is itself a countable dense subset of itself. Moreover, given an open cover of \(\mathbb{Q}^{\infty}\), for each \(x \in \mathbb{Q}^{\infty}\),
+we simply pick an element of the cover containing \(x\). Such a subcover will be countable, so the space is Lindelof.
 </p>
 
 <p>
-<b>Supplementary Exercises 1</b> (Topological Groups): <a href="./top_groups/3.html">Problem 3</a>, <a href="./top_groups/4.html">Problem 4</a>, <a href="./top_groups/5.html">Problem 5</a>
+This space is, however, \textbf{not even first-countable}. Given a point \(x \in \mathbb{Q}^{\infty}\), suppose \(\mathcal{B} = \{B_1, B_2, \dots\}\) is a countable local basis at \(x\). Let \(B_k' = \pi_k(B_k)\).
+Note that \(B_k'\) is open in \(\mathbb{Q}\), so it is equal to \(U_k \cap \mathbb{Q}\) for \(U_k\) open in \(\mathbb{R}\). We choose some \(U_k' \subset U_k\) open, where \(U_k'\) contains \(x_k\) and does not contain \(B_k'\).
 </p>
 
 <p>
-<b>Chapter 22</b> (Quotient Maps and Quotient Topology): <a href="./22/6.html">Problem 6</a>
+Then, \(U' = U'_1 \times U'_2 \times \cdots\) is open in \(\mathbb{R}^{\omega}\) and its intersection with \(\mathbb{Q}^{\infty}\) is open in this subspace.
+This is an open neighbourhood of \(x\). Moreover, we do note have \(x \in B_k \subset U' \cap \mathbb{Q}^{\infty}\). Note that \(B_k\) cannot be a subset because \(\pi_k(B_k) = B_k' \not\subset \pi_k(U') = U_k' \cap \mathbb{Q}\).
 </p>
 
 <p>
-<b>Chapter 24</b> (Connected Subspaces of \(\mathbb{R}\)): <a href="./24/11.html">Problem 11</a>
-</p>
-
-<p>
-<b>Chapter 26</b> (Compactness): <a href="./26/10.html">Problem 10</a>
-</p>
-
-<p>
-<b>Chapter 27</b> (Compact Subspaces of \(\mathbb{R}\)): <a href="./27/4.html">Problem 4</a>, <a href="./27/5.html">Problem 5</a>
-</p>
-
-<p>
-<b>Chapter 28</b> (Limit Point Compactness): <a href="./28/7.html">Problem 7</a>
-</p>
-
-<p>
-<b>Chapter 33</b> (Urysohn's Lemma): <a href="./33/urysohn.html">My proof of Urysohn's Lemma</a>
+Thus, the subspace is not first or second-countable, yet it is separable and Lindelof. What a nice counterexample (considering second-countable = separable = Lindelof when the space is metrizable)!
 </p>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jack Ceroni</p>
-<p class="date">Created: 2023-08-21 Mon 13:59</p>
+<p class="date">Created: 2023-08-15 Tue 08:21</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

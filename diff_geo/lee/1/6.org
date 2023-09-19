@@ -1,0 +1,30 @@
+#+TITLE:Chapter 1 Problem 6
+#+DESCRIPTION:Directory
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px; background-color:black; color:white;} .title {color:white;} h2, h3, h4 {color:white;} a{color:red} </style>
+
+Recall that two atlases yield the same smooth structure if and only if their union is a smooth atlas.
+
+Suppose $\mathcal{A}$ is an atlas, yielding smooth structure $\overline{\mathcal{A}}$. Pick $(U, \phi) \in \mathcal{A}$. Suppose
+without loss of generality that $\phi : U \rightarrow \widehat{U} \subset \mathbb{B}^{n}$: the $n$-ball. Define $F_s(x) = |x|^{s - 1} x$ as a map
+from $\mathbb{B}^{n}$ to $\mathbb{B}^{n}$.
+
+Our strategy will be to show that $F_s \circ \phi$ is a valid local homeomorphism, but that $F_s$ is not a diffeomorphism. Thus, letting $\mathcal{A}_s$
+consist of all $(U, F_s \circ \phi)$ will be a smooth atlas, but $\mathcal{A}_{s'} \cup \mathcal{A}_s$ is not for $s' \neq s$, as
+
+$$(F_s \circ \phi) \circ (\phi^{-1} \circ F_{s'}^{-1}) = F_s \circ F_{s'}^{-1} = |x|^{s - s'} x$$
+
+is not a smooth map. We then note that there are an uncountable number of $\mathcal{A}_s$ for $s \in \mathbb{R}^{+}$, defining an uncountable number of distinct smooth structures, $\overline{\mathcal{A}_s}$.
+
+--------------------
+
+It is simple to demonstrate that $F_s(x)$ is a homeomorphism, it is clearly continuous as its component functions are continuous. Moreover, it is obviously bijective, as it has a well-defined inverse $F_s^{-1}(x) = |x|^{\frac{1 - s}{s}} x$
+for $x \neq 0$ and $F_s^{-1}(0) = 0$.
+
+Finally, the inverse is continuous everywhere for $x \neq 0$, as the components are, and at $0$, note that $|F_s^{-1}(x)| = |x|^{1/s}$, so $F_s^{-1}(B_{\epsilon^s}(0)) \subset B_{\epsilon}(0)$ for any $\epsilon > 0$, and we have continuity at $0$.
+
+--------------------
+
+This function is not a diffeomorphism, however, because $F_s^{-1}(x)$ is not everywhere-differentiable for $s \neq 1$. In particular, recall $|F_s^{-1}(x)| = |x|^{1/s}$. If the function were differentiable, there would
+exist linear $L$ such that $|F_s^{-1}(h) - L h|/|h|$ goes to $0$ for $h \to 0$, but alas this will always blow-up.
+

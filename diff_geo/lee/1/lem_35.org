@@ -1,0 +1,13 @@
+#+TITLE:Lemma 1.35
+#+DESCRIPTION:Directory
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px; background-color:black; color:white;} .title {color:white;} h2, h3, h4 {color:white;} a{color:red} </style>
+
+In order to demonstrate this result, suppose $(U, \psi)$ is a chart such that $\psi(p) \notin \partial \mathhh{H}^{n}$, and $(V, \varphi)$
+is such that $\varphi(p) \in \partial \mathbb{H}^{n}$ with $\varphi(V) \subset \mathbb{H}^{n}$.
+
+Note that $\psi \circ \varphi^{-1} : \varphi(U \cap V) \rightarrow \psi(U \cap V)$ must be smooth, so there exists smooth extension $f$ on $W$ open
+in $\mathbb{R}^{n}$ containing $\varphi(p)$. Our strategy is to demonstrate that $\varphi(V)$ cannot possibly be an open set of $\mathbb{H}^{n}$.
+
+Let $B$ be a neighbourhood of $\psi(p)$ which does not intersect $\partial \mathbb{H}^n$ and is contained in $\psi(U \cap V)$. Note that
+the function $f^{-1} |_B$ is well-defined

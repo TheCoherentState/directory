@@ -1,0 +1,11 @@
+#+TITLE:Munkres Problem 31.9
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+
+The idea is to construct a sequence
+
+Let $r_n$ denote the first $n$ decimals points of $\sqrt{2}$, which is rational. Clearly, $r_n \rightarrow \sqrt{2}$, where each $r_n$ is rational and $\sqrt{2}$ is rational. Suppose $U$ contains $A$,
+and thus all $r_n$. It follows that for each $n$, we can choose some $B_n = [r_n, a_n) \times [-r_n, b_n)$, where $a_n > r_n$, which is contained in $U$. Moreover, there exists some $B = [\sqrt{2}, a) \times [-\sqrt{2}, b)$
+which is contained in $V$, where $a > \sqrt{2}$ and $b_> -\sqrt{2}$.
+
+Clearly, $b > -r_N$ for some $N$, by nature of the fact that $-r_N \rightarrow -\sqrt{2}$. 

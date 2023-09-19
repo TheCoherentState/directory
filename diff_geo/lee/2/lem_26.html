@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-08-21 Mon 13:59 -->
+<!-- 2023-08-27 Sun 18:49 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Munkres Solution Manual</title>
+<title>Chapter 1 Problem 8</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="Jack Ceroni" />
 <meta name="description" content="Directory"
@@ -196,7 +196,7 @@
   /*]]>*/-->
 </style>
 <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
-<style> body {font-size:15px; background-color:black; color:white;} .title {color:white;} h2, h3, h4 {color:white;} a{color:red} </style>
+<style> body {font-size:15px; </style>
 <script type="text/javascript">
 // @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
@@ -244,42 +244,39 @@
 </head>
 <body>
 <div id="content">
-<h1 class="title">Munkres Solution Manual</h1>
+<h1 class="title">Chapter 1 Problem 8</h1>
+<hr />
+
 <p>
-Check out the <a href="https://lucaman99.github.io/munkres">older version</a> of this website, which contains solutions to problems generally found earlier in the textbook.
+<i>Suppose \(M\) is a smooth manifold with or without boundary, \(A\) is a closed set, \(f : A \rightarrow \mathbb{R}^{k}\) is smooth. For any open subset \(U\) containing \(A\), there exists
+smooth \(\widetilde{f} : M \rightarrow \mathbb{R}^k\) such that \(\widetilde{f}|_A = f\) and \(\text{supp}(\widetilde{f}) \subset U\).</i>
+</p>
+
+<hr />
+
+<p>
+Let \(p \in A\), because \(f\) is a smooth function, there exists an open neighbourhood \(U_p\) of \(p\) such that there exists an extension \(f_p : U_p \rightarrow \mathbb{R}^{k}\) agreeing with \(f\)
+on \(U_p \cap A\) such that \(f_p\) is smooth. We repeat this process for all \(p \in A\), to get an open cover of \(A\) (WLOG, \(U_p \subset U\) for all \(p\)). Note that \(M - A\) is also open. Thus, the collection
+of all \(U_p\) along with \(M - A\) forms an open cover for \(M\), and therefore there exists a smooth partition of unity suboordinate.
 </p>
 
 <p>
-<b>Supplementary Exercises 1</b> (Topological Groups): <a href="./top_groups/3.html">Problem 3</a>, <a href="./top_groups/4.html">Problem 4</a>, <a href="./top_groups/5.html">Problem 5</a>
+We define \(\widetilde{f} = \sum_{p \in A} \psi_p \cdot f_p\), where \(\psi_p\) is the element of the PO1 supported on \(U_p\). Clearly, the support of this function is contained in \(U\). It is smooth
+because for some \(x \in M\), we choose \(x \in V \subset M\) such that \(V\) only intersects finitely many \(\text{supp}(\psi_p)\), so \(\widetilde{f}\) is a finite sum of smooth functions at \(x\), and is thus smooth
+at \(x\). Finally, for \(x \in A\), \(f_p(x) = f(x)\), so
 </p>
 
 <p>
-<b>Chapter 22</b> (Quotient Maps and Quotient Topology): <a href="./22/6.html">Problem 6</a>
+\[\displaystyle\sum_{p \in A} \psi_p(x) \cdot f_p(x) = \left( \displaystyle\sum_{p \in A} \psi_p(x) \right) f(x) = f(x)\]
 </p>
 
 <p>
-<b>Chapter 24</b> (Connected Subspaces of \(\mathbb{R}\)): <a href="./24/11.html">Problem 11</a>
-</p>
-
-<p>
-<b>Chapter 26</b> (Compactness): <a href="./26/10.html">Problem 10</a>
-</p>
-
-<p>
-<b>Chapter 27</b> (Compact Subspaces of \(\mathbb{R}\)): <a href="./27/4.html">Problem 4</a>, <a href="./27/5.html">Problem 5</a>
-</p>
-
-<p>
-<b>Chapter 28</b> (Limit Point Compactness): <a href="./28/7.html">Problem 7</a>
-</p>
-
-<p>
-<b>Chapter 33</b> (Urysohn's Lemma): <a href="./33/urysohn.html">My proof of Urysohn's Lemma</a>
+and the proof is complete.
 </p>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jack Ceroni</p>
-<p class="date">Created: 2023-08-21 Mon 13:59</p>
+<p class="date">Created: 2023-08-27 Sun 18:49</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

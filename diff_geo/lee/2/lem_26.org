@@ -1,0 +1,23 @@
+#+TITLE:Chapter 2 Lemma 26
+#+DESCRIPTION:Directory
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px; </style>
+
+------------------------------
+
+/Suppose $M$ is a smooth manifold with or without boundary, $A$ is a closed set, $f : A \rightarrow \mathbb{R}^{k}$ is smooth. For any open subset $U$ containing $A$, there exists
+smooth $\widetilde{f} : M \rightarrow \mathbb{R}^k$ such that $\widetilde{f}|_A = f$ and $\text{supp}(\widetilde{f}) \subset U$./
+
+------------------------------
+
+Let $p \in A$, because $f$ is a smooth function, there exists an open neighbourhood $U_p$ of $p$ such that there exists an extension $f_p : U_p \rightarrow \mathbb{R}^{k}$ agreeing with $f$
+on $U_p \cap A$ such that $f_p$ is smooth. We repeat this process for all $p \in A$, to get an open cover of $A$ (WLOG, $U_p \subset U$ for all $p$). Note that $M - A$ is also open. Thus, the collection
+of all $U_p$ along with $M - A$ forms an open cover for $M$, and therefore there exists a smooth partition of unity suboordinate.
+
+We define $\widetilde{f} = \sum_{p \in A} \psi_p \cdot f_p$, where $\psi_p$ is the element of the PO1 supported on $U_p$. Clearly, the support of this function is contained in $U$. It is smooth
+because for some $x \in M$, we choose $x \in V \subset M$ such that $V$ only intersects finitely many $\text{supp}(\psi_p)$, so $\widetilde{f}$ is a finite sum of smooth functions at $x$, and is thus smooth
+at $x$. Finally, for $x \in A$, $f_p(x) = f(x)$, so
+
+$$\displaystyle\sum_{p \in A} \psi_p(x) \cdot f_p(x) = \left( \displaystyle\sum_{p \in A} \psi_p(x) \right) f(x) = f(x)$$
+
+and the proof is complete.

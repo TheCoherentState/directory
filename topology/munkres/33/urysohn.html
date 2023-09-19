@@ -3,14 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-08-21 Mon 13:59 -->
+<!-- 2023-08-21 Mon 12:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Munkres Solution Manual</title>
+<title>Urysohn's Lemma</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="Jack Ceroni" />
-<meta name="description" content="Directory"
- />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -196,7 +194,7 @@
   /*]]>*/-->
 </style>
 <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
-<style> body {font-size:15px; background-color:black; color:white;} .title {color:white;} h2, h3, h4 {color:white;} a{color:red} </style>
+<style> body {font-size:15px; background-color:black; color:white;} .title {color:white;} h2, h3, h4 {color:white;} </style>
 <script type="text/javascript">
 // @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
@@ -244,42 +242,67 @@
 </head>
 <body>
 <div id="content">
-<h1 class="title">Munkres Solution Manual</h1>
+<h1 class="title">Urysohn's Lemma</h1>
 <p>
-Check out the <a href="https://lucaman99.github.io/munkres">older version</a> of this website, which contains solutions to problems generally found earlier in the textbook.
+<i>Here, I will attempt to reconstruct Urysohn's Lemma, with minimal hints.</i>
 </p>
 
 <p>
-<b>Supplementary Exercises 1</b> (Topological Groups): <a href="./top_groups/3.html">Problem 3</a>, <a href="./top_groups/4.html">Problem 4</a>, <a href="./top_groups/5.html">Problem 5</a>
+I had the idea of defining a sequence of open sets with the closure of the previous set contained in
+the next set of the sequence, as we know that it is possible to uniquely extend continuous a function on a set \(A\) to the set \(\overline{A}\). I didn't really know where
+to go from here, so I consulted Munkres, which contained information on which kind of set we should go about constructing (namely one indexed by the rationals, such that
 </p>
 
 <p>
-<b>Chapter 22</b> (Quotient Maps and Quotient Topology): <a href="./22/6.html">Problem 6</a>
+\[p < q \Longrightarrow \overline{U_p} \subset U_q\]
 </p>
 
 <p>
-<b>Chapter 24</b> (Connected Subspaces of \(\mathbb{R}\)): <a href="./24/11.html">Problem 11</a>
+Defining the sequence inductively is clearly the path that must be taken. We let \(P\) denote the set of rationals in \([0, 1]\), as Munkres does, with \(p_0 = 1\) and \(p_1 = 0\).
+We let \(U_1 = X - B\), an open set, and from normality, we choose \(U_0\) to be an open set containing \(A\) which is disjoint from a neighbourhood of \(B\), and thus has \(\overline{U_0} \subset U_1\).
+Thus, we have defined \(U_p\) satisfying the desired condition for the first two elements of \(P\).
 </p>
 
 <p>
-<b>Chapter 26</b> (Compactness): <a href="./26/10.html">Problem 10</a>
+Assume we have define \(U_p\) up until \(U_{p_n}\), we wish to define the case of \(U_{p_{n + 1}}\). Let \(P_n\) denote all rationals \(\{p_0, p_1, \dots, p_n\}\). Clearly,
+we can separate \(P_n\) into sets \(P_L\) and \(P_R\), where \(P_R\) contains the rationals less than \(p_{n + 1}\), and \(P_R\) contains the ones greater than \(p_{n + 1}\). Clearly,
+\(P_L\) has a greatest element, while \(P_R\) has a least element. Let these elements be \(U_L\) and \(U_R\) respectively. Note that \(\overline{U_L} \subset U_R\). We choose \(U\) to be an
+open set containing \(\overline{U_L}\) disjoint from a neighbourhood of \(X - U_R\), so \(\overline{U} \subset U_R\). Thus, \(U_{p_{n + 1}} = U\) satisfies the desired condition, and we have constructed our sequence.
 </p>
 
 <p>
-<b>Chapter 27</b> (Compact Subspaces of \(\mathbb{R}\)): <a href="./27/4.html">Problem 4</a>, <a href="./27/5.html">Problem 5</a>
+Moving along, we define \(U_p\) for all rationals \(p \in \mathbb{Q}\). This is easy: we let \(U_p = \emptyset\) for \(p < 0\) and \(U_p = X\) for \(p > 1\).
 </p>
 
 <p>
-<b>Chapter 28</b> (Limit Point Compactness): <a href="./28/7.html">Problem 7</a>
+Now, we have all the pieces needed to construct our continuous function (I had to prompt myself with a hint from Munkres here, this is definitely the hardest part of the proof). We define the function \(\mathbb{Q}(x)\)
+as follows. Let
 </p>
 
 <p>
-<b>Chapter 33</b> (Urysohn's Lemma): <a href="./33/urysohn.html">My proof of Urysohn's Lemma</a>
+\[\mathbb{Q}(x) = \{ p \ | \ x \in U_p\}.\]
+</p>
+
+<p>
+Such a set is lower-bounded by \(0\), as \(x \notin U_p\) for any \(p < 0\), since in this case, \(U_p = \emptyset\). Thus, it has a greast lower-bound, and \(f(x) = \inf \mathbb{Q}(x)\) is well-defined. We claim
+that this is the continuous function on \(X\) that we need. Indeed, note that for \(x \in A\), \(x\) is contained in \(U_0\), so \(f(x) = 0\). Similarly, for \(x \in B\), we have \(x \in U_1\) and not in any \(U_p\) for \(p \in [0, 1)\),
+so \(f(x) = 1\).
+</p>
+
+<p>
+Now, we must demonstrate that \(f\) is in fact continuous. Let \((a, b) \subset [0, 1]\). Suppose \(f(x) \in (a, b)\). By definition, note that \(\inf \{p \ | \ x \in U_p\} = f(x)\), so for any rational \(r > f(x)\), there exists
+rational \(r' < r\) such that \(x \in U_{r'}\). Since \(U_{r'} \subset U_r\), it follows that \(x \in U_r\) for all \(r > f(x)\). In addition, it is clear that \(f(x) \notin U_r\) for \(r < f(x)\), or else \(\inf \{p \ | \ x \in U_p\}\) would be less
+than \(f(x)\). We choose rational \(a'\) and \(a''\) such that \(a < a' < a'' < f(x)\). Since \(\overline{U_{a'}} \subset U_{a''}\), and \(f(x) \notin U_{a''}\), \(f(x) \notin \overline{U_{a'}}\), so \(f(x) \in X - \overline{U_{a'}}\), which is open.
+</p>
+
+<p>
+Let \(U = (X - \overline{U_{a'}}) \cap U_{b'}\), where \(b'\) is rational with \(f(x) < b' < b\). Clearly, \(U\) is open and \(x \in U\). Moreover, note that given \(y \in U\), we must have \(\inf \{p \ | \ y \in U_p\} \leq b'\), and
+similarly, it must be greater than \(a'\), so \(f(y) \in (a, b)\). Thus, by definition, \(f\) is continuous.
 </p>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jack Ceroni</p>
-<p class="date">Created: 2023-08-21 Mon 13:59</p>
+<p class="date">Created: 2023-08-21 Mon 12:44</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

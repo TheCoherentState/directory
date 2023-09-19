@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-08-21 Mon 13:59 -->
+<!-- 2023-08-21 Mon 14:53 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Munkres Solution Manual</title>
+<title>Proposition 1.17</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="Jack Ceroni" />
 <meta name="description" content="Directory"
@@ -244,42 +244,54 @@
 </head>
 <body>
 <div id="content">
-<h1 class="title">Munkres Solution Manual</h1>
+<h1 class="title">Proposition 1.17</h1>
 <p>
-Check out the <a href="https://lucaman99.github.io/munkres">older version</a> of this website, which contains solutions to problems generally found earlier in the textbook.
+<b>Part A:</b> <i>Every smooth atlas \(\mathcal{A}\) for \(M\) is contained in a unique maximal smooth atlas, called the smooth structure determined by \(\mathcal{A}\).</i>
 </p>
 
 <p>
-<b>Supplementary Exercises 1</b> (Topological Groups): <a href="./top_groups/3.html">Problem 3</a>, <a href="./top_groups/4.html">Problem 4</a>, <a href="./top_groups/5.html">Problem 5</a>
+Note that \(\mathcal{A}\) is itself only a collection of smooth charts \((U, \varphi)\) covering all point of \(M\), such that all charts are smoothly compatible.
+Let \(\overline{\mathcal{A}}\) be the collection of <b>all</b> charts defined on \(M\) which are smoothly compatible with all elements of \(\mathcal{A}\). We claim
+that \(\overline{\mathcal{A}}\) is the desired, unique, maximal, smooth atlas.
 </p>
 
 <p>
-<b>Chapter 22</b> (Quotient Maps and Quotient Topology): <a href="./22/6.html">Problem 6</a>
+Obviously, \(\mathcal{A} \subset \overline{\mathcal{A}}\). Given \((U, \varphi)\) and \((V, \phi)\) of \(\overline{\mathcal{A}}\), both are compatible with every element of \(\mathcal{A}\).
+In the case that \(U \cap V = \emptyset\), these charts are compatible. Otherwise, if they intersect non-trivially, choose some \(x \in U \cap V\), and we can choose a chart \((W, \theta)\) with \(x \in W\), such that
 </p>
 
 <p>
-<b>Chapter 24</b> (Connected Subspaces of \(\mathbb{R}\)): <a href="./24/11.html">Problem 11</a>
+\[(\varphi \circ \theta^{-1}) : \theta(W \cap U) \rightarrow \varphi(W \cap U) \ \ \ \text{and} \ \ \ (\phi \circ \theta^{-1}) : \theta(W \cap V) \rightarrow \phi(W \cap V)\]
 </p>
 
 <p>
-<b>Chapter 26</b> (Compactness): <a href="./26/10.html">Problem 10</a>
+are diffeomorphisms. It follows that \((\varphi \circ \theta^{-1}) \circ (\phi \circ \theta^{-1})^{-1} = \varphi \circ \phi^{-1}\) is a diffeomorphism between \(\phi(W \cap V \cap U)\)
+and \(\varphi(W \cap V \cap U)\).
 </p>
 
 <p>
-<b>Chapter 27</b> (Compact Subspaces of \(\mathbb{R}\)): <a href="./27/4.html">Problem 4</a>, <a href="./27/5.html">Problem 5</a>
+Now, given \(\phi(x) \in \phi(U \cap V)\), note that we can choose open \(W\) with \(x \in W\), such that \((\varphi^{-1} \circ \phi)\) is a diffeomorphism on \(\phi(x) \in \phi(V \cap W) \cap \phi(U \cap V)\), so
+\((\varphi^{-1} \circ \phi)\) is a diffeomorphism in a neighbourhood around each point in the domain. It follows that it is a diffeomorphism on the whole domain: we have differentiability at each point, and clearly
+the map is a bijection with smooth inverse.
 </p>
 
 <p>
-<b>Chapter 28</b> (Limit Point Compactness): <a href="./28/7.html">Problem 7</a>
+Suppose \(\mathcal{B}\) were an smooth atlas containing \(\mathcal{A}\): then every chart in \(\mathcal{B}\) must be smoothly compatible with every chart of \(\mathcal{A}\), so \(\mathcal{B} \subset \overline{\mathcal{A}}\),
+and \(\overline{\mathcal{A}}\) is maximal. This fact also proves uniqueness.
 </p>
 
 <p>
-<b>Chapter 33</b> (Urysohn's Lemma): <a href="./33/urysohn.html">My proof of Urysohn's Lemma</a>
+<b>Part B:</b> <i>Two smooth atlases determine the same smooth structure if and only if their union is a smooth atlas.</i>
+</p>
+
+<p>
+In the case that the union of two atlases \(\mathcal{A}_1\) and \(\mathcal{A}_2\) is a smooth atlas, the two atlases must be smoothly compatible, and thus \(\mathcal{A}_2 \subset \overline{\mathcal{A}_1}\)
+and \(\mathcal{A}_1 \subset \overline{\mathcal{A}_2}\). By uniqueness of smooth structures, \(\overline{\mathcal{A}_1} = \overline{\mathcal{A}_2}\). The converse is trivial.
 </p>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jack Ceroni</p>
-<p class="date">Created: 2023-08-21 Mon 13:59</p>
+<p class="date">Created: 2023-08-21 Mon 14:53</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

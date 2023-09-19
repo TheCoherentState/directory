@@ -1,6 +1,4 @@
 #+TITLE:Lee's Introduction to Smooth Manifolds: Solution Manual and Notes
 #+DESCRIPTION:Directory
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
-#+HTML_HEAD: <style> body {font-size:15px;} </style>
-
-*Chapter 1* (Smooth Manifolds): [[./1/prop_17.html][Proposition 1.17]] 
+#+HTML_HEAD: <style> body {font-size:15px; background-color:black; color:white;} .title {color:white;} h2, h3, h4 {color:white;} a{color:red} </style>

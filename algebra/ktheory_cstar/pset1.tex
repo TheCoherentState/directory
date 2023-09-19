@@ -1,0 +1,442 @@
+\documentclass[aps,pra,showpacs,notitlepage,onecolumn,superscriptaddress,nofootinbib]{revtex4-1}
+\usepackage[utf8]{inputenc}
+\usepackage[tmargin=1in, bmargin=1.25in, lmargin=1.5in, rmargin=1.5in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{datetime}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{import}
+\usepackage{mathtools}
+\usepackage{thmtools,thm-restate}
+\usepackage{comment}
+
+
+% package for commutative diagrams
+% \usepackage{tikz-cd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{crimson}{RGB}{186,0,44}
+\definecolor{moss}{RGB}{0, 186, 111}
+\newcommand{\pop}[1]{\textcolor{crimson}{#1}}
+\newcommand{\zcom}[1]{\noindent\textcolor{crimson}{(Z): #1}}
+\newcommand{\jcom}[1]{\noindent\textcolor{moss}{(J): #1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\pqeq}{\succcurlyeq}
+\newcommand{\pleq}{\preccurlyeq}
+
+\newcommand{\hhrulefill}{\hspace{-1.0em}\hrulefill}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+    colorlinks,
+    linkcolor={crimson},
+    citecolor={crimson},
+    urlcolor={crimson}
+}
+
+\usepackage{qcircuit}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{reminder}{Reminder}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{answer}{Answer}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{claim}{Claim}[section]
+
+\usepackage{geometry}
+\geometry{
+  left=25mm,
+  right=25mm,
+  top=20mm,
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{unsrt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{Fall 2023 MAT437 problem set 1}
+\author{Jack Ceroni}
+\email{jackceroni@gmail.com}
+
+\date{\today}
+
+\maketitle
+
+\hhrulefill
+
+\section{Problem 1}
+
+\noindent \textbf{Part 1.} It is clear that $\widetilde{A}$ is an algebra over the commutative ring $\mathbb{C}$, with the defined operations. Verification
+that $\widetilde{A}$ is a $*$-algebra over $\mathbb{C}$ follows from verifying that the $*$-operation on $\widetilde{A}$ is in fact a valid involution and anti-automorphism on the ring $\widetilde{A}$,
+as well as that $(\lambda a)^{*} = \overline{\lambda} a^{*}$, for $\lambda \in \mathbb{C}$, $a \in \widetilde{A}$. Indeed, the latter property is easy to verify,
+\begin{equation}
+  (\lambda (a, \alpha))^{*} = (\lambda a, \lambda \alpha)^{*} = ((\lambda a)^{*}, (\lambda \alpha)^{*}) = (\overline{\lambda} a^{*}, \overline{\lambda} \overline{\alpha}) = \overline{\lambda} (a^{*}, \overline{\alpha}) = \overline{\lambda} (a, \alpha)^{*}.
+\end{equation}
+All that remains is to check that the desired properties of $*$ hold. Indeed, almost trivially,
+\begin{align}
+  (a + b, \alpha + \beta)^{*} = ((a + b)^{*}, \overline{\alpha + \beta}) = (a^{*} + b^{*}, \overline{\alpha} + \overline{\beta}) = (a, \alpha)^{*} + (b, \beta)^{*}, \\
+  \left( (a, \alpha)^{*} \right)^{*} = (a^{*}, \overline{\alpha})^{*} = (a, \alpha).
+\end{align}
+The only condition which is slightly non-trivial is checking the reversal of multiplication of elements of $\widetilde{A}$ under the $*$-operation. This follows from the definition,
+\begin{align}
+  ((a, \alpha) \cdot (b, \beta))^{*} = (ab + \beta a + \alpha b, \alpha \beta)^{*}& = ((ab + \beta a + \alpha b)^{*}, \overline{\alpha} \overline{\beta})  = ((ab)^{*} + \overline{\beta} a^{*} + \overline{\alpha} b^{*}, \overline{\alpha} \overline{\beta})
+  \\ & = (b^{*} a^{*} + \overline{\alpha} b^{*} + \overline{\beta} a^{*}, \overline{\beta} \overline{\alpha}) = (b, \beta)^{*} \cdot (a, \alpha)^{*}.
+\end{align}
+This completes the proof that $\widetilde{A}$ is a $*$-algebra. Clearly, $(0, 1) \cdot (a, \alpha) = (a, \alpha) = (a, \alpha) \cdot (0, 1)$, immediately from the definition of the multiplication, and $(0, 1)^{*} = (0, 1)$.
+
+Clearly, $\iota$ and $\pi$ are linear. They are also multiplicative:
+\begin{align}
+  \iota(ab) = (ab, 0) = (a, 0) \cdot (b, 0) = \iota(a) \cdot \iota(b) \\
+  \pi((a, \alpha) \cdot (b, \beta)) = \pi(ab + \alpha b + \beta a, \alpha \beta) = \alpha \beta = \pi(a, \alpha) \pi(b, \beta)
+  \end{align}
+
+\noindent 
+In addition, $\iota(a^{*}) = (a^{*}, 0) = (a, 0)^{*}$, and it also has trivial kernel, so it is an injective $*$-homomorphism. Similarly, $\pi((a, \alpha)^{*}) = \pi(a^{*}, \overline{\alpha}) = \overline{\alpha}$,
+and given $\alpha \in \mathbb{C}$, $\pi(a, \alpha) = \alpha$ for some $a \in A$ (of course, assuming $A$ is non-empty), so $\pi$ is a surjective $*$-homomorphism.
+\newline
+
+\noindent \textbf{Part 2.} Note that given $a \in A$ and $x \in \widetilde{A}$, we define $||ax||_A$ as $||a x_1||_A$, where $x = (x_1, x_2)$, as $ax = (ax_1, 0) \simeq ax_1$. Note that
+
+\begin{equation}
+  ||a||_{\widetilde{A}} = \max \left\{ |||a||||_{\widetilde{A}}, |\pi(a)| \right\} = \max \left\{ |||a||||_{\widetilde{A}}, 0 \right\}
+\end{equation}
+where we also know that
+\begin{equation}
+  |||a||||_{\widetilde{A}} = \sup \{ ||a' a||_{A}, \ a' \in A, ||a'||_A \leq 1\} = \sup(S_a).
+\end{equation}
+Note that $||a' a||_A \leq ||a'||_A ||a||_A \leq ||a||_A$ for any $||a'|| \leq 1$, so $||a||_A$ is an upper-bound on $S_a$. In case $a = 0$, then automatically $|||a|||_{\widetilde{A}} = ||a||_A = 0$ and $||a||_{\widetilde{A}} = ||a||_A$.
+Otherwise, when $a \neq 0$, note that $b = a^{*}/||a||_A$ is contained in $A$ and has unit norm. In addition,
+\begin{equation}
+  \left|\left| \left( \frac{a^{*}}{||a||_A} \right) a \right|\right| = \frac{1}{||a||_A} ||a^{*} a||_A = \frac{||a||_A^2}{||a||_A} = ||a||_A
+\end{equation}
+so $||a||_A \in S_a$. Thus, $|||a||||_{\widetilde{A}} = \sup(S_a) = ||a||_A > 0$, so $||a||_{\widetilde{A}} = \max \{ ||a||_A, 0 \} = ||a||_A$, and the proof is complete.
+\newline
+
+\noindent \textbf{Part 3.} If $||x||_{\widetilde{A}} = 0$, then $\pi(x) = 0$, so $x \in A$. Thus, $||x||_{\widetilde{A}} = ||x||_{A} = 0$. Since $||\cdot||_A$ is a valid norm, $x = 0$.
+\newline
+
+\noindent \textbf{Part 4.} We have shown positive-definiteness of the norm above (clearly, $||0||_{\widetilde{A}} = ||0||_A = 0$ as well, so $||x||_{\widetilde{A}} = 0 \Leftrightarrow x = 0$). Even easier,
+non-negativity follows from the fact that $|\pi(x)| \geq 0$, and $||x||_{\widetilde{A}} \geq |\pi(x)| \geq 0$. Continuing on, note that $|\pi(\lambda x)| = |\lambda| |\pi(x)|$ for $\lambda \in \mathbb{C}$,
+and since $||a (\lambda x)||_A = ||\lambda (ax) ||_A = |\lambda| ||ax||_A$, it clearly follows that $\sup(S_{\lambda x}) = |\lambda | \sup(S_x)$. Thus, since we take the maximum of these two quantities, it
+is easy to see that $||\lambda x||_{\widetilde{A}} = |\lambda| ||x||_{\widetilde{A}}$.
+
+Finally, note that $|\pi(x + y)| = |\pi(x) + \pi(y)| \leq |\pi(x)| + |\pi(y)|$. In addition, we know that for $a \in A$, $x, y \in \widetilde{A}$, $||a (x + y)||_A = ||ax + ay||_A \leq ||ax||_A + ||ay||_A$. Therefore,
+\begin{align}
+ \sup(S_{x + y}) = \sup \{ ||a (x + y)||_{A}, \ a \in A, ||a||_A \leq 1\} &\leq \sup \{ ||ax||_{A} + ||ay||_A, \ a \in A, ||a||_A \leq 1\}\\ & \leq \sup(S_x) + \sup(S_y)
+\end{align}
+so it follows that $||| \cdot |||_{\widetilde{A}}$ also satisfies the triangle inequality. Thus,
+\begin{align}
+  ||x + y||_{\widetilde{A}} = \max \left\{ |\pi(x + y)|, |||x + y|||_{\widetilde{A}} \right\} &\leq \max \left\{ |\pi(x)| + |\pi(y)|, |||x|||_{\widetilde{A}} + |||y|||_{\widetilde{A}} \right\}
+  \\ & \leq \max \left\{ |\pi(x)|, |||x|||_{\widetilde{A}} \right\} + \max \left\{ |\pi(y)|, |||y|||_{\widetilde{A}} \right\} \\ &= ||x||_{\widetilde{A}} + ||y||_{\widetilde{A}}.
+  \end{align}
+Therefore, $||\cdot||_{\widetilde{A}}$ is a valid norm.
+
+To verify the other properties of this norm (so that $\widetilde{A}$ is a valid $C^{*}$-algebra), we note that $|\pi(xy)| = |\pi(x) \pi(y)| = |\pi(x)||\pi(y)|$, as well as
+$|\pi(x^{*} x)| = |\pi(x^{*}) \pi(x)| = |\pi(x)^{*} \pi(x)| = |\pi(x)|^2$, as $\pi$ is a $*$-homomorphism.
+
+Additionally, note that for $x, y \in \widetilde{A}$,
+\begin{align}
+  \sup(S_{xy}) = \sup \{||axy||_A, \ a \in A, ||a||_A \leq 1\} = |||x|||_{\widetilde{A}} \sup \{ \left|\left|\frac{ax y}{|||x|||_{\widetilde{A}}} \right|\right|_A, \ a \in A, ||a||_A \leq 1\}
+\end{align}
+Note that
+\begin{equation}
+  \left|\left| \frac{ax}{|||x|||_{\widetilde{A}}}\right|\right|_{A} = \frac{||ax||_{A}}{\sup(S_x)} \leq 1
+\end{equation}
+for some particular $a$ such that $||a||_A \leq 1$, as $\sup(S_x)$ is the supremum of this quantity over \emph{all} such $a$, so it follows from above that
+\begin{equation}
+  |||x|||_{\widetilde{A}} \sup \{ \left|\left|\frac{ax y}{|||x|||_{\widetilde{A}}} \right|\right|_A, \ a \in A, ||a||_A \leq 1\} \leq |||x|||_{\widetilde{A}} \sup \{ ||ay||_{A}, \ a \in A, ||a||_A \leq 1\} = |||x|||_{\widetilde{A}} |||y|||_{\widetilde{A}}.
+  \end{equation}
+Thus, via an identical argument to the triangle inequality proof, it follows from the inequalities proved for $|\pi(xy)|$ and $|||xy|||_{\widetilde{A}}$ that $||xy||_{\widetilde{A}} \leq ||x||_{\widetilde{A}} ||y||_{\widetilde{A}}$ as well.
+Finally, it is clearly true that $|\pi(x^{*} x)| = |\pi(x)|^2$. In addition,
+\begin{align}
+  \sup(S_{x})^2 = \sup \{ ||a x||^2_{A}, \ a \in A, ||a||_{A} \leq 1\} &= \sup \{ ||a x x^{*} a^{*}||_{A}, \ a \in A, ||a||_{A} \leq 1\}
+  \\ &\leq \sup \{ ||a x x^{*}||_A ||a^{*}||_{A}, \ a \in A, ||a||_{A} \leq 1\}
+  \\ & \leq \sup \{ ||a x x^{*} ||_A, \ a \in A, ||a||_{A} \leq 1\} = \sup(S_{x x^{*}})
+\end{align}
+so $||||x|||_{\widetilde{A}}^2 \leq |||x x^{*}|||_{\widetilde{A}}$. Using the previous submultiplicative property we proved, $|||x x^{*}|||_{\widetilde{A}} \leq |||x|||_{\widetilde{A}} |||x^{*}|||_{\widetilde{A}}$. Thus, combing the two inequalities, $|||x|||_{\widetilde{A}} \leq |||x^{*}|||_{\widetilde{A}}$. Taking the conjugate of $x$, $|||x^{*}|||_{\widetilde{A}} \leq |||x|||_{\widetilde{A}}$, so $|||x|||_{\widetilde{A}} = |||x^{*}|||_{\widetilde{A}}$, the two previous inequalities become equalities, giving $||||x|||_{\widetilde{A}}^2 = |||x x^{*}|||_{\widetilde{A}}$. Therefore,
+combining this with the property of $\pi$ mentioned above the multi-line equation above, $||x^{*} x||_{\widetilde{A}} = ||x||_{\widetilde{A}}$, as we are just taking the max of these two quantities.
+
+The last claim that remains to be verified is that the space $\widetilde{A}$ is complete. Let us assume that the sequence $x_n \in \widetilde{A}$ is Cauchy with respect to $||\cdot||_{\widetilde{A}}$. Then it follows that
+both $||| x_n - x_m |||_{\widetilde{A}}$ and $|\pi(x_n - x_m)| = |\pi(x_n) - \pi(x_m)|$ become arbitrarily small, for $m, n$ sufficiently large (as their max does). It follows that the sequence of complex numbers $\pi(x_n)$ is Cauchy, so it converges to some point $x^{*}$, as $\mathbb{C}$ is complete.
+Thus, we define $x'_n = x_n - \pi(x_n) \in A$, so $x_n = x_n' + \pi(x_n)$, and we have
+\begin{equation}
+  ||x_n' - x_m'||_{A} = ||x_n' - x_m'||_{\widetilde{A}} \leq ||x_n - x_m||_{\widetilde{A}} + |\pi(x_n) - \pi(x_m)|
+\end{equation}
+Since with sufficiently large $m$ and $n$, we can make $||x_n - x_m||_{\widetilde{A}}$ and $|\pi(x_n) - \pi(x_m)|$ arbitrarily small, it follows that the sequence of $x_n' \in A$ is Cauchy as well. Since $A$ is complete, the sequence $x_n'$ converges, $x_n' \rightarrow x'$.
+We claim that $x_n \rightarrow x' + x^{*}$. Indeed, note that
+\begin{equation}
+  ||x_n - (x' + x^{*})||_{\widetilde{A}} = ||(x'_n + \pi(x_n)) - (x' + x^{*})||_{\widetilde{A}} \leq ||x'_n - x'||_A + |\pi(x_n) - x^{*}|
+\end{equation}
+where we can make both terms of the last sum arbitrarily small with large enough $n$. It follows by definition that $x_n \rightarrow x' + x^{*}$, so the Cauchy sequence converges, and $\widetilde{A}$ is complete with respect to $||\cdot||_{\widetilde{A}}$.
+\newline
+
+\noindent \textbf{Part 5.} This sequence is clearly exact: we know that $\iota$ is injective, so it has trivial kernel, so $0 \subset \text{ker}(\iota)$. The image of the inclusion $\iota$ is $A \times \{0\}$, which is sent to $0$ by $\pi$, so
+$\text{Im}(\iota) \subset \text{ker}(\pi)$. Finally, the image of $\pi$ is the complex numbers, which are all sent to $0$ by the zero map, so $\text{Im}(\pi) \subset \text{ker}(0) = \mathbb{C}$. To verify that the sequence is split exact, we must show the
+existence of a $*$-homomorphism $\lambda$ such that $\pi \circ \lambda = \text{id}_{\mathbb{C}}$. Indeed, let $\lambda(b) = (0, b) \in \widetilde{A}$. It is clear (nearly trivial to verify) that such a map is a $*$-homomorphism, and moreover, it is clear that $\pi \circ \lambda$
+is the identity on $\mathbb{C}$. Thus, the sequence is split exact.
+\newline
+
+\noindent \textbf{Part 6.} Verifying that $A \oplus \mathbb{C}$ is a $C^{*}$-algebra with respect to the max norm of RLL follows similarly from the above arguments, so we will not repeat them.
+
+Suppose $A$ is not unital. Then $A \oplus \mathbb{C}$ is not unital, as if $a \in A \oplus \mathbb{C}$ were a unit, then given $a' \in A$, we would have
+\begin{equation}
+  (a', 0) \cdot a = (a', 0) \cdot (a_1, a_2) = (a' a_1, 0) = (a_1, a_2) = a \cdot (a', 0)
+  \end{equation}
+so $a' a_1 = a_1 = a_1 a'$, and $a_1$ would be a unit in $A$, a contradiction.
+
+Suppose $A$ is unital. Define the map $\varphi$ going from $A \oplus \mathbb{C}$ to $\widetilde{A}$ taking $(a, \alpha) \in A \oplus \mathbb{C}$ to $a + \alpha p = a + \alpha (1_{\widetilde{A}} + 1_{A})$, where $1_{\widetilde{A}}$ is the unit in $\widetilde{A}$ and $1_{A}$ is the unit in $A$.
+Verifying that this map is linear is trivial.  Note that $1_{\widetilde{A}} \cdot 1_A = 1_A$, $1_A^2 = 1_A$, and $1_{\widetilde{A}}^2 = 1_{\widetilde{A}}$. Thus, $p^2 = p$, when we expand and apply these identities. Also note that for $x \in A$, $p x = p(x_1, 0) = 0 = xp$. It follows that
+\begin{equation}
+  \varphi((a, \alpha) \cdot (b, \beta)) = \varphi(ab, \alpha \beta) = ab + \alpha \beta p = ab + \alpha p b + \beta a p + \beta \alpha p^2 = (a + \alpha p)(b + \beta p) = \varphi(a, \alpha) \varphi(b, \beta).
+\end{equation}
+Thus, the map is multiplicative. Note that $\varphi$ is a $*$-homomorphism, as $\varphi((a, \alpha)^{*}) = \varphi(a^{*}, \overline{\alpha}) = a^{*} + \overline{\alpha} p = (a + \alpha p)^{*} = \varphi(a, \alpha)^{*}$,
+where we know that $1_{\widetilde{A}}^{*} = 1_{\widetilde{A}}$ and $1_A^{*} = 1_A$, so $p^{*} = p$. If $a + \alpha p = 0$, then $a - \alpha 1_A = - \alpha 1_{\widetilde{A}}$ where the LHS is in $A$ and the RHS is not in $A$, so $\alpha = 0$, and thus $a = 0$,
+so $\varphi$ is injective (As it has trivial kernel). It is also obviously surjective. Thus, we have a $*$-isomorphism between $C^{*}$-algebras, so the two are isomorphic, as desired.
+
+\hhrulefill
+
+\noindent \textit{I was attempting a to prove a claim which was left unproven in the book. I didn't manage to succeed (yet), but I've turned my (potentially misguided) strategy into another (likely useless) result,
+  because I thought the proof method was somewhat interesting. I also realized after reading a bit of Chapter 2 of RLL, after doing this proof, that this sort of proof technique may actually come up again (as there seemed to
+  be some kind of theorem which uses similar logic).}
+
+\begin{proposition}
+  Given a two-sided algebraic ideal $I$ of a $C^{*}$-algebra $A$ ($I$ is a sub-algebra over $\mathbb{C}$ and closed under multiplication from both sides by elements of $A$) which is also topologically closed and $a \in I$ with $||a|| < 1$, there exists an
+  element $\widetilde{a} \in I$ such that $\widetilde{a} a = \widetilde{a} - a$.
+\end{proposition}
+
+\begin{proof}
+  Recall that the space is topologized with metric $d(a, b) = ||a - b||$, where $||\cdot||$ is the norm on the space.
+
+  Now, suppose $x$ is some element of the ideal such that
+  $||x|| < 1$. In this case, note that the geometric series $\sum_{j = 1}^{\infty} ||x||^{j}$ converges to some constant $C$.
+  Note that $x_n = x + x^2 + \cdots + x^{n}$ are elements of $I$, for all $n \geq 1$. In addition, assume that $n > m$, and note that
+  \begin{align}
+    ||x_n - x_m|| = ||x^{n} + x^{n - 1} + \cdots + x^{m + 1}|| &\leq ||x||^{m} ||x + \cdots + x^{n - m}||
+    \\ & \leq ||x||^{m} (||x|| + \cdots + ||x||^{n - m}) \leq C ||x||^{m}.
+  \end{align}
+  It follows that the sequence $(x_n)$ is Cauchy, and since the underlying space is complete, $x_n \rightarrow \widetilde{x}$ (the sequence has a (unique, as we're in a metric space) limit point $\widetilde{x}$). Since
+  $I$ is topologically closed, $\widetilde{x} \in I$.
+
+  Let us now return back to our original problem. Since $||a|| < 1$, the element $\widetilde{a}$ will be in $I$ as well. Note that $a \cdot a_n = a_{n + 1} - a$. Since the map $a_n \mapsto a \cdot a_n$ is continuous, it
+  follows that the sequence of $a \cdot a_n$ has $a \cdot \widetilde{a}$ as its unique limit point, while $a_{n + 1} - a$ has $\widetilde{a} - a$ as its unique limit point, so $a \widetilde{a} = \widetilde{a} - a$.
+\end{proof}
+
+\hhrulefill
+
+\section{Problem 2}
+
+\noindent \textbf{Part A}. In the case that $A$ does not have unit, we adjoin one. The element $p$ is of course identified with $p + 0 \cdot 1$ is the larger space.
+Suppose $\lambda \notin \{0, 1\}$. It is easy to demonstrate that $p - \lambda \cdot 1$ is invertible: note that $\lambda (1 - \lambda) \neq 0$, so
+\begin{equation}
+  (p - \lambda \cdot 1) \left( \frac{1}{\lambda (1 - \lambda)} p - \frac{1}{\lambda} \cdot 1 \right) = \left( \frac{p^2 - \lambda p - (1 - \lambda) p}{\lambda (1 - \lambda)} \right) + 1 = 1
+\end{equation}
+as $p^2 = p$.
+\newline
+
+\noindent \textbf{Part B.} Consider the operator $p' = p^2 - p$. Note from the quadratic formula that for some $\lambda \in \mathbb{C}$,
+\begin{equation}
+  p' - \lambda = p^2 - p - \lambda = \left( p - \frac{1 + \sqrt{1 + 4\lambda}}{2}\right) \left( p - \frac{1 - \sqrt{1 + 4\lambda}}{2} \right) = (p - h_{+}(\lambda))(p - h_{-}(\lambda))
+\end{equation}
+It is easy to see that when $\lambda \neq 0$, $h_{\pm}(\lambda) \notin \{0, 1\}$. Since $\text{sp}(p) \subset \{0, 1\}$, it follows that $p - h_{+}(\lambda)$ and $p - h_{-}(\lambda)$ are both invertible,
+so $p' - \lambda$ is invertible. Thus, $\text{sp}(p') \subset \{0\}$. Since $p$ is normal, it is easy to verify that $p' = p^2 - p$ is as well. It follows that $||p'|| = r(p') = 0$, where $r$ is the spectral radius (this
+is a result from RLL). It follows that $p' = 0$, by definition of the norm, so $p^2 = p$.
+
+From RLL, since we know that $p$ is a positive operator (as it is normal with spectrum in $\mathbb{R}^{+}$), it follows that $p = x^{*} x$ for some $x \in A$. Thus, $p^{*} = (x^{*} x)^{*} = x^{*} x = p$. We have $p^2 = p = p^{*}$, so
+$p$ is a projection, as desired.
+\newline
+
+\begin{comment}
+
+\hhrulefill
+
+\noindent \emph{Before proceeding, let us make a brief interlude to present important results from RLL with some notation that we will make use of going forward.}
+
+\begin{lemma}[The continuous function calculus]
+\end{lemma}
+
+\hhrulefill
+
+\noindent \textbf{Part C.} We make use of the spectral mapping theorem. In particular, since $A$ is unital, $a$ is normal, and the $*$-isomorphism $\Phi$ taking $C(\text{sp}(a))$ to
+$C^{*}(a, 1)$ will take polynomials $f$ on the spectrum to the corresponding polynomial of $a$, as well as the complex conjugate of an element of the spectrum to the conjugation operation on $a$,
+if we define $g : \text{sp}(a) \rightarrow \mathbb{C}$ as $g(r) = \overline{r} r = g_1(r) \text{id}(r)$ where $g_1(r) = \overline{r}$, then $\Phi(g)(a) = (\Phi(g_1) \Phi(\text{id}))(a) = a^{*} a$,
+as a map on $C^{*}(a, 1)$.
+
+The spectral mapping theorem tells us that, since $g$ is a continuous map, we will have $g(\text{sp}(a)) = \text{sp}(\Phi(g)(a))$. In the case that $a = u$, $u^{*} u = 1$, so $\Phi(g)(u) = 1$. Evidently,
+$\text{sp}(1) = \{1\}$, so $g(\text{sp}(u)) = \{1\}$. In other words, for every $r \in \text{sp}(u)$, $g(r) = |r|^2 = 1$, so by definition, $r \in \mathbb{T}$.
+
+\end{comment}
+
+\noindent \textbf{Part C.} First, note that $||u||^2 = ||u^{*} u|| = ||1|| = 1$, so $||u|| = 1$. It follows that $r(u) = 1$, as $u$ is clearly normal, so for any $\lambda \in \text{sp}(\lambda)$, we have $|\lambda| \leq 1$.
+Clearly, $u$ is invertible, as $u u^{*} = u^{*} u = 1$, so $0 \notin \text{sp}(u)$. Thus, if $\lambda \in \text{sp}(u)$, $|\lambda| \in (0, 1]$. Suppose $\lambda$ is in the spectrum with $0 < |\lambda| < 1$. Then $u - \lambda$
+  is not invertible. Since $u^{*}$ is invertible, $(u - \lambda) u^{*}$ is not invertible. We have
+  \begin{equation}
+    (u - \lambda) u^{*} = u u^{*} - \lambda u^{*} = 1 - \lambda u^{*} = -\lambda \left(u^{*} - \frac{1}{\lambda}\right)
+  \end{equation}
+  Thus, $u^{*} - \lambda^{-1}$ is not invertible, so $\lambda^{-1} \in \text{sp}(u^{*})$. Of course, this implies that $u - (\lambda^{-1})^{*}$ is non-invertible, so $(\lambda^{-1})^{*} \in \text{sp}(u)$. But this can't be, as $|(\lambda^{-1})^{*}| = |\lambda^{-1}| > 1$,
+  a clear contradiction. Thus, if $\lambda \in \text{sp}(u)$, we must have $|\lambda| = 1$, so by definition, $\text{sp}(u) \subset \mathbb{T}$, as desired.
+  \newline
+
+  \noindent \emph{Before proceeding, let us make a brief interlude to present important results from RLL with some notation that we will make use of going forward.}
+
+  \begin{lemma}[The continuous function calculus]
+    Given a unital $C^{*}$-algebra $A$, associated to each normal element $a$ is a unique $*$-isomorphism $\Phi_a : C(\text{sp}(a)) \rightarrow C^{*}(a, 1) \subset A$ such
+    that when $p : \text{sp}(a) \rightarrow \mathbb{C}$ is a polynomial, $\Phi_a(p) = p(a)$ and when $p(s) = \overline{s}$, $\Phi_a(p) = a^{*}$.
+    \label{lem:cont}
+  \end{lemma}
+
+  \begin{theorem}[Spectral mapping theorem]
+    \label{thm:spectral}
+    For every normal element $a$ of a unital $C^{*}$-algebra $A$, and every continuous function $f : \text{sp}(a) \rightarrow \mathbb{C}$, $\text{sp}(\Phi_a(f)) = f(\text{sp}(a))$.
+  \end{theorem}
+
+  \begin{theorem}
+    Let $K$ be a non-empty subset of $\mathbb{C}$, let $f : K \rightarrow \mathbb{C}$ be a continuous function. Let $A$ be a unital $C^{*}$-algebra, let $\Omega_K$ be the set of normal elements with spectrum in $K$.
+    Then the function $\Phi : \Omega_K \rightarrow A$ where $\Phi(a) = \Phi_a(f)$ is continuous.
+  \end{theorem}
+
+  \noindent \emph{Now, we can continue with the problem.}
+  \newline
+
+  \noindent \textbf{Part D.} We can use Thm.~\ref{thm:spectral}. In particular, define $g(z) = \overline{z} z - 1 = h(z) \cdot \text{id}(z) - 1$ acting on $\text{sp}(u) = \mathbb{T}$. From Lem.~\ref{lem:cont}, $\Phi_u(g) = \Phi_u(h) \Phi_u(\text{id}) - \Phi_u(1) = u^{*} u - 1$.
+  Clearly, $g$ is continuous, so by Thm.~\ref{thm:spectral}, $\text{sp}(\Phi_{u}(g)) = \text{sp}(u^{*} u - 1) = g(\mathbb{T}) = \{0\}$. Thus, since $u^{*} u - 1$ is normal, $||u^{*} u - 1|| = r(u^{*} u - 1) = 0$, so $u^{*} u = 1$. Since $u$ is normal, $u^{*} u = u u^{*} = 1$,
+  and $u$ is unitary, as desired.
+
+\hhrulefill
+
+\section{Problem 3}
+
+\noindent \textbf{Part 1.} If $a$ is invertible, it follows that $a^{*}$ is invertible: note that $(a^{-1})^{*} a^{*} = (a a^{-1})^{*} = 1^{*} = 1$ and $a^{*} (a^{-1})^{*} = (a^{-1} a)^{*} = 1^{*} = 1$, so $(a^{-1})^{*} = (a^{*})^{-1}$. Thus,
+both $a^{*} a$ and $a a^{*}$ must be invertible as well, as they are products of invertible elements.
+
+Conversely, if $a^{*} a$ and $a a^{*}$ are invertible, then $[(a^{*} a)^{-1} a^{*} ] a = 1$ and $a [a^{*} (a a^{*})^{-1}] = 1$ (by associativity), so we have left and right-inverses for $a$. Of course, if $ab = ca = 1$, then $b = (ca)b = c(ab) = c$,
+so there exists a single element $a^{-1}$ which is the inverse of $a$, and $a^{-1} = a^{*} (a a^{*})^{-1} = (a^{*} a)^{-1} a^{*}$ (this equality, of course, holds in the former case as well, when we begin by assuming $a$ is invertible).
+\newline
+
+\noindent \textbf{Part 2.} This result follows from the use of Lem.~\ref{lem:cont}. We must show that for invertible $a$, there exists a function $f \in C(\text{sp}(a))$ such that $\Phi_a(f) = a^{-1}$. Let $f(x) = x^{-1}$. Since $a$ is invertible, $0 \notin \text{sp}(a)$, so
+$f$ is well-defined and continuous. Our claim is that $\Phi_a(f) = a^{-1}$. Indeed, note that $\Phi_a(f) a = \Phi_a(f) \Phi_a(\text{id}) = \Phi_a(f \cdot \text{id}) = \Phi_a(1) = 1$, so this is in fact true.
+\newline
+
+\noindent \textbf{Part 3.} Note that for some $a \in A$, $a^{*} a$ is self-adjoint, and thus clearly normal. It follows that $\Phi_{a^{*} a} : C(\text{sp}(a^{*} a)) \rightarrow C^{*}(a^{*}a, 1)$ is well-defined, and using the same notation as above,
+$\Phi_{a^{*} a}(f) = (a^{*} a)^{-1}$ and is contained in $C^{*}(a^{*} a, 1)$. Since $a$ is invertible, $a^{-1} = (a^{*} a)^{-1} a^{*}$, and is contained in $C^{*}(a^{*} a, 1) \cdot a^{*}$: the smallest $C^{*}$-algebra generated by $a^{*} a$ and $1$, right-multiplied
+by $a^{*}$. Recall that $C^{*}(a^{*} a, 1)$ is the closure of all words in $a^{*} a$, $(a^{*} a)^{*} = a^{*} a$, and $1$, $\overline{W}$. The map $x \mapsto x \cdot a^{*}$ is clearly continuous, so
+\begin{equation}
+  C^{*}(a^{*} a, 1) \cdot a^{*} = f(C^{*}(a^{*} a, 1)) = f(\overline{W}) \subset \overline{f(W)}
+\end{equation}
+which is the closure of all words generated by $a^{*} a$ and $1$, left-multiplied by $a^{*}$, which is clearly the closure over all words generated by $a^{*} a a^{*}$ and $a^{*}$. This set is, of course, contained in the closure over all words
+generated by $a$ and $a^{*}$, which is equal to $C^{*}(a)$, so $a^{-1} \in C^{*}(a)$.
+
+\hhrulefill
+
+\section{Problem 4}
+
+\noindent \textbf{Part 1.} Suppose $\lambda \in \text{sp}(\varphi(a))$. Then $\varphi(a) - \lambda \cdot 1 = \varphi(a - \lambda \cdot 1)$ is non-invertible. Suppose that $a - \lambda \cdot 1$ were invertible with inverse $b$. Then
+$\varphi(b) \varphi(a - \lambda \cdot 1) = \varphi(b (a - \lambda \cdot 1)) = \varphi(1) = 1$, contradicting the non-invertibility of $\varphi(a) - \lambda \cdot 1$. Thus, $a - \lambda$ must be non-invertible and $\lambda \in \text{sp}(a)$. It follows
+that $\text{sp}(\varphi(a)) \subset \text{sp}(a)$.
+
+\pop{I haven't quite been able to demonstrate that when $\varphi$ is injective, the two spectra are equal. For the subsequent sections of this problem, I will assume this condition holds, and continue working on my proof, with the goal
+  of submitting it next week.}
+\newline
+
+\begin{comment}
+If $\varphi$ is injective, then $\varphi : A \rightarrow B$ defines an isomorphism $\varphi^{-1} : \varphi(A) \rightarrow A$, where $\varphi^{-1}$ is easily verified to be a $*$-homomorphism, as $\varphi^{-1}(\lambda \varphi(a) + \varphi(b)) = \varphi^{-1}(\varphi(\lambda a + b) = \lambda a + b = \lambda \varphi^{-1}(\varphi(a)) + \varphi^{-1}(\varphi(b))$, $\varphi^{-1}(\varphi(a)\varphi(b)) = \varphi^{-1}(\varphi(ab)) = ab = \varphi^{-1}(\varphi(a)) \varphi^{-1}(\varphi(b))$, and $\varphi^{-1}(\varphi(a)^{*}) = \varphi^{-1}(\varphi(a^{*})) = a^{*} = \varphi^{-1}(\varphi(a))^{*}$,
+so $\varphi^{-1}$ is linear, multiplicative, and $*$-preserving. Thus, using the previous result, $\text{sp}(a) = \text{sp}(\varphi^{-1}(\varphi(a))) \subset \text{sp}(\varphi(a))$
+\end{comment}
+
+\noindent \textbf{Part 2.} Note that $a^{*} a$ is self-adjoint and thus clearly normal. We then have
+\begin{align}
+  ||\varphi(a)||^2 = ||\varphi(a)^{*} \varphi(a)|| = ||\varphi(a^{*}) \varphi(a)|| = ||\varphi(a^{*} a)|| = r(\varphi(a^{*} a)).
+\end{align}
+Because $\text{sp}(\varphi(a^{*} a)) \subset \text{sp}(a^{*} a)$, it follows from the definition that $r(\varphi(a^{*} a)) \leq r(a^{*} a) = ||a^{*} a|| = ||a||^2$.
+In other words, $||\varphi(a)||^2 \leq ||a||^2$, so $||\varphi(a)|| \leq ||a||$.
+
+In the case that $\varphi$ is injective, $\text{sp}(\varphi(a^{*} a)) = \text{sp}(a^{*} a)$ and $r(\varphi(a^{*} a)) = r(a^{*} a)$ and the above inequality becomes an equality.
+\newline
+
+\noindent \textbf{Part 3.} In this case, we form the unitizations $\widetilde{A}$ of $A$ and $\widetilde{B}$ of $B$. Via RLL, there is a unique lifting of $*$-homomorphism $\varphi$ to $\widetilde{\varphi}$ between
+the unitized $C^{*}$-algebras, such that $\widetilde{\varphi}(a + \alpha \cdot 1) = \varphi(a) + \alpha \cdot 1$. Note that we will have $||\widetilde{\varphi}(x)||_{\widetilde{A}} \leq ||x||_{\widetilde{A}}$ for all $x \in \widetilde{A}$. From
+Problem 1 Part 2, if $a \in A$ is identified with $a + 0 \cdot 1 \in \widetilde{A}$, we have $||a||_{\widetilde{A}} = ||a||_{A}$. Thus, for $a \in A$,
+\begin{equation}
+  ||\varphi(a)||_{B} = ||\varphi(a)||_{\widetilde{B}} \leq ||a||_{\widetilde{A}} = ||a||_A
+\end{equation}
+We use the exact same argument to prove equality when $\varphi$ is injective: clearly $\widetilde{\varphi}$ will also be injective as if $\widetilde{\varphi}(x) = \varphi(a) + \alpha \cdot 1 = 0$, then $\alpha = 0$ and $a = 0$.
+Thus, $||x||_{\widetilde{A}} = ||\widetilde{\varphi}(x)||_{\widetilde{A}}$, and the inequalities in the above equation become equalities.
+\newline
+
+\noindent \textbf{Part 4.} Clearly, $\varphi(A)$ is closed under $*$, addition, multiplication, and scaling, so $\varphi(A)$ is clearly a $*$-algebra.
+
+Consider the quotient $A/\text{ker}(\varphi)$: from RLL, we can make this space a $C^{*}$-algebra with the norm $||a + \text{ker}(\varphi)|| = \inf \{||a + x||, \ x \in \text{ker}(\varphi)\}$. From the first isomorphism theorem,
+there exists a unique $*$-homomorphism $\varphi_0 : A/\text{ker}(\varphi) \rightarrow B$ between $C^{*}$-algebra $A/\text{ker}(\varphi)$ and $C^{*}$-algebra $B$ such that $\varphi_0$ is injective. Thus, $||\varphi_0(x)|| = ||x||$.
+Note that $||\varphi_0(x) - \varphi_0(y)|| = ||\varphi_0(x - y)|| = ||x - y||$. Suppose $\varphi_0(x_n)$ is a sequence of points of $\varphi_0(A/\text{ker}(\varphi))$ which converges, so it is Cauchy, so by the isometric nature of $\varphi$,
+the sequence of $x_n \in A/\text{ker}(\varphi)$ is Cauchy, convering to $x \in A/\text{ker}(\varphi)$, as this space is a $C^{*}$ algebra. Again from isometry, it is easy to see that $\varphi_0(x_n) \rightarrow \varphi_0(x)$,
+so $\varphi_0(A/\text{ker}(\varphi_0))$ is closed in $B$.
+
+By definition of the induced map, it is easy to check that $\varphi_0(A/\text{ker}(\varphi_0)) = \varphi(A)$. Thus, $\varphi(A)$ is norm-closed and a $*$-algebra, so it is a $C^{*}$-algebra.
+
+\hhrulefill
+
+\section{Problem 6}
+
+\noindent \textbf{Part 1.} We can use the Pauli matrices,
+\begin{equation}
+  \sigma_1 = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}, \ \sigma_2 = \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}, \ \sigma_3 = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}
+\end{equation}
+It is a well-known result (in quantum information theory, specifically, and probably in algebra broadly) that these matrices obey the desired anti-commutation relation.
+\newline
+
+\noindent \textbf{Part 2.} This follows essentially from the definition. Note that
+\begin{align}
+  e^2 - e = e(e - 1) = \left( \frac{1 + F}{2} \right) \left( \frac{F - 1}{2} \right) = \frac{F^2 - 1}{4}
+\end{align}
+Note from the anti-commutation relation that $\sigma_j^2 = \text{id}$. Thus,
+\begin{equation}
+  F^2 = (x_1^2 + x_2^2 + x_3^2) + x_1 x_2 \{\sigma_1, \sigma_2\} + x_2 x_3 \{\sigma_2, \sigma_3\} + x_1 x_3 \{\sigma_1, \sigma_3\} = x_1^2 + x_2^2 + x_3^2 = 1
+\end{equation}
+where $\{\sigma_i, \sigma_j\} = \sigma_i \sigma_j + \sigma_j \sigma_i$. It follows that $e^2 - e = (F^2 - 1)/4 = 0$, so $e$ is idempotent.
+\newline
+
+\noindent \textbf{Part 3.} Clearly, each vector space associated with some $x$, of the bundle $E$, has dimension $2 = \text{dim}(\mathbb{C}^2)$. Because $e$ is idempotent, $e(e - 1) = 0$,
+so since the minimal polynomial divides $p(x) = x(x - 1)$, $e$ must be diagonalizable with eigenvalues $0$ and $1$ (the sizes of the Jordan blocks associated with $0$ and $1$, if they exist,
+can be at most one). Thus $e$ can either be $0$, the identity, or have both $0$ and $1$ as eigenvalues.
+
+\begin{claim}
+  Any matrices $\sigma_1, \sigma_2, \sigma_3$ satisfying the anti-commutation relation are linearly independent along with the identity matrix $\text{id}$.
+\end{claim}
+\begin{proof}
+  Suppose $c_0 + c_1 \sigma_1 + c_2 \sigma_2 + c_3 \sigma_3 = 0$. Then $c_0 \sigma_1 + c_1 + c_2 \sigma_2 \sigma_1 + c_3 \sigma_3 \sigma_1 = 0$ and $c_0 \sigma_1 + c_1 + c_2 \sigma_1 \sigma_2 + c_3 \sigma_1 \sigma_3 = 0$.
+  Summing these two equations, and applying the anti-commutation relation, $2c_0 \sigma_1 + 2c_1 = 0$, so $c_0 \sigma_1 = -c_1$. Note that $\sigma_1 \neq c \cdot \text{id}$ for some constant $c$, as this would imply that $\sigma_2 = \sigma_3 = 0$ (by the anti-commutation relations),
+  which would violate the other anti-commutation relations. Thus, $c_1 = 0$, and we have $c_0 + c_2 \sigma_2 + c_3 \sigma_3 = 0$.
+
+  We repeat the same argument to show that $c_2 = c_3 = 0$. Thus, $c_0 = 0$ as well, and the matrices are linearly independent.
+\end{proof}
+
+\noindent From here, it is clear that $e(x_1, x_2, x_3) \neq 0, \text{id}$ for any $x \in S^2$, as if $e = 0$, then $F = x_1 \sigma_1 + x_2 \sigma_2 + x_3 \sigma_3 = -\text{id}$, where at least one $x_j \neq 0$, violating linear independence.
+Similarly, if $e = 1$, then $F = 1$, and the same logic applied. Thus, $e$ has $0$ and $1$ as eigenvalues, and since it is a $2 \times 2$ matrix, it follows that its rank is precisely $1$, as the dimension of its kernel is $1$.
+
+For some $x$, $1 - e(x)$ is a map from $\mathbb{C}^2$ to itself. In fact, $E = \text{ker}(1 - e(x))$, where the map $1 - e(x)$ also clearly has one eigenvalue equal to $1$, and one equal to $0$, so $\dim \text{ker}(1 - e(x)) = 1 = \dim(E)$.
+\newline
+
+\noindent \pop{I ran out of time, and didn't finish Part 4 and Part 5, but I will try to finish and submit these with next week's problems.}
+
+\hhrulefill
+
+\end{document}

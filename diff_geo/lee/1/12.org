@@ -1,0 +1,11 @@
+#+TITLE:Chapter 1 Problem 12
+#+DESCRIPTION:Directory
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px; </style>
+
+Suppose $M_j$ is a manifold without boundary, for all $j$ with $1 \leq j \leq n$. Let $M$ be a manifold with boundary.
+The fact that $M_1 \times \cdots \times M_n \times M$ is second-countable Hausdorff follows immediately from the definitions.
+Thus the only fact left to verify is the local Euclidean property \emph{for a fixed $n$, $\mathbb{R}^{n}$}.
+
+This is in fact trivial: given a point $(x_1, \dots, x_n, x)$ such that $x$ is an interior point of $M$, we can choose neighbourhoods $U_j$ and $U$,
+as well as charts $\phi_j$ and $\phi$ such that $\phi_1 \times \cdots \times \phi_n \times \phi$ is the desired local homeomorphism.

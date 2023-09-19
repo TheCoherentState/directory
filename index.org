@@ -1,7 +1,7 @@
 #+TITLE:Directory
 #+DESCRIPTION:Directory
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
-#+HTML_HEAD: <style> body {font-size:15px;} </style>
+#+HTML_HEAD: <style> body {font-size:15px; background-color:black; color:white;} .title {color:white;} h2, h3, h4 {color:white;} </style>
 
 Welcome to the *directory*, the place where I store most of the academic work/content that I create. This includes all notes and solution sets, among other things.
 Linked below are the subpages of this website, grouped by category.
