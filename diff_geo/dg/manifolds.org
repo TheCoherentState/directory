@@ -1,0 +1,56 @@
+#+TITLE: Introduction to manifolds
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px; </style>
+#+LATEX_HEADER: \newtheorem{theorem}{Theorem}
+
+* Topological manifolds
+
+  We begin by providing the definition of a topological $n$ -manifold, which at a high-level is a topological space that is well-behaved and looks, locally, like Euclidean space $\mathbb{R}^n$.
+
+  *Definition (Topological $n$ -manifold).* A topological space $M$ is said to be an $n$ -manifold if it is Hausdorff, second-countable and locally homeomorphic to $n$ -dimensional Euclidean space, $\mathbb{R}^{n}$.
+
+* Basic examples of manifolds
+
+** The $n$ -sphere
+
+** Real projective space
+
+* Smooth manifolds and smooth maps between manifolds
+
+* A special case: constructing a surface via patchwork
+
+Here, we will discuss a special technique for /constructing/ *surfaces*: two-dimensional manifolds, from very fine-grained components (namely, arbitrary open sets of $\mathbb{R}^2$).
+In particular, we will demonstrate that it is possible to write down a generic technique for constructing a surface via quotienting open sets, such that the surface will always be a valid
+manifold according to the definition provided in the first part of this section.
+
+** The patchwork of a surface
+
+*Definition (Patchwork).* We define a patchwork $P = (\{U_i\}, \{U_{ij}\}, \{\varphi_{ij}\})$ to be a collection of open set of $\mathbb{R}^2$, $\{U_i\}_{i \in I}$ (patches), as well
+as a collection of open subsets $\{U_{ij}\}_{j \in I}$ for each $i \in I$ (gluing regions) where $U_{ij} \subset U_i$,
+and finally, a set of diffeomorphisms $\{\varphi_{ij}\}_{j \in I}$ for each $i \in I$ such that $\varphi_{ij} : U_{ij} \rightarrow U_{ji}$ (gluing maps).
+
+Our goal is to construct a surface via "quotienting together" points which are identified by the gluing map. Of course, this will necessitate that the gluing maps
+yield a well-defined equivalence relation between points of the disjoint union $\sqcup_{i \in I} U_i$. In particular, for a patchwork $P$ to be /admissible/, we require that
+the following conditions hold:
+
+1. $U_{ii} = U_i$ annd $\varphi_{ii} = \text{id} : U_i \rightarrow U_i$ (this will ensure that the reflexive property of our equivalence relation holds).
+2. $\varphi_{ji} = \varphi_{ij}^{-1}$ (this will ensure that the symmetric property of our equivalence relation holds).
+3. $\varphi_{ij}(U_{ij} \cap U_{ik}) = U_{ji} \cap U_{jk}$ and $\varphi_{jk} |_{U_{ji} \cap U_{jk}} \circ \varphi_{ij}|_{U_{ij} \cap U_{ik}} = \varphi_{ik}|_{U_{ik} \cap U_{ij}}$ (this will ensure that the transitive property of our equivalence relation holds).
+
+Then, given admissible patchwork $P$, we say that $x, y \in \sqcup_{i} U_i$ are equivalent, $x \sim y$, if there exists a gluing map $\varphi_{ij}$ such that $\varphi_{ij}(x) = y$.
+
+*Claim.* If $P$ is an admissible patchwork, then $\sim$ is a valid equivalence relation on $X$.
+
+This fact is easy to verify.
+
+---------------------
+
+*Theorem (Surface from patchwork).* Given an admissible patchwork $P$, let $X = \sqcup_{i \in I} U_i$: the disjoint union of the patches, endowed with the standard topology of $\mathbb{R}^2$.
+Let $\sim$ to the equivalence relation derived from $P$. Then the quotient space $\widetilde{X} = X/\sim$, endowed with the corresponding quotient topology is a two-dimensional manifold, provided that
+for each gluing map $\varphi_{ij}$, the graph $\Gamma(\varphi_{ij}) = \{(x, \varphi_{ij}(x)) \ | \ x \in U_{ij}\}$ is closed in $U_i \times U_j$.
+
+/Proof./
+
+----------------
+
+** Smooth maps and patchworks

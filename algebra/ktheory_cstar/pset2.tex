@@ -1,0 +1,253 @@
+\documentclass[aps,pra,showpacs,notitlepage,onecolumn,superscriptaddress,nofootinbib]{revtex4-1}
+\usepackage[utf8]{inputenc}
+\usepackage[tmargin=1in, bmargin=1.25in, lmargin=1.5in, rmargin=1.5in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{datetime}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{import}
+\usepackage{mathtools}
+\usepackage{thmtools,thm-restate}
+\usepackage{comment}
+
+
+% package for commutative diagrams
+% \usepackage{tikz-cd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{crimson}{RGB}{186,0,44}
+\definecolor{moss}{RGB}{0, 186, 111}
+\newcommand{\pop}[1]{\textcolor{crimson}{#1}}
+\newcommand{\zcom}[1]{\noindent\textcolor{crimson}{(Z): #1}}
+\newcommand{\jcom}[1]{\noindent\textcolor{moss}{(J): #1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\pqeq}{\succcurlyeq}
+\newcommand{\pleq}{\preccurlyeq}
+
+\newcommand{\hhrulefill}{\hspace{-1.0em}\hrulefill}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+    colorlinks,
+    linkcolor={crimson},
+    citecolor={crimson},
+    urlcolor={crimson}
+}
+
+\usepackage{qcircuit}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{reminder}{Reminder}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{answer}{Answer}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{claim}{Claim}[section]
+
+\usepackage{geometry}
+\geometry{
+  left=25mm,
+  right=25mm,
+  top=20mm,
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{unsrt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{Fall 2023 MAT437 problem set 2}
+\author{Jack Ceroni}
+\email{jackceroni@gmail.com}
+
+\date{\today}
+
+\maketitle
+
+\hhrulefill
+
+\section{Problem 1}
+
+\noindent \textbf{Part 1.} Let $A$ be a $C^{*}$-algebra, let $x \in A$. Define $a = \frac{1}{2}(x + x^{*})$ and $b = \frac{1}{2i}(x - x^{*})$. Clearly, $a^{*} = a$ and $b^{*} = b$. Note that
+\begin{equation}
+  a + ib =  \frac{1}{2}(x + x^{*}) +  \frac{1}{2}(x - x^{*}) = x
+\end{equation}
+We can also easily prove uniqueness: suppose $a' + ib' = x$ where $a'$ and $b'$ are self-adjoint, so we have $(a' - a) + i(b' - b) = 0$. We then note that $(a' - a)^{*} - i(b' - b)^{*} = (a' - a) - i(b' - b) = 0$, so
+$a' - a = 0$, and $a' = a$. Thus, $b' = b$ as well.
+\newline
+
+\noindent \textbf{Part 2.} Let us review briefly what it means to evaluate a function on an element $a \in A$. Recall the continuous functional calculus:
+
+\begin{lemma}[The continuous function calculus]
+  Given a unital $C^{*}$-algebra $A$, associated to each normal element $a$ is a unique $*$-isomorphism $\Phi_a : C(\text{sp}(a)) \rightarrow C^{*}(a, 1) \subset A$ such
+  that when $p : \text{sp}(a) \rightarrow \mathbb{C}$ is a polynomial, $\Phi_a(p) = p(a)$ and when $p(s) = \overline{s}$, $\Phi_a(p) = a^{*}$.
+  \label{lem:cont}
+\end{lemma}
+
+\begin{theorem}[Spectral mapping theorem]
+  \label{thm:spectral}
+  For every normal element $a$ of a unital $C^{*}$-algebra $A$, and every continuous function $f : \text{sp}(a) \rightarrow \mathbb{C}$, $\text{sp}(\Phi_a(f)) = f(\text{sp}(a))$.
+\end{theorem}
+\noindent For $a \in A$ self-adjoint with $||a|| \leq 1$, it follows that $r(a) \leq 1$, so $f(x) = \sqrt{1 - x^2}$ is a real-valued continuous function on $\text{sp}(a)$, so there exists
+a $*$-homomorphism $\Phi_a(f)$ is defined to be the element $\sqrt{1 - a^2}$ which is referenced in the problem statement. In particular, note that
+\begin{equation}
+ \left(  \sqrt{1 - a^2} \right)^{*} = \Phi_a(f)^{*} = \Phi_{a}(\overline{f}) = \Phi_a(f) = \sqrt{1 - a^2}
+\end{equation}
+as well as
+\begin{equation}
+  \sqrt{1 - a^2} \sqrt{1 - a^2} = \Phi_a(f^2) = \Phi_a(x \mapsto 1 - x^2) = 1 - a^2.
+\end{equation}
+Therefore,
+\begin{align}
+  \left(a + i \sqrt{1 - a^2}\right)^{*} \left(a + i \sqrt{1 - a^2}\right) &=  \left(a - i \sqrt{1 - a^2}\right) \left(a + i \sqrt{1 - a^2}\right) \\ &= a^2 + 1 - a^2 = 1 = \left(a + i \sqrt{1 - a^2}\right) \left(a + i \sqrt{1 - a^2}\right)^{*}
+\end{align}
+with an analogous equation holding true for $a - i \sqrt{1 - a^2}$, clearly. Thus, both are unitary elements. Thus, given self-adjoint $a$, we can write $a = \frac{1}{2} \left[ \left(a + i\sqrt{1 - a^2}\right) + \left(a - i\sqrt{1 - a^2}\right) \right]$,
+so it follows immediately from Part 1 that every element of a $C^{*}$ algebra is a linear combination of four unitaries.
+\newline
+
+\noindent \textbf{Part 3.} No. Consider the $C^{*}$-algebra $C([0, 1])$: the set of complex continuous functions on $[0, 1]$, with the max-norm and the $*$-operation being complex conjugation on the image. Suppose $f \in C([0, 1])$
+is a projection: then we must have $p^2 = p$, so $p(x) p(x) = p(x)$ for all $x \in [0, 1]$. It follows for a given $x$, $p(x) = 0$ or $p(x) = 1$. Since $p$ is continuous, we have $p = 1$ or $p = 0$. Clearly, any non-constant continuous
+function cannot be written as a linear combination of the constant $1$ and $0$ functions, and thus cannot be written as a linear combination of projections.
+
+\section{Problem 2}
+
+\noindent \textbf{Part 1.} Suppose $||a - t|| \leq t$. Since $a$ is self-adjoint, $a - t$ is as well as $t \in \mathbb{R}$, so $\text{sp}(a - t) \leq t$. Thus, for some $\lambda \in \text{sp}(a - t)$, $|\lambda| \leq t$, so $\lambda \in [-t, t]$.
+It is easy to see that $\lambda \in \text{sp}(a - t)$ if and only if $\lambda + t \in \text{sp}(a)$. But clearly, $-t \leq \lambda$, so $\lambda + t \geq 0$, and $a$ is positive by definition. Conversely, if $a \geq 0$ and $||a|| \leq t$, then it
+must be true that $\text{sp}(a) \in [0, t]$, so $\text{sp}(a) \in [-t, 0]$. Thus, $r(a - t) = ||a - t|| \leq t$.
+\newline
+
+\noindent \textbf{Part 2.} Suppose $a$ and $b$ are positive, so $||a - t_1|| \leq t_1$ and $||b - t_2|| \leq t_2$ for $t_1, t_2 \in \mathbb{R}$. Then $||(a + b) - (t_1 + t_2)|| \leq ||a - t_1|| + ||b - t_2|| \leq t_1 + t_2$,
+so from Part 1, $a + b$ is positive.
+\newline
+
+\noindent \textbf{Part 3.} This follows immediately from the definition: $(b + c) - (a + c) = b - a \geq 0$, so $a + c \leq b + c$. Moreover, if $a \leq b$, then $b - a$ is positive, so $a - b = x^{*} x$ for some $x$. It then follows that
+$c^{*} (a - b) c = c^{*} x^{*} x c = (x c)^{*} xc$ is positive. Thus, $c^{*} a c \leq c^{*} b c$.
+\newline
+
+\noindent \textbf{Part 4.} \pop{I haven't figured this one out yet.}
+
+\section{Problem 3}
+
+\noindent \textbf{Part 1.} Suppose $p \perp q$, so $pq = 0$. Since $p$ and $q$ are projections, they are self-adjoint, so $(pq)^{*} = q^{*} p^{*} = qp = 0$. Then $(p + q)^2 = p^2 + q^2 + pq + qp = p + q$,
+so $p + q$ is a projection. Suppose $(p + q)$ is a projection. Then $(p + q)^2 = p + q = (p + q)^{*}$, and in the case that the algebra has unit, $(1 - (p + q))^{*} (1 - (p + q)) = (1 - (p + q))^2 = 1 - 2(p + q) + (p + q) = 1 - (p + q)$,
+so $1 - (p + q) = x^{*} x$, where $x = 1 - (p + q)$ and is thus positive, so $p + q \leq 1$. Clearly, the same logic holds when we unitize the algebra.
+
+Finally, assuming $p + q \leq 1$ (where if the algebra doesn't have unit, we unitize), note that since if $a \leq b$, then $c^{*} a c \leq c^{*} b c$, we have
+\begin{equation}
+  p + q \leq 1 \Longrightarrow p^{*}(p + q)p = p(p + q)p \leq p^2 = p
+\end{equation}
+Thus, $p + pqp \leq p$, so in other words, $pqp \leq 0$. But since $q$ is a projection (thus positive), and $p = p^{*}$, we must have $pqp = p^{*} q p \geq 0$ (as it is the conjugation of a positive element, so this is implied by Problem 2 Part 3). Since $pqp \leq 0$ and $pqp \geq 0$,
+the spectrum of $pqp$ must be both in $(-\infty, 0]$ and $[0, \infty)$, so it is $0$. Since $pqp$ is self-adjoint,
+    $||pqp|| = r(pqp) = 0$, so $pqp = 0$. Finally, note that $pqp = pq^2p = pq(qp) = pq(p^{*}q^{*})^{*} = (pq)(pq)^{*}$. Therefore, $||(pq) (pq)^{*}|| = ||pq||^2 = 0$, so $||pq|| = 0$ and $pq = 0$ as well.
+
+    We have shown $1$ implies $2$, $2$ implies $3$, and $3$ implies $1$, so all the statements are equivalent.
+\newline
+
+\noindent \textbf{Part 2.} This part follows fairly straightforwardly from Part 1. In particular, we will use induction.
+
+We have proved the case of $n = 2$. Let us assume the case of $n$ holds, and
+prove the case of $n + 1$. In particular, suppose $p_1, \dots, p_n, p_{n + 1}$ are mutually orthogonal. Then $p_1, \dots, p_n$ are mutually orthogonal. Thus, $p' = p_1 + \cdots + p_n$ is a projection.
+Moreover, $p_{n + 1} p' = p_{n + 1} (p_1 + \cdots + p_n) = 0$, from the mutual orthogonality, so $p'$ and $p_{n + 1}$ are mutually orthogonal. It follows from the case of two elements that $p' + p_{n + 1}$ is a projection, so $1$ implies $2$.
+
+Next, suppose $p = p_1 + \cdots + p_{n + 1}$ is a projection: it follows immediately that the spectrum of $p$ is in $\{0, 1\}$, so the spectrum of $1 - p$ is in $\{0, 1\}$, and thus $1 - p$ is positive, so $p \leq 1$. Thus, $2$ implies $3$.
+
+Finally, suppose $p_1 + \cdots + p_{n + 1} \leq 1$, so $1 - (p_1 + \cdots + p_{n + 1})$ is positive. Since $p_{n + 1}$ is a projection, it is positive, and since the sum of positive elements is positive (Problem 2), $1 - (p_1 + \cdots + p_n) = 1 - (p_1 + \cdots + p_{n + 1}) + p_{n + 1}$ is
+positive, so $p_1 + \cdots + p_n \leq 1$. Thus, $p_1, \dots, p_n$ are mutually orthogonal. In fact, we can repeat this logic for every subset of $n$ elements from $p_1, \dots, p_{n + 1}$. Thus, all the elements of the $n + 1$ element list are also mutually orthogonal, as for any $p_i, p_j$ with $i \neq j$,
+we can always find an $n$-element subset containing $2$, so $p_i p_j = 0$. Thus, condition $3$ implies condition $1$.
+
+\section{Problem 4}
+
+\noindent \textbf{Part 1.} Setting $z = v - v v^{*} v$, note that $z^{*} z = (v - v v^{*} v)^{*}(v - v v^{*} v) = v^{*} v - v^{*} v v^{*} v - v^{*} v v^{*} v + v^{*} v v^{*} v v^{*} v$. We know that
+$(v^{*} v)^2 = v^{*} v$, so simplifying this expression gives $z^{*} z = 0$. It follows that $||z^{*} z|| = ||z||^2 = 0$, so $||z|| = 0$ and thus $z = 0$. It follows immediately that $v = v v^{*} v$, as desired.
+\newline
+
+\noindent \textbf{Part 2.} From Part 1, $v v^{*} = v v^{*} v v^{*} = (v v^{*})^2$, so $(v^{*})^{*} v^{*}$ is a projection. Clearly, $v v^{*}$ is self-adjoint as well. Thus, it is a projection, so $v^{*}$ is a partial isometery by definition.
+\newline
+
+\noindent \textbf{Part 3.}  We have already shown that $v = qv = vp$ above, as $qv = v v^{*} v$ and $vp = v v^{*} v$ as well. It follows immediately that $qv = q(vp) = qvp$, so $v = qv = vp = qvp$.
+\newline
+
+\noindent \textbf{Part 4.} In this case, $v^{*} v = v^{*} (v v^{*} v) = (v^{*} v)^2$. In addition, $(v^{*} v)^{*} = v^{*} v$. Thus, by definition, $v^{*} v$ is a projection so $v$ is a partial isometry.
+\newline
+
+\noindent \textbf{Part 5.} Clearly, $(vw)^{*} (vw) = w^{*} v^{*} v w = w^{*} (v^{*} v) w = w^{*} w = 1$, so $vw$ is an isometry. In addition, $(vz)^{*} vz = z^{*} v^{*} v z = z^{*} z$. Since $z$ is a partial isometry, $z^{*} z$ is a projection,
+so $(vz)^{*} (vz)$ is a projection and by definition $vz$ is a partial isometry.
+\newline
+
+\noindent \textbf{Part 6.} No, this isn't even true when $v$ is more generally a projection (every projection is clearly a partial isometry, as for $v$ a projection, $v^{*} v = v^2 = v$ is a projection).
+
+Consider the $C^{*}$-algebra of $2 \times 2$ complex matrices, with the conjugate transpose being the $*$-operation and the usual matrix norm being the norm. Take $v = \begin{pmatrix} \frac{1}{2} & \frac{1}{2} \\ \frac{1}{2} & \frac{1}{2} \end{pmatrix}$.
+Clearly, $v$ is a projection and thus a partial isometry. Moreover, take $w = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}$. Verifying that $w^{*} w$ is a projection is trivial. Note that
+\begin{equation}
+  (vw)^{*} vw = w^{*} v^{*} v w = w^{*} v w = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix} \begin{pmatrix} \frac{1}{2} & \frac{1}{2} \\ \frac{1}{2} & \frac{1}{2} \end{pmatrix} \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix} = \begin{pmatrix} \frac{1}{2} & 0 \\ 0 & 0 \end{pmatrix}
+\end{equation}
+which is not a projection, as it does not square to itself.
+
+
+\section{Problem 5}
+
+\noindent Since each $v_j$ is a partial isometry, each $v_j^{*}  v_j$ is a projection. We know from Problem 3 that if $p_1, \dots, p_n$ is a collection of projections, such that $p_1 + \cdots + p_n \leq 1$, then
+$p_1, \dots, p_n$ are mutually orthogonal. Thus, since $\sum_{j} v_j^{*} v_j = 1$, with each element of the sum being a projection, the elements $v_j^{*} v_j$ are all pairwise mutually orthogonal. It follows
+that for $i \neq j$, $(v_j^{*} v_j) (v_i^{*} v_i) = 0$. Therefore, $(v_j v_j^{*} v_j)(v_i^{*} v_i v_i^{*}) = (v_j v_j^{*} v_j) (v_i v_i^{*} v_i)^{*} = 0$. However, recall once again from Problem 4 that for $v$ a partial isometry,
+$v = v v^{*} v$. Thus, $(v_j v_j^{*} v_j)(v_i v_i^{*} v_i)^{*} = v_j v_i^{*} = 0$ for $j \neq i$.
+
+We can repeat the same logic to show that each $v_j^{*} v_i = 0$ as well. Since $\sum_{j} v_j v_j^{*} = 1$, we have $(v_j v_j^{*})(v_i v_i^{*}) = 0$ for all $i \neq j$, so $(v_j v_j^{*} v_j)^{*}(v_i v_i^{*} v_i) = 0$ for all $i \neq j$,
+and since each $v_i$ is a partial isometry, $v_j^{*} v_i = 0$ for all $j \neq i$. Thus, we have
+\begin{equation}
+  \left( \displaystyle\sum_{j = 1}^{n} v_j \right)^{*} \left( \displaystyle\sum_{j = 1}^{n} v_j \right) = \displaystyle\sum_{j = 1}^{n} v_j^{*} v_j + \displaystyle\sum_{i > j} (v_i^{*} v_j + v_j^{*} v_i) =  \displaystyle\sum_{j = 1}^{n} v_j^{*} v_j = 1
+\end{equation}
+as well as
+\begin{equation}
+  \left( \displaystyle\sum_{j = 1}^{n} v_j \right) \left( \displaystyle\sum_{j = 1}^{n} v_j \right)^{*} = \displaystyle\sum_{j = 1}^{n} v_j v_j^{*} + \displaystyle\sum_{i > j} (v_i v_j^{*} + v_j v_i^{*}) =  \displaystyle\sum_{j = 1}^{n} v_j v_j^{*} = 1
+\end{equation}
+It follows that $u = \sum_{j} v_j$ satisfies $u^{*} u = u u^{*} = 1$, so by definition, $u$ is unitary.
+
+\section{Problem 6}
+
+\noindent \textbf{Part 1.} Clearly, $v$ is unitary as an element of the $C^{*}$-algebra $C(\mathbb{T})$. Taking the $*$-operation to be complex conjugation on the codomain of a given function, we note that
+for some $s \in \mathbb{T}$, $v(s) v^{*}(s) = v^{*}(s) v(s) = v(s) \overline{v(s)} = s \overline{s} = 1$, as $||s|| = 1$. Thus, $v v^{*} = v^{*} v = 1$ (the constant $1$-map, which is the multiplicative identity of the algebra), so $v$ is unitary.
+\newline
+
+\noindent \textbf{Part 2.} Suppose there were a unitary $u$ in $C(\mathbb{D})$ such that $\psi(u) = v$. This would of course mean that $u|_{\mathbb{T}}(s) = v(s) = s$ for each $s \in \mathbb{T}$. Moreover,
+since $u$ is unitary, $u(s) u^{*}(s) = 1$ for each $s \in \mathbb{D}$, so $||u(s)|| = 1$ (where the norm is the supremum norm). In other words, the range of $u$ is contained in $\mathbb{T}$. Thus, $u$ can
+be thought of as a continuous function taking the disk to its boundary, such that the boundary remains fixed under $u$.
+
+In other words: $u$ would be a retraction of the disk to its boundary, a clear contradiction, as the non-existence of such a map is a fundamental result in algebraic topology.
+\newline
+
+\noindent \textbf{Part 3.} Recall that the set $\mathcal{U}_0(C(\mathbb{T}))$ is precisely the collection of all elements $v$ of $C(\mathbb{T})$ for which $v \sim 1$ within $C(\mathbb{T})$.
+Suppose we did have such a homotopy between $v$ and $1$, so there exists continuous $F : \mathbb{T} \times [0, 1] \rightarrow \mathbb{T}$ such that $F(x, 1) = v(x)$ and $F(x, 0) = 1$,
+where $F(x, t) \in \mathbb{T}$ for all $(x, t)$.
+
+The main idea here is that $F$, it it were to exist, would define a lift $u$ such that $\psi(u) = v$. Note that $\mathbb{D} = \mathbb{T} \times [0, 1] / \sim$, where $\sim$ is the equivalence relation
+which identifies all points $(s, 0)$. Let $p$ be the corresponding quotient map. Since $F$ is a constant on these points, there exists a well-defined continuous map $\widetilde{F} : \mathbb{D} \rightarrow \mathbb{T}$
+such that $F = \widetilde{F} \circ p$, via the universal property of the quotient topology/quotient map (a standard fact in point-set topology).
+
+In particular, note that since the codomain of $\widetilde{F}$ is $\mathbb{T}$, it is unitary, it is continuous, and restricted to points $(s, 1)$, it clearly agrees with $F$ and is simply the unitary $v$.
+Thus, $F$ would be a retraction of $\mathbb{D}$ onto $\mathbb{T}$, a contradiction. It follows that $v \nsim 1$, so $v \notin \mathcal{U}_0(C(\mathbb{T}))$.
+
+Clearly, $1$ and $v$ are both unitary in $C(\mathbb{T})$, so this result also implies the existence of unitaries $v_1, v_2 \in C(\mathbb{T})$ which are not homotopic.
+
+Finally, note that for any element $w \in C(\mathbb{T})$ such that $w = e^{ih}$ for $h \in C(\mathbb{T})$ self-adjoint, the map $F(x, t) = e^{i t h(x)}$ is continuous,
+it lies in $C(\mathbb{T})$ as $F(x, t)^{*} F(x, t) = e^{-i t h(x)} e^{i t h(x)} = 1$ for any $x$ and $t$, and has $F(x, 0) = 1$, $F(x, 1) = e^{i h(x)} = w(x)$,
+so we have a homotopy between $1$ and $w$. Since $1 \nsim v$, it follows that we cannot have $v = e^{ih}$ for self-adjoint $h$.
+
+\end{document}

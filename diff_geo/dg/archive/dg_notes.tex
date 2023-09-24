@@ -11,6 +11,7 @@
 \usepackage{import}
 \usepackage{mathtools}
 \usepackage{thmtools,thm-restate}
+\usepackage{comment}
 
 
 % package for commutative diagrams
@@ -25,6 +26,7 @@
 \newcommand{\wt}[1]{\widetilde{#1}}
 \newcommand{\pqeq}{\succcurlyeq}
 \newcommand{\pleq}{\preccurlyeq}
+\newcommand{\hhrulefill}{\hspace{-1em} \hrulefill}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hypersetup{
@@ -69,41 +71,35 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
-\title{MAT354 Problem Set 1}
+\title{Differential geometry}
 \author{Jack Ceroni}
+\email{jackceroni@gmail.com}
+\affiliation{Department of Mathematics, University of Toronto}
 
 \date{\today}
 
 \maketitle
 
-\section{Problem 1}
+\tableofcontents
 
-\noindent Note that
-\begin{equation}
-  |z + w|^2 = (z + w)^{*} (z + w) = z^{*} z + w^{*} z + z^{*} w + w^{*} w = (w^{*} z + z^{*} w) + |z|^2 + |w|^2,
-\end{equation}
-where distributitivity of the conjugation operation over addition is trivial to demonstrate. This equation also implies upon $w \mapsto -w$,
-we have $|z - w|^2 = -(w^{*} z + z^{*} w) + |z|^2 + |w|^2$, where commutativity of scalar multiplication and conjugation is also trivial to show.
-Thus, we have the desired equality via cancellation,
-\begin{equation}
-  |z + w|^2 + |z - w|^2 = 2(|z|^2 + |w|^2).
-\end{equation}
-Geometrically, we know that addition of complex numbers in $\mathbb{C}$ can be thought of as ``geometric'' vector addition in $\mathbb{R}^2$. Think of $z$
-and $w$ as vectors in $\mathbb{R}^2$: these vectors define a triangle in $\mathbb{R}^2$ with vertices at $(0, 0)$, $z + w$, and $z - w$. Let
-$\langle \cdot, \cdot \rangle$ be the standard inner product on $\mathbb{R}^2$, note that $\langle z + w, z - w \rangle = |z|^2 + |w|^2$. Also recall that for $a, b \in \mathbb{R}^2$,
-$\langle a, b \rangle = |a| |b| \cos(\theta)$, where $\cos(\theta)$ is the standard angle between the vectors. Therefore,
+\section{Introduction}
 
-\begin{align}
-  |z + w|^2 + |z - w|^2 &= 2 (|z|^2 + |w|^2) = 2 \langle z + w, z - w \rangle
-  \\ &\Longleftrightarrow |z + w|^2 + |z - w|^2 = 2 |z + w| |z - w| \cos(\theta)
-\end{align}
-where $\cos(\theta)$ is the angle between $z + w$ and $z - w$. Hence, the formula proved is just the standard \emph{cosine law} of trigonometry is disguise (this
-is the best geometric interpretation I can conjure). See below for a diagram.
+\section{Basic differential geometry}
 
-\section{Problem 2}
+\subsection{Introduction to manifolds}
 
-\section{Problem 5}
+\noindent We begin with a rigorous discussion of manifolds, heavily inspired by the introduction provided by Lee in his introductory text.
 
-Let $f(z) = \frac{az + b}{cz + d}$ be a fractional linear transformation. Suppose $f$ preserves $\mathbb{R} \times \{0\} \subset \mathbb{C} \simeq \mathbb{R}^2$.
+\subsection{Differential forms}
+
+\subsection{Tangent space, cotanget space, de Rahm complex}
+
+\subsection{Integration over manifolds}
+
+\noindent \emph{I want to preface this section by stating that it my goal to provide decent intuition as to why we wish to formalize integrals over lines, areas, and volumes via the language of differential forms.
+Classical texts like Spivak are brief in this regard: they define the integral over a form in the particular way, but never elaborate on why we actually require the underlying power of a differential form in the first place.
+In some sense, this is because the main utility of a differential form, when it comes to integrating, is actually it algebraic properties, rather than the fact that it actually ``eats vectors'' as an element of the cotangent space.}
+
+\newpage
 
 \end{document}

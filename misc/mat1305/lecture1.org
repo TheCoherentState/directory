@@ -1,0 +1,38 @@
+#+TITLE: MAT1305 Lecture 1: Curves on surfaces
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px; </style>
+#+LATEX_HEADER: \newtheorem{theorem}{Theorem}
+
+  Let us begin with a discussion of curves on surfaces.
+
+  *Definition (Curve).* Let $\Sigma$ be an orientable compact surface possible with boundary. We define a curve on $\Sigma$ as a map $\alpha : S^1 \rightarrow \Sigma$.
+  We call curve $\alpha$ /simple/ if it is non-trivial (that is, $\alpha$ is not nullhomotopic), and is injective.
+
+  *Definition (Curve system).* Let $\Sigma$ be an orientable compact surface possibly with boundary. A curve system $\Gamma$ of $\Sigma$ is a collection of simple
+  curves on $\Sigma$ which are pairwise non-homotopic.
+
+  This definition allows for us to write down (yet another) definition of the genus of a surface.
+
+  *Definition (Genus).* Given a surface $\Sigma$ (compact, orientable, possibly with boundary), we define the genus $g(\Sigma)$ to be the maximum size of a non-separating
+  curve system. That is, a curve system $\Gamma$ such that $\Sigma - \sqcup_{\gamma \in \Gamma} \gamma$ is connected.
+
+  With this, let us now recall a deep result which classifies all orientable, compact surfaces.
+
+  *Theorem (Surface classification).* Let $\Sigma$ and $\Sigma'$ be surfaces. Let $b(\Pi)$ denote the number of boundary components of $\Pi$ (the connected components of $\partial \Pi$). Then $g(\Sigma) = g(\Sigma')$ and $b(\Sigma) = b(\Sigma')$
+  if and only if $\Sigma$ is homeomorphic to $\Sigma'$. Moreover, given homeomorphic surfaces $\Sigma$ and $\Sigma'$, as well as a homeomorphism $f : \partial\Sigma \rightarrow \partial \Sigma'$, there exists a homeomorphism $F : \Sigma \rightarrow \Sigma'$
+  such that $F|_{\partial \Sigma} = f$.
+
+  This a deep and fundamental result in algebraic topology. For a proof of this result, see my writings on algebraic topology (currently in progress), or Munkres' text.
+
+  ------------------
+
+  Because of the classification theorem, given a surface $\Sigma$ of genus $g(\Sigma)$ and boundary number $b(\Sigma)$, the surface $\Sigma_0$ constructed from taking the connected sum $T^1 \# \cdots \# T^1 \# S^1 \# \cdots \# S^1$
+  also has genus $g$ and $b$. Thus, $\Sigma \simeq \Sigma_0$ via homeomorphism $h$. Let $\phi : T^1 \rightarrow \Sigma_0$ be an embedding of a torus in $\Sigma_0$. It follows that $h \circ \phi$ embeds a torus in $\Sigma$.
+  Thus, within $\Sigma$ we can find a region which "looks like a torus" locally, and we can therefore find curves $\alpha$ and $\beta$ in $\Sigma$, which look something like this:
+  
+  [[./assets/lecture1_1.png]]
+
+   With these fundmanetal building blocks, we consider the following question: given a surface, with simple curves $\alpha$ and $\beta$ drawn on an embedded torus, in
+  the fashion of the image below, does there exist a homeomorphism which takes $\alpha$ to $\beta$? As it turns out, the answer to this question is yes, and it follows directly from the surface classification theorem.
+
+  /Proof./ 
