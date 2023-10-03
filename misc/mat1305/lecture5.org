@@ -1,10 +1,4 @@
-#+TITLE: MAT1305 Lecture 2: Train tracks
+#+TITLE: MAT1305 Lecture 5: Introduction to hyperbolic surfaces
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
 #+HTML_HEAD: <style> body {font-size:15px; </style>
 #+LATEX_HEADER: \newtheorem{theorem}{Theorem}
-
-* The Dehn twist
-
-* Introducing train-tracks
-
-* A broader viewpoint: projective space

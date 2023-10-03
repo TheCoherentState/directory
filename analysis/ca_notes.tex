@@ -25,6 +25,7 @@
 \newcommand{\wt}[1]{\widetilde{#1}}
 \newcommand{\pqeq}{\succcurlyeq}
 \newcommand{\pleq}{\preccurlyeq}
+\newcommand{\Wedge}{\bigwedge}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hypersetup{
@@ -54,7 +55,7 @@
 \newtheorem{fact}{Fact}[section]
 \newtheorem{claim}{Claim}[section]
 
-\newcommand{\hhrulefill}{\hspace{-1em} \hrulefill}
+\newcommand{\hhrulefill}{\hspace{-1.5em} \hrulefill}
 
 \usepackage{geometry}
 \geometry{
@@ -80,6 +81,8 @@
 
 \maketitle
 
+\tableofcontents
+
 \section{Introduction}
 
 \noindent The goal of these notes is to follow a basic first course in complex analysis, following Edward Bierstone's course at the University of Toronto (MAT354), in the Fall of 2023. I will
@@ -96,9 +99,15 @@ Here is a list of other resources that I will draw from in these notes:
 \section{Basics and notation}
 
 \noindent We begin our discussion of complex analysis by introducing the complex plane, $\mathbb{C}$. Of course, $\mathbb{C}$ can be constructed via taking $\mathbb{R}^{2}$ and imposing a particular
-complex structure over it, which tells us how to multiply by the imaginary unit $i$. We can also construct $\mathbb{C}$ via taking $\mathbb{R}[x]$ and quotienting by the ideal $(x^2 + 1)$.
+complex structure over it, which tells us how to multiply by the imaginary unit $i$.
+
+\begin{definition}[Complex structure]
+  \end{definition}
+
+\noindent We can also construct $\mathbb{C}$ via taking $\mathbb{R}[x]$ and quotienting by the ideal $(x^2 + 1)$.
 For the purposes of these introductory notes, it is not particularly important to dwell on this point: all that
-we need to know is that there are many different ways to construct $\mathbb{C}$, each of which are equivalent, and are topologically identical to $\mathbb{R}^2$.
+we need to know is that there are many different ways to construct $\mathbb{C}$, each of which are equivalent. They are all topologically identical to $\mathbb{R}^2$, and posses the desired ``complex arithmetic'' that we are familiar with
+and want to use.
 
 We will assume basic familiarity with fundamental notions related to the manipulation of complex numbers. As for notation, we let $\overline{z}$ denote the complex conjugate of $z \in \mathbb{C}$.
 We let $|z|$ denote the absolute value or modulus. We let $\Re[z]$ and $\Im[z]$ denote the real and complex components in $\mathbb{R}$ of $z \in \mathbb{C}$, respectively. Assuming that
@@ -117,7 +126,7 @@ we simply set $r = \sqrt{x^2 + y^2}$ and apply the Pythagorean identity to $\cos
   for repeatedly multiplying $i$ with itself.
 \end{definition}
 
-\noindent \jcom{I may revise this section in the future, if I think of any extra, basic information that must be exposited/notation that must be explained.}
+\noindent \pop{\textbf{Note}: I may revise this section in the future, if I think of any extra, basic information that must be exposited/notation that must be explained.}
 
 \section{The Riemann sphere and complex projective space}
 
@@ -138,6 +147,7 @@ we simply set $r = \sqrt{x^2 + y^2}$ and apply the Pythagorean identity to $\cos
 \end{definition}
 
 \begin{definition}[Stereographic projection]
+    \pop{\textbf{TODO}: Fill this in}
   \end{definition}
 
 \begin{claim}
@@ -145,6 +155,7 @@ we simply set $r = \sqrt{x^2 + y^2}$ and apply the Pythagorean identity to $\cos
 \end{claim}
 
 \begin{definition}[Complex projective space]
+  \pop{\textbf{TODO}: Fill this in}
 \end{definition}
 
 \noindent Now, let us move back to the discussion of the Riemann sphere, which is the representation of the complex numbers we will work with the most. It is natural
@@ -155,10 +166,340 @@ to ask what the correspondence is between basic objects in $\overline{\mathbb{C}
   circles in $\overline{\mathbb{C}}$ correspond to circles in the Riemann sphere.
 \end{theorem}
 
-\section{Linear, polynomial, and rational complex functions}
+\section{Introduction to complex functions}
 
-\begin{theorem}[Representation of rational functions by partial fractions]
+\subsection{Linear, polynomial, and rational functions}
 
-  \end{theorem}
+\noindent Now that we have described the arena in which we perform calculations (the complex plane/Riemann sphere), we can move on to understanding corresponding functional transformations.
+
+\begin{claim}
+  Any real linear function is of the form $w(z) = az$ for some $a \in \mathbb{C}$, or $w(z) = a\overline{z}$.
+\end{claim}
+
+\begin{proof}
+  \pop{\textbf{TODO}: Fill this in}
+\end{proof}
+
+\begin{definition}
+  Given a complex rational function $R : \mathbb{C} \rightarrow \overline{\mathbb{C}}$, we can define an extension of $R$ to $\overline{\mathbb{C}}$ where $R(\infty) = \lim_{z \to 0} R\left(\frac{1}{z}\right)$. Clearly, $R\left(\frac{1}{z}\right)$ is a well-defined
+  rational function on $\mathbb{C}$, so $\lim_{z \to 0} R\left( \frac{1}{z} \right)$ is a well-defined point in $\overline{\mathbb{C}}$.
+  \end{definition}
+
+Given a rational function, it is possible to quickly sketch a rough portrait of its behaviour via analyzing its roots and poles.
+
+\begin{definition}[Roots and poles]
+  Given a rational function $R(z) = \frac{P(z)}{Q(z)}$ in reduced form, defined on $\overline{\mathbb{C}}$ (so $R(\infty)$ is well-defined)
+  the roots of $R$ are the collection of all $z$ such that $P(z) = 0$. The poles are the collection of all $z$ such that $Q(z) = 0$.
+  Provided $z \neq \infty$, both $P(z)$ and $Q(z)$ will be finite, and since they are in reduced form, we will have $R(z) = 0$ at the roots and $R(z) = \infty$ at the poles (as common roots of $P$ and $Q$ cannot exist in reduced form).
+  This also holds in the case that $z = \infty$, due to the fact that $R(\infty) = \lim_{z \to 0} R\left(\frac{1}{z}\right)$, where $R\left( \frac{1}{z} \right)$ is also a rational function in reduced form.
+  The \emph{order} or a finite root of $R(z)$ is the multiplicity of the root in $P(z)$. The order of a finite pole of $Q(z)$ is the multiplicity of the root in $Q(z)$. The order of a root/pole at infinite is the order of the $0$-root/pole
+  for the rational function $R\left(\frac{1}{z}\right)$.
+\end{definition}
+
+\noindent Suppose we are provided a rational function $R(z) = \frac{P(z)}{Q(z)}$ in reduced form, such that $\text{deg}(P) = m$ and $\text{deg}(Q) = n$. A natural question to ask is the total number of roots and poles that
+a particular rational function has (where we count roots/pole swith multiplicity). Of course, by the fundamental theorem of algebra, $R$ has $m$ finite roots and $n$ finite poles, so the only remaining question is
+how many infinite roots/poles the function has. Suppose $P(z) = \sum_{j = 0}^{m} p_j z^{j}$ and $Q(z) = \sum_{j = 0}^{n} q_j z^j$. Then note that
+\begin{equation}
+  R\left(\frac{1}{z}\right) = \frac{P\left(\frac{1}{z}\right)}{Q\left(\frac{1}{z}\right)} = \frac{\sum_{j = 0}^{m} p_j z^{-1}}{\sum_{j = 0}^{n} q_j z^{-1}} = z^{n - m} \frac{\sum_{j = 0}^{m} p_{m - j} z^{j}}{\sum_{j = 0}^{n} q_{n - j} z^{j}}
+\end{equation}
+Note that $p_m$ and $q_n$ are non-zero, as we have assumed that the polynomials are simplified. Therefore, the numerator and denominator of this rational function are both non-zero at $z = 0$, so the only roots/poles at $z = 0$ are given
+by the leading $z^{n - m}$ term. In particular, if $n = m$, we have no roots/poles. If $n > m$, we have $n - m$ roots and no poles. And if $n < m$, we have $m - n$ poles and no roots.
+
+It follows that in each of the three cases, we can write down the number of roots/poles: when $n = m$, we have $m = n$ roots and poles. When $n > m$, we have $m + (n - m) = n$ roots and $n$ poles. Finally, when $n < m$,
+we have $m$ roots and $(m - n) + n = m$ poles. We can easily theoremize this result:
+
+\hhrulefill
+
+\begin{theorem}
+  Given a rational function $R = P/Q$ in reduced form, where $m = \text{deg}(P)$ and $n = \text{deg}(Q)$, the number of roots is equal to the number of poles, with both numbers being equal to $k = \max\{m, n\}$.
+  We call $k$ the \emph{degree} of a rational function.
+\end{theorem}
+
+\hhrulefill
+
+\begin{remark}
+  This result pretty much matches our intuition from calculus: given a rational function of real polynomials, for large enough $x$, their quotient eventually behaves like a polynomial of degree $x^{m - n}$ when $m > n$,
+  an inverse polynomial of degree $n - m$ when $m < n$, and some constant when $m = n$. Treating this asymptotic behaviour as the ``order'' of an $\infty$-root/pole yields the same casework and the same result as above.
+\end{remark}
+
+\noindent This result allows us to also prove some corollaries fairly immediately. For example:
+
+\begin{corollary}
+  \label{cor:exist}
+  Given a rational function $R(z)$, the equation $R(z) = a$ for some $a \in \mathbb{C}$ has $\max\{m, n\}$ solutions (where $m$ and $n$ are the degrees of the reduced numerator and denominator).
+\end{corollary}
+\begin{proof}
+  $R(z) - a$ is a rational function, and thus has exactly $\max\{m, n\}$ roots.
+\end{proof}
+
+\noindent Aside from the fairly low-hanging fruit of computing the number of roots/poles of a rational function, with a bit more effort, it is possible to \emph{put a rational function in a form
+where its behaviour near poles is clearly exposed}. We call this form the \textbf{partial fraction decomposition} of a rational function.
+
+\begin{theorem}[Representation of complex rational functions by partial fractions]
+  Given a rational function $R$ with unique poles at $\beta_1, \dots, \beta_n$ and possibly at $\infty$, there exist polynomials $G, G_1, \dots, G_n$ such that
+  \begin{equation}
+    R(z) = G(z) + \displaystyle\sum_{j = 1}^{n} G_j \left( \frac{1}{z - \beta_j}\right)
+  \end{equation}
+\end{theorem}
+
+\begin{proof}
+  Let us begin by considering the case of a pole at $\infty$. In particular, suppose $R$ has a pole at $\infty$. It follows that if $R = \frac{P}{Q}$, then $\deg(P) > \deg(Q)$.
+  Suppose we perform polynomial division, so that $P(z) = G(z) Q(z) + R(z)$, where $\deg(R) \leq \deg(Q)$ and $G$ has no constant term. It follows that $R = G + H$, where $H = \frac{R}{Q}$.
+  Clearly, $H$ is finite at $\infty$, since the degree of the numerator is less than or equal to the degree of the denomninator, and $G$ is simply a polynomial (this polynomial will in fact
+  dictate the ``behaviour'' of the rational function as $z \to \infty$.
+
+  Let us now consider the case of a finite pole. As it turns out, we can easily reduce this case to the previous case of a pole at infinity.
+  Let us define $z = \beta_j + \zeta^{-1}$, so that $\zeta = (z - \beta_j)^{-1}$. Clearly,
+  \begin{equation}
+    \widetilde{R}(\zeta) = R\left( \beta_j + \frac{1}{\zeta} \right) = \frac{\widetilde{P}(\zeta)}{\widetilde{Q}(\zeta)}
+  \end{equation}
+  is a rational function in the variable $\zeta$. Moreover, since $R$ has a pole at $\beta_j$, $R'$ will have a pole at $\zeta = \infty$. Thus, we can repeat the above procedure for the polynomial $P'$
+  to get $P' = G_j' Q' + R'$ and $R'(\zeta) = G_j'(\zeta) + H'(\zeta)$, where $H'$ is finite at $\zeta = \infty$. We then take $G_j(z) = G_j'\left(\frac{1}{z - \beta_j}\right)$, switching back to the variable $z$.
+
+  Our claim is now that the sum of all the $G_j$ along with $G$ is the original rational function $R$. Indeed, consider the rational function $F = R - G - \sum_{j} G_j$. Clearly, the only possible poles
+  of this rational function are at the $\beta_j$ and at $\infty$. Except for each $\beta_i$, note that $F = (R - G_i) - G - \sum_{j \neq i} G_j$. We know that $R - G_i$ is finite at $\beta_i$, by construction,
+  and that each of the other polynomials will also be finite. This also holds true at the $\infty$ pole.
+
+  Thus, the rational function $F$ can have no poles, so it must be a constant $c$ (since the number of roots/poles is the maximum of the numerator and denominators' degrees). We can easily perform the shift $G \mapsto G - c$
+  without changing the asymptotic behaviour of $G$, so that it is in fact true that $F = 0$ for all $z$, and we have the desired equality.
+  \end{proof}
+
+\noindent A nice feature of this theorem is that it allows us to prove the partial fraction decomposition in the case of real rational functions.
+
+\begin{theorem}[Representation of real rational functions by partial fractions]
+  Given a real rational function $R(z) = \frac{P(z)}{Q(z)}$ (so $P$ and $Q$ have real coefficients), there exists a decomposition of $R$ of the form
+  \begin{equation}
+    \label{eq:r_decomp}
+    R(z) = G(z) + \displaystyle\sum_{i} A_i \left( \frac{1}{z - a_i} \right) + \displaystyle\sum_{j} z B_j \left( \frac{1}{z^2 + b_j z + c_j} \right) + C_j \left( \frac{1}{z^2 + b_j z + c_j} \right)
+  \end{equation}
+  where $G$, $A_i$, $B_j$, and $C_j$ are all real polynomials, and $a_i, b_j, c_j \in \mathbb{R}$, where $z - a_i$ and $z^2 + b_j z + c_j$ are the unique irreducible factors of $Q(z)$ as a real polynomial.
+\end{theorem}
+
+\begin{proof}
+  \pop{\textbf{TODO}: Add this from problem set solutions}
+  \end{proof}
+
+\subsection{Fractional linear transformations and classifying rational functions}
+
+\noindent As it turns out, degree-$1$ rational functions are not only particularly well-behaved, but they are a very special class of functions on the complex plane. In fact, they are
+so special that we give them their own name: \emph{fractional linear transformation (FLTs)}. We begin by making note of a key fact
+
+\begin{fact}
+  Fractional linear transformations are invertible.
+\end{fact}
+\begin{proof}
+  If $R = \frac{P(z)}{Q(z)}$ is an FLT, it is order-$1$. From Cor.~\ref{cor:exist}, for any $a \in \mathbb{C}$, the equation $R(z) = a$ has a single solution. Moreover, $R(z)$ has a single pole, so there is a unique $z_0$ sent to $\infty$
+  by $R$. Thus, $R$ is bijective and invertible.
+\end{proof}
+
+\noindent Clearly, given an FLT, $R(z) = \frac{P(z)}{Q(z)}$, at least one of $P$ and $Q$ are degree-$1$ polynomials, so we can write $R(z) = \frac{az + b}{cz + d}$. However, it is not the case that every set of $(a, b, c, d)$ will yield an FLT. Recall
+that a for $\frac{az + b}{cz + d}$ to be of order-$1$, it must either have degree-$1$ numerator and denominator \emph{in reduced form}. Given arbitrary $(a, b, c, d)$, the quotient $\frac{az + b}{cz + d}$ does not necessarily have this property
+when put into reduced form.
+
+\begin{claim}
+  The rational function $f(z) = \frac{az + b}{cz + d}$ is an FLT if and only if $ad - bc \neq 0$.
+\end{claim}
+\begin{proof}
+  Suppose $ad = bc$. Then either $a = b = 0$, $a = c = 0$, $d = b = 0$, $d = c = 0$, or $a, b, c, d$ are all non-zero. In each of the first four cases, it is easy to check that $f$ is not an FLT (as in reduced form, it is a constant).
+  In the final case, we have
+  \begin{equation}
+   f(z) = \frac{1}{d} \cdot \frac{adz + bd}{cz + d} = \frac{bcz + bd}{cz + d} = \frac{b}{d} \frac{cz + d}{cz + d}.
+  \end{equation}
+  Thus, in reduced form, $f$ is a constant here as well. It follows that if $f$ is an FLT, $ad \neq bc$, so $ad - bc \neq 0$. Now, suppose $ad - bc \neq 0$.We must show that $\frac{az + b}{cz + d}$ is
+  \end{proof}
+
+\begin{claim}
+  The composition of fractional linear transformations yields a fractional linear transformation whose associated matrix is precisely the the product of the associated matrices of the two
+  constituent fractional linear transformations of the composition.
+\end{claim}
+
+\begin{proof}
+  \pop{\textbf{TODO}: Fill this in}
+  \end{proof}
+
+\hhrulefill
+
+\noindent As has been suggested, fractional linear transformations are particularly well-behaved, so much so that it makes sense to consider rational functions which are equal,
+up to composition with fractional linear transformations, to be ``equivalent in a sense''. More formally,
+
+\begin{fact}
+  The criterion of ``equal up to fractional linear transformations'' (which we will call \emph{FLT equivalent} going forward) defines an equivalence relation on the set of complex rational functions. We say that $R \sim R'$ is there
+  exist fractional linear transformations $f$ and $g$ such that $R' = f \circ R \circ g$.
+ \end{fact}
+
+\noindent Of course, since we have an equivalence relation, we automatically can ask what the associated equivalence classes are. Beginning with the simple case of a rational function of order $2$, let us determine 1. how
+mny equivalence classes are generated by this relation and 2. a ``nice'' representative of each equivalence class.
+
+\begin{theorem}
+  Every fractional linear transformation of order $2$ is FLT equivalent to $a(z) = z^2$ or $b(z) = z + z^{-1}$.
+\end{theorem}
+
+\begin{proof}
+  \pop{\textbf{TODO}: Fill this in}
+  \end{proof}
+
+\subsection{The cross-ratio}
+
+\begin{lemma}
+  A fractional linear transformation is uniquely determined by where it sends any three distinct points of $\overline{\mathbb{C}}$.
+\end{lemma}
+\begin{proof}
+  \pop{\textbf{TODO}: Copy over from problem set}
+\end{proof}
+
+\begin{lemma}
+  The cross-ratio is invariant under application of an FLT. In particular, if $z_1, z_2, z_3, z_4$ are distinct points, and $T$ is an FLT, then $(Tz_1, Tz_2, Tz_3, Tz_4) = (z_1, z_2, z_3, z_4)$.
+\end{lemma}
+
+\begin{proof}
+  \pop{\textbf{TODO}: Fill this in}
+\end{proof}
+
+\begin{lemma}
+  The FLT induced by the cross ratio, $z \mapsto (z, z_2, z_3, z_4)$ is real if and only if $z_2, z_3, z_4$ lie on a circle or a line.
+\end{lemma}
+
+\begin{proof}
+  \pop{\textbf{TODO}: Fill this in}
+\end{proof}
+
+\begin{theorem}
+  Fractional linear transformations take circles and lines to circles and lines. Moreover, given any pair of circles/lines, there exists a unique FLT sending one
+  to the other.
+\end{theorem}
+
+\begin{proof}
+  \pop{\textbf{TODO}: Fill this in}
+\end{proof}
+
+\section{Holomorphic functions}
+
+\noindent Now that we have introduced some basic theory related to complex functions, we can move to explaining one of the fundamental concepts underlying complex analysis: \emph{holomorphic functions}.
+Before proceeding, we make an important remark
+
+\hhrulefill
+
+\begin{remark}
+  \label{rem:r2_vs_c}
+As a high-level, when we do complex analysis, we are in some sense doing calculus in two variables, and in another sense, doing calculus in a single variable. The complex plane is defined as $\mathbb{R}^{2}$,
+with a particular complex structure imposed, but we then go on to defining a collection of arithmetic operations which allow us to perform all of the standard operations one would expect to be able to apply to real numbers,
+to pairs of numbers $(x, y)$ which we call \emph{complex numbers} and denote $z = x + iy$.
+
+As a result of this fundamenntal fact, great care must be taken when defining particular constructions in complex analysis. Oftentimes, we will define something ``with respect to $x$ and/or $y$''. In other situations,
+we will define something ``with respect to $z = x + iy$''. This vague assertion will make more sense as we begin to encounter concrete examples of it throughout the following sections, but it is worthwhile to make note
+of it early, so that one may be aware and on the lookout for situations in which this slight ambiguity may arise.
+\end{remark}
+
+\hhrulefill
+
+\subsection{Introducing and motivating holomorphic functions}
+
+\noindent The main idea motivating the definition of a holomorphic function is the desire for a function of the variables $(x, y)$, such that standard differentiation of a two-variable function on $\mathbb{R}^2$
+is ``compatible'' with the notion of differentiability that we expect to arise for a single-variable function, \emph{with the added structure of complex arithmetic}.
+
+As was stated in Rem.~\ref{rem:r2_vs_c}, we can think about a complex function $f$ either as a two-variable function, $f(x, y)$ on $\mathbb{R}^2$, or as a single-variable function $f(z)$ on $\mathbb{C}$.
+We know how to differentiate function on $\mathbb{R}^2$ from standard calculus. We do not know how to differentiate a function on $\mathbb{C}$ (yet), however, we do know how to differentiate single-variable
+functions on $\mathbb{R}$. Thus, if we wish to treat the complex plane similar to how we treat $\mathbb{R}$, with the addition of complex arithmetic, it may make sense to define the derivative of a complex function on the
+same way as it is defined in the real-single variable case.
+
+\begin{definition}[Complex derivative]
+  Given a function $f : \mathbb{C} \rightarrow \mathbb{C}$ of a single, complex variable $z$, we say that $f$ is complex differentiable or \emph{holomorphic} at $a$ if the limit
+  \begin{equation}
+    \label{eq:complex_d}
+    f'(a) = \lim_{|h| \to 0} \frac{f(a + h) - f(a)}{h}
+  \end{equation}
+  exists, calling this limit $f'(a)$ the complex derivative of $f$ in this case. Note that this limit is well-defined, as division by a complex number is well-defined.
+\end{definition}
+
+\begin{remark}[Formalizing]
+  Suppose we wanted to be really \emph{really} formal. 
+  \end{remark}
+
+\noindent Now, suppose we are given a function of the form $g : \mathbb{R}^2 \rightarrow \mathbb{R}^2$. This function both has a well-defined \emph{real derivative} and a $2 \times 2$ Jacobian of partial
+derivatives, but it also has an interpretation as a complex function, when we put the associated complex structure (and thus, complex arithmetic) on the domain and co-domain. However, it is \textbf{not} the
+case that the standard, real derivative of $g$ will agree with its associated \emph{complex derivative}. In fact it is even worse than this: \emph{there will be cases where the real derivative exists but the complex derivative does not}.
+
+\begin{question}
+If a function $g : \mathbb{R}^2 \rightarrow \mathbb{R}^2$ is differentiable in the usual, real sense, under what conditions is it also differentiable when interpreted as a complex function (holomorphic)?
+\end{question}
+
+\noindent The answer to this question leads us to the famous Cauchy-Riemann equations.
+
+\begin{theorem}
+  A function $g : \mathbb{R}^2 \rightarrow \mathbb{R}^2$ with $g(x, y) = (g_1(x, y), g_2(x, y))$ is complex differentiable/holomorphic, when interpreted as a function from $\mathbb{C}$ to $\mathbb{C}$ (defined as $g(x + iy) \coloneqq g_1(x, y) + i g_2(x, y)$), if and only if it is
+  differentiable as a real function, and satisfies the \emph{Cauchy-Riemann equations}
+  \begin{align}
+    \frac{\partial g_1}{\partial x} &= \frac{\partial g_2}{\partial y} \\
+    \frac{\partial g_1}{\partial y} &= -\frac{\partial g_2}{\partial x}
+  \end{align}
+\end{theorem}
+
+\begin{proof}
+  Suppose that $g$ is complex differentiable, so that the limit of Eq.~\eqref{eq:complex_d} exists. It then follows that
+  \begin{equation}
+    g(a + h) = g(a) + L h + o(h)
+  \end{equation}
+  where $o(h)$ is a function such that $\lim_{|h| \to 0} \frac{o(h)}{h} = 0$. $L = p + i q$ and $a = r + is$ are complex numbers. In addition, $h = t + iu$ and when interpreted as a complex function,
+  $g(x + iy) \coloneqq g_1(x, y) + i g_2(x, y)$. It follows that
+  \begin{align}
+    g(a + h) = g\left( (r + t) + i(s + u) \right) = g_1(r + t, s + u) + i g_2(r + t, s + u) \\
+    g(a) = g_1(r, s) + i g_2(r, s) \\
+    L h = (p t - q u) + i (pu + q t)
+  \end{align}
+  Therefore, it follows that
+  \begin{align}
+    g_1(r + t, s + u) = g_1(r, s) + (pt - qu) + \text{Re}[o(h)] = g_1(r, s) + \begin{pmatrix} p & -q \end{pmatrix} \begin{pmatrix} t \\ u \end{pmatrix} + \text{Re}[o(h)]
+  \end{align}
+  as well as
+  \begin{align}
+    g_2(r + t, s + u) = g_2(r, s) + (pu + qt) + \text{Im}[o(h)] = g_1(r, s) + \begin{pmatrix} q & p \end{pmatrix} \begin{pmatrix} t \\ u \end{pmatrix} + \text{Im}[o(h)]
+  \end{align}
+  where both $o_1(t, u) \coloneqq \text{Re}[o(t + iu)]$ and $o_2(t, u) \coloneqq \text{Im}[o(t + iu)]$ are real-valued functions such that 
+\end{proof}
+
+\subsection{A more sophisticated perspective}
+
+\noindent Let us begin with a brief review of differential geometry.
+
+\begin{remark}[Tangent space notation]
+Recall that for a vector space $V$, we define $\Wedge^{k}(V)$ to be the set of alternating $k$-tensors on $V$.
+We define the tangent space of $\mathbb{R}^{n}$ at point $p$, $T_p \mathbb{R}^n$, to be the vector space $\{p\} \times \mathbb{R}^{n}$, with elements $(p, v)$ and $(p, v_1) + \lambda (p, v_2) \coloneqq (p, v_1 + \lambda v_2)$.
+A differential $k$-form $\omega$ is a function from $\mathbb{R}^{n}$ to the disjoint union of all $\Wedge^{k}(T_p \mathbb{R}^{n})$ over $p \in \mathbb{R}^{n}$ such that $\omega(p) \in \Wedge^{k}(T_p \mathbb{R}^{n})$. Let $\Omega^{k}(\mathbb{R}^{n})$
+denote the space of all $k$-forms. We define the differential $d : C^{\infty}(\mathbb{R}^{n}, \mathbb{R}) \rightarrow \Omega^1(\mathbb{R}^n)$ as taking $f$ to the differential form $\omega$ such that $\omega(p)(p, v) = [D f(p)] v$. Note that
+$C^{\infty}(\mathbb{R}^{n}, \mathbb{R}) = \Omega^0(\mathbb{R}^n)$. It follows that
+\end{remark}
+
+\begin{definition}
+  \end{definition}
+
+\begin{remark}
+  Another, more formal way, of stating this fact is that holomorphic functions are precisely the functions $g$ from $(\mathbb{R}^2, J)$ to $(\mathbb{R}^2, J)$ whose derivative
+  commutes with the complex structure,
+  \begin{equation}
+    J \circ D g(z) = D g(z) \circ J.
+  \end{equation}
+  Intuitively, this means that the map which turns $\mathbb{R}^2$ into $\mathbb{C}$ is compatible with taking the derivative in the usual sense.
+  \end{remark}
+
+\begin{definition}[Holomorphic and anti-holomorphic functions]
+\end{definition}
+
+\hhrulefill
+
+\subsection{Basic properties and implications}
+
+\begin{claim}[Basic properties of holomorphic functions]
+
+\end{claim}
+
+\section{Conformal maps}
+
+\section{Power series}
+
+\noindent We dedicate this section to providing a brief review of power series, re-proving some familar results from introductory calculus in the complex regime.
+
+\section{Complex exponential and logarithm}
+
+\noindent 
 
 \end{document}

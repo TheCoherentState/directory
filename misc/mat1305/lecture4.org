@@ -1,0 +1,4 @@
+#+TITLE: MAT1305 Lecture 4: Primer on hyperbolic geometry
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px; </style>
+#+LATEX_HEADER: \newtheorem{theorem}{Theorem}

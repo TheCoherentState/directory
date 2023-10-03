@@ -1,0 +1,13 @@
+#+TITLE: MAT1305 course notes
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px; </style>
+#+LATEX_HEADER: \newtheorem{theorem}{Theorem}
+
+* Lecture notes
+
+1. [[./lecture1.html][Lecture 1]] (Curves on surfaces)
+2. [[./lecture2.html][Lecture 2]] (Introduction to train tracks)
+3. [[./lecture3.html][Lecture 3]] (More train tracks)
+4. [[./lecture4.html][Lecture 4]] (A primer on hyperbolic geometry)
+5. [[./lecture5.html][Lecture 5]] (Introduction to hyperbolic surfaces)
+6. [[./lecture6.html][Lecture 6]] (???)

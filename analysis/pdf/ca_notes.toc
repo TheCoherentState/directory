@@ -1,0 +1,17 @@
+\contentsline {title}{Complex Analysis}{1}{section*.1}%
+\tocdepth@munge 
+\tocdepth@restore 
+\contentsline {section}{\numberline {I}Introduction}{1}{section.1}%
+\contentsline {section}{\numberline {II}Basics and notation}{1}{section.2}%
+\contentsline {section}{\numberline {III}The Riemann sphere and complex projective space}{2}{section.3}%
+\contentsline {section}{\numberline {IV}Introduction to complex functions}{3}{section.4}%
+\contentsline {subsection}{\numberline {A}Linear, polynomial, and rational functions}{3}{subsection.4.1}%
+\contentsline {subsection}{\numberline {B}Fractional linear transformations and classifying rational functions}{5}{subsection.4.2}%
+\contentsline {subsection}{\numberline {C}The cross-ratio}{5}{subsection.4.3}%
+\contentsline {section}{\numberline {V}Holomorphic functions}{6}{section.5}%
+\contentsline {subsection}{\numberline {A}Introducing and motivating holomorphic functions}{6}{subsection.5.1}%
+\contentsline {subsection}{\numberline {B}A more sophisticated perspective}{7}{subsection.5.2}%
+\contentsline {subsection}{\numberline {C}Basic properties and implications}{8}{subsection.5.3}%
+\contentsline {section}{\numberline {VI}Conformal maps}{8}{section.6}%
+\contentsline {section}{\numberline {VII}Power series}{8}{section.7}%
+\contentsline {section}{\numberline {VIII}Complex exponential and logarithm}{8}{section.8}%
