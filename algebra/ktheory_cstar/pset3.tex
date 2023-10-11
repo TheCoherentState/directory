@@ -1,0 +1,237 @@
+\documentclass[aps,pra,showpacs,notitlepage,onecolumn,superscriptaddress,nofootinbib]{revtex4-1}
+\usepackage[utf8]{inputenc}
+\usepackage[tmargin=1in, bmargin=1.25in, lmargin=1.5in, rmargin=1.5in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{datetime}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{import}
+\usepackage{mathtools}
+\usepackage{thmtools,thm-restate}
+\usepackage{comment}
+
+
+% package for commutative diagrams
+% \usepackage{tikz-cd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{crimson}{RGB}{186,0,44}
+\definecolor{moss}{RGB}{0, 186, 111}
+\newcommand{\pop}[1]{\textcolor{crimson}{#1}}
+\newcommand{\zcom}[1]{\noindent\textcolor{crimson}{(Z): #1}}
+\newcommand{\jcom}[1]{\noindent\textcolor{moss}{(J): #1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\pqeq}{\succcurlyeq}
+\newcommand{\pleq}{\preccurlyeq}
+
+\newcommand{\hhrulefill}{\hspace{-1.0em}\hrulefill}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+    colorlinks,
+    linkcolor={crimson},
+    citecolor={crimson},
+    urlcolor={crimson}
+}
+
+\usepackage{qcircuit}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{reminder}{Reminder}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{answer}{Answer}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{claim}{Claim}[section]
+
+\usepackage{geometry}
+\geometry{
+  left=25mm,
+  right=25mm,
+  top=20mm,
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{unsrt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{Fall 2023 MAT437 problem set 3}
+\author{Jack Ceroni}
+\email{jackceroni@gmail.com}
+
+\date{\today}
+
+\maketitle
+
+\hhrulefill
+
+\section{Problem 1}
+
+\noindent \textbf{Part 1.} Recall that for projections $p$ and $q$ in $M_n(\mathbb{C})$, the relation of \emph{Murray-von Neumann equivalence} is that $p \sim q$ in $\mathcal{P}(M_n(\mathbb{C}))$ when there exists some $v \in M_n(\mathbb{C})$ such that $p = v^{*} v$ and $q = v v^{*}$
+\newline
+
+\noindent Let us assume condition (a) holds, so $p = v^{*} v$ and $q = v v^{*}$ for some $v$. Then
+\begin{equation}
+  \text{Tr}(p) = \text{Tr}(v^{*} v) = \text{Tr}(v v^{*}) = \text{Tr}(v)
+\end{equation}
+by the well-known internal commutativity of the trace, so (a) implies (b). Assuming (b), note that since $p$ and $q$ are projections, their spectra must lie entirely in $\{0, 1\}$ (we proved this in an earlier exercise, in a previous problem set).
+Thus, for $r$ a projection, $\text{Tr}(r)$ is precisely the multiplicity of the $1$-eigenvalue, and is thus the dimension of the $1$-eigenspace. Of course, the $0$-eigenspace is the kernel, so the dimension of the $1$-eigenspace is just the $\text{dim}(\text{range}(p))$.
+If $\text{Tr}(p) = \text{Tr}(q)$, then it follows immediately that $\text{dim}(\text{range}(p)) = \text{dim}(\text{range}(q))$, and (b) implies (c).
+
+Finally, assume (c) holds. From the same logic as above, both $p$ and $q$ must have the same multiplicity of their $0$ and $1$ eigenvalues. Moreover, since $p$ and $q$ are self-adjoint, they both have orthogonal bases of eigenvectors: $v_1, \dots, v_n$
+and $w_1, \dots, w_n$, respectively. We define $u$ to be a linear map taking each $1$-eigenvector of $p$ to a $1$-eigenvector of $q$, and each $0$-eigenvector of $p$ to a $0$-eigenvector of $q$ (which we can do in bijective correspondence, as they have equal multiplicity).
+
+Clearly, $p = u^{-1} q u$. Moreover, $u$ is unitary. Note that $\langle u v_j, u v_j \rangle = \langle u^{*} u v_j, v_j \rangle = 1$ for each $v_j$, and $\overline{\langle u v_j, u v_j \rangle} = \langle u^{*} v_j, u^{*} b_j \rangle = \langle u u^{*} v_j, v_j \rangle = 1$
+for each $v_j$. Since the $v_j$ form a basis, $u^{*} u = u u^{*} = 1$. Thus, $u$ is in fact unitary. It follows thjat $p \sim_{u} q$, so since the underlying algebra is unital, from Proposition 2.2.2 of the book, $p \sim q$.
+\newline
+
+\noindent \textbf{Part 2.} Recall that $\mathcal{D}(\mathbb{C}) = \mathcal{P}_{\infty}(\mathbb{C}) / \sim_0$ where $\mathcal{P}_{\infty}(\mathbb{C}) = \cup_{n = 1}^{\infty} \mathcal{P}(M_n(\mathbb{C}))$.
+As we remarked upon in the Part 1, the trace of any projection is the dimension of the $1$-eigenspace, and is thus a non-negative integer. Thus, define $\text{Tr} : \mathcal{P}_{\infty}(\mathbb{C}) \rightarrow \mathbb{Z}_{\geq 0}$
+be the standard trace map. Note that this map is surjective, as the $n \times n$ identity and zero matrices are elements of $\mathcal{P}_{\infty}(\mathbb{C})$, which have traces $0$ and $n$ respectively, for all $n \geq 1$.
+
+\begin{claim}
+  Given $p, q \in \mathcal{P}_{\infty}(\mathbb{C})$, with $p$ an $m \times m$ matrix and $q$ an $n \times n$ matrix with $m \geq n$, then $p \sim_0 q$ if and only if
+  $p \oplus 0_{m - n} \sim q$, where $0_{m - n}$ is the $(m - n) \times (m - n)$ zero-matrix.
+  \end{claim}
+
+\begin{proof}
+  Note from RLL Proposition 2.3.2 that $p \sim_0 p \oplus 0_{m - n}$. Since $\sim_0$ is an equivalence relation, it follows that if $p \sim_0 q$, then $q \sim_0 p \oplus 0_{m - n}$. Thus, by definition,
+  since the left and right are the same size, $q \sim p \oplus 0_{m - n}$. The converse follows from $q \sim p \oplus 0_{m - n} \Rightarrow q \sim_0 p \oplus 0_{m - n} \Rightarrow q \sim_0 p$.
+\end{proof}
+
+\noindent It follows from this result that $\text{Tr}$ is a valid map on $\mathcal{P}_{\infty}(\mathbb{C}) / \sim_0$, as if $p \sim_0 q$, then assuming WLOG that $q$ is a larger matrix than $p$, $p \oplus 0 \sim q$
+for some zero-matrix $0$, so $\text{Tr}(p) = \text{Tr}(p \oplus 0) = \text{Tr}(q)$, from Part 1 of this problem. We already claimed that $\text{Tr}$ is surjective. It is also injective as if $\text{Tr}(p) = \text{Tr}(q) = \text{Tr}(p \oplus 0)$, then $q \sim p \oplus 0$, so $p \sim_0 q$. Finally, it is clear from the definition that $\text{Tr}(p \oplus q) = \text{Tr}(p) + \text{Tr}(q)$. Thus, $\text{Tr}$ is an isomorphism of semigroups, so $\mathcal{D}(\mathbb{C}) \simeq \mathbb{Z}_{\geq 0}$: the image of $\text{Tr}$.
+\newline
+
+\noindent It follows immediately that $K_0(A) = G(\mathcal{D}(\mathbb{C})) \simeq G(\mathbb{Z}_{\geq 0}) = \mathbb{Z}$, where the fact that the semigroup isomorphism gives rise to a group isomorphism of Grothendieck groups and the fact that $G(\mathbb{Z}_{\geq 0}) = \mathbb{Z}$ is discussed in the textbook.
+\newline
+
+\noindent \textbf{Part 3.} \pop{I didn't have time to finish this part, will do so for next week's problems.}
+
+\hhrulefill
+
+\section{Problem 3}
+
+\noindent Note that $\nu(p \oplus 0) = \nu(p) + \nu(0) = \nu(p)$.
+\newline
+
+\noindent Suppose (i) holds. Suppose $p, q \in \mathcal{P}_n(A)$ are such that $p \sim_u q$, so $p = u q u^{*}$ for some $u \in \widetilde{A}$. Then, note from Proposition 2.2.8 in RLL that $p \oplus 0 \sim_h q \oplus 0$,
+where $0$ is the $n \times n$ zero-matrix. It follows that $\nu(p \oplus 0) = \nu(q \oplus 0)$ by (i), so $\nu(p) = \nu(q)$ by assumption. Thus, (i) implies (ii).
+\newline
+
+\noindent Suppose (ii) holds. For $p, q \in \mathcal{P}_{\infty}(A)$, suppose $p \sim_0 q$. Suppose WLOG that $p$ is in $\mathcal{P}_m$ and $q$ is in $\mathcal{P}_n$ with $m \geq n$. It is easy to see that $p \sim q \oplus 0_{m - n}$:
+note that $p \sim_0 q$, $p = v v^{*}$ and $q = v^{*} v$ for $v \in M_{m, n}(A)$. Let $w$ be the element of $M_{m}(A)$ which adds $m - n$ zero-columns to the right side of $v$. It is easy to check that $w w^{*} = v v^{*} = p$
+and $w^{*} w = q \oplus 0_{m - n}$. Thus, from RLL Proposition 2.2.8, $p \oplus 0 \sim_u q \oplus 0_{m - n} \oplus 0$, so from (ii), $\nu(p \oplus 0) = \nu(q \oplus 0_{m - n} \oplus 0)$, implying $\nu(p) = \nu(q)$, so (ii) implies (iii).
+\newline
+
+\noindent Suppose (iii) holds, suppose $p \sim_s q$. Then from RLL Definition 3.1.6, $p \oplus 1_n \sim_0 q \oplus 1_n$, so from (iii), $\nu(p \oplus 1_n) = \nu(q \oplus 1_n) \Rightarrow \nu(p) + \nu(1_n) = \nu(q) + \nu(1_n)$.
+Thus, $\nu(p) = \nu(q)$, so (iii) implies (iv).
+\newline
+
+\noindent Finally, let us assume (iv). Suppose $p \sim_h q$. Then from Proposition 2.2.7 of RLL, $p \sim q$, so immediately $p \sim_0 q$ and thus $p \sim_s q$, so from (iv), $\nu(p) = \nu(q)$, and (iv) implies (i).
+
+\hhrulefill
+
+\section{Problem 4}
+
+\noindent \textbf{Part 1.} By definition, $e = ab$ and $f = ba$. Let $c = aba$ and $d = bab$. Then
+\begin{equation}
+  cd = ababab = (ab)(ab)(ab) = (e)(e)(e) = e
+\end{equation}
+as well as
+\begin{equation}
+  dc = bababa = (ba)(ba)(ba) = (f)(f)(f) = f
+\end{equation}
+Moreover, $cdc = e(aba) = e^2 a = ea = aba = c$ and $dcd = f(bab) = f^2 b = fb = bab = d$. This completes the proof.
+\newline
+
+\noindent \textbf{Part 2.} Reflexivity is trivial, as $f = ff$, so $f \approx_0 f$. Symmetry is also trivial as if $f \approx_0 e$, then $f = ab$, $e = ba$, so swapping $a$ and $b$ (and $n$ and $m$: the sizes of the matrices) implies $e \approx_0 f$.
+This relation is also transitive. Suppose we have $x, y, z$ idempotent with $x \approx_0 y$ and $y \approx_0 z$. Then there exists $a, b$ \emph{with the properties of Part 1}, with $x = ab$ and $y = ba$, as well as $c$ and $d$ \emph{with the properties of Part 1} such that $y = cd$ and $z = dc$.
+
+Thus, $ba = cd$. It follows that $a = aba = acd$ and $c = cdc = bac$. Thus, $x = (ac)(db)$ and $z = (db)(ac)$ so $x \approx_0 z$. It follows that $\approx_0$ is an equivalence relation.
+\newline
+
+\noindent \textbf{Part 3.} Note that $e$ is a $m \times m$ matrix with elements in $R$. Let $f$ be the matrix which adds $n$ zero-columns to the right-hand side of $e$, so the resulting matrix is $m \times (m + n)$. Let $g$ be the
+matrix adding $n$ zero-rows to the bottom of $e$, so the resulting matrix is $(m + n) \times m$. We then have
+\begin{equation}
+  f g = \begin{pmatrix} e & 0^c_{n} \end{pmatrix} \begin{pmatrix} e \\ 0^r_{n} \end{pmatrix} = e^2 = e
+\end{equation}
+as well as
+\begin{equation}
+  g f = \begin{pmatrix} e \\ 0^r_{n} \end{pmatrix}  \begin{pmatrix} e & 0^c_{n} \end{pmatrix} =  \begin{pmatrix} e^2 & 0 \\ 0 & 0 \end{pmatrix} = e \oplus 0_n
+\end{equation}
+where the rightmost $0_n$ is the $n \times n$ zero-matrix, and $0_n^r$ and $0_n^c$ are the zero-rows and zero-columns described above. Thus, by definition, $e \approx_0 e \oplus 0_n$.
+\newline
+
+\noindent \textbf{Part 4.} To ensure that this operation is well-defined, we must demonstrate that if $e \approx_0 e'$ and $f \approx_0 f'$, then $e \oplus f \approx_0 e' \oplus f'$. This follows similarly from the
+proof of the previous result. In particular, we have $e = ab$, $e' = ba$, $f = cd$, $f' = dc$. It is easy to see that $e \oplus f = ab \oplus cd = \text{diag}(a, c) \text{diag}(b, d)$ and $e' \oplus f' = ba \oplus dc = \text{diag}(b, d)\text{diag}(a, c)$. Thus,
+the equivalence follows from the definition.
+\newline
+
+\noindent \textbf{Part 5.} To verify that $(V(R), +)$ is an Abelian semigroup, we require a well-defined closed addition (which we demonstrated in the previous exercise), associatitvity and commutativity.
+Associaitivty is trivial: this simply follows from the fact that $\oplus$ is associative.
+\begin{equation}
+  ([a]_V + [b]_V) + [c]_V = [a \oplus b]_V + [c]_V = [(a \oplus b) \oplus c]_V = [a \oplus (b \oplus c)]_V = [a]_V + [b \oplus c]_V = [a]_V + ([b]_V + [c]_V).
+\end{equation}
+All that remains is verifying commutatitivty: this is equivalent to showing that $[a \oplus b]_V = [b \oplus a]_V$, or that $a \oplus b \approx_0 b \oplus a$. Note that
+\begin{equation}
+  a \oplus b = \begin{pmatrix} 0 & a \\ b & 0 \end{pmatrix} \begin{pmatrix} 0 & b \\ a & 0 \end{pmatrix} \ \ \ \text{and} \ \ \ b \oplus a =  \begin{pmatrix} 0 & b \\ a & 0 \end{pmatrix} \begin{pmatrix} 0 & a \\ b & 0 \end{pmatrix}
+\end{equation}
+so the equivalence just follows from the definition.
+
+\hhrulefill
+
+\section{Problem 5}
+
+\noindent \textbf{Part 1.} Given idempotent $e \in A$, we define $x = e - e^{*}$ and $h = 1 + x x^{*}$. Note that $x x^{*}$ is positive, so $\text{sp}(x x^{*}) \in \mathbb{R}_{\geq 0}$. Suppose $1 + x x^{*}$ is not invertible: this would imply that
+$-1 \in \text{sp}(x x^{*})$, a clear contradiction. Thus $1 + x x^{*}$ must be invertible. Now, note that
+\begin{equation}
+  eh = e(1 + x x^{*}) = e + e (e - e^{*})(e^{*} - e) = e + e (e e^{*} - e^2 + e^{*} e - (e^{*})^2) = e + e e^{*} - e + e e^{*} e - e e^{*} = e e^{*} e
+\end{equation}
+where we use $(e^{*})^2 = e^{*} e^{*} = (e^2)^{*}$. In addition,
+\begin{equation}
+  h e = e + (e - e^{*})(e^{*} - e) e = e + (e e^{*} - e^2 + e^{*} e - (e^{*})^2) e = e + e e^{*} e - e + e^{*} e - e^{*} e = e e^{*} e
+\end{equation}
+Since $h$ is self-adjoint, $h e^{*} = (eh)^{*} = e^{*} e e^{*} = (he)^{*} = e^{*} h$ as well. We set $p = e e^{*} h^{-1}$. We claim that $p$ is a projection in $A$. Indeed,
+using the commutativity relations derived above,
+$p^{*} = (h^{-1})^{*} e e^{*} = h^{-1} e e^{*} = h^{-1} e e^{*} h h^{-1} = h^{-1} e h e^{*} h^{-1} = h^{-1} h e e^{*} h^{-1} = e e^{*} h^{-1}$,so $p$ is self-adjoint (we
+also use that $(h^{-1})^{*} = (h^{*})^{-1} = h^{-1}$ as $( h h^{-1}) = 1 \Rightarrow (h^{-1})^{*} h^{*} = 1$, so $(h^{-1})^{*} = (h^{-1})^{*}$). Finally, note that
+\begin{equation}
+  p^2 = p^{*} p = (h^{-1} e e^{*}) (e e^{*} h^{-1}) = h^{-1} (e e^{*} e) e^{*} h^{-1} = h^{-1} h e e^{*} h^{-1} = e e^{*} h^{-1} = p
+\end{equation}
+so $p$ is a projection. It ids also easy to verify that $ep = e e e^{*} h^{-1} = e e^{*} h^{-1} = p$ and $pe = p^{*} e = h^{-1} e e^{*} e = h^{-1} h e = e$.
+Thus, by definition, $e \approx_0 p$, as we have found elements $e, p$ such that $p = ep$ and $e = pe$. This completes the proof.
+\newline
+
+\noindent \textbf{Part 2.} Clearly, if $p \sim_0 q$, then there exists $v$ such that $p = v v^{*}$ and $q = v^{*} v$, so it immediately follows that $p \approx_0 q$, as we can simply let $a = v$
+and $b = v^{*}$ so that $p = ab$ and $q = ba$. Now, let us assume that $p \approx_0 q$. It follows from the solution to Part 1 of Problem 4 that we can choose $a$ and $b$ such that $p = ab$, $q = ba$,
+as well as $a = aba$ and $b = bab$. Note that $b^{*} b = b^{*} a^{*} b^{*} b a b = (ab)^{*} b^{*} b (ab) = p b^{*} b p \in pAp$. It is straightforward to note that
+$||a^{*} a|| - a^{*} a = ||a||^2 - a^{*} a$ is positive, as $||a^{*} a|| = r(a^{*} a)$ (an upper bound on the spectrum). Thus, $x^{*} x = ||a||^2 - a^{*} a$ for some $x$, and $b^{*} x^{*} x b = (xb)^{*} xb$ is positive, so
+\begin{equation}
+  b^{*} x^{*} x b = b^{*} (||a||^2 - a^{*} a) b = ||a||^2 b^{*} b - b^{*} a^{*} a b = ||a||^2 b^{*} b - p^{*} p = ||a||^2 b^{*} b - p \geq 0 \Rightarrow ||a||^2 b^{*} b \geq p
+\end{equation}
+Since $b^{*} b$ is positive, it has a positive root $(b^{*} b)^{1/2}$. \pop{I couldn't figure out how to continue the argument past here in a timely fashion, so I will revisit this next week}.
+\newline
+
+\noindent \textbf{Part 3.} \pop{I also didn't have time to finish this part, will do so for next week's problems.}
+
+\end{document}
