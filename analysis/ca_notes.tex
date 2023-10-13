@@ -146,13 +146,35 @@ we simply set $r = \sqrt{x^2 + y^2}$ and apply the Pythagorean identity to $\cos
   For example, one may be inclined to say that $\infty + \infty = \infty$, but then if additive cancellation holds, $\infty = 0$, a contradiction.
 \end{definition}
 
-\begin{definition}[Stereographic projection]
-    \pop{\textbf{TODO}: Fill this in}
-  \end{definition}
-
-\begin{claim}
-  The one-point compactification of $\mathbb{R}^2$ is homeomorphic to $S^2$ via the stereographic projection.
+\begin{claim}[Stereographic projection]
+  We can define a map $f$ (in fact, a homeomorphism) from $S^{2} - (0, 0, 1)$ to $\mathbb{R}^2$ called the \emph{stereographic projection}. This map is given by
+  \begin{equation}
+    f : (x, y, z) \mapsto w = \frac{1}{1 - z} (x, y)
+    \end{equation}
 \end{claim}
+\begin{proof}
+  Clearly, this is a continuous function. Moreover, given $(x, y, z) \in S^{2} - (0, 0, 1)$, note that $x^2 + y^2 + z^2 = 1$. It follows immediately that if identify $x + iy$ with $(x, y)$, then
+  we will have
+  \begin{equation}
+    \frac{x + iy}{1 - z} = w \Longrightarrow \frac{x^2 + y^2}{(1 - z)^2} = \frac{1 - z^2}{(1 - z)^2} = \frac{1 + z}{1 - z} = |w|^2
+  \end{equation}
+  for some $w \in \mathbb{C}$. Or, if $w$ is in the image of the stereographic projection, then we have $z = \frac{|w|^2 - 1}{|w|^2 + 1}$. Moreover,
+  \begin{equation}
+    x = \frac{1}{2} (1 - z) (w + \overline{w}) = \frac{w + \overline{w}}{|w|^2 + 1} \ \ \ \text{and} \ \ \ y = \frac{1}{2i} (1 - z) (w - \overline{w}) = i \frac{\overline{w} - w}{|w|^2 + 1}.
+  \end{equation}
+  Thus, we define
+  \begin{equation}
+    f^{-1} : w \mapsto \left( \frac{w + \overline{w}}{|w|^2 + 1}, i \frac{\overline{w} - w}{|w|^2 + 1}, \frac{|w|^2 - 1}{|w|^2 + 1} \right).
+  \end{equation}
+  as a function from $\mathbb{R}^2$ to $S^2$, where $(x, y)$ is identified with $w = x + iy$. Clearly, this function is continuous, and it is easy to verify that it is in fact the desired inverse of $f$, so $f$ is a homeomorphism.
+\end{proof}
+
+It follows from basic point-set topology that we can extend this
+homeomorphism to a homeomorphism between the one-point compactifications, $S^2$ and $\mathbb{R}^2 \cup \{\infty\}$, where $(0, 0, 1)$ is sent to $\infty$, the so-called point at infinity.
+
+\begin{fact}
+  The one-point compactification of $\mathbb{R}^2$ is homeomorphic to $S^2$ via the unique extension of the stereographic projection.
+\end{fact}
 
 \begin{definition}[Complex projective space]
   \pop{\textbf{TODO}: Fill this in}
@@ -162,9 +184,27 @@ we simply set $r = \sqrt{x^2 + y^2}$ and apply the Pythagorean identity to $\cos
 to ask what the correspondence is between basic objects in $\overline{\mathbb{C}}$ and $S^2$, via the stereographic projection. We begin with a result.
 
 \begin{theorem}
-  All circles in the Riemann sphere correspond to lines or circles in $\overline{\mathbb{C}}$. Conversely, all lines and
-  circles in $\overline{\mathbb{C}}$ correspond to circles in the Riemann sphere.
+  Via stereographic projection, all circles in $S^2 - (0, 0, 1)$ correspond to lines or circles in $\mathbb{R}^2$. Conversely, all lines and
+  circles in $\mathbb{R}^2$ correspond to circles in the sphere minus a point.
 \end{theorem}
+
+\begin{proof}
+  Let us suppose that we have a circle $C \subset S^2$. Such a circle corresponds to a collection of points which lie on the intersection of a plane with $S^2$. Thus, $C = \{(x, y, z) \in S^2 \ | \ ax + by + cz = d\}$
+  for some real constants $a, b, c, d$. Let $f$ be the stereographic projection, we wish to find $f(C)$.
+
+  Let us assume that $w \in f(C)$ with $w = x + iy$ identified with $(x, y)$ (we will often perform this identification use complex arithmetic more naturally). Moreover, suppose $f(x_0, y_0, z_0) = w$. Then we know that
+  \begin{equation}
+    |w|^2 = x^2 + y^2 = \frac{1 + z_0}{1 - z_0} \Longrightarrow cx^2 + cy^2 = \frac{c + d - ax_0 - by_0}{1 - z_0} \Longrightarrow cx^2 + cy^2 + ax + by = \frac{c + d}{1 - z_0}
+  \end{equation}
+  Recall that $1 - z_0 = \frac{2}{|w|^2 + 1}$, so we then have
+  \begin{equation}
+    cx^2 + cy^2 + ax + by = \frac{c + d}{2} (x^2 + y^2 + 1)
+  \end{equation}
+  which, upon simplification, if the equation of a circle or a line (a line when $c - d = 0$ and a circle otherwise). Conversely, given the circle or line in the plane, it is not difficult to verify that
+  we can find constants $a, b, c, d$ such that the above equation yields the equations of the circle/line. Thus, the inverse of the stereographic projection takes this points to the original set $C$: a circle.
+\end{proof}
+
+Verifying that this construction extends to circles on the Riemann sphere and circles/lines in $\mathbb{R}^2 \cup \{\infty\}$ is straightforward and just requires some casework.
 
 \section{Introduction to complex functions}
 
@@ -172,12 +212,23 @@ to ask what the correspondence is between basic objects in $\overline{\mathbb{C}
 
 \noindent Now that we have described the arena in which we perform calculations (the complex plane/Riemann sphere), we can move on to understanding corresponding functional transformations.
 
+\begin{definition}[Linear functions]
+  When dealing with the complex plane, we can split notions of real functions into two categories: \emph{real linear functions} and \emph{complex linear functions}. Real linear functions
+  are the functions which are linear when $\mathbb{C} \simeq \mathbb{R}^2$ is treated as a two-dimensional vector space over $\mathbb{R}$ and complex linear functions are those which are linear
+  when $\mathbb{C}$ is treated as a one-dimensional vector space over $\mathbb{C}$.
+\end{definition}
+
 \begin{claim}
-  Any real linear function is of the form $w(z) = az$ for some $a \in \mathbb{C}$, or $w(z) = a\overline{z}$.
+  Any complex linear function is of the form $w(z) = az$ for some $a \in \mathbb{C}$. Any real linear function that preserves angles is of the form $w(z) = az$ for some $a \in \mathbb{C}$, or $w(z) = a\overline{z}$.
 \end{claim}
 
 \begin{proof}
-  \pop{\textbf{TODO}: Fill this in}
+  Obviously, if $f$ is complex linear, then $f(c) = f(1) \cdot c$ for any $c \in \mathbb{C}$, so $f(z) = f(1) z$.
+  \newline
+
+  \noindent Now, let $g$ be a real linear function which preserves angles. Clearly, $g(1) = w$. Let $s(z) = w^{-1} z$, so $f = s \circ g$ fixes $1$. Since $f$ preserves angles, it follows that $f(0, 1) = f(i) = c i$ as $1$ is fixed, for some $c \in \mathbb{R}$.
+  Note from linearity, we must have $f(1, 1) = (1, c)$. But if the angle between $(1, 0)$ and $(1, 1)$ is to be preserved, $c = \pm 1$. So it follows that $f(0, 1) = (0, \pm 1)$ and $f(1, 0) = (1, 0)$. We know $f$ on a basis,
+  so it follows that $f(z) = z$ or $f(z) = \overline{z}$. It follows that $g(z) = w f(z)$, which is either $wz$ or $w \overline{z}$, as desired.
 \end{proof}
 
 \begin{definition}
@@ -292,12 +343,12 @@ so special that we give them their own name: \emph{fractional linear transformat
   by $R$. Thus, $R$ is bijective and invertible.
 \end{proof}
 
-\noindent Clearly, given an FLT, $R(z) = \frac{P(z)}{Q(z)}$, at least one of $P$ and $Q$ are degree-$1$ polynomials, so we can write $R(z) = \frac{az + b}{cz + d}$. However, it is not the case that every set of $(a, b, c, d)$ will yield an FLT. Recall
+\noindent Clearly, given an FLT, $R(z) = \frac{P(z)}{Q(z)}$, at least one of $P$ and $Q$ are degree-$1$ polynomials, so we can write $R(z) = \frac{az + b}{cz + d}$. However, it is not the case that every such set of $(a, b, c, d)$ will yield an FLT. Recall
 that a for $\frac{az + b}{cz + d}$ to be of order-$1$, it must either have degree-$1$ numerator and denominator \emph{in reduced form}. Given arbitrary $(a, b, c, d)$, the quotient $\frac{az + b}{cz + d}$ does not necessarily have this property
-when put into reduced form.
+when put into reduced form. This is a particularly subtle point which must be stressed: \emph{the degree of a rational function can only be defined with respect to a rational function in reduced form}.
 
 \begin{claim}
-  The rational function $f(z) = \frac{az + b}{cz + d}$ is an FLT if and only if $ad - bc \neq 0$.
+  Given $(a, b, c, d)$, the rational function $f(z) = \frac{az + b}{cz + d}$ is an FLT if and only if $ad - bc \neq 0$.
 \end{claim}
 \begin{proof}
   Suppose $ad = bc$. Then either $a = b = 0$, $a = c = 0$, $d = b = 0$, $d = c = 0$, or $a, b, c, d$ are all non-zero. In each of the first four cases, it is easy to check that $f$ is not an FLT (as in reduced form, it is a constant).
@@ -305,17 +356,25 @@ when put into reduced form.
   \begin{equation}
    f(z) = \frac{1}{d} \cdot \frac{adz + bd}{cz + d} = \frac{bcz + bd}{cz + d} = \frac{b}{d} \frac{cz + d}{cz + d}.
   \end{equation}
-  Thus, in reduced form, $f$ is a constant here as well. It follows that if $f$ is an FLT, $ad \neq bc$, so $ad - bc \neq 0$. Now, suppose $ad - bc \neq 0$.We must show that $\frac{az + b}{cz + d}$ is
-  \end{proof}
+  Thus, in reduced form, $f$ is a constant here as well. It follows that if $f$ is an FLT, $ad \neq bc$, so $ad - bc \neq 0$. Now, suppose $f$ is not an FLT, so it is degree-$0$ in reduced form (a constant). This implies
+  that we must have $f(0) = f(\infty)$, so $a/c = b/d$, implying $ad - bc = 0$. Thus, if $ad - bc \neq 0$, then $f$ is an FLT. This completes the proof.
+\end{proof}
+
+\noindent Note that we can represent FLTs using matrices
+\begin{equation}
+ \frac{az + b}{cz + d} \Longleftrightarrow \begin{pmatrix} a & b\\ c & d \end{pmatrix}
+  \end{equation}
 
 \begin{claim}
   The composition of fractional linear transformations yields a fractional linear transformation whose associated matrix is precisely the the product of the associated matrices of the two
   constituent fractional linear transformations of the composition.
 \end{claim}
 
-\begin{proof}
-  \pop{\textbf{TODO}: Fill this in}
-  \end{proof}
+\noindent \pop{This proof is just tedious computation, so I won't do it.} This result has the nice corollary:
+
+\begin{corollary}
+  The inverse of a fractional linear transform is the fractional linear transform described by the entries in the matrix obtained from inverting the matrix of the original fractional linear transform
+  \end{corollary}
 
 \hhrulefill
 
@@ -327,41 +386,76 @@ up to composition with fractional linear transformations, to be ``equivalent in 
   exist fractional linear transformations $f$ and $g$ such that $R' = f \circ R \circ g$.
  \end{fact}
 
-\noindent Of course, since we have an equivalence relation, we automatically can ask what the associated equivalence classes are. Beginning with the simple case of a rational function of order $2$, let us determine 1. how
-mny equivalence classes are generated by this relation and 2. a ``nice'' representative of each equivalence class.
+\noindent Of course, since we have an equivalence relation, we automatically can ask what the associated equivalence classes are. Beginning with the simple case of a rational function of order $2$, let us determine both how
+many equivalence classes are generated by this relation and a ``nice'' representative of each equivalence class.
 
 \begin{theorem}
   Every fractional linear transformation of order $2$ is FLT equivalent to $a(z) = z^2$ or $b(z) = z + z^{-1}$.
 \end{theorem}
 
 \begin{proof}
-  \pop{\textbf{TODO}: Fill this in}
+  Let us begin with the case where 
   \end{proof}
 
 \subsection{The cross-ratio}
 
+\noindent Now, we can move on to particularly important type of FLT: the cross-ratio. The cross-ratio is an answer to the question of whether, given three \emph{distinct} points $z_1, z_2, z_3 \in \overline{\mathbb{C}}$, we
+can construct a fractional linear transformation which performs the mapping $(z_1, z_2, z_3) \mapsto (0, 1, \infty)$. Let us first suppose that $z_1, z_2$ and $z_3$ are all finite. Clearly, the FLT $\frac{z - z_1}{z - z_3}$ will
+send $z_3$ to $\infty$ and $z_1$ to $0$. To ensure that $z_1$ is sent to $1$, we simply multiply by the reciprocal of this function by its evaluation at $z_2$, giving:
+\begin{equation}
+  S(z, z_1, z_2, z_3) = \frac{z_2 - z_3}{z_2 - z_1} \frac{z - z_1}{z - z_3}
+\end{equation}
+we call $S$ the \emph{cross-ratio}. We can also define the cross-ration when one of $z_1$, $z_2$ or $z_3$ is equal to $\infty$: this just requires some casework so we will leave it as an exercise. We arrive next at a very important result:
+
 \begin{lemma}
   A fractional linear transformation is uniquely determined by where it sends any three distinct points of $\overline{\mathbb{C}}$.
 \end{lemma}
+
 \begin{proof}
-  \pop{\textbf{TODO}: Copy over from problem set}
+  Suppose $h$ is an FLT taking $0, 1, \infty \mapsto 0, 1, \infty$. We can write $h(z) = \frac{az + b}{cz + d}$.
+  Clearly, if $h(0) = 0$, then we must have $b/d = 0$, so $b = 0$. If $h(\infty) = \infty$, we must have $c = 0$. Thus, $h(z) = (a/d) z$. Since $h(1) = 1$, we must have $h(z) = z$, so $h$ is the identity
+
+  Now, suppose $f$ is an FLT with $f(z_1), f(z_2), f(z_3) = a, b, c$. Let $p$ be the cross-ratio of $a, b, c$, such that $p(0), p(1), p(\infty) = a, b, c$. Suppose $g$ is another FLT such that $g(z_1), g(z_2), g(z_3) = a, b, c$.
+  Then $p^{-1} \circ f \circ g^{-1} \circ p$ is an FLT which takes $0, 1, \infty \mapsto 0, 1 \infty$.
+  From above, this FLT is the identity, so $f \circ g^{-1}$ is the identity, so $f = g$.
 \end{proof}
 
+\noindent Using this result allows us quickly prove the following result:
+
 \begin{lemma}
-  The cross-ratio is invariant under application of an FLT. In particular, if $z_1, z_2, z_3, z_4$ are distinct points, and $T$ is an FLT, then $(Tz_1, Tz_2, Tz_3, Tz_4) = (z_1, z_2, z_3, z_4)$.
+  The cross-ratio is invariant under application of an FLT. In particular, if $z_1, z_2, z_3, z_4$ are distinct points, and $T$ is an FLT, then $S(Tz_1, Tz_2, Tz_3, Tz_4) = S(z_1, z_2, z_3, z_4)$.
 \end{lemma}
 
 \begin{proof}
-  \pop{\textbf{TODO}: Fill this in}
+  Note that by definition, $Q(z) = S(z, Tz_2, Tz_3, Tz_4)$ sends $(Tz_2, Tz_3, Tz_4) \mapsto (0, 1, \infty)$. Thus, $Q \circ T$ sends $(z_2, z_3, z_4) \mapsto (0, 1, \infty)$, so $Q \circ T = S$ from the above theorem.
+  But clearly, $(Q \circ T)(z) = S(Tz, Tz_1, Tz_2, Tz_3)$, so the proof is complete.
 \end{proof}
 
 \begin{lemma}
-  The FLT induced by the cross ratio, $z \mapsto (z, z_2, z_3, z_4)$ is real if and only if $z_2, z_3, z_4$ lie on a circle or a line.
+ The cross ratio, $S(z_1, z_2, z_3, z_4)$ is real if and only if $z_1, z_2, z_3, z_4$ lie on a circle or a line.
 \end{lemma}
 
 \begin{proof}
-  \pop{\textbf{TODO}: Fill this in}
+  Let $T(z) = \frac{az + b}{cz + d}$. $T(z)$ is real if and only if
+  \begin{align}
+    T(z) = \overline{T(z)} & \Longleftrightarrow (az + b)(\overline{c} \overline{z} + \overline{d}) = (\overline{a} \overline{z} + \overline{b})(cz + d)
+    \\ & \Longleftrightarrow (a\overline{c} - \overline{a} c) |z|^2 + (b\overline{c} - \overline{a} d) \overline{z} + (a \overline{d} - \overline{b} c) z + (b\overline{d} - \overline{b} d) = 0
+  \end{align}
+  for $z = x + iy$, we have
+  \begin{equation}
+    \alpha (x^2 + y^2) + (\beta - \overline{\beta}) x + i (\beta + \overline{\beta}) y + \gamma = 0
+  \end{equation}
+  where $\alpha = a\overline{c} - \overline{a} c$, $\beta = a \overline{d} - \overline{b} c$ and $\gamma = b\overline{d} - \overline{b} d$. Clearly, $\alpha$ and $\gamma$ are imaginary. In addition,
+  $\beta - \overline{\beta}$ is imaginary, and $i (\beta + \overline{\beta})$ is as well. Thus, dividing both sides by $i$, we have
+  \begin{equation}
+    \alpha' (x^2 + y^2) + \beta_1' x + \beta_2' y + \gamma' = 0
+  \end{equation}
+  for real $\alpha', \beta_1', \beta_2'$, and $\gamma'$. This is the equation of a circle or a line (if $\alpha = 0$). Thus, an FLT (any FLT!) is real at $z$ if and only if $z$ lies on a particular circle/line determined
+  by the FLT. In particular, the cross-ratio $z \mapsto S(z, z_2, z_3, z_4)$ is real at $z = z_2, z_3, z_4$, and is real if and only if $z$ lies on a particular circle/line determined by $S$. Thus, $S(z, z_2, z_3, z_4)$ is real
+  if and only if $(z, z_2, z_3, z_4)$ lie on the same circle/line.
 \end{proof}
+
+\noindent Note that since FLTs are bijective, the cross-ratio $z \mapsto S(z, z_2, z_3, z_4)$ must send the circle/line determined by $z_2, z_3, z_4$ to the real line. We can now use the above two results to prove the following \emph{very important} claim:
 
 \begin{theorem}
   Fractional linear transformations take circles and lines to circles and lines. Moreover, given any pair of circles/lines, there exists a unique FLT sending one
@@ -369,8 +463,19 @@ mny equivalence classes are generated by this relation and 2. a ``nice'' represe
 \end{theorem}
 
 \begin{proof}
-  \pop{\textbf{TODO}: Fill this in}
+  First, note that a circle or a line in the plane can be determined by precisely three distinct points. Two points will determine a circle \emph{and} a line passing through them, a third point will then
+  distinguish whether the points do lie on the corresponding circle, \emph{or} the line. Let $A$ be a circle/line determined by $z_1$, $z_2$, and $z_3$. Since $S(z, z_1, z_2, z_3)$ will be real
+  if and only if $z, z_1, z_2, z_3$ lie on a circle/line, $S(z, z_1, z_2, z_3)$ will be real if and only if $z \in A$. Since $S$ is bijective, this means that $S(A) = \mathbb{R}$.
+
+  Now, suppose $T$ is an arbitrary FLT. Consider the cross-ratio $F$ sending $T(z_1), T(z_2), T(z_3) \mapsto 0, 1 \infty$. Note that $F \circ T = S$. Thus, $T = F^{-1} \circ S$, and
+  $T(A) = F^{-1}(\mathbb{R})$. Again, we know that $F$ will take the circle/line $A'$ defined by $T(z_1), T(z_2), T(z_3)$ to $\mathbb{R}$ bijectively, so $F^{-1}(\mathbb{R}) = A'$, and the proof is complete.
 \end{proof}
+
+The importance of this result lies in the fact that it allows us to think about FLTs as a very general-purpose tool which we can use to be back and forth between different regions in a particularly nice fashion.
+In particular, since an FLT is bijective and continuous in both directions, it is a homeomorphism (in fact, it is a diffeomorphism which is everywhere conformal: we will discuss this later).
+\newline
+
+\noindent \pop{\textbf{TODO:} Fill in with more examples of why this result is useful.}
 
 \section{Holomorphic functions}
 
@@ -385,7 +490,7 @@ As a high-level, when we do complex analysis, we are in some sense doing calculu
 with a particular complex structure imposed, but we then go on to defining a collection of arithmetic operations which allow us to perform all of the standard operations one would expect to be able to apply to real numbers,
 to pairs of numbers $(x, y)$ which we call \emph{complex numbers} and denote $z = x + iy$.
 
-As a result of this fundamenntal fact, great care must be taken when defining particular constructions in complex analysis. Oftentimes, we will define something ``with respect to $x$ and/or $y$''. In other situations,
+As a result of this fundamental fact, great care must be taken when defining particular constructions in complex analysis. Oftentimes, we will define something ``with respect to $x$ and/or $y$''. In other situations,
 we will define something ``with respect to $z = x + iy$''. This vague assertion will make more sense as we begin to encounter concrete examples of it throughout the following sections, but it is worthwhile to make note
 of it early, so that one may be aware and on the lookout for situations in which this slight ambiguity may arise.
 \end{remark}
@@ -403,61 +508,129 @@ functions on $\mathbb{R}$. Thus, if we wish to treat the complex plane similar t
 same way as it is defined in the real-single variable case.
 
 \begin{definition}[Complex derivative]
-  Given a function $f : \mathbb{C} \rightarrow \mathbb{C}$ of a single, complex variable $z$, we say that $f$ is complex differentiable or \emph{holomorphic} at $a$ if the limit
+  Given a function $f : \mathbb{C} \rightarrow \mathbb{C}$ written in terms of the complex variable $z = x + iy$, we say that $f$ is complex differentiable or \emph{holomorphic} at $z$ if the limit
   \begin{equation}
     \label{eq:complex_d}
-    f'(a) = \lim_{|h| \to 0} \frac{f(a + h) - f(a)}{h}
+    f'(z) = \lim_{|h| \to 0} \frac{f(z + h) - f(z)}{h}
   \end{equation}
-  exists, calling this limit $f'(a)$ the complex derivative of $f$ in this case. Note that this limit is well-defined, as division by a complex number is well-defined.
+  exists, calling this limit $f'(z)$ the complex derivative of $f$ in this case. Note that this limit is well-defined, as division by a complex number is well-defined.
 \end{definition}
-
-\begin{remark}[Formalizing]
-  Suppose we wanted to be really \emph{really} formal. 
-  \end{remark}
 
 \noindent Now, suppose we are given a function of the form $g : \mathbb{R}^2 \rightarrow \mathbb{R}^2$. This function both has a well-defined \emph{real derivative} and a $2 \times 2$ Jacobian of partial
 derivatives, but it also has an interpretation as a complex function, when we put the associated complex structure (and thus, complex arithmetic) on the domain and co-domain. However, it is \textbf{not} the
 case that the standard, real derivative of $g$ will agree with its associated \emph{complex derivative}. In fact it is even worse than this: \emph{there will be cases where the real derivative exists but the complex derivative does not}.
 
+\begin{example}
+  Consider the function $f(x, y) = (x^2 + y^2, 0)$. When $z = x + iy$, this function can also be written as $f(z) = \overline{z} z$. This function is differentiable as a function from $\mathbb{R}^2$ to $\mathbb{R}^2$,
+  but is not complex differentiable. The first fact is trivial. But, note that
+  \begin{equation}
+    f(z + h) - f(z) = (x + h_1)^2 + (y + h_2)^2 - x^2 - y^2 = 2h_1 x + h_1^2 + 2h_2 y + h_2^2
+  \end{equation}
+  As an example, in the case that $h_1 = 0$, then $\frac{f(z + h) - f(z)}{h} = 2 y + h_2$ and if $h_2 = 0$, then $\frac{f(z + h) - f(z)}{h} = 2 x + h_1$. In other words, in arbitrarily small neighbourhoods around $z$,
+  there exists points such the quotient inside the limit is arbitrarily close to $2y$ and $2x$. Thus, if $x \neq y$, then the limit cannot possibly exist at $z$. In fact, using similar arguments when $x = y$, we can show that
+  this function is nowhere holomorphic.
+\end{example}
+
+\noindent Examples like this lead us to the following question:
+
+\hhrulefill
+
 \begin{question}
 If a function $g : \mathbb{R}^2 \rightarrow \mathbb{R}^2$ is differentiable in the usual, real sense, under what conditions is it also differentiable when interpreted as a complex function (holomorphic)?
 \end{question}
 
+\hhrulefill
+
 \noindent The answer to this question leads us to the famous Cauchy-Riemann equations.
 
 \begin{theorem}
-  A function $g : \mathbb{R}^2 \rightarrow \mathbb{R}^2$ with $g(x, y) = (g_1(x, y), g_2(x, y))$ is complex differentiable/holomorphic, when interpreted as a function from $\mathbb{C}$ to $\mathbb{C}$ (defined as $g(x + iy) \coloneqq g_1(x, y) + i g_2(x, y)$), if and only if it is
-  differentiable as a real function, and satisfies the \emph{Cauchy-Riemann equations}
+  A function $g : \mathbb{R}^2 \rightarrow \mathbb{R}^2$ with $g(x, y) = (g_1(x, y), g_2(x, y))$ is complex differentiable/holomorphic, when interpreted as a function from $\mathbb{C}$ to $\mathbb{C}$ (in other words, when written as $g(x + iy) \coloneqq g_1(x, y) + i g_2(x, y)$),
+  if and only if it is differentiable as a real function, and satisfies the \emph{Cauchy-Riemann equations}
   \begin{align}
     \frac{\partial g_1}{\partial x} &= \frac{\partial g_2}{\partial y} \\
     \frac{\partial g_1}{\partial y} &= -\frac{\partial g_2}{\partial x}
   \end{align}
+  In particular, note that the condition of being holomorphic is stronger than that of being real-differentiable.
 \end{theorem}
 
 \begin{proof}
-  Suppose that $g$ is complex differentiable, so that the limit of Eq.~\eqref{eq:complex_d} exists. It then follows that
+  Suppose that $g$ is complex differentiable, so that the limit of Eq.~\eqref{eq:complex_d} exists. It then follows that there exists a neighbourhood
+  around $z$ for which
   \begin{equation}
-    g(a + h) = g(a) + L h + o(h)
+    \label{eq:complex_der}
+    g(z + h) = g(z) + g'(z) h + o(h)
   \end{equation}
-  where $o(h)$ is a function such that $\lim_{|h| \to 0} \frac{o(h)}{h} = 0$. $L = p + i q$ and $a = r + is$ are complex numbers. In addition, $h = t + iu$ and when interpreted as a complex function,
+  where $o(h)$ is a function such that $\lim_{|h| \to 0} \frac{o(h)}{h} = 0$. $g'(z) = u + i v$ and $z = x + iy$ are complex numbers. In addition, $h = h_1 + i h_2$ and when interpreted as a complex function,
   $g(x + iy) \coloneqq g_1(x, y) + i g_2(x, y)$. It follows that
   \begin{align}
-    g(a + h) = g\left( (r + t) + i(s + u) \right) = g_1(r + t, s + u) + i g_2(r + t, s + u) \\
-    g(a) = g_1(r, s) + i g_2(r, s) \\
-    L h = (p t - q u) + i (pu + q t)
+    g(z + h) = g\left( (x + h_1) + i(y + h_2) \right) = g_1(x + h_1, y + h_2) + i g_2(x + h_1, y + h_2) \\
+    g(z) = g_1(x, y) + i g_2(x, y) \ \ \ \text{and} \ \ \ g'(z) h = (u h_1 - v h_2) + i (u h_2 + v h_1)
   \end{align}
   Therefore, it follows that
   \begin{align}
-    g_1(r + t, s + u) = g_1(r, s) + (pt - qu) + \text{Re}[o(h)] = g_1(r, s) + \begin{pmatrix} p & -q \end{pmatrix} \begin{pmatrix} t \\ u \end{pmatrix} + \text{Re}[o(h)]
+    g_1(x + h_1, y + h_2) = g_1(x, y) + (u h_1 - v h_2) + \text{Re}[o(h)] = g_1(x, y) + \begin{pmatrix} u & -v \end{pmatrix} \begin{pmatrix} h_1 \\ h_2 \end{pmatrix} + \text{Re}[o(h)]
   \end{align}
   as well as
   \begin{align}
-    g_2(r + t, s + u) = g_2(r, s) + (pu + qt) + \text{Im}[o(h)] = g_1(r, s) + \begin{pmatrix} q & p \end{pmatrix} \begin{pmatrix} t \\ u \end{pmatrix} + \text{Im}[o(h)]
+    g_2(x + h_1, y + h_2) = g_2(x, y) + (u h_2 + v h_1) + \text{Im}[o(h)] = g_2(x, y) + \begin{pmatrix} v & u \end{pmatrix} \begin{pmatrix} h_1 \\ h_2 \end{pmatrix} + \text{Im}[o(h)]
   \end{align}
-  where both $o_1(t, u) \coloneqq \text{Re}[o(t + iu)]$ and $o_2(t, u) \coloneqq \text{Im}[o(t + iu)]$ are real-valued functions such that 
+  It follows immediately that
+  \begin{equation}
+    g((x, y) + (h_1, h_2)) = g(x, y) + \begin{pmatrix} u & -v \\ v & u \end{pmatrix} \begin{pmatrix} h_1 \\ h_2 \end{pmatrix} + o(h_1, h_2)
+  \end{equation}
+  in a neighbourhood around $(x, y)$. It follows by definition that $g$ is real-differentiable, and has (unique) derivative
+  \begin{equation}
+    Dg(z) = \begin{pmatrix} \partial_x g_1 & \partial_y g_1 \\ \partial_x g_2 & \partial_y g_2\end{pmatrix} = \begin{pmatrix} u & -v \\ v & u \end{pmatrix}
+  \end{equation}
+  which of course means that $\partial_x g_1 = \partial_y g_2$ and $\partial_y g_1 = -\partial_x g_2$, precisely the Cauchy-Riemann equations. Conversely, let us suppose that
+  $g$ is real-differentiable with partial derivatives satisfying the Cauchy-Riemann equations: we effectively just trace the derivation above in reverse to recover Eq.~\eqref{eq:complex_der},
+  which implies that $g$ is complex-differentiable.
 \end{proof}
 
+\begin{remark}
+An import artifact of the above proof is that for a holomorphic function $f$, matrix multiplication of the standard differential matrix against some $h \in \mathbb{R}^2$
+is precisely the same as multiplication of the complex derivative $f'(z)$ against the complex number $h = h_1 + i h_2$.
+\end{remark}
+
+\noindent Another important artifact of the above proof is handful of formulas for the complex derivative, namely
+\begin{align}
+  \label{eq:comp}
+  g'(z) = u + iv &= \frac{\partial g_1}{\partial x} - i \frac{\partial g_1}{\partial y} = \frac{\partial g_2}{\partial y} + i \frac{\partial g_2}{\partial x} = \frac{1}{2} \left( \frac{\partial g_1}{\partial x} + \frac{\partial g_2}{\partial y} \right) + \frac{i}{2} \left(  \frac{\partial g_2}{\partial x} - \frac{\partial g_1}{\partial y} \right)
+  \\ & =  \frac{\partial g_1}{\partial x} + i \frac{\partial g_2}{\partial x} = \frac{\partial}{\partial x} \left( g_1(x, y) + i g_2(x, y) \right) = \frac{\partial g(x, y)}{\partial x}
+  \\ & =  -i \left( \frac{\partial g_1}{\partial y} + i \frac{\partial g_2}{\partial y} \right) = -i \frac{\partial}{\partial y} \left( g_1(x, y) + i g_2(x, y) \right) = -i \frac{\partial g(x, y)}{\partial y}
+\end{align}
+as well as its squared magnitude
+\begin{equation}
+  |g'(z)|^2 = u^2 + v^2 = \frac{\partial g_1}{\partial x} \frac{\partial g_2}{\partial y} - \frac{\partial g_1}{\partial y} \frac{\partial g_2}{\partial x} = \det Dg(x, y) = \left| \frac{\partial g(x, y)}{\partial x} \right|^2 =  \left| \frac{\partial g(x, y)}{\partial y} \right|^2.
+\end{equation}
+
+\noindent While being explicit and easy to use, these equations are suggestive: there are more succinct ways of expressing the holomorphic condition. The condition of a function
+being holomorphic may better be expressed as \emph{a function which is constant in a particular direction in the complex plane}. In particular, let us define the following differential
+operators
+\begin{equation}
+  \frac{\partial}{\partial z} = \frac{1}{2} \left( \frac{\partial}{\partial x} - i \frac{\partial}{\partial y} \right) \ \ \ \text{and} \ \ \  \frac{\partial}{\partial \overline{z}} = \frac{1}{2} \left( \frac{\partial}{\partial x} + i \frac{\partial}{\partial y} \right)
+\end{equation}
+This allows us to rewrite the complex derivative in Eq.~\eqref{eq:comp} in a much nicer way:
+\begin{equation}
+  g'(z) = \frac{1}{2} \left( \frac{\partial g_1}{\partial x} + \frac{\partial g_2}{\partial y} \right) + \frac{i}{2} \left(  \frac{\partial g_2}{\partial x} - \frac{\partial g_1}{\partial y} \right) = \frac{1}{2} \left( \frac{\partial}{\partial x} - i \frac{\partial}{\partial y} \right) (g_1 + i g_2) = \frac{\partial g(z)}{\partial z}
+\end{equation}
+It should now make sense why we defined $\frac{\partial}{\partial z}$ the way we did! In addition, note that
+\begin{equation}
+  \frac{\partial g}{\partial \overline{z}} = \frac{1}{2} \left( \frac{\partial}{\partial x} + i \frac{\partial}{\partial y} \right) (g_1 + i g_2) = \frac{1}{2} \left( \frac{\partial g_1}{\partial x} - \frac{\partial g_2}{\partial y} \right) + \frac{i}{2} \left(  \frac{\partial g_2}{\partial x} + \frac{\partial g_1}{\partial y} \right) = 0
+\end{equation}
+This leads us, easily, to the following result:
+\begin{theorem}
+  A differentiable function $g$ is holomorphic if and only if $\frac{\partial g}{\partial \overline{z}} = 0$.
+  \end{theorem}
+The definitions of these differential operators effectively arise from a change of basis in the tangent space, when we think about $\mathbb{R}^2$ as a \emph{complex manifold}. Let's think through what this means: There exists a global
+identifcation $\iota : \mathbb{R}^2 \rightarrow \mathbb{C}$, which we can think of as a global coordinate chart for thinking of $\mathbb{R}^2$ as a one-dimensional complex manifold. \pop{\textbf{TODO:} Need to finish this}.
+
+\hhrulefill
+
 \subsection{A more sophisticated perspective}
+
+\noindent \pop{\textbf{TODO:} This section is incomplete and needs to be finished.}
+\newline
 
 \noindent Let us begin with a brief review of differential geometry.
 
@@ -488,17 +661,267 @@ $C^{\infty}(\mathbb{R}^{n}, \mathbb{R}) = \Omega^0(\mathbb{R}^n)$. It follows th
 
 \subsection{Basic properties and implications}
 
-\begin{claim}[Basic properties of holomorphic functions]
+\noindent Having introduced the notion of a holomorphic function, let us discuss some basic properties and implications related to functions of this form.
 
+\begin{claim}
+  If $f$ is differentiable, then $\frac{\partial f}{\partial \overline{z}} = \frac{\partial \overline{f}}{\partial z}$.
 \end{claim}
+\begin{proof}
+  Note that
+  \begin{equation}
+    \frac{\partial f}{\partial z} = \frac{\partial f}{\partial x} - i \frac{\partial f}{\partial y} = \overline{\frac{\partial \overline{f}}{\partial x} + i \frac{\partial \overline{f}}{\partial y}} = \overline{\frac{\partial \overline{f}}{\partial \overline{z}}}.
+    \end{equation}
+\end{proof}
+
+\noindent Thanfkully, we can also prove the following result:
+
+\begin{claim}[Complex derivatives behave like normal derivatives]
+The complex derivative $\frac{\partial}{\partial z}$ satisfies the chain rule and product rule.
+\end{claim}
+\begin{proof}
+  Let's consider the chain rule, for example. We want to show that $\partial_z f(g(z)) = \partial_z f(g(z) \cdot \partial_z g(z) = f'(g(z)) \cdot g'(z)$. Recall that for a holomorphic function,
+  multiplication via $f'(z)$ is the same as matrix multiplication by the differential. In other words,
+  \begin{align}
+    Df(g(z)) \cdot g'(z) = f'(g(z)) \cdot g'(z) &\Longrightarrow Df(g(z)) \cdot \partial_x g(x, y) = f'(g(z)) \cdot g'(z) \\& \Longrightarrow \partial_x f(g(x, y)) = \partial_z f(g(z)) = f'(g(z)) \cdot g'(z)
+  \end{align}
+  so we have chain rule. Of course, we used the fact that $\partial_z f(z) = \partial_x f(x,y)$ for holomorphic $f$, and the regular two-variable chain rule. Product rule is more annyoing, but we can still do it. We have
+  \begin{align}
+    f'(z) g(z) + g'(z) f(z) &= \partial_x f(x, y) g(z) + \partial_x g(x, y) f(z) \\ &= \left( (\partial_x f_1) g_1 - (\partial_x f_2) g_2 + (\partial_x g_1) f_1 - (\partial_x g_2) f_2 \right) + i
+    \left( (\partial_x f_1) g_2  + (\partial_x f_2) g_1 + (\partial_x g_1) f_2 + (\partial_x g_2) f_1 \right) \nonumber
+    \\ & = \partial_x (f_1 g_1 - f_2 g_2) + i \partial_x (f_1 g_2 + f_2 g_1) = \partial_x (fg) = (fg)'(z)
+    \end{align}
+  \end{proof}
+
+\begin{claim}[Basic properties of holomorphic functions]
+  Let $f$ be a holomorphic function on a connected open set $\Omega$. Then
+  \begin{enumerate}
+  \item If $f'(z) = 0$ on $\Omega$, then $f$ is constant.
+  \item If $\text{Re}[f]$ is constant on $\Omega$, then $f$ is constant.
+    \item If $|f|$ is constant, then $f$ is constant.
+    \end{enumerate}
+\end{claim}
+\begin{proof}
+  \begin{enumerate}
+  \item If $f'(z) = 0$, then by definition $\frac{\partial f}{\partial z} = 0$. Since $f$ is holomorphic, $\frac{\partial f}{\partial \overline{z}} = 0$. Therefore,
+    \begin{align}
+      \frac{\partial f}{\partial x} = \frac{\partial f}{\partial z} + \frac{\partial f}{\partial \overline{z}} = 0
+      \\  \frac{\partial f}{\partial y} = i\frac{\partial f}{\partial z} - i \frac{\partial f}{\partial \overline{z}} = 0
+    \end{align}
+    which implies that $Df = 0$ so $f$ is constant.
+  \item Since $f$ is holomorphic, it follows from the Cauchy-Riemann equations that $\partial_x \text{Im}[f] = \partial_y \text{Im}[f] = 0$, so $\text{Im}[f]$ is constant, and $f$ is therefore constant.
+  \item $|f|$ being constant is equivalent to $f \overline{f}$ being constant. Thus,
+    \begin{equation}
+      \frac{\partial}{\partial z} (f \overline{f}) = \overline{f} \frac{\partial f}{\partial z} + f \frac{\partial \overline{f}}{\partial z} = 0 \Longrightarrow \overline{f} \frac{\partial f}{\partial z} = 0
+    \end{equation}
+    where we know that $\frac{\partial \overline{f}}{\partial z} = \overline{\frac{\partial f}{\partial \overline{z}}} = 0$ as $f$ is holomorphic. Thus, at each point in $\Omega$, we either have $\overline{f}(z) = 0$ or
+    $\partial_z f = 0$. If $|f|$ is constant and $\overline{f} = 0$ at a single point, then $|f| = 0$ everywhere and thus $f = 0$ everywhere. If $\overline{f}$ is nowhere $0$, then $\partial_z f = 0$ on $\Omega$, so from the first
+    point, $f$ is constant.
+    \end{enumerate}
+\end{proof}
+
+\noindent Now, let us look at a few more sophisiticated results.
+
+\begin{theorem}
+  Suppose $f$ is a smooth function defined on connected domain $\Omega$ such that $|\det Df(x, y)| \neq 0$ on $\Omega$. Then if $f$ is angle-preserving (i.e. the angles between tangent lines are preserved), it will either be holomorphic or anti-holomorphic ($\partial_z f = 0$).
+\end{theorem}
+\begin{proof}
+  Because $\Omega$ is connected and $|\det D(x, y)|$ is continuous, it cannot change sign, otherwise it would equal $0$ at some point by intermediate value theorem. If $f$ preserves angles, it follows by definition that $Df(x, y)$ is an isometry.
+  Thus, we must have
+  \begin{equation}
+    D f(x, y) = \begin{pmatrix} u(x, y) & -v(x, y) \\ v(x, y) & u(x, y) \end{pmatrix} \ \ \ \text{or} \ \ \  \begin{pmatrix} -u(x, y) & v(x, y) \\ v(x, y) & u(x, y) \end{pmatrix}
+  \end{equation}
+  depending on whether $\det Df(x, y)$ is positive or negative on $\Omega$, which corresponds to $f$ being holomorphic or anti-holomorphic. We could have also seen this by noting that a real linear function which preserves angles must be
+  of the form $f(z) = w z$ or $f(z) = w \overline{z}$. Since $f(z) = Df(z_0) z$ preserves angles and is real-linear, it must be of either of these forms. It is easy to check that the former case corresponds to $f$ being holomorphic and the
+  latter corresponds to $f$ being anti-holomorphic.
+\end{proof}
+
+\noindent Now, let's consider an even more advanced result, which should be familiar from calculus.
+
+\begin{theorem}[Inverse function theorem]
+Suppose $f$ is holomorphic on an open set $U$ containing $z_0$ with $f'(z_0) \neq 0$. Then there exists a local holomorphic inverse around $f(z_0)$
+\end{theorem}
+\begin{proof}
+  If $f$ is holomorphic, then $f'(z_0) \neq 0 \Rightarrow |\det Df| \neq 0$, so we just need to show that if $f$ is holomorphic, then is is continuously differentiable,
+  to show that we have a continuously differentiable local inverse. The fact that this local inverse is holomorphic itself follows from the fact that we can write down
+  exactly what the inverse differential must be, namely
+  \begin{equation}
+    D f^{-1}(f(z_0)) = Df(z_0)^{-1} = \begin{pmatrix} u & -v \\ v & u \end{pmatrix}^{-1} = \frac{1}{u^2 + v^2} \begin{pmatrix} u & v \\ -v & u \end{pmatrix}
+  \end{equation}
+  where it is easy to check from here that $f^{-1}$ must be holomorphic. \pop{We will prove that holomorphic implies continuously differentiable \textbf{later}!}
+\end{proof}
+
+\section{Examples of holomorphic functions}
+
+\noindent Now that we have outlined a few basic results related to holomorphic functions, let us discuss a few examples of families of functions which are holomorphic.
+We can begin with the obvious: rational functions (away from their poles). To prove this, note that
+\begin{align}
+  \frac{\partial z}{\partial \overline{z}} = \frac{1}{2} \left( \frac{\partial}{\partial x} + i \frac{\partial}{\partial y} \right) (x + iy) = 0
+\end{align}
+In addition, note that since $\frac{\partial}{\partial \overline{z}}$ satisfies chain and product rule, for $z \neq 0$, note that $z^{-1} = \frac{x - iy}{x^2 + y^2}$ is (real) differentiable and
+\begin{equation}
+  \frac{\partial}{\partial \overline{z}} (z z^{-1}) = z^{-1} \frac{\partial z}{\partial \overline{z}} + z \frac{\partial z^{-1}}{\partial \overline{z}} = z \frac{\partial z^{-1}}{\partial \overline{z}} = 0 \Rightarrow \frac{\partial z^{-1}}{\partial \overline{z}} = 0
+\end{equation}
+so $z^{-1}$ is holomorphic as well. Product and chain rule imply that all rational functions are holomorphic, after proving these facts.
+
+\subsection{Power series}
+
+\noindent The next example of holomorphic functions that we will look at are \emph{power series}: the limits of sequences of complex polynomials.
+
+\begin{theorem}[Abel]
+  Given a complex power series $f(z) = \sum_{j = 0}^{\infty} a_j z^{j}$, there exists a \emph{radius of convergence} $R \in [0, \infty]$ such that
+  \begin{enumerate}
+  \item for $r < R$, $f$ is uniformly and absolutely convergent in $B_r(0)$: the closed ball of radius $r$ around $0$.
+  \item For $|z| > R$, $\sum_{j = 0}^{\infty} a_j z^j$ diverges (in fact, the terms $a_j z^j$ are unbounded in magnitude).
+  \item The derived series $\sum_{j = 1}^{\infty} j a_j z^{j - 1}$ has the same radius of convergence as $f$. Moreover, $f$ is holomorphic and $f'(z)$ (the complex derivative)
+    is precisely the derived series. Note that this result immediately implies that a power series is smooth.
+  \end{enumerate}
+  In fact, we can compute the radius of convergence via the \emph{Cauchy-Hadamard formula}: $R^{-1} = \limsup \sqrt[n]{a_n}$.
+\end{theorem}
+
+\begin{proof}
+  \pop{\textbf{TODO}: Fill this in. This is an important result!}
+\end{proof}
+
+\noindent Equipped with the main theorem characterizing power series as functions, we can begin to discuss manipulations of complex power series. Of course, all complex power series are determined
+by a sequence of complex coefficients.
+
+\begin{remark}[Composition of power series]
+  Suppose we have two power series $f(z) = \sum_{n = 0}^{\infty} a_n z^{n}$ and $g(z) = \sum_{n = 0}^{\infty} b_n z^n$. We consider the question of when it makes sense
+  to write down the composition of two power series. It turns out that this will be precisely when $b_0 = 0$, as here, formally composing the power series yields a new, well-defined power series
+  where the coefficients are \emph{finite} sums rather than \emph{infinite} ones.
+  \end{remark}
+
+\begin{theorem}[Formal inverse function theorem for power series]
+\end{theorem}
+
+\begin{theorem}[Composition of power series]
+  Let $f(z) = \sum_{n = 0}^{\infty} a_n z^{n}$ and $g(z) = \sum_{n = 1}^{\infty} b_n z^n$ be power series (note that $g(0) = 0$). If $f$ and $g$ both have positive radius
+  of convergence, then so does $f \circ g$. In fact, suppose we take $r$ such that $\sum_{n} |b_n| r^n < R(f)$, then $R(f \circ g) \geq r$. Moreover, if we let $f \circ g$
+  denote the formal composite power series defined above, we have $(f \circ g)(z) = f(g(z))$ for $|z| \leq r$.
+\end{theorem}
+\begin{proof}
+The main 
+  \end{proof}
+
+\subsection{The complex exponential}
+
+\noindent Let us now consider, arguably, the most important holomorphic complex function determined via power series: the complex exponential.
+
+\begin{definition}[Complex exponential]
+  We define the complex exponential function, $\exp(z)$, via the power series
+  \begin{equation}
+    \exp(z) = e^z = \displaystyle\sum_{j = 0}^{\infty} \frac{z^j}{j!}
+  \end{equation}
+  This definition agrees with the standard definition of the exponential function on $\mathbb{R}$, as this is simply the Taylor expansion: we now take it as the \emph{definition}
+  of the function on all complex numbers.
+\end{definition}
+
+\begin{theorem}
+  \label{thm:circ}
+  The complex exponential behaves as we would expect an exponential to behave. In particular, $e^{a} e^{b} = e^{a + b}$ for all $a, b \in \mathbb{C}$.
+\end{theorem}
+\begin{proof}
+  We will use a slick proof. Define $f(z) = e^{-z} e^{z + w} - e^{w}$ for fixed $w$. Since the exponential is defined via a power series and converges on all of $\mathbb{C}$, note that we
+  can compute its (complex) derivative via the term-wise derivative, as well as use chain rule (since we showed it applies to complex derivatives). In particular, it is easy to see that $\partial_z e^{z} = e^{z}$. Thus,
+  \begin{equation}
+    \partial_z f(z) = -e^{-z} e^{z + w} + e^{-z} e^{z + w} = 0
+  \end{equation}
+  so $f(z)$ must be constant on connected domain $\mathbb{C}$. Setting $z = 0$, we can see that this constant must be $0$. Thus, for any $z$ and $w$, $e^{-z} e^{z + w} = e^{w}$, which implies that $e^{a} e^{b} = e^{a + b}$
+  for any $a, b \in \mathbb{C}$.
+  \end{proof}
+
+\noindent Let us define the function $g : \mathbb{R} \rightarrow \mathbb{T}$ where $g(y) = e^{iy}$. The reason why this is a mapping into the unit circle follows from Thm.~\ref{thm:circ}, $|e^{iy}| = e^{-iy} e^{iy} = 1$.
+By definition,
+\begin{equation}
+  e^{iy} =  \displaystyle\sum_{j = 0}^{\infty} \frac{(iy)^j}{j!} = \displaystyle\sum_{j = 0}^{\infty} \frac{(-1)^{j} y^{2j}}{(2j)!} + i \displaystyle\sum_{j = 0}^{\infty} \frac{(-1)^{j} y^{2j + 1}}{(2j + 1)!} = \cos(y) + i \sin(y)
+\end{equation}
+where we use the standard real-valued Taylor series for $\cos$ and $\sin$ functions. As you may have guessed, we will define $\cos$ and $\sin$ \emph{on all of $\mathbb{C}$} with these power series expansions! This allows us to
+note that
+\begin{equation}
+  \cos(z) = \frac{e^{iz} + e^{-iz}}{2} \ \ \ \text{and} \ \ \ \sin(z) = \frac{e^{iz} - e^{-iz}}{2i}
+\end{equation}
+From here,
+
+\subsection{The Arg function}
+
+\noindent In the previous section, we defined the exponential function via a power series on the entirety of the complex domain. This allows us to define a function from $\mathbb{R}$ to $\mathbb{T}$, $y \mapsto e^{iy}$.
+
+
+\noindent We will also invoke a very important result:
+
+\begin{theorem}[Universal property of quotient topology]
+  Let $g : X \rightarrow Y$ be a surjective continuous map, let $X^{*}$ be the collection of fibres of $g$, let $\pi : X \rightarrow X^{*}$ be the corresponding quotient map. $g$ induces a bijective
+  continuous map $f : X^{*} \rightarrow Z$ which is a homeomorphism if and only if $g$ is a quotient map.
+\end{theorem}
+
+\begin{proof}
+ \pop{ \textbf{TODO:} This is definitely worth proving, I'll do this after I finish filling in the rest of the unfinished sections.}
+  \end{proof}
+
+\noindent Let $\sim$ be the equivalence relation which identifies points differing up to integer multiple of $2\pi$. We already demonstrated that the fibres of $y \mapsto e^{iy}$ are precisely the equivalence classes
+generated by $\sim$, so $X^{*} = \mathbb{R}/\sim = \mathbb{R}/2\pi \mathbb{Z}$, in the notation of the above theorem. Thus, if we show that $g : y \mapsto e^{iy}$ is a quotient map, we will have a homeomorphism between $\mathbb{R}/2\pi \mathbb{Z}$
+and $\mathbb{T}$. Indeed, $g$ is continuous, open, and surjective, so it is a quotient map. Thus, the map induced by $y \mapsto e^{iy}$ such that $[y] \mapsto e^{iy}$ is a homeomorphism.
+
+The most important implication of this result is that \emph{$[y] \mapsto e^{iy}$ has a continuous inverse}. We will call this inverse $\arg$, the argument function.
+
+\begin{definition}[The argument function]
+  The function $\arg : \mathbb{T} \rightarrow \mathbb{R}/2\pi\mathbb{Z}$ is called the argument function and is defined as the continuous inverse of the induced map $[y] \mapsto e^{iy}$ constructed above.
+  In fact, we can extend $\arg$ to a function on $\mathbb{C} - (0, 0)$ by re-defining $\arg(z)$ as $\arg(z/|z|)$, where $z/|z| \in \mathbb{T}$, clearly.
+\end{definition}
+
+\noindent The argument function is effectively a function assigning an ``angle'' to points on the complex plane. However, working with equivalence classes isn't always desirable.
+\newline
+
+\noindent \pop{\textbf{TODO:} Fill in the part about branches}
+\newline
+
+\begin{definition}[Branch]
+  A branch is a continuous function $f(z)$ defined on some connected set $\Omega$ such that $g(f(z)) = 0$, for some constraint $g(x) = 0$.
+  \end{definition}
+
+\subsection{The complex logarithm and power functions}
+
+\noindent In addition to defining a complex exponential, we can also define an inverse function: a complex logarithm. We want the complex logarithm to be a function
+which satisfies $e^{f(z)} = z$. If $f(z) = f_1(z) + i f_2(z)$, then we must have $e^{f_1(z)} e^{i f_2(z)} = |z| e^{i \arg(z)}$. For real $z$, we must have $e^{f_1(z)} = |z|$, so
+we should set $f_1(z) = |z|$. Then, we must have $e^{i f_2(z)} = e^{i \arg(z)}$.
+
+\begin{claim}
+  If $f$ is a branch of $\log(z)$ on $\Omega$, then it is of the form $\log |z| + i \text{Arg}(z) + 2\pi i k$, where $\text{Arg}(z)$ is the principal argument (defined above).
+  Moreover, $f$ is holomorphic on $\Omega$ and has complex derivative $1/z$.
+\end{claim}
+
+\begin{proof}
+  Suppose $e^{f(z)} = z$. We must have $f(z) = f_1(z) + i f_2(z)$, where both $f_1$ and $f_2$ are real functions. In particular, we must have $e^{f_1(z)} e^{i f_2(z)} = z$, so $e^{f_1(z)} = |z|$.
+  This immediately implies that $f_1(z) = \log |z|$. Note that $z = |z| e^{i \text{Arg}(z)}$, so we must have $e^{i f_2(z)} = e^{i \text{Arg}(z)}$. In other words, $e^{i (f_2(z) - \text{Arg}(z))} = 1$
+  for all $z$. We know that $e^{i x} = 1$ if and only if $x = 2\pi i k$ for some $k \in \mathbb{Z}$. Thus, we must have $f_2(z) - \text{Arg}(z) = 2\pi i k(z)$, where $k(z)$ is a \emph{continuous}
+  function from $\mathbb{C}$ to $\mathbb{R}$ which is integer-valued. Thus, it must be constant, so $f_2(z) = \text{Arg}(z) + 2\pi i k$ for some constant $k \in \mathbb{Z}$.
+
+  To prove that a branch $f(z)$ is holomorphic with the desired derivative, note that
+  \begin{align}
+    \lim_{h \to 0} \frac{f(z + h) - f(z)}{(z + h) - h} &= \lim_{h \to 0} \frac{f(z + h) - f(z)}{e^{f(z + h)} - e^{f(z)}} = \left( \lim_{h \to 0} \frac{e^{f(z + h)} - e^{f(z)}}{f(z + h) - f(z)} \right)^{-1}
+    \\ & = \left( \lim_{f(r) \rightarrow f(z)} \frac{e^{f(r)} - e^{f(z)}}{f(r) - f(z)} \right)^{-1} = e^{-f(z)} = \frac{1}{z}
+  \end{align}
+  and the proof is complete.
+\end{proof}
+
+\noindent As it turns out, $\log$ has a convergent power series representation!
+
+\subsection{Riemann surfaces}
+
+\noindent Riemann surfaces are, at a high-level, a nice way of dealing with classes of complex-valued functions which have multiple branches
 
 \section{Conformal maps}
 
-\section{Power series}
+\noindent We now move to a discussion of conformal maps, which roughly speaking, can be thought of as maps which preserve angles. We did briefly mention maps
+of this form in previous sections, but here, we will elaborate.
 
-\noindent We dedicate this section to providing a brief review of power series, re-proving some familar results from introductory calculus in the complex regime.
+\begin{theorem}
+  Holomorphic functions are conformal.
+\end{theorem}
 
-\section{Complex exponential and logarithm}
+\begin{corollary}
+  Fractional linear transformations preserve angles on $\mathbb{C}$.
+  \end{corollary}
 
 \noindent 
 

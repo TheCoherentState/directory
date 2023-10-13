@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.8.13)  28 SEP 2023 15:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.8.13)  12 OCT 2023 15:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -791,28 +791,41 @@ Class revtex4-1 Info: Taking \maketitle back from hyperref on input line 73.
 \tf@toc=\write6
 \openout6 = `ca_notes.toc'.
 
+ [1{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 Package hyperref Info: bookmark level for unknown definition defaults to 0 on i
 nput line 104.
- [1{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 Package hyperref Info: bookmark level for unknown claim defaults to 0 on input 
-line 154.
-Package hyperref Info: bookmark level for unknown theorem defaults to 0 on inpu
-t line 165.
+line 149.
  [2]
-Package hyperref Info: bookmark level for unknown remark defaults to 0 on input
- line 221.
-Package hyperref Info: bookmark level for unknown corollary defaults to 0 on in
-put line 228.
- [3] [4]
 Package hyperref Info: bookmark level for unknown fact defaults to 0 on input l
-ine 288.
-Package hyperref Info: bookmark level for unknown lemma defaults to 0 on input 
-line 344.
- [5] [6]
-Package hyperref Info: bookmark level for unknown question defaults to 0 on inp
-ut line 423.
+ine 176.
+Package hyperref Info: bookmark level for unknown theorem defaults to 0 on inpu
+t line 187.
+ [3]
+Underfull \hbox (badness 10000) in paragraph at lines 226--228
 
-Overfull \hbox (10.86107pt too wide) in paragraph at lines 429--431
+ []
+
+[4]
+Package hyperref Info: bookmark level for unknown remark defaults to 0 on input
+ line 272.
+Package hyperref Info: bookmark level for unknown corollary defaults to 0 on in
+put line 279.
+ [5] [6]
+Package hyperref Info: bookmark level for unknown lemma defaults to 0 on input 
+line 411.
+ [7]
+Underfull \hbox (badness 10000) in paragraph at lines 474--477
+
+ []
+
+[8]
+Package hyperref Info: bookmark level for unknown example defaults to 0 on inpu
+t line 524.
+Package hyperref Info: bookmark level for unknown question defaults to 0 on inp
+ut line 539.
+
+Overfull \hbox (10.86107pt too wide) in paragraph at lines 547--549
 [][]\OT1/cmr/bx/n/10 Theorem V.1. []\OT1/cmr/m/n/10 A func-tion $\OML/cmm/m/it/
 10 g \OT1/cmr/m/n/10 : \U/msb/m/n/10 R[] \OMS/cmsy/m/n/10 ! \U/msb/m/n/10 R[]$ 
 \OT1/cmr/m/n/10 with $\OML/cmm/m/it/10 g\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x; y\
@@ -821,20 +834,40 @@ OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; g[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x; y\OT
 1/cmr/m/n/10 ))$ is com-plex dif-fer-en-tiable/holomorphic,
  []
 
-[7]
+[9] [10]
+Underfull \hbox (badness 10000) in paragraph at lines 632--634
+
+ []
+
+[11]
+Overfull \hbox (33.10637pt too wide) detected at line 692
+[]
+ []
+
+[12] [13] [14]
+Underfull \hbox (badness 10000) in paragraph at lines 863--865
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 866--868
+
+ []
+
+[15]
 No file ca_notes.bbl.
-[8] (pdf/ca_notes.aux)
+[16] (pdf/ca_notes.aux)
 Package rerunfilecheck Info: File `ca_notes.out' has not changed.
-(rerunfilecheck)             Checksum: 9F39EE17C7E523F7A0DAA0127FC4FF11;3158.
+(rerunfilecheck)             Checksum: 1C3CFFD586C4F55AE4B73B76D91FEAA2;3904.
  ) 
 Here is how much of TeX's memory you used:
- 17382 strings out of 478994
- 246511 string characters out of 5858184
- 666983 words of memory out of 5000000
- 34463 multiletter control sequences out of 15000+600000
+ 17500 strings out of 478994
+ 248352 string characters out of 5858184
+ 676178 words of memory out of 5000000
+ 34483 multiletter control sequences out of 15000+600000
  412894 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 83i,14n,88p,1403b,481s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 83i,14n,88p,1403b,616s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 }</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
 </usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><
@@ -844,21 +877,22 @@ r/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr
 /local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/l
 ocal/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/loc
 al/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local
-/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/te
-xlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texli
-ve/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/
-2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/202
-1/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2021/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2021/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2021/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2021/texmf-
-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2021/te
-xmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on pdf/ca_notes.pdf (8 pages, 245363 bytes).
+/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/te
+xlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texli
+ve/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/
+2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/202
+1/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2021/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2021/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2021/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2021/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2021/texmf-dis
+t/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2021/texmf
+-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on pdf/ca_notes.pdf (16 pages, 303218 bytes).
 PDF statistics:
- 313 PDF objects out of 1000 (max. 8388607)
- 281 compressed objects within 3 object streams
- 112 named destinations out of 1000 (max. 500000)
- 121 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 479 PDF objects out of 1000 (max. 8388607)
+ 436 compressed objects within 5 object streams
+ 210 named destinations out of 1000 (max. 500000)
+ 153 words of extra memory for PDF output out of 10000 (max. 10000000)
 
