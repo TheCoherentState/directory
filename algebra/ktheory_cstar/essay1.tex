@@ -1,0 +1,133 @@
+\documentclass[aps,pra,showpacs,notitlepage,onecolumn,superscriptaddress,nofootinbib]{revtex4-1}
+\usepackage[utf8]{inputenc}
+\usepackage[tmargin=1in, bmargin=1.25in, lmargin=1.5in, rmargin=1.5in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{datetime}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{import}
+\usepackage{mathtools}
+\usepackage{thmtools,thm-restate}
+\usepackage{comment}
+
+
+% package for commutative diagrams
+% \usepackage{tikz-cd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{crimson}{RGB}{186,0,44}
+\definecolor{moss}{RGB}{0, 186, 111}
+\newcommand{\pop}[1]{\textcolor{crimson}{#1}}
+\newcommand{\zcom}[1]{\noindent\textcolor{crimson}{(Z): #1}}
+\newcommand{\jcom}[1]{\noindent\textcolor{moss}{(J): #1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\pqeq}{\succcurlyeq}
+\newcommand{\pleq}{\preccurlyeq}
+
+\newcommand{\hhrulefill}{\hspace{-1.0em}\hrulefill}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+    colorlinks,
+    linkcolor={crimson},
+    citecolor={crimson},
+    urlcolor={crimson}
+}
+
+\usepackage{qcircuit}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{reminder}{Reminder}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{answer}{Answer}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{claim}{Claim}[section]
+
+\usepackage{geometry}
+\geometry{
+  left=25mm,
+  right=25mm,
+  top=20mm,
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{unsrt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{A primer on $K$-homology and $KK$-theory}
+\author{Jack Ceroni}
+\email{jackceroni@gmail.com}
+
+\date{\today}
+
+\maketitle
+
+\section{Introduction}
+
+\noindent \emph{This essay was written for the Fall 2023 session of MAT437 at the University of Toronto.}
+\newline
+
+\noindent The goal of this essay is to introduce, explain, and place in broader context some basic results in the theory of $C^{*}$-dynamical systems. 
+
+\hhrulefill
+
+\begin{comment}
+\begin{theorem}[Atiyah-Singer index theorem]
+  For an elliptic differential operator on a compact manifold, the analytical index is equal to the topological index.
+\end{theorem}
+
+\hhrulefill
+
+\section{Building up to the index theorem}
+
+\noindent The main goal of this section of the essay is to develop the necessary machinery in order to understand each individual concept utilized in the statement of the index
+theorem. At a coarse-grained level, this will involve defining \emph{elliptic differential operators}, \emph{analytical index}, and \emph{topological index}. The first of these concepts
+is simple.
+
+\begin{definition}[Elliptic differential operator]
+  We let $D$ be an order-$m$ differential operator on domain $\Omega \subset \mathbb{R}^{n}$, given by $Du = \sum_{|a| \leq m} f_{\alpha}(x) \partial^{\alpha} u$, where $u \in C^{\infty}(\Omega, \mathbb{R})$,
+  where $\alpha = (\alpha_1, \dots, \alpha_n)$ with $\alpha_1 + \cdots + \alpha_n = m$ and $\partial^{\alpha} = \partial_1^{\alpha_1} \cdots \partial_{n}^{\alpha_n}$. The operator $D$ is said to be \emph{elliptic}
+  if for every $x \in \Omega$ and non-zero $y \in \mathbb{R}$,
+  \begin{equation}
+    \displaystyle\sum_{\alpha = |m|} f_{\alpha}(x) y^{\alpha_1} \cdots y^{\alpha_n} \neq 0.
+    \end{equation}
+\end{definition}
+
+\noindent As for the two notions of ``index'': these ideas are much more subtle and require substantial exposition.
+\end{comment}
+
+\section{Basic definitions}
+
+\noindent The primary ingredient in any kind of homological theory is an \emph{exact sequence}.
+
+\begin{definition}[Exact sequence]
+  A sequence of objects $\mathcal{O}_n$ and morphisms $f_n$ of some category, arranged such that
+  $f_{n + 1} : \mathcal{O}_{n + 1} \rightarrow \mathcal{O}_{n}$ is said to be exact at $\mathcal{O}_n$
+  when $\text{Im}(f_{n + 1}) = \text{Ker}(f_n)$. A sequence is exact if it is exact at all objects. A sequence
+  is said to be \emph{short exact}, if it is exact and of the form
+  \begin{equation}
+
+    \end{equation}
+  \end{definition}
+
+\end{document}

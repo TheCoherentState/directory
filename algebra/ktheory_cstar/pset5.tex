@@ -1,0 +1,250 @@
+\documentclass[aps,pra,showpacs,notitlepage,onecolumn,superscriptaddress,nofootinbib]{revtex4-1}
+\usepackage[utf8]{inputenc}
+\usepackage[tmargin=1in, bmargin=1.25in, lmargin=1.5in, rmargin=1.5in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{datetime}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{import}
+\usepackage{mathtools}
+\usepackage{thmtools,thm-restate}
+\usepackage{comment}
+
+
+% package for commutative diagrams
+% \usepackage{tikz-cd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{crimson}{RGB}{186,0,44}
+\definecolor{moss}{RGB}{0, 186, 111}
+\newcommand{\pop}[1]{\textcolor{crimson}{#1}}
+\newcommand{\zcom}[1]{\noindent\textcolor{crimson}{(Z): #1}}
+\newcommand{\jcom}[1]{\noindent\textcolor{moss}{(J): #1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\pqeq}{\succcurlyeq}
+\newcommand{\pleq}{\preccurlyeq}
+
+\newcommand{\hhrulefill}{\hspace{-1.0em}\hrulefill}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+    colorlinks,
+    linkcolor={crimson},
+    citecolor={crimson},
+    urlcolor={crimson}
+}
+
+\usepackage{qcircuit}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{reminder}{Reminder}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{answer}{Answer}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{claim}{Claim}[section]
+
+\usepackage{geometry}
+\geometry{
+  left=25mm,
+  right=25mm,
+  top=20mm,
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{unsrt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{Fall 2023 MAT437 problem set 5}
+\author{Jack Ceroni}
+\email{jackceroni@gmail.com}
+
+\date{\today}
+
+\maketitle
+
+\hhrulefill
+
+\section{Problem 1}
+
+\noindent \textbf{Part 1.} Verification that $\mu$ preserves all of the algebraic operations of the algebra is simple:
+\begin{align}
+  \mu(\lambda a + b) = s (\lambda a + b) s^{*} = \lambda s a s^{*} + s b s^{*} = \lambda \mu(a) + \mu(b) \\
+  \mu(ab) = s ab s^{*} = s a s^{*} s b s^{*} = \mu(a) \mu(b)
+\end{align}
+as $s$ is an isometry, so $s^{*} s = 1$. It is also easy to check that involution is preserved, as $\mu(a^{*}) = s a^{*} s^{*} = (s a s^{*})^{*} = \mu(a)^{*}$. Note that
+this map is automatically injective: suppose $s a s^{*} = 0$. Then $s^{*} s a s^{*} s = s^{*} 0 s \Rightarrow a = 0$. Thus, $\mu$ is in fact an endomorphism of $C^{*}$-algebras.
+Moreover, $\mu$ has a left-inverse, but clearly this map is not a right-inverse! It is clear that the map $a \mapsto s^{*} a s$ will also be a right-inverse when $s$ is \emph{unitary}, and
+as we will show below, this is not only a sufficient condition for $\mu$ to be an isomorphism, but is also necessary!
+
+We claim that $\mu$ is an isomorphism if and only if $s$ is not only just an isometry, but is in fact \emph{unitary},
+so $s s^{*} = 1$. Clearly, if $s$ is unitary, then $\mu$ is invertible: $\mu^{-1}(a) = s^{*} a s$.
+
+If $\mu$ is an isomorphism, it clearly must
+be both surjective and injective. In particular, since $s^{*} \in A$, there must exist some $k \in A$ such that $s k s^{*} = s^{*}$, so $sk = sk s^{*} s = s^{*} s = 1$. Thus,
+$s$ has a right-inverse. Clearly, it has a left-inverse, $s^{*}$. We then have $k = s^{*} s k = s^{*}$. Thus, $s^{*} s = s s^{*} = 1$, so $s$ is unitary.
+\newline
+
+\noindent \textbf{Part 2.} \emph{To jog my own memory, I'm going to begin this question by briefly recalling the functoriality of $K_0$ in inducing maps between $K_0$-groups,
+from maps between $C^{*}$-algebras.}
+\newline
+
+\noindent Indeed, suppose we have a $*$-homomorphism $\varphi : A \rightarrow B$ between $C^{*}$-algebras $A$ and $B$. Then there is an induced map
+$\widetilde{\varphi} : \mathcal{P}_{\infty}(A) \rightarrow \mathcal{P}_{\infty}(B)$ which is achieved via evaluating $\varphi$ on the entries of a matrix of $\mathcal{P}_{\infty}(B)$.
+We then can recall that for maps from $\mathcal{P}_{\infty}(A)$ to an Abelian group $A$, with a particular set of properties, there is a universal property inducing a map from $K_0(A)$
+to $G$. Thus, we can consider the map $\phi(p) = [\widetilde{\varphi}(p)]_0 = \gamma([\widetilde{\varphi}(p)]_{\mathcal{D}}) \in K_0(B)$, where $K_0(B)$ is an Abelian group. If this map has these ``nice properties'' to which
+we refer (which, as we can verify, it does), then we will find that we can induce a map $\widetilde{\phi}$ from $K_0(A)$ to $K_0(B)$ via the map we just defined! Such a map will be unique and satisfy $\widetilde{\phi}([p]_0) = \phi(p) = [\widetilde{\varphi}(p)]_0$.
+We will write $K_0(\varphi) = \widetilde{\phi}$.
+\newline
+
+\noindent Having completed our brief recollection, let us consider $K_0(\mu)$. The map induced by $\mu$ on $\mathcal{P}_\infty(A)$ takes $(i, j)$-th entry of a matrix $a_{ij}$
+to $s^{*} a_{ij} s$. Thus, if $a$ is an $n \times n$ matrix, we have
+\begin{equation}
+  \widetilde{\mu} : a \mapsto S a S^{*} = \text{diag}(s, \dots, s) \cdot a \cdot \text{diag}(s^{*}, \dots, s^{*})
+\end{equation}
+where $s^{*}$ and $s$ are repeated $n$-times on the diagonal. We already know such a map will induce a $*$-homomorphism. From here, let us consider the mapping $p \mapsto \gamma([\widetilde{\mu}(p)]_{\mathcal{D}})$.
+We claim that $\widetilde{\mu}(p) \sim_0 p$: indeed, note that $\widetilde{\mu}(p) = S p S^{*} = S p p^{*} S^{*} = (S p) (S p)^{*}$ and $p = p^2 = p^{*} S^{*} S p = (Sp)^{*} (Sp)$. Thus, by definition, they are equivalent.
+It follows that $K_0(\mu)([p]_0) = \gamma([p]_{\mathcal{D}}) = [p]_0$ for all $p \in \mathcal{P}_{\infty}(A)$. Since a generic element of $K_0(A)$ is of the form $[p]_0 - [q]_0$, we have
+\begin{equation}
+  K_0(\mu)([p]_0 - [q]_0) = K_0(\mu)([p]_0) - K_0(\mu)([q]_0) = [p]_0 - [q]_0
+\end{equation}
+so $K_0(\mu)$ is in fact the identity, as desired.
+
+\hhrulefill
+
+\section{Problem 2}
+
+\noindent \textbf{Part 1.} \pop{TODO}
+\newline
+
+\noindent \textbf{Note:} We will refer to the results outlined in the question, generally, as the characterization of Cuntz algebras (CCA).
+\newline
+
+\noindent \textbf{Part 2.} This follows immediately from the CCA. Note that $\mathcal{O}_n$ is itself a unital $C^{*}$-algebra (as it contains isometry $s_1$, so it contains $s^{*}_1 s_1 = 1$ of $B(H)$).
+Suppose $s_1, \dots, s_n$ are the elements generating $\mathcal{O}_n$. Let $t_j = u s_j$. Note that
+$$t_j^{*} t_j = s_j^{*} u^{*} u s_j = u s_j^{*} s_j u^{*} = u u^{*} = 1.$$
+Also, note that
+\begin{equation}
+  \displaystyle\sum_{j = 1}^{n} t_j t_j^{*} = u \left( \displaystyle\sum_{j} s_j s_j^{*} \right) u^{*} = u u^{*} = 1
+\end{equation}
+Thus, from CCA, there is a unique $*$-endomorphism $\varphi_u : \mathcal{O}_n \rightarrow \mathcal{O}_n$ such that $\varphi_u(s_j) = t_j = u s_j$, as desired. Finally, it is clear that
+\begin{equation}
+  u = \displaystyle\sum_{j} \varphi_u(s_j) s_j^{*} = \displaystyle\sum_{j} u s_j s_j^{*} = u \displaystyle\sum_{j} s_j s_j^{*} = u
+\end{equation}
+as desired.
+\newline
+
+\noindent \textbf{Part 3.} Let $\varphi$ be a unital endomorphism on $\mathcal{O}_n$. We have the following claim:
+
+\begin{claim}
+The elements $s_{j}$ satisfy the orthogonality relation $s_j^{*} s_i = \delta_{ij}$.
+\end{claim}
+\begin{proof}
+  Note that $(s_j s_j^{*})^2 = s_j s_j^{*} = (s_j s_j^{*})^{*}$, so each element $s_j s_j^{*}$ is a projection. Recall from an early homework exercise
+  that since we have a sum of projections $s_1 s_1^{*} + \cdots + s_n s_n^{*} = 1$, then the projections must be mutually orthogonal. This then
+  implies that
+  \begin{equation}
+    s_j^{*} s_i = s_j^{*} (s_j s_j^{*}) (s_i s_i^{*}) s_i = 0
+  \end{equation}
+  and we have the desired orthogonality.
+\end{proof}
+\noindent Now, let us set $u = \sum_{j} \varphi(s_j) s_j^{*}$. We have $u s_j = \varphi(s_j)$ from the orthogonality. Moreover, it is easy to verify that $u$ is unitary:
+\begin{equation}
+  u^{*} u = \displaystyle\sum_{ij} \varphi(s_i^{*} s_j) s_i s_j^{*} = \displaystyle\sum_{j} \varphi(1) s_j s_j^{*} = 1.
+\end{equation}
+Checking that $u u^{*} = 1$ is identical. Thus, $\varphi_u$ and $\varphi$ agree on all $s_j$. It follows from CCA that we must have $\varphi_u = \varphi$.
+\newline
+
+\noindent \textbf{Part 4.} Clearly, this map is linear and $*$-preserving. Moreover, it is multiplicative as
+\begin{equation}
+  \lambda(a)\lambda(b) = \sum_{ij} s_j a s_j^{*} s_i b s_i^{*} = \sum_{j} s_j a b s_j^{*} = \lambda(ab).
+\end{equation}
+Thus, $\lambda$ is an endomorphism. In fact, each term in the sum defines an endomorphism: this was shown in Problem 1. From Problem 1,
+we immediately have
+\begin{equation}
+  K_0 \left( \sum_{j} s_j (\cdot) s_j^{*} \right)(g) = \sum_{j} K_0(s_j (\cdot) s_j^{*})(g) = \sum_{j = 1}^{n} \text{id}(g) = ng
+\end{equation}
+as desired.
+\newline
+
+\noindent \textbf{Part 5.} We already found a systemic method for constructing the unitary $u$ such that $\varphi_u = \lambda$. In particular, we note that
+$\lambda$ is unital, so we can immediately apply Part 3 to get
+\begin{equation}
+  u = \sum_{j} \lambda(s_j) s_j^{*} = \sum_{j} \sum_{i} s_i s_j s_i^{*} s_j^{*} = \sum_{ij} (s_i s_j) (s_i s_j)^{*}.
+\end{equation}
+Clearly, $u = u^{*}$ with this definition, so $u$ is self-adjoint. To conclude that $u \sim_h 1$, we define $\gamma(t) = i \sin(t) u + \cos(t)$, which is clearly always in $\mathcal{O}_n$. Moreover,
+\begin{equation}
+  v(t)^{*} v(t) = (-i \sin(t) u + \cos(t)) (\sin(t) u + \cos(t)) = \sin^2(t) u^2 + \cos^2(t) = 1 = v(t) v(t)^{*}
+\end{equation}
+with $v(0) = 1$ and $v(1) = i u$. From here, we can connect $iu$ to $u$ via the path $\mu(t) = e^{i t \pi/2} u$, which is clearly also in $\mathcal{O}_n$. Thus, $u \sim_h 1$. We will let $\xi$ denote the composite path. Next, we show that $\lambda \sim_h \text{id}$.
+Indeed, we will construct a homotopy $F_t$ such that $F_0 = \text{id}$ and $F_1 = \lambda$. Let $F_t(p) = \varphi_{\gamma(t)}(p)$. Clearly, $F_0 = \text{id}$ (this follows from CCA, as we must have $\varphi_1(s_j) = s_j$ on all $s_j$) and $F_1 = \varphi_u = \lambda$.
+We simply must verify that $t \mapsto F_t(p)$ is a continuous function for each $p$ in the algebra $\mathcal{O}_n$.
+
+Indeed, we can verify that $t \mapsto F_t(s_j)$ is continuous for each $s_j$ in the generating set, as $\varphi_{\gamma(t)}(s_j) = \gamma(t) s_j$, which is clearly continuous in $t$, as $\gamma$ is. Thus, by using Problem 3 from the 4th problem set, we note
+that since $t \mapsto F_t(s_j)$ is continuous for each $s_j$, the map $t \mapsto F_t(s_j)$ is continuous for each $a \in C(s_1, \dots, s_n) = \mathcal{O}_n$, and we have a homotopy, so $\lambda \sim_h \text{id}$.
+\newline
+
+\noindent \textbf{Note}: \emph{I didn't realize this until now, but RLL uses a wekaer version of homotopy than I am used to: they only require that the functions $t \mapsto F_t(x)$ are pointwise continuous for each $x$,
+rather than requiring that the map $(x, t) \mapsto F_t(x)$ be continuous.}
+\newline
+
+\noindent All that remains now is to show that $K_0(\lambda) = \text{id}$, but of course this follows from the fact that if $f \sim_h g$, then $K_0(f) = K_0(g)$. We know that $K_0(\text{id}) = \text{id}$, so the proof is immediate.
+\newline
+
+\noindent \textbf{Part 6.} In the previous two parts, we showed that $K_0(\lambda)(g) = ng$ and that $K_0(\lambda)(g) = g$, for $g \in K_0(\mathcal{O}_n)$. Thus, we must have $(n - 1)g = 0$ for each $g \in K_0(\mathcal{O}_n)$. In particular, $K_0(\mathcal{O}_2) = 0$.
+
+\hhrulefill
+
+\section{Problem 3}
+
+\noindent \textbf{Part 1.} This is quite clear: it follows from Problem 1 Part 1: we showed that the endomorphism on $\widetilde{A}$ defined by $a \mapsto s a s^{*}$ is an automorphism precisely when $s$ is unitary.
+The reason why the resulting map restricts to an automorphism of the possibly non-unital algebra $A$ is because if $a \in A$, then we can write $a \simeq (a, 0) \in \widetilde{A}$, and note clearly that $u (a, 0) u^{*} \in A$
+as well.
+\newline
+
+\noindent \textbf{Part 2.} I'm assuming that the group operation here is multiplication. In this case, Note that
+$$\text{Ad}(uv)(a) = (uv) a (uv)^{*} = u(v a v^{*}) u^{*} = (\text{Ad}(u) \circ \text{Ad}(v))(a)$$
+Thus, $\text{Ad}(uv) = \text{Ad}(u) \circ \text{Ad}(v)$, and we have the desired group homomorphism.
+\newline
+
+\noindent \textbf{Part 3.} Let $\text{Ad}(u) \in \text{Inn}(A)$, let $f \in \text{Aut}(A)$. Let $\varphi = f \circ \text{Ad}(u) \circ f^{-1}$, and note that
+$$\varphi(a) = (f \circ \text{Ad}(u) \circ f^{-1})(a) = f( u f^{-1}(a) u^{*}) = f(u) f(u) f(f^{-1}(a)) f(u^{*}) = f(u) a f(u)^{*}$$
+Since $f$ is a $*$-automorphism, it follows that if $u$ is unitary, then $f(u)$ is unitary in $\widetilde{A}$, so $\varphi = \text{Ad}(f(u))$, and is this an element of $\text{Inn}(A)$.
+It follows by definition that $\text{Inn}(A) \trianglelefteq \text{Aut}(A)$.
+\newline
+
+\noindent \textbf{Part 4.} Let $\varphi$ be an inner automorphism, so that $\varphi = \text{Aut}(u, \mu)$, for some $(u, \mu) \in \widetilde{A}$. $(u, \mu)^{*} (u, \mu) = (u, \mu) (u, \mu)^{*} = (0, 1)$.
+Thus, $u^{*} u + \mu u^{*} + \overline{\mu} u = u u^{*} +  \mu u^{*} + \overline{\mu} u = 0$ and $\mu \overline{\mu} = 1$. Let $v = u + \mu 1_{A}$, where $1_A$ is the unit in $A$. Such an element
+is unitary in $A$ from the previous equations. Moreover,
+\begin{equation}
+  (u + \mu 1_A) a (u + \mu 1_A)^{*} = u a u^{*} + \mu a u^{*} + \overline{\mu} u a + \overline{\mu} \mu a = (u, \mu) (a, 0) (u, \mu)^{*}
+\end{equation}
+so $\text{Ad}(v) = \text{Ad}(u + \mu 1_A) = \text{Ad}(u, \mu)$, and the proof is complete.
+\newline
+
+\noindent \textbf{Part 5.} This proof is essentially identical to that of Problem 1 Part 2. All we need to do is verify that for $u \in \mathcal{U}(\widetilde{A})$, and $p \in \mathcal{P}_{\infty}(A)$,
+that $U p = \text{diag}(u, \dots, u) \cdot p$ is in fact itself and element of $\mathcal{P}_{\infty}(A)$ (this will allow us to directly translate the proof of Problem 1 Part 2). Indeed, if $(p_{ij}, 0) \in A$,
+and $(u, \mu) \in \widetilde{A}$, then the product $(u, \mu) (p_{ij}, 0)$ will be an element of $A$, so this fact is immediate.
+
+\hhrulefill
+
+\end{document}
