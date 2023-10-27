@@ -86,6 +86,223 @@
 
 \section{Problem 1}
 
+\noindent Recall that in Problem Set 2, we proved the following facts:
+
+\begin{claim}
+  For self adjoint $h, h_1, h_2$ in a unital $C^{*}$-algebra, $h \leq ||h|| \cdot 1$ and if $h_1 \leq h_2$, then $x^{*} h_1 x \leq x^{*} h_2 x$ for all $x$ in the algebra.
+\end{claim}
+\begin{proof}
+  Note that the spectrum of $h - ||h|| \cdot 1$ must be entirely non-positive, as for self-adjoint $h$, $||h|| = r(h)$. Thus, $h - ||h|| \cdot 1 \leq 1$ by definition.
+  As for the latter fact, note that if $h_2 - h_1 \geq 0$, we can write $h_2 - h_1 = y^{*} y$ for some $y$. We subsequently note that
+  $$x^{*} (h_2 - h_1) x = x^{*} y^{*} y x = (yx)^{*} (yx) \geq 0 \Longrightarrow x^{*} h_1 x \leq x^{*} h_2 x$$
+  \end{proof}
+
+\noindent From here, note that if $a$ is lef-tinvertible, $ba = 1$, then we have
+\begin{equation}
+  1 = 1^{*} 1 = (ba)^{*} (ba) = a^{*} b^{*} b a \leq ||b^{*} b|| a^{*} a = ||b||^2 a^{*} a
+\end{equation}
+Thus, for $||b|| > 0$, $a^{*} a - ||b||^{-2} \geq 0$, so $a^{*} a$ has a non-negative spectrum (the spectrum of $a^{*} a$ is already in $[0, \infty)$ as it is positive, so this fact implies it is in $[||b||^{-2}, \infty)$).
+    Thus, $a^{*} a$ is invertible. Conversely, suppose $a^{*} a$ is invertible. Since it is positive, $(a^{*} a)^{-1/2}$ is well-defined. Letting $s = a (a^{*} a)^{-1/2}$, we have
+    $$s^{*} s = (a^{*} a)^{-1/2} (a^{*} a) (a^{*} a)^{-1/2} = 1$$
+    implying that $s$ is invertible, so $a = s (a^{*} a)^{1/2}$ is also invertible. Proving the case of $a a^{*}$/$a$ being right-invertible follows via an identical argument.
+
+    \hhrulefill
+
+    \section{Problem 2}
+
+    \noindent \textbf{Part 1.} Recall that the induced trace is simply the sum of the traces (via $\tau$) of the diagonal entires of some element in the matrix algebra. It is quite clear that
+    if $x \in M_n(A)$, then $x^{*} \in M_n(A)$ with entries $(x^{*})_{ij} = (x_{ji})^{*}$, as the induced-$*$ is simply the conjugate transpose. Thus,
+    $$(x^{*} x)_{ij} = \sum_{k} (x^{*})_{ik} x_{kj} = \sum_{k} (x_{ki})^{*} x_{kj} \Longrightarrow \tau_n(x^{*} x) = \sum_{j} \tau((x^{*} x)_{jj}) = \sum_{k, j} \tau( x_{kj}^{*} x_{kj} )$$
+    as desired.
+    \newline
+
+    \noindent \textbf{Part 2.} We assumed $\tau$ is positive, so from the above formula, is is obvious that $\tau_n$ is positive (as each $x_{kj}^{*} x_{kj}$ is positive, so the sum of their traces will be non-negative).
+    \newline
+
+    \noindent \textbf{Part 3.} This also follows trivially from Part 1. Given positive $a$, we write $a = x^{*} x$, note from Part 1 that $\tau_n(a)$ is a sum of $\tau$ evaluated on positive elements, so
+    since $\tau$ is faithful, each of these terms is greater than $0$, so their sum is as well.
+    \newline
+
+    \noindent \textbf{Part 4.} To show that $A$ is stably finite, we must show that $1$, the unit, is a finite projection in each induced matrix algebra $M_n(A)$.
+    Suppose $\tau$ is a positive faithful trace, so the induced traces $\tau_n$ are also positive faithful, from Part 2 and Part 3. Thus, $\tau_n(0) = 0$ and $\tau(a) > 0$
+    for all positive $a$. Let us suppose that in $M_n(A)$ , $1_n \sim p_n < 1_n$, where $1_n$ is the unit of $M_n(A)$. We must have $1_n = v_n^{*} v_n$ and $p_n = v_n v_n^{*}$. Since $\tau_n$ is a trace,
+    we then have
+    \begin{equation}
+      \tau_n(1_n) = \tau_n(v_n^{*} v_n) = \tau_n(v_n v_n^{*}) = \tau(p_n) \Longrightarrow \tau(1 - p_n) = 0
+    \end{equation}
+    But, note that by assumption, $1 - p_n$ is positive (and not equal to $0$), so since $\tau_n$ is positive faithful, $\tau(1 - p_n) > 0$, a clear contradiction. Thus,
+    we cannot have $1_n \sim p_n$ for any $n$, so each $M_n(A)$ is finite, and $A$ is stably finite.
+
+    \hhrulefill
+
+    \section{Problem 3}
+
+    \noindent \textbf{Part 1.} I'm assuming that we let the involution operation be the operator adjoint $\langle O^{*} a, b \rangle = \langle a, Ob\rangle$, where
+    $\langle \cdot, \cdot \rangle$ is the inner product on $H$,
+    \begin{equation}
+      \langle f, g \rangle = \displaystyle\int f \overline{g} \ d\mu.
+    \end{equation}
+    It follows that
+    \begin{equation}
+      \displaystyle\int O^{*}(f) \overline{g} \ d\mu = \displaystyle\int f \overline{O(g)} \ d\mu
+    \end{equation}
+    For the particular case of $u$ and $v$, we then have
+    \begin{align}
+      \displaystyle\int u^{*}(f)(z_1, z_2) \overline{g(z_1, z_2)} \ d\mu = \displaystyle\int f(z_1, z_2) \overline{u(g)(z_1 z_2)} \ d\mu &= \displaystyle\int \overline{z_1} f(z_1, z_2) \overline{g(z_1, z_2)} \ d\mu
+      \\
+      \displaystyle\int v^{*}(f)(z_1, z_2) \overline{g(z_1, z_2)} \ d\mu = \displaystyle\int f(z_1, z_2) \overline{v(g)(z_1 z_2)} \ d\mu &= \displaystyle\int \overline{z_2} f(z_1, z_2) \overline{g(\omega z_1, z_2)} \ d\mu
+      \\ & = \displaystyle\int \overline{z_2} f(\overline{\omega} z_1, z_2) \overline{g(z_1, z_2)} \ d\mu
+    \end{align}
+    so that $u^{*}(f)(z_1, z_2) = \overline{z_1} f(z_1, z_2)$ and $v^{*}(f)(z_1, z_2) = \overline{z_2} f(\overline{\omega} z_1, z_2)$. Note that we are allowed the make the substitution $z_1 \mapsto \overline{\omega} z_1$ in the
+    integral as we are integrating with respect to the Haar measure, which will be invariant with respect to left-action by elements of $\mathbb{T}$. Thus, we have
+    \begin{equation}
+      (u^{*} u)(f)(z_1, z_2) = u^{*} \left( z_1 \cdot f(z_1, z_2) \right) = \overline{z_1} z_1 f(z_1, z_2) = f(z_1, z_2) = (u u^{*})(f)(z_1, z_2)
+    \end{equation}
+    as well as
+    \begin{equation}
+      (v^{*} v)(f)(z_1, z_2) = u^{*} \left( z_2 \cdot f(\omega z_1, z_2) \right) = \overline{z_2} z_2 f(\overline{\omega} \omega z_1, z_2) = f(z_1, z_2) = (v v^{*})(f)(z_1, z_2)
+      \end{equation}
+    as $\overline{z_1} z_1 = \overline{z_2} z_2 = \overline{\omega} \omega = 1$, since $z_1, z_2, \omega \in \mathbb{T}$. Thus, both $u, v \in B(H)$ are unitary.
+    Moreover, it is easy for us to check that $u$ and $v$ almost commute: note that
+    \begin{equation}
+      (uv)(f)(z_1, z_2) = u \left( z_2 f(\omega z_1, z_2) \right) = z_1 z_2 f(z_1, z_2)
+    \end{equation}
+    as well as
+    \begin{equation}
+      (vu)(f)(z_1, z_2) = v \left( z_1 f(z_1, z_2) \right) = z_2 (\omega z_1) f(\omega z_1, z_2)
+    \end{equation}
+    so $vu = \omega uv$.
+    \newline
+
+    \noindent \textbf{Part 2.} This follows immediately from the definition of $C^{*}(u, v)$. Recall that $C^{*}(u, v)$ is the closure over the span of all words generated by $u$, $v$, $u^{*}$, and $v^{*}$.
+    Clearly, $u^{*} = u^{-1}$ and $v^{*} = v^{-1}$.
+
+    Note that $u^{-1} v^{-1} = (vu)^{-1} = (\omega uv)^{-1} = \overline{\omega} v^{-1} u^{-1}$. Then, note that $u v^{-1} = v^{-1} v u v^{-1} = \omega v^{-1} u v v^{-1} = \omega v^{-1} u$. This implies that $u^{-1} v = (v^{-1} u)^{-1} = (\overline{\omega} u v^{-1})^{-1} = \omega v u^{-1}$.
+    Thus, swapping any two of the elements $v, u, v^{-1}, u^{-1}$ induces multiplication by either $\omega$ or $\overline{\omega}$. It follows that any words of $u$, $v$, $u^{*}$ and $v^{*}$ can be re-written in the form $\beta u^{m} v^{n}$, for $m, n \in \mathbb{Z}$
+    and $\beta \in \mathbb{T}$. Thus, the span of all such words $W$ is clearly precisely the set of Laurent polynomials in $u$ and $v$, $\mathcal{A}_{\theta}$. Thus, $\mathcal{A}_{\theta}$ is a sub-$*$ algebra, as $\text{span}(W)$ is.
+    \newline
+
+    \noindent Note that $A_{\theta} = C^{*}(u, v) = \overline{\text{span}(W)} = \overline{\mathcal{A}_{\theta}}$. Thus, by definition, $\mathcal{A}_{\theta}$ is dense in $A_{\theta}$.
+    \newline
+
+    \noindent \textbf{Part 3.} By definition, we note that
+    \begin{align}
+     \tau \left( \displaystyle\sum_{n, m \in \mathbb{Z}} \alpha_{n, m} u^n v^m \right) = \displaystyle\sum_{n, m \in \mathbb{Z}} \alpha_{n, m} \tau(u^{n} v^{m})
+    \end{align}
+    Clearly, by definition,
+    \begin{equation}
+      \tau(u^n v^m) = \langle u^n v^m \xi_0, \xi_0 \rangle = \displaystyle\int (u^n v^m)(\xi_0)(z_1, z_2) \overline{\xi_0(z_1, z_2)} \ d\mu
+    \end{equation}
+    Because $(v f)(z_1, z_2) = z_2 f(\omega z_1, z_2)$ and $(v^{-1} f)(z_1, z_2) = \overline{z_2} f(\omega^{-1} z_1, z_2)$, it is easy to see that $(v^m \xi_0)(z_1, z_2) = z_2^{m} \xi_0(\omega^m z_1, z_2)$.
+    Then, using similar logic, $u^n (z_2^{m} \xi_0(\omega^m z_1, z_2)) = z_1^{n} z_2^{m} \xi_0(\omega^m z_1, z_2) = z_1^{n} z_2^{m}$, by definition of $\xi_0$. Thus,
+    \begin{equation}
+      \displaystyle\sum_{n, m \in \mathbb{Z}} \alpha_{n, m} \tau(u^{n} v^{m}) = \displaystyle\sum_{n, m \in \mathbb{Z}} \alpha_{n, m} \left( \displaystyle\int_{\mathbb{T}} z_1^{n} \ d\mu \right) \left( \displaystyle\int_{\mathbb{T}} z_2^{m} \ d\mu \right) = \alpha_{0, 0}
+    \end{equation}
+    as the integral over the unit circle with respect to the Haar measure of any non-zero power of $z$ is clearly just $0$.
+    \newline
+
+    \noindent \textbf{Part 4.} To demonstrate that $\tau$ is a tracial state, it is necessary to show that $\tau$ is a trace, it is positive, and it sends $1$ to $1$. Clearly, $\tau(1) = \langle \xi_0, \xi_0 \rangle = \int 1 \ d \mu = 1$.
+    Now, given some $p \in \mathcal{A}_{\theta}$, note that
+    \begin{equation}
+      p = \displaystyle\sum_{m, n \in \mathbb{Z}} \alpha_{m, n} u^{m} v^{n} \ \ \ \text{and} \ \ \ p^{*} = \displaystyle\sum_{m, n \in \mathbb{Z}} \overline{\alpha_{m, n}} v^{-n} u^{-m}
+    \end{equation}
+    which implies that
+    \begin{equation}
+      pp^{*} = \displaystyle\sum_{pqrs} \alpha_{p, q} \overline{\alpha_{r, s}} u^{p} v^{q - r} u^{-s} \ \ \ \text{and} \ \ \ p^{*}p = \displaystyle\sum_{pqrs} \overline{\alpha_{p, q}} \alpha_{r, s} v^{-p} u^{r - q} v^{s}
+      \end{equation}
+    from the almost-commutation relations between $u$ and $v$, it is clear that the degree-$0$ terms in $pp^{*}$ and $p^{*} p$ are precisely those such that $r = q$ and $p = s$. Thus, the degree-$0$ term of $pp^{*}$ and $p^{*} p$,
+    which we denote $\beta$,
+    are clearly the same, and from Part 3, $\tau(p p^{*}) = \tau(p^{*} p)$ for all $p \in \mathcal{A}_{\theta}$.
+    To show that this relation holds for all of $A_{\theta}$, let us pick $p \in A_{\theta}$, and
+    choose a sequence of $p_n \in \mathcal{A}_{\theta}$ which approach $p$.  Note that the function $\tau$ is a continuous function on $A_{\theta}$, as we have
+    \begin{equation}
+      | \tau(x) - \tau(y) | = |\tau(x - y)| = | \langle (x - y) \xi_0, \xi_0 \rangle | \leq ||x - y||
+    \end{equation}
+    so $\tau$ is Lipschitz. The function $f(x) = \tau(x x^{*} - x^{*} x)$ is then clearly continuous. Thus, we have
+    \begin{equation}
+      f(p) = f \left( \lim_{n \to \infty} p_n \right) = \lim_{n \to \infty} f(p_n) = 0
+    \end{equation}
+    so $\tau(p p^{*}) = \tau(p^{*} p)$ here as well. It follows from Problem Set 4 Question 2 that $\tau$ is a valid trace map on $A_{\theta}$. All that remains to check is that $\tau(a) \geq 0$ for all positive $a \in A_{\theta}$.
+
+    \begin{claim}
+      If $H$ is a Hilbert space with inner product $\langle \cdot, \cdot \rangle$, then if $A \in B(H)$ is positive, $\langle Av, v \rangle \geq 0$ for all $v \in H$.
+    \end{claim}
+    \begin{proof}
+      Suppose $A$ is positive, so it is of the form $A = X^{*} X$. Then $\langle Av, v \rangle = \langle X v, X v \rangle \geq 0$, by definition of the inner product.
+    \end{proof}
+    \noindent It follows immediately that $\tau(a) = \langle a \xi_0, \xi_0\rangle$ must send positive $a \in A_{\theta}$ to non-negative real numbers, so $\tau$ is a positive trace. Thus, the proof
+    is complete: $\tau$ is a tracial state.
+    \newline
+
+    \noindent \textbf{Part 5.} It is easy to see that $p = p^{*}$. Since $f, g : \mathbb{T} \rightarrow \mathbb{R}$, it follows that for some $s \in \mathbb{T}$, $\overline{f(s)} = f(s)$ and $\overline{g(s)} = g(s)$.
+    It follows that if $\Phi$ is the $*$-isomorphism which assigns functions in $C(\text{sp}(a))$ to elements of $C^{*}(a, 1)$ (via the continuous function calculus), we have $\Phi(f - \overline{f}) = 0$, so $f(a) = f(a)^{*}$, with the same logic showing that $g(a) = g(a)^{*}$.
+    Thus,
+    \begin{equation}
+      p^{*} = (f(u) v^{*}) + g(u)^{*} + (v f(u))^{*} = v f(u)^{*} + g(u) + f(u)^{*} v = v f(u) + f(u) + f(u) v = p
+    \end{equation}
+    To show that $\tau(p) = \int_{\mathbb{T}} g(z) \ dz$ (we replace the $d\mu$ notation with $dz$, to be consistent with the notation of the question), let's us begin by considering the case where
+    $f$ and $g$ are Laurent polynomials. Clearly, both $f(u) v^{*}$ and $v f(u)$ will then be Laurent polynomials with no degree-$0$ term, so $\tau(f(u) v^{*}) = \tau(v f(u)) = 0$. It follows that
+    \begin{equation}
+      \tau(p) = \tau(g(u)) = \tau \left( \displaystyle\sum_{m \in \mathbb{Z}} \alpha_m u^m \right) = \alpha_0
+    \end{equation}
+    from Part 3 (note that only a finite number of the $\alpha_m$ are non-zero, by definition of a Laurent polynomial). Of course, note that
+    \begin{equation}
+      \displaystyle\int_{\mathbb{T}} g(z) \ dz = \displaystyle\sum_{m \in \mathbb{Z}} \alpha_m \displaystyle\int_{\mathbb{T}} z^{m} \ dz = \alpha_0 = \tau(p)
+    \end{equation}
+    as integrating any power of $z$ uniformly over the unit circle will be $0$. Thus, we have proved the formula for the case of $f$ and $g$ being Laurent polynomials. To prove it in general, note that
+    by Stone-Weierstrass Theorem, the set of Laurent polynomials is dense in the metric space of continuous function $C(\mathbb{T}, \mathbb{R})$ with the uniform metric. For a particular pair of $f, g$,
+    let $f_n$ and $g_n$ be sequences of Laurent polynomials which converge uniformly to $f$ and $g$. Let $p_n = f_n(u) v^{*} + g_n(u) + v f_n(u)$. Note that
+    \begin{equation}
+      \tau(p_n) = \displaystyle\int_{\mathbb{T}} g_n(z) \ dz
+    \end{equation}
+    Because $\tau$ is continuous, $\lim_{n \to \infty} \tau(p_n) = \tau(p)$. Moreover, since $g_n$ converges \emph{uniformly} to $g$, we have
+    $$\lim_{n \to \infty} \int_{\mathbb{T}} g_n(z) \ dz = \int_{\mathbb{T}} \lim_{n \to \infty} g_n(z) \ dz = \int_{\mathbb{T}} g(z) \ dz$$
+    so the formula $\tau(p) = \int_{\mathbb{T}} g(z) \ dz$ holds for all of $A_{\theta}$, and we are done.
+    \newline
+
+    \noindent \textbf{Part 6.} Once again, let us begin with the case where $h$ is a Laurent polynomial, so $h(z) = \sum_{m \in \mathbb{Z}} \alpha_m z^{m}$. We have $\varphi(u) = \omega u$. Therefore,
+    \begin{equation}
+      h(\varphi(u)) v = \displaystyle\sum_{m \in \mathbb{Z}} \alpha_m \omega^m u^{m} v
+    \end{equation}
+    Now, recall that $uv = \omega^{-1} vu$. Thus, inductively, we see that $u^{m} v = (u \cdots u) v = \omega^{-m} v (u \cdots u) = \omega^{-m} v u^{m}$, as we perform $m$ swaps, this picking up $m$
+    factors of $\omega^{-1}$. Thus,
+    \begin{equation}
+      \displaystyle\sum_{m \in \mathbb{Z}} \alpha_m \omega^m u^{m} v = \displaystyle\sum_{m \in \mathbb{Z}} \alpha_m \omega^m \omega^{-m} v u^{m} = v \displaystyle\sum_{m \in \mathbb{Z}} \alpha_m u^{m} = v h(u)
+    \end{equation}
+    so the formula holds when $h$ is a Laurent polynomial. Similar to what we did previously, we note that we can choose a sequence of Laurent polynomials $h_n$ converging uniformly to $h$.
+    Obviously, $v h_n(u) - h_n (\omega u) v = 0$ for all $n$, so its limit for $n \to \infty$ is also $0$, implying $vh(u) = h(\omega u) v = (h \circ \varphi)(u) v$.
+    \newline
+
+    \noindent \textbf{Part 7.} Let us first make note of the fact that $\varphi^{-1}(z) = \overline{\omega}z$. Suppose $h$ is a continuous function with real range, as above. We then have
+    $v h(u) = (h \circ \varphi)(u) v$, so $h(u) v^{*} = v^{*} (h \circ \varphi)(u)$. Then, since $\varphi$ is invertible, we have $v (h \circ \varphi^{-1})(u) = h(u) v$ and $(h \circ \varphi^{-1})(u) v^{*} = v^{*} h(u)$. We then have
+    \begin{align}
+      p^2 &= (f(u) v^{*} + g(u) + v f(u))^2 = g(u)^2 + g(u) (f(u) v^{*} + v f(u)) + (f(u) v^{*} + v f(u)) g(u) + (f(u) v^{*} + v f(u))^2 \nonumber
+      \\ & = (g^2 + f^2 + v f^2 v^{*}) + (f v^{*} f v^{*} + v f v f) + (g f v^{*} + g v f + f v^{*} g + v f g)
+      \\ & = (g^2 + f^2 + (f \circ \varphi)^2) + (f \cdot (f \circ \varphi^{-1})) (v^{*})^2 + v^2 (f \cdot (f \circ \varphi^{-1})) + v f \cdot (g + (g \circ \varphi^{-1})) + f \cdot (g + (g \circ \varphi^{-1})) v^{*} \nonumber
+    \end{align}
+    where we make the $u$-dependence implicit, to condense notation. Thus, it is clear that if the relations in the problem statement hold, then $p^2 = p$ (we can see this by direct comparison of the formulas). To prove the other direction,
+    we consider the operator $p^2 - p$. In particular, note that
+    \begin{align}
+      p^2 - p &= (g^2 + f^2 + (f \circ \varphi)^2) - g + \left( v^2 (f \cdot (f \circ \varphi^{-1})) + v (f \cdot (g + (g \circ \varphi^{-1})) - f) + \text{conj.} \right)
+      \\ & = a + \left( v^2 b + v c + c v^{*} + b (v^{*})^2 \right)
+    \end{align}
+    where we use conj. to denote that we are also adding the $*$-conjugate of the terms inside the brackets \pop{I'm sorry if this is confusing, I couldn't think of a better way to condense notation.} Now, note that evaluating $(p^2 - p)(\xi_0(z_1, z_2))$
+    will yield a function in $z_1$ and $z_2$. In fact, we will have
+    \begin{equation}
+      (p^2 - p)(\xi_0(z_1, z_2)) = a(z_1) + b'(z_1) z_2^2 + c'(z_1) z_2 + c(z_1) z_2^{-1} + b(z_1) z_2^{-2} 
+    \end{equation}
+    where $b'$ and $c'$ are modified from $b$ and $c$, via moving $v$ to the right, with the almost-commutation relations. In order for $p^2 - p$ to be $0$ for all $z_1$ and $z_2$, so for fixed
+    $z_1$, all coefficients in the Laurent polynomial in $z_2$ must be $0$ individually, for any choice of $z_1$. This will imply the desired relations between $f$ and $g$.
+    \pop{This is, of course, only a sketch of why this result holds, but we've essentially already proved all the necessary parts, so for the sake of saving time, I will skip over writing everything out explicitly.}
+    \newline
+
+    \noindent \textbf{Part 8.} First, note that $\tau(p) = \int_{\mathbb{T}} g(z) \ dz$, independent of the choice of $f$. But clearly, $g$ as we have defined it satisfies the requirement that $\tau(p) = \theta$, as
+    \begin{equation}
+      \displaystyle\int_{\mathbb{T}} g(z) \ dz = \varepsilon^{-1} \displaystyle\int_{0}^{\varepsilon} t \ dt + (\theta - \varepsilon) + \varepsilon^{-1} \displaystyle\int_{\theta}^{\theta + \varepsilon} (\theta + \varepsilon - t) \ dt = 2 \varepsilon^{-1} \displaystyle\int_{0}^{\varepsilon} t \ dt + \theta - \varepsilon = \frac{2\varepsilon^2}{2\varepsilon} + \theta - \varepsilon = \theta
+    \end{equation}
+    Note that we are integrating with respect to the Haar measure on the unit circle, so we can pull-back and integrate \emph{uniformly} with respect to the angle.
+    \newline
+
 \hhrulefill
 
 \end{document}
