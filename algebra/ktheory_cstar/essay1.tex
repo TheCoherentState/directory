@@ -88,7 +88,7 @@
 \newline
 
 \noindent The goal of this essay is to introduce, explain, and place in broader context the basic theory of cyclic cohomology. The main reference
-for this essay is the book by Moriyoshi and Natsume (Ref.~\cite{}). This book provides a brief introduction to non-commutative geometry: we attempt
+for this essay is the book by Moriyoshi and Natsume (Ref.~\cite{}), as well as review articles [CITE]. This book provides a brief introduction to non-commutative geometry: we attempt
 to expand upon some of their main points in this work.
 
 \hhrulefill
@@ -98,7 +98,7 @@ to expand upon some of their main points in this work.
 \subsection{Trace maps}
 
 \noindent The $K_0$-group of a $C^{*}$-algebra $A$ is a broadly powerful invariant which encodes the underlying structure of $A$, in such a way that lends
-itself well to being analyzed via a large toolbox of different techniques. Amonng such techniques are extracting numerical invariants from $K_0(A)$ via \emph{trace maps}.
+itself well to being analyzed via a large toolbox of different techniques. Among such techniques are extracting numerical invariants from $K_0(A)$ via \emph{trace maps}.
 
 \begin{definition}[Trace map on a $C^{*}$-algebra]
 \end{definition}
@@ -111,45 +111,16 @@ itself well to being analyzed via a large toolbox of different techniques. Amonn
   \end{proof}
 
 \noindent Trace maps of this form are vital to the analysis of $K_0$-groups. However, as it turns out, one will often encounter $C^{*}$-algebras which \emph{admit no non-trivial trace}.
+For example, one of the most important types of $C^{*}$-algebras are the so-called \emph{Cuntz algebras}, which are defined as follows.
 
-\subsection{A brief aside: the Cuntz algebra}
+\begin{definition}[Cuntz algebra]
+  \end{definition}
 
+\noindent This is a problem, as in such cases, it is very much unclear how one should go about extracting numerical invariants from $K_0(A)$. Cyclic cohomology, discovered by Alain Connes, can
+be thought of as a remedy to this situation: it provides a different technique for mapping from $K_0$-groups to numbers.
 
+\appendix
 
-\begin{comment}
-\begin{theorem}[Atiyah-Singer index theorem]
-  For an elliptic differential operator on a compact manifold, the analytical index is equal to the topological index.
-\end{theorem}
-
-\hhrulefill
-
-\section{Building up to the index theorem}
-
-\noindent The main goal of this section of the essay is to develop the necessary machinery in order to understand each individual concept utilized in the statement of the index
-theorem. At a coarse-grained level, this will involve defining \emph{elliptic differential operators}, \emph{analytical index}, and \emph{topological index}. The first of these concepts
-is simple.
-
-\begin{definition}[Elliptic differential operator]
-  We let $D$ be an order-$m$ differential operator on domain $\Omega \subset \mathbb{R}^{n}$, given by $Du = \sum_{|a| \leq m} f_{\alpha}(x) \partial^{\alpha} u$, where $u \in C^{\infty}(\Omega, \mathbb{R})$,
-  where $\alpha = (\alpha_1, \dots, \alpha_n)$ with $\alpha_1 + \cdots + \alpha_n = m$ and $\partial^{\alpha} = \partial_1^{\alpha_1} \cdots \partial_{n}^{\alpha_n}$. The operator $D$ is said to be \emph{elliptic}
-  if for every $x \in \Omega$ and non-zero $y \in \mathbb{R}$,
-  \begin{equation}
-    \displaystyle\sum_{\alpha = |m|} f_{\alpha}(x) y^{\alpha_1} \cdots y^{\alpha_n} \neq 0.
-    \end{equation}
-\end{definition}
-
-\noindent As for the two notions of ``index'': these ideas are much more subtle and require substantial exposition.
-\end{comment}
-
-\begin{comment}
-\noindent The primary ingredient in any kind of homological theory is an \emph{exact sequence}.
-
-\begin{definition}[Exact sequence]
-  A sequence of objects $\mathcal{O}_n$ and morphisms $f_n$ of some category, arranged such that
-  $f_{n + 1} : \mathcal{O}_{n + 1} \rightarrow \mathcal{O}_{n}$ is said to be exact at $\mathcal{O}_n$
-  when $\text{Im}(f_{n + 1}) = \text{Ker}(f_n)$. A sequence is exact if it is exact at all objects. A sequence
-  is said to be \emph{short exact}, if it is exact and of the form
-\end{definition}
-\end{comment}
+\section{Proof of Lem.~\ref{lem:}}
 
 \end{document}

@@ -1,0 +1,378 @@
+\documentclass[aps,pra,showpacs,notitlepage,onecolumn,superscriptaddress,nofootinbib]{revtex4-1}
+\usepackage[utf8]{inputenc}
+\usepackage[tmargin=1in, bmargin=1.25in, lmargin=1.5in, rmargin=1.5in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{datetime}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{import}
+\usepackage{mathtools}
+\usepackage{thmtools,thm-restate}
+\usepackage{comment}
+
+
+% package for commutative diagrams
+% \usepackage{tikz-cd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{crimson}{RGB}{186,0,44}
+\definecolor{moss}{RGB}{0, 186, 111}
+\newcommand{\pop}[1]{\textcolor{crimson}{#1}}
+\newcommand{\zcom}[1]{\noindent\textcolor{crimson}{(Z): #1}}
+\newcommand{\jcom}[1]{\noindent\textcolor{moss}{(J): #1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\pqeq}{\succcurlyeq}
+\newcommand{\pleq}{\preccurlyeq}
+
+\newcommand{\hhrulefill}{\hspace{-1.0em}\hrulefill}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+    colorlinks,
+    linkcolor={crimson},
+    citecolor={crimson},
+    urlcolor={crimson}
+}
+
+\usepackage{qcircuit}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{reminder}{Reminder}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{answer}{Answer}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{claim}{Claim}[section]
+
+\usepackage{geometry}
+\geometry{
+  left=25mm,
+  right=25mm,
+  top=20mm,
+}
+\usepackage{tikz-cd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{unsrt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{Fall 2023 MAT437 problem set 7}
+\author{Jack Ceroni}
+\email{jackceroni@gmail.com}
+
+\date{\today}
+
+\maketitle
+
+\hhrulefill
+
+\section{Problem 1}
+
+\noindent \emph{\pop{This is a theorem in the book: I thought that I would try to prove it myself \textbf{without} looking at the proof provided in the book (until close to the end), to make sure that I understand the inductive limit construction well.}}
+\newline
+
+  \noindent \emph{\pop{I also tried my best to explain my thought process, including a couple incorrect initial guesses I had while doing this proof, and why they eventually failed.}}
+\newline
+
+\begin{proposition}
+  Every inductive sequence of $C^{*}$-algebras, $A_1 \xrightarrow{\varphi_1} A_2 \xrightarrow{\varphi_2} A_3 \xrightarrow{\varphi_3} \cdots$, has an inductive limit $(A, \{\mu_n\})$.
+\end{proposition}
+
+\begin{proof}
+  \noindent First, let us consider the following naive, \emph{incorrect} approach:
+  \newline
+
+  \noindent \textbf{\pop{The wrong approach:}} Consider the sequence $\{a_{n, m}\}_{m = n + 1}^{\infty}$ where $a_{n, m} = \varphi_{m, n}(a)$, for some $a \in A_n$. We may be inclined, at first glance, to
+  take $\mu_n(a)$ to be the ``limit'' of this sequence. However, this wouldn't really make sense: each element of this sequence may be an element of a different algebra,
+  with a different norm, meaning there isn't a good way to compare elements of this sequence. Even worse, the norms of the individual elements of this sequence may go to infinity!
+  \newline
+
+  \noindent We have to begin by defining the space $A$ at the end of the sequence. Intuitively, we want this space to reflect what each element of the complex of $C^{*}$-algebras eventually becomes
+  as it is mapped through the infinite sequence of $\varphi_k$ maps. This implies that sequences which \emph{eventually} become identical, should be identified together in the ``eventual space'', $A$.
+  This leads us to define
+  \begin{equation}
+    \mathcal{A} = \displaystyle\prod_{n \in \mathbb{N}} A_n \Big/ \displaystyle\sum_{n \in \mathbb{N}} A_n
+  \end{equation}
+  as RLL showed that $\sum_{n} A_n$ is a closed ideal in $\prod_{n} A_n$, so $\mathcal{A}$ is a valid $C^{*}$-algebra. We define $\mu_n : A_n \rightarrow \mathcal{A}$ as follows: we simply map $a \in A_n$
+  to $[(0, \dots, 0, a, \varphi_{n + 1, n}(a), \varphi_{n + 2, 2}(a), \dots)]$: an equivalence class. Note that $\xi \in \mathcal{A}$ because $\alpha = (0, \dots, 0, a, \varphi_{n + 1, n}(a), \varphi_{n + 2, 2}(a), \dots) \in \prod_{n} A_n$.
+  This is because $\sup_n \alpha_n$ is finite: recall that we proved in an earlier problem set that if $\varphi$ is a $*$-homomorphism between $C^{*}$-algebras $A$ and $B$, then $||\varphi(a)|| \leq ||a||$. It follows that for some $m > n$,
+  $||\varphi_{m, n}(a)|| \leq ||a||$.
+  \newline
+
+  \noindent Our claim now is that the
+  complex $(\mathcal{A}, \{\mu_n\})$ constitutes the desired inductive limit (\pop{This is actually slightly incorrect, as we will show}).
+  \newline
+
+  \noindent The first step is to show that the diagram:
+  % https://q.uiver.app/#q=WzAsMyxbMCwwLCJBX24iXSxbMiwwLCJBX3tuKzF9Il0sWzEsMSwiQSJdLFswLDEsIlxcdmFycGhpX24iXSxbMSwyLCJcXG11X3tuKzF9Il0sWzAsMiwiXFxtdV9uIiwyXV0=
+  \[\begin{tikzcd}
+	          {A_n} && {A_{n+1}} \\
+	          & \mathcal{A}
+	          \arrow["{\varphi_n}", from=1-1, to=1-3]
+	          \arrow["{\mu_{n+1}}", from=1-3, to=2-2]
+	          \arrow["{\mu_n}"', from=1-1, to=2-2]
+  \end{tikzcd}\]
+  commutes. Indeed, this is a triviality, as $(\mu_{n + 1} \circ \varphi_n)(a) = [(0, \dots, 0, \varphi_n(a), \varphi_{n + 1, n}(a), \dots)]$ and $\mu_n(a) = [(0, \dots, 0, a, \varphi_n(a), \dots)]$
+  which are clearly the same equivalence class as their difference is $(0, \dots, 0, a, 0, \dots)$: a sequence which is eventually $0$. As the second and final step, we must show that if $(B, \{\lambda_n\})$
+  is a system in which $\lambda_n : A_n \rightarrow B$ with $\lambda_n = \lambda_{n + 1} \circ \varphi_n$, then there is precisely one $\lambda$ making the diagram:
+  % https://q.uiver.app/#q=WzAsMyxbMSwwLCJBX24iXSxbMCwxLCJBIl0sWzIsMSwiQiJdLFswLDEsIlxcbXVfbiIsMl0sWzAsMiwiXFxsYW1iZGFfbiJdLFsxLDIsIlxcbGFtYmRhIiwyXV0=
+  \[\begin{tikzcd}
+	& {A_n} \\
+	\mathcal{A} && B
+	\arrow["{\mu_n}"', from=1-2, to=2-1]
+	\arrow["{\lambda_n}", from=1-2, to=2-3]
+	\arrow["\lambda"', from=2-1, to=2-3]
+  \end{tikzcd}\]
+  commute for each $n$. As it turns out, \emph{we won't be able to do this}, because $\mathcal{A}$ is ``too big'' to guarantee uniqueness of $\lambda$. Indeed, the collection of all $\mu_n(A_n)$
+  could be a small subset of $\mathcal{A}$, and $\lambda$ could vary drastically on the remainder of the codomain $\mathcal{A}$. This leads us to make the codomain ``as small as possible''. We define
+  \begin{equation}
+    A = \overline{\displaystyle\bigcup_{n \in \mathbb{N}} \mu_n(A_n)} = \overline{A'} \subset \mathcal{A}
+  \end{equation}
+  Clearly, $A$ is a $C^{*}$-algebra (note that it is closed in the metric topology). Note that replacing $\mathcal{A}$ with $A$ in the first commutative diagram does not alter the proof. We will define our map $\lambda$ as follows.
+  \newline
+
+  \noindent Let's assume that such a system $(B, \{\lambda_n\})$ exists. Suppose $x \in A_n$ and $y \in A_m$ are two elements which are mapped to the same element of $A$. In other words,
+  there will exist some $N$ such that for $k \geq N$, $\varphi_{k, n}(x) = \varphi_{k, m}(y)$ (the sequences generated by these elements must eventually become equal). It follows that for some such $m$
+  \begin{equation}
+    \lambda_n(x) = (\lambda_{n + 1} \circ \varphi_n)(x) = (\lambda_{k + 1} \circ \varphi_{k} \circ \cdots \circ \varphi_n)(x) = \lambda_{k + 1}(\varphi_{k, n}(x)) = \lambda_{k + 1}(\varphi_{k, m}(y)) = \lambda_m(y)
+  \end{equation}
+  It follows that $\lambda = \lambda_n \circ \mu_n^{-1}$ constitutes a well-defined mapping: given some $a \in \bigcup_{n} \mu_n(A_n) = A'$, we
+  note that $a = \mu_n(a_n)$ for some $n \in \mathbb{N}$ and some $a_n \in A_n$, and we take $\lambda(a) = \lambda_n(a_n)$. The above logic showed that $\lambda$ is in fact independent of the choice of both $n$ and $a_n$.
+  \newline
+
+  \noindent We have successfully defined a map from $A'$ to $B$. Note that $A'$ is a sub-$*$ algebra of the $C^{*}$ algebra $A$. In addition, note that $\lambda : A' \rightarrow B$ is a $*$-homomorphism
+  from the sub-$*$ algebra $A'$ into $B$.  For $a, b \in A$, note that $\mu_n^{-1}(a) + \gamma \mu_n^{-1}(b) \subset \mu_n^{-1}(a + \gamma b)$, so
+  that $\lambda_n (\mu_n^{-1}(a) + \gamma \mu_n^{-1}(b)) = \lambda(a) + \gamma \lambda(b) \subset \lambda(a + \gamma b)$. But of course these are both one-point sets, so we must have $\lambda(a) + \gamma \lambda(b) \subset \lambda(a + \gamma b)$.
+  Using the same argument for the multiplicativity and $*$-preserving properties, we can conclude that $\lambda$ is a $*$-homomorphism.
+  \newline
+
+  \noindent We have shown that there exists a $*$-homomorphism from $A'$ to $B$ which satisfies the desired properties. Note that this $*$-homomorphism is the unique one from $A'$ to $B$ satisfying the desired properties: suppose $\lambda' : A' \rightarrow B$
+  also satisfied $\lambda' \circ \mu_n = \lambda_n$ for each $n$. Since $\lambda = \lambda_n \circ \mu_n^{-1}$, we would have $\lambda = \lambda' \circ \mu_n \circ \mu_n^{-1} = \lambda'$. If there \emph{did} exist an extension of $\lambda$ to a $*$-homomorphism
+  from $A$ (the closure of $A'$) to the closure of $B$, then note that it would necessarily be unique, as such a function would be continuous, and continuous functions agreeing on a dense subset are equal.
+  \newline
+
+  \noindent Thus, the only remaining task is to show that \textbf{we can extend $\lambda : A' \rightarrow B$ to a $*$-homomorphism from $A = \overline{A'}$ to $B$}. \pop{At this point, I couldn't quite finish the proof myself,
+    so I prompted myself by consulting the book. Annoyingly, the book had practically nothing to say on this matter, it simply asserted that ``we can extend $\lambda : A' \rightarrow B$ by uniform continuity to $\lambda : A \rightarrow B$''.}
+
+\end{proof}
+
+\begin{comment}
+  Let $A$ and $B$ be $C^{*}$-algebras, let $A' \subset A$ be a sub-$*$ algebra which is dense in $A$, with the subspace topology inherited from the metric topology on $A$.
+  Suppose $\varphi : A' \rightarrow B$ is a $*$-homomorphism. Then there exists a unique extension of $\varphi$ to a $*$-homomorphism $\Phi : A \rightarrow B$ with $\varphi(a) = \Phi(a)$
+  for all $a \in A'$.
+
+  To begin, let $\widetilde{A}$ and $\widetilde{B}$ denote the unitizations of $A$ and $B$. Clearly, $\widetilde{A'} = \{ (a, \alpha) \ | \ a \in A', \alpha \in \mathbb{C} \}$
+  equipped with the algebraic operations of $\widetilde{A}$ is a sub-$*$ algebra of $\widetilde{A}$. Define $\widetilde{\varphi} : \widetilde{A'} \rightarrow \widetilde{B}$
+  as $\widetilde{\varphi}(a, \alpha) = (\varphi(a), \alpha)$. It is easy to verify this is a $*$-homomorphism.
+\end{comment}
+
+\begin{proposition}
+Given an inductive sequence of $C^{*}$-algebras $A_1 \xrightarrow{\varphi_1} A_2 \xrightarrow{\varphi_2} A_3 \xrightarrow{\varphi_3} \cdots$ with inductive limit $(A, \{\mu_n\})$, the following facts holds:
+\begin{enumerate}
+\item $||\mu_n(a)|| = \lim_{m \to \infty} ||\varphi_{m, n}(a)||$ for all $n \in \mathbb{N}$ and $a \in A_n$. This
+  immediately implies that $\text{Ker}(\mu_n) = \{a \in A_n \ | \ \lim_{m \to \infty} ||\varphi_{m, n}(a)|| = 0\}$.
+\item If $(B, \{\lambda_n\})$ and $\lambda : A \rightarrow B$ are as in Def. 6.2.2 of RLL, then $\text{Ker}(\mu_n) \subset \text{Ker}(\lambda_n)$
+  for all $n \in \mathbb{N}$, $\lambda$ is injective if and only if $\text{Ker}(\lambda_n) \subset \text{Ker}(\mu_n)$ for all $n \in \mathbb{N}$,
+  and $\lambda$ is surjective if and only if $B = \overline{\bigcup_{n} \lambda_n(A_n)}$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+  To prove the first claim, lt us recall Lemma 6.1.3 of RLL, namely that if we let $\pi : \prod_{n} A_n \rightarrow \prod_{n} A_n \Big/ \sum_{n} A_n$ be the quotient map, then $||\pi(a)|| = \limsup_{n \to \infty} ||a_n||$.
+  Note that
+  $$\mu_n(a) = [(0, \dots, 0, a, \varphi_n(a), \varphi_{n + 1, n}(a), \dots)] = \pi(0, \dots, 0, a, \varphi_n(a), \varphi_{n + 1, n}(a), \dots).$$
+  Thus,
+  \begin{equation}
+    ||\mu_n(a)|| = \limsup_{m \to \infty} || (0, \dots, 0, a, \varphi_n(a), \varphi_{n + 1, n}(a), \dots)_m || = \limsup_{m \to \infty} ||\varphi_{m, n}(a)||
+  \end{equation}
+  Note that the sequence $\varphi_{m, n}(a)$ is strictly decreasing in norm, as for $*$-homomorphisms, we know that $||\varphi_{m + 1, n}(a)|| = ||(\varphi_{m + 1} \circ \varphi_{m, n})(a)|| \leq ||\varphi_{m, n}(a)||$.
+  Thus, the limit superior is actually just the limit (in particular, the limit exists), and we have the desired result.
+  \newline
+
+  \noindent To prove the second claim, it is clear that if $\mu_n(a) = 0$, then $\lambda_n(a) = (\lambda \circ \mu_n)(a) = \lambda(0) = 0$, so $\text{Ker}(\mu_n) \subset \text{Ker}(\lambda_n)$.
+  Clearly, a $*$-homomorphism is injective if and only if it has trivial kernel, so $\lambda(a) = 0$ must imply $a = 0$. In particular, if $\lambda_n(a) = \lambda(\mu_n(a)) = 0$, then $\mu_n(a) = 0$,
+  so $\text{Ker}(\lambda_n) \subset \text{Ker}(\mu_n)$.
+  \newline
+
+  \noindent Finally, note that since $\lambda$ is continuous, we have
+  \begin{equation}
+    \text{Im}(\lambda) = \lambda(A) = \lambda \left( \overline{\displaystyle\bigcup_{n \in \mathbb{N}} \mu_n(A_n)} \right) \subset \overline{\displaystyle\bigcup_{n \in \mathbb{N}} (\lambda \circ \mu_n)(A_n)} = \overline{\displaystyle\bigcup_{n \in \mathbb{N}} \lambda_n(A_n)} \subset B
+  \end{equation}
+  Of course, if $\lambda$ is surjective, then $\text{Im}(\lambda) = B$, so since it lies between the two sets, we must have $\overline{\bigcup_{n \in \mathbb{N}} \lambda_n(A_n)} = B$ as well. \pop{I got stuck at this point again (proving the converse). From consulting the book again,
+    the converse seems to follow from the extension theorem invoked earlier in the proof.}
+  \end{proof}
+
+\hhrulefill
+
+\section{RLL Problem 6.1 (Suggested Problem 1)}
+
+\noindent \emph{\pop{Equipped with the basic knowledge of inductive limits, let us answer a few questions regarding the calculation of simple inductive limits.}}
+\newline
+
+\noindent \textbf{Part 1.} Of course, in this exercise, we are tasked with computing the inductive limit of a sequence of Abelian groups.
+Homomorphism from the group of integers to some other group are completely determined by where $1$ is sent. Let us define $\mu_n : \mathbb{Z} \rightarrow \mathbb{Q}$
+as $\mu_n(1) = \frac{1}{(n - 1)!}$. We can easily verify that $(\{\mu_n\}, \mathbb{Q})$ is the inductive limit of the sequence of $\mathbb{Z}$ with $\varphi_n = n$.
+\newline
+
+\noindent First, note that
+\begin{equation}
+  (\mu_{n + 1} \circ \varphi_n)(k) = \frac{nk}{n!} = \frac{k}{(n - 1)!} = \mu_n(k)
+\end{equation}
+so we have verified the first condition. Moreover, given $B$ and $\lambda_n$ such that $\lambda_{n + 1} \circ \mu_n = \lambda_n$, we can simply define $\lambda : \mathbb{Q} \rightarrow B$ as
+$\lambda(k) = \lambda_n((n - 1)! k)$. Obviously, $\lambda \circ \mu_n = \lambda_n$. In addition, $\lambda$ does not depend on $n$ because we have
+\begin{equation}
+ \lambda_n((n - 1)! k) = (\lambda_{m} \circ \varphi_{m - 1, n})((n - 1)! k) = \lambda_m((m - 1)! k)
+\end{equation}
+for some $m > n$. To verify uniqueness, note that if $\lambda'$ also satisfies the desired property, then
+\begin{align}
+  \lambda' \left( \frac{a}{b} \right) = \lambda' \left( \frac{(b - 1)!}{(b - 1)!} \frac{a}{b} \right) &= \lambda' \left( \frac{(b - 1)! a}{b!} \right) = (\lambda' \circ \mu_{b + 1})((b - 1)! a)
+  \\ & = \lambda_{b + 1}((b - 1)! a) = (\lambda \circ \mu_{b + 1})((b - 1)! a) = \lambda \left( \frac{a}{b} \right)
+\end{align}
+Thus, by definition, $(\{\mu_n\}, \mathbb{Q})$ is in fact the inductive limit of this sequence.
+\newline
+
+\noindent \textbf{Part 2.} We take a similar approach to before. In particular, we define $\mu_n(1) = \frac{1}{2^{n - 1}}$. In this case, we will clearly have $(\varphi_n \circ \mu_{n + 1})(k) = \varphi_n\left( \frac{k}{2^{n}} \right) = \frac{k}{2^{n - 1}} = \mu_{n}(k)$.
+If the maps $\mu_n$ are indeed the morphisms giving rise to the inductive limit, then we know that we must have
+\begin{equation}
+  G_2 = \displaystyle\bigcup_{n \in \mathbb{N}} \mu_n(\mathbb{Z}) =\left\{ \frac{p}{2^{n}} \ \Big| \ p, n \in \mathbb{Z} \right\} \subset \mathbb{Q}
+\end{equation}
+It is clear that $G_2$ is an additive subgroup of $\mathbb{Q}$. We claim that $(\{\mu_n\}, G_2)$ is in fact the desired inductive limit. We verified the first required property of $\mu_n$ above. To verify the second, we proceed similarly to Part 1.
+Given $B$ and $\lambda_n$ such that $\lambda_{n + 1} \circ \mu_n = \lambda_n$, we can simply define $\lambda : G_2 \rightarrow B$ as
+$\lambda(k) = \lambda_n(2^{n - 1} k)$. Obviously, $\lambda \circ \mu_n = \lambda_n$. In addition, $\lambda$ does not depend on $n$ because we have
+\begin{equation}
+  \lambda_n(2^{n - 1} k) = (\lambda_{m} \circ \varphi_{m - 1, n})(2^{n - 1} k) = \lambda_m(2^{m - 1} k)
+\end{equation}
+for some $m > n$. To verify uniqueness, note that if $\lambda'$ also satisfies the desired property, then
+\begin{align}
+  \lambda' \left( \frac{p}{2^n} \right) = (\lambda' \circ \mu_{n + 1}) \left( p \right) &= \lambda_{n + 1} \left( p \right) = (\lambda \circ \mu_{n + 1})(p) = \lambda \left( \frac{p}{2^n} \right)
+\end{align}
+Thus, by definition, $(\{\mu_n\}, G_2)$ is in fact the inductive limit of this sequence.
+
+\hhrulefill
+
+\section{Topological Inverse Limit and Inductive Limit Duality (Suggested Problem 5)}
+
+\noindent \pop{Note that the definition of an inverse limit provided in the problem set is incorrect. I will complete the problem assuming the correct definition.}
+\newline
+
+\noindent \textbf{Part 1.} Let us take
+$$X = \left\{ (x_1, x_2, \dots) \ \Big| (x_1, x_2, \dots) \in \prod_{n \in \mathbb{N}} X_n, \ f_i(x_{i + 1}) = x_i \ \forall i \in \mathbb{N} \right\}$$
+where we give $\prod_{n \in \mathbb{N}} X_n$ the usual product topology, and $X$ inherits the subspace topology. We simply take $\pi_i : X \rightarrow X_i$
+to be the projection onto the $i$-th coordinate. Automatically, it is clear that $(f_{i - 1} \circ \pi_i)(x_1, x_2, \dots) = f_{i - 1}(x_{i}) = x_{i - 1} = \pi_{i - 1}(x_1, x_2, \dots)$.
+
+In addition, suppose continuous functions $\lambda_i : Y \rightarrow X_i$ satisfy $f_{i - 1} \circ \lambda_i = \lambda_{i - 1}$. We wish to define continuous $\lambda : B \rightarrow A$ such that
+$\lambda_i = \pi_i \circ \lambda$. For a particular $y \in Y$, we define $\lambda(y) = (\lambda_1(y), \lambda_2(y), \dots)$. Note that $\lambda(y) \in X$ because we have assumed that
+$$f_i(\lambda(y)_{i + 1}) = f_i(\lambda_{i + 1}(y)) = \lambda_i(y) = \lambda(y)_i$$
+Clearly, $\lambda$ is a continuous function, as it is a product of continuous functions, and clearly $\lambda_i = \pi_i \circ \lambda$. To show uniqueness of $\lambda$, note that if $\lambda'$ is also a continuous function with
+the same properties, we have
+\begin{equation}
+  \lambda'(y)_i = (\pi_i \circ \lambda')(y) = \lambda_i(y) = \lambda(y)_i
+\end{equation}
+for each $i$, so $\lambda'(y) = \lambda(y)$. Thus, we have shown that inverse limits exist. To show that an inverse limit is unique, suppose $(\{\pi_i'\}, X')$ is also an inverse limit. It follows from the
+definition of the inverse limit that the following diagram will commute:
+% https://q.uiver.app/#q=WzAsNCxbMSwwLCJYIl0sWzAsMCwiWCciXSxbMiwwLCJYJyJdLFsxLDEsIlhfaSJdLFsxLDAsIlxcUGlfMSJdLFswLDIsIlxcUGlfMiJdLFswLDMsIlxccGlfaSJdLFsxLDMsIlxccGlfaSciLDJdLFsyLDMsIlxccGlfaSciXV0=
+\[\begin{tikzcd}
+	          {X'} & X & {X'} \\
+	          & {X_i}
+	          \arrow["{\Pi_1}", from=1-1, to=1-2]
+	          \arrow["{\Pi_2}", from=1-2, to=1-3]
+	          \arrow["{\pi_i}", from=1-2, to=2-2]
+	          \arrow["{\pi_i'}"', from=1-1, to=2-2]
+	          \arrow["{\pi_i'}", from=1-3, to=2-2]
+\end{tikzcd}\]
+where $\Pi_1 : X' \rightarrow X$ and $\Pi_2 : X \rightarrow X'$ are continuous. Thus, $X'$ and $X$ are homeomorphic, so up to homeomorphism, the inverse limit is unique.
+\newline
+
+\noindent \textbf{Part 2.} Since each $X_j$ is Hausdorff, it follows that $\prod_{n \in \mathbb{N}} X_n$ is Hausdorff (given $x \neq y$, $x$ and $y$ must differ at coordinate $j$, so choose disjoint open set $U$ and $V$ in $X_j$ of $x_j$ and $y_j$, then
+note that $x \in X_1 \times \dots U \times X_{j + 1} \times \cdots$ and $y \in X_1 \times \dots V \times X_{j + 1} \times \cdots$ are disjoint). Thus, $X$, and subspace of $\prod_{n \in \mathbb{N}} X_n$ is also Hausdorff.
+
+Tychonoff's theorem tells us that arbitrary products of compact spaces are compact, so $\prod_{n \in \mathbb{N}} X_n$ is compact. We will show that $X$ is closed in the product space. Indeed, by definition, note that:
+\begin{equation}
+  X = \displaystyle\bigcap_{n \in \mathbb{N}} \left\{ (x_1, x_2, \dots) \ \Big| \ f_n(x_{n + 1}) = x_n \right\} = \displaystyle\bigcap_{n \in \mathbb{N}} X_1 \times \cdots \times X_{n - 1} \times \Gamma_{f_n}(X_{n + 1}) \times X_{n + 2} \times \cdots = \displaystyle\bigcap_{n \in \mathbb{N}} C_n
+\end{equation}
+where $\Gamma_{f_n}(X_{n + 1}) = \{ (f_n(x), x) \ | \ x \in X_{n + 1} \}$ is the graph of $f_n$. If we can show that each $C_n$ is closed, then $X$ will also be closed, as arbitrary intersections of closed sets are closed. From here, we can conclude that $X$ is compact,
+as closed subspaces of compact spaces are compact.
+\newline
+
+\noindent In fact, it is easy to show that the graph is closed. Given a point $(y, x) \in X_n \times X_{n + 1}$ in the graph's complement, we simply take open set $U$ in $X_n$ containing $y$ and open set $W$ containing $f(x)$, such that $U$ and $W$ are disjoint (we
+can make this choice as $X_n$ is Hausdorff). Note that the open set $U \times f^{-1}(W)$ contains $(y, x)$, and does not contain any point of the graph, as any $x \in f^{-1}(W)$ is mapped by $f$ to $W$ disjoint from $U$. Thus, the complement of the graph is open, so the graph is closed.
+\newline
+
+\noindent \textbf{Part 3.} This result follows from carefully making use of the contravariant nature of $C$ (I guess this could be considered a functor? I'm not completely sure.) Also note that all the spaces we
+are working with are compact, so in this context $C = C_0$. To begin, let
+$$X = \lim_{\longleftarrow} X_i.$$
+By definition,
+the following diagram commutes:
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJYIl0sWzIsMCwiWF9pIl0sWzEsMSwiWF97aS0xfSJdLFswLDIsIlxccGlfe2ktMX0iLDJdLFsxLDIsImZfe2ktMX0iXSxbMCwxLCJcXHBpX2kiXV0=
+\[\begin{tikzcd}
+X && {X_i} \\
+& {X_{i-1}}
+\arrow["{\pi_{i-1}}"', from=1-1, to=2-2]
+\arrow["{f_{i-1}}", from=1-3, to=2-2]
+\arrow["{\pi_i}", from=1-1, to=1-3]
+\end{tikzcd}\]
+which immediately implies that this diagram commutes:
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJDKFgpIl0sWzIsMCwiQyhYX3tpKzF9KSJdLFsxLDEsIkMoWF97aX0pIl0sWzIsMV0sWzIsMCwiXFxwaV97aX1eKiJdLFsyLDEsImZfe2l9XioiLDJdLFsxLDAsIlxccGlfe2krMX1eKiIsMl1d
+\[\begin{tikzcd}
+	          {C(X)} && {C(X_{i+1})} \\
+	          & {C(X_{i})} & {}
+	          \arrow["{\pi_{i}^*}", from=2-2, to=1-1]
+	          \arrow["{f_{i}^*}"', from=2-2, to=1-3]
+	          \arrow["{\pi_{i+1}^*}"', from=1-3, to=1-1]
+\end{tikzcd}\]
+where we shift $i$ to be $1$. Thus, we have maps $\varphi_i = f_i^{*} : C(X_i) \rightarrow C(X_{i+1})$ and $\mu_i = \pi_i^{*}$ which satisfy the first condition required for $(C(X), \{\pi_i^{*}\})$ to be the inductive limit
+of the sequence of $f_i^{*} : C(X_i) \rightarrow C(X_{i + 1})$. If we can verify that the second condition holds, it will follows immediately that $(C(X), \{\pi_i^{*}\})$ is the inductive limit, and by uniqueness, we then must have
+$$C(X) = C(\lim_{\longleftarrow} X_i) \simeq \lim_{\longrightarrow} C(X_i).$$
+\newline
+
+\noindent Indeed, it is easy to show that the second condition holds. Suppose $(B, \{\lambda_i\})$ is another system where $\lambda_i : C(X_i) \rightarrow B$ and $\lambda_{i} = \lambda_{i + 1} \circ f_i^{*}$. By Gelfand's theorem,
+$B$ is isomorphic to $C_0(Y)$ for some locally compact Hausdorff space $Y$. Thus, WLOG, we can assume $\lambda_i : C(X_i) \rightarrow C_0(Y)$. Moreover, again from Gelfand, we know that there exists some continuous $\gamma_i : Y \rightarrow X_i$
+such that $\gamma_i^{*} = \lambda_i$, so that $\gamma_i^{*} = \gamma_{i + 1}^{*} \circ f_i^{*}$, which implies that $\gamma_i = f_i \circ \gamma_{i + 1}$
+
+From the characterization of the inverse limit, we know that there is a unique continuous function $\gamma : Y \rightarrow X$ such that the following diagram commutes:
+% https://q.uiver.app/#q=WzAsMyxbMSwwLCJYIl0sWzAsMCwiWSJdLFsxLDEsIlhfaSJdLFsxLDAsIlxcbGFtYmRhIl0sWzAsMiwiXFxwaV9pIl0sWzEsMiwiXFxsYW1iZGFfaSIsMl1d
+\[\begin{tikzcd}
+Y & X \\
+& {X_i}
+\arrow["\gamma", from=1-1, to=1-2]
+\arrow["{\pi_i}", from=1-2, to=2-2]
+\arrow["{\gamma_i}"', from=1-1, to=2-2]
+\end{tikzcd}\]
+
+which implies immediately that there is a unique $*$-homomorphism (again following from Gelfand's theorem) $\gamma^{*}: C(X) \rightarrow C_0(Y) \simeq B$ making the diagram commute:
+% https://q.uiver.app/#q=WzAsMyxbMSwwLCJDKFgpIl0sWzAsMCwiQiJdLFsxLDEsIkMoWF9pKSJdLFswLDEsIlxcbGFtYmRhXnsqfSIsMl0sWzIsMCwiXFxwaV9pXnsqfSIsMl0sWzIsMSwiXFxsYW1iZGFfaSJdXQ==
+\[\begin{tikzcd}
+B & {C(X)} \\
+& {C(X_i)}
+\arrow["{\gamma^{*}}"', from=1-2, to=1-1]
+\arrow["{\pi_i^{*}}"', from=2-2, to=1-2]
+\arrow["{\lambda_i}", from=2-2, to=1-1]
+\end{tikzcd}\]
+where we use the fact that $\gamma_i^{*} = \lambda_i$. Thus, it follows from the definition that $C(X)$ is isomorphic to the inverse limit of the sequence of $C(X_i)$, and the proof is complete.
+\newline
+
+\noindent \textbf{Part 4.} This result follows from Part 3, as well as the fact that the $K_0$ functor ``commutes'' with inverse limits, and that if $A \simeq B$, then $K_0(A) \simeq K_0(B)$. In particular, note that
+\begin{equation}
+  K_0(C(\Sigma_2)) \simeq K_0(\lim_{\longrightarrow} (C(S^1), \varphi_n^{*}) ) \simeq \lim_{\longrightarrow} (K_0\left( C(S^1) \right), K_0(\varphi_n^{*})) \simeq \lim_{\longrightarrow}(\mathbb{Z}, K_0(\varphi_n^{*}))
+\end{equation}
+where the morphisms $\varphi_n$ are simply $\varphi_n(z) = z^2$ for all $n$. This means that $\varphi_n^{*}(f) = f \circ z^2$ for $f \in C(S^1)$. 
+\end{document}
