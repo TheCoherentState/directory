@@ -1,0 +1,190 @@
+\documentclass[aps,pra,showpacs,notitlepage,onecolumn,superscriptaddress,nofootinbib]{revtex4-1}
+\usepackage[utf8]{inputenc}
+\usepackage[tmargin=1in, bmargin=1.25in, lmargin=1.5in, rmargin=1.5in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{datetime}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{import}
+\usepackage{mathtools}
+\usepackage{thmtools,thm-restate}
+\usepackage{tikz-cd}
+
+
+% package for commutative diagrams
+% \usepackage{tikz-cd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{crimson}{RGB}{186,0,44}
+\definecolor{moss}{RGB}{0, 186, 111}
+\newcommand{\pop}[1]{\textcolor{crimson}{#1}}
+\newcommand{\zcom}[1]{\noindent\textcolor{crimson}{(Z): #1}}
+\newcommand{\jcom}[1]{\noindent\textcolor{moss}{(J): #1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\pqeq}{\succcurlyeq}
+\newcommand{\pleq}{\preccurlyeq}
+\newcommand{\Wedge}{\bigwedge}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+    colorlinks,
+    linkcolor={crimson},
+    citecolor={crimson},
+    urlcolor={crimson}
+}
+
+\usepackage{qcircuit}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{reminder}{Reminder}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{answer}{Answer}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{claim}{Claim}[section]
+
+\newcommand{\hhrulefill}{\hspace{-1.5em} \hrulefill}
+
+\usepackage{geometry}
+\geometry{
+  left=25mm,
+  right=25mm,
+  top=20mm,
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{unsrt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\title{An primer on $C^{*}$-dynamical systems}
+\author{Jack Ceroni}
+\email{jackceroni@gmail.com}
+
+\date{\today}
+
+\maketitle
+
+\section{Introduction}
+
+\noindent \emph{This essay was written for the Fall 2023 session of MAT437: $K$-Theory and $C^{*}$-Algebras, taught by Professor George Elliott, at the University of Toronto.}
+\newline
+
+\noindent The goal of this essay is to introduce some of the main ideas relating to the study of $C^{*}$-dynamical systems, and associated constructions, such as crossed products, thermodynamics,
+and their relevance in $K$-theory.
+
+\section{$C^{*}$-dynamical systems and constructing crossed-products}
+
+\noindent Going forward, we will let $\text{Aut}(A)$ denote the set of $*$-automorphisms We begin with a definition.
+
+\begin{definition}[$C^{*}$-dynamical system]
+  A $C^{*}$-dynamical system is defined to be a triple $(G, A, \alpha)$, consisting of a locally compact topological group $G$, a $C^{*}$-algebra $A$,
+  and a continuous group action $\alpha$ of $G$ on $A$. That is, $\alpha : G \rightarrow \text{Aut}(A)$ is a group homomorphism, where for each $a \in A$, the map $g \mapsto \alpha(g)(a)$
+  is a continuous map, with $A$ of course having its metric topology.
+\end{definition}
+
+\noindent Note that if $G$ is a discrete group, then the topology on $G$ must be discrete, and any group homomorphism $\alpha : G \rightarrow \text{Aut}(A)$ is a continuous group action.
+Going forward, let $\mathcal{H}$ denote a Hilbert space. We say that a bounded linear operator $T : \mathcal{H} \rightarrow \mathcal{H}$ in $B(\mathcal{H})$ is compact if
+it takes bounded subset of $\mathcal{H}$ to relatively compact subsets of $\mathcal{H}$ (subsets whose closure under the ambient metric topology are compact). We denote the set of all compact operators
+as $K(\mathcal{H})$. It is straightforward to
+see that $K(\mathcal{H})$ is a sub-$C^{*}$-algebra of $B(\mathcal{H})$.
+
+Let us recall another fundamental definition:
+
+\begin{definition}[Representations]
+  A representation of a group $G$ (or a $C^{*}$-algebra $A$) on vector space $V$ is a group (or a $C^{*}$-algebra) homomorphism $\pi : G \rightarrow \text{GL}(V)$ (or $\pi : A \rightarrow \text{GL}(V)$), where $\text{GL}(V)$ is the general linear group over $V$.
+  A \emph{unitary} representation is a representation $\pi$ on a complex Hilbert space $\mathcal{H}$ such that $\pi(x)$ is unitary for all $x \in G$ (or $x \in A$). A representation $\pi$ is said to be
+  \emph{nondegenerate} if it satisfies the following property: if $v \in V$ is such that $\pi(x) v = 0$ for all $x \in G$ (or $x \in A$), then $v = 0$.
+\end{definition}
+
+\noindent Given a discrete group $G$, as well as a unitary representation $\pi$ of $G$, there is a natural action $\alpha : G \rightarrow \text{Aut}(K(\mathcal{H}))$ given
+by
+\begin{equation}
+  \alpha(g)(a) = \pi(g) a \pi(g)^{*} \ \ \ \ \ \text{for} \ a \in K(\mathcal{H}), g \in G,
+\end{equation}
+as we have
+\begin{equation}
+  \alpha(g_1 + g_2)(a) = \pi(g_1 + g_2) a \pi(g_1 + g_2)^{*} = \pi(g_1) \pi(g_2) a \pi(g_2)^{*} \pi(g_1) = (\alpha(g_1) \circ \alpha(g_2))(a)
+\end{equation}
+which implies that $\alpha(g_1 + g_2) = \alpha(g_1) \circ \alpha(g_2)$, so $\alpha$ is a group homomorphism, and since $G$ is discrete, this is a continuous group action. It follows that $(G, K(\mathcal{H}), \alpha)$
+is a $C^{*}$-dynamical system. In particular, note that $\alpha(G) \subset \text{Inn}(K(\mathcal{H}))$, the set of inner automorphisms of $K(\mathcal{H})$, as $\pi(g)$ is unitary.
+
+Now, suppose $\xi = (G, A, \alpha)$ is a $C^{*}$-dynamical system. Suppose that $\pi$ is a nondegenerate representation of $A$ on $\mathcal{H}$, suppose $U$ is a unitary representation of $G$ on $\mathcal{H}$.
+If it holds for all $a \in A$ and $g \in G$ that
+\begin{equation}
+  \pi(\alpha(g)(a)) = U(g) \pi(a) U(g)^{*}
+\end{equation}
+then we call the pair $(\pi, U)$ a \emph{covariant representation} of $\xi$.
+
+\begin{remark}
+  Intuitively, we know that inner automorphisms are particularly nice objects with which to work. The above construction attempts, in a certain sense, to associate a construction resembling an
+  inner automorphism to an arbitrary continuous group action $\alpha$, for each $g \in G$.
+  \end{remark}
+
+As it turns out, if we are given a $C^{*}$-dynamical system $(G, A, \alpha)$, in addition to a representation $\pi$ of $A$ on $\mathcal{H}$, there is a way to construct a canonical covariant representation
+which we call the left-regular representation associated with $\pi$. First, let us recall some basic facts about Haar integrals.
+
+\begin{remark}[Haar integral over a topological group]
+  Given a locally compact Hausdorff topological group $G$, it is known that there is a unique left-invariant measure $\mu$ over $G$ (up to constant multiplier, with a few other conditions) called
+  the \emph{left-Haar measure}. This allows us to define a Lebesgue integral over a topological group where $f : G \rightarrow A$ is some function from $G$ to algebra $A$, $\int_{G} f d \mu$. For topological
+  group $G$ and algebra $A$, let $L^2(G, A)$ denote the space of all square-integrable functions $f : G \rightarrow A$, that is $f$ for which
+  \begin{equation}
+   \langle f, f \rangle \coloneqq \displaystyle\int_{G} f(h) f(h)^{*} d\mu(h)
+  \end{equation}
+  exists. Let $L^1(G, A)$ denote the space of all integrable function, $f$ for which $\int_{G} f(h) d\mu(h)$ exists. Note that both $L^2(G, A)$ and $L^1(G, A)$ are, clearly, vector spaces, with the
+  addition/scalar multiplication on functions induced by the algebra $A$.
+\end{remark}
+
+\noindent We can now define the left-regular representation:
+
+\begin{definition}[Left-regular representation]
+  Given $\xi = (G, A, \alpha)$ and $\pi$ representing $A$ on $\mathcal{H}$, define $\widetilde{\pi}$ and $\widetilde{\lambda}$ as maps from $G$ and $A$ respectively, to $\text{Aut}(L^2(G, \mathcal{H}))$, as
+  \begin{equation}
+    (\widetilde{\pi}(a) f)(g) = \pi(\alpha(g^{-1})(a)) f(g)
+  \end{equation}
+  as well as
+  \begin{equation}
+    (\widetilde{\lambda}(g) f)(h) = f(g^{-1} h)
+    \end{equation}
+\end{definition}
+
+\begin{claim}
+  $\widetilde{\pi}$ and $\widetilde{\lambda}$ are representations of $G$ and $A$ on $L^2(G, \mathcal{H})$, respectively. Moreover, $(\widetilde{\pi}, \widetilde{\lambda})$ is a covariant representation
+  of $(G, A, \alpha)$.
+\end{claim}
+\begin{proof}
+
+\end{proof}
+
+\noindent From here, let us define a new $*$-algebra from a given $C^{*}$-dynamical system.
+
+\begin{claim}
+  \end{claim}
+
+\noindent
+
+\section{Thermodynamics of $C^{*}$-dynamical systems}
+
+\noindent Now that we have described some of the basic constructions relating to $C^{*}$-dynamical systems, we will move to a discussion of their associated \emph{thermodynamic properties}.
+
+
+\section{Relationship with $K$-theory}
+
+\end{document}

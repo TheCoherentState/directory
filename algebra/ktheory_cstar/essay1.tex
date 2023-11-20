@@ -11,7 +11,7 @@
 \usepackage{import}
 \usepackage{mathtools}
 \usepackage{thmtools,thm-restate}
-\usepackage{comment}
+\usepackage{tikz-cd}
 
 
 % package for commutative diagrams
@@ -26,9 +26,7 @@
 \newcommand{\wt}[1]{\widetilde{#1}}
 \newcommand{\pqeq}{\succcurlyeq}
 \newcommand{\pleq}{\preccurlyeq}
-
-\newcommand{\hhrulefill}{\hspace{-1.0em}\hrulefill}
-
+\newcommand{\Wedge}{\bigwedge}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hypersetup{
@@ -54,10 +52,11 @@
 \newtheorem{reminder}{Reminder}[section]
 \newtheorem{problem}{Problem}[section]
 \newtheorem{question}{Question}[section]
-\newtheorem{proposition}{Proposition}[section]
 \newtheorem{answer}{Answer}[section]
 \newtheorem{fact}{Fact}[section]
 \newtheorem{claim}{Claim}[section]
+
+\newcommand{\hhrulefill}{\hspace{-1.5em} \hrulefill}
 
 \usepackage{geometry}
 \geometry{
@@ -72,9 +71,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{document}
 
-\title{A primer on cyclic cohomology}
+\title{An invitation to cyclic cohomology}
 \author{Jack Ceroni}
 \email{jackceroni@gmail.com}
 
@@ -84,43 +84,129 @@
 
 \section{Introduction}
 
-\noindent \emph{This essay was written for the Fall 2023 session of MAT437 at the University of Toronto.}
+\noindent \emph{This essay was written for the Fall 2023 session of MAT437: $K$-Theory and $C^{*}$-Algebras, taught by Professor George Elliott, at the University of Toronto.}
 \newline
 
-\noindent The goal of this essay is to introduce, explain, and place in broader context the basic theory of cyclic cohomology. The main reference
-for this essay is the book by Moriyoshi and Natsume (Ref.~\cite{}), as well as review articles [CITE]. This book provides a brief introduction to non-commutative geometry: we attempt
-to expand upon some of their main points in this work.
+\noindent The goal of this essay is to introduce, explain, and place in broader context the basic theory of cyclic cohomology. The main references
+for this essay are the book by Moriyoshi and Natsume (Ref.~\cite{}), the standard reference of Connes (Ref.~\cite{}), as well as a handful of other cites articles.
 
-\hhrulefill
-
-\section{Motivation and background}
-
-\subsection{Trace maps}
+\section{Introduction and motivation}
 
 \noindent The $K_0$-group of a $C^{*}$-algebra $A$ is a broadly powerful invariant which encodes the underlying structure of $A$, in such a way that lends
-itself well to being analyzed via a large toolbox of different techniques. Among such techniques are extracting numerical invariants from $K_0(A)$ via \emph{trace maps}.
+itself well to being analyzed via a large toolbox of different techniques. One such technique involves construction of \emph{positive trace maps}.
 
-\begin{definition}[Trace map on a $C^{*}$-algebra]
+\begin{definition}[Trace maps]
+  Recall that a positive trace map on a $C^{*}$-algebra $A$ is simply a bounded linear function $\tau : A \rightarrow \mathbb{C}$ such that $\tau(ab) = \tau(ba)$ for all $a, b \in A$. In addition, $\tau(a) \geq 0$
+  for positive $a$. We can similarly define trace maps $\tau_n$ on each matrix algebra $M_n(A)$, via
+\begin{equation}
+  \tau_n(M) = \displaystyle\sum_{j = 1}^{n} \tau(M_{jj}), \ \ \ \ M \in M_n(A).
+\end{equation}
+Via the trace property, note that if $p \sim q$ via the Murray-von Neumann equivalence in $\mathcal{P}_n(A)$, then $p = v v^{*}$ and $q = v^{*} v$, so that $\tau_n(p) = \tau_n(q)$. Thus, if $p \sim_h q$
+then $\tau_n(p) = \tau_n(q)$. It follows via the universal property for $K_0$ that there is a unique group homomorphism $K_0(\tau) : K_0(A) \rightarrow \mathbb{C}$ such that $K_0(\tau)([p]_0) = \tau(p)$,
+where in this context, $\tau$ is the induced trace of the collection of $\tau_n$ on $\mathcal{P}_{\infty}(A)$.
 \end{definition}
 
-\noindent Using the functoriality of $K_0$, it is possible to then obtain a trace map $K_o(\tau) : K_0(A) \rightarrow \mathbb{C}$.
+\noindent $K_0(\tau)$ is called an induced trace map on $K_0(A)$: functions of this form are vital to the analysis of $K_0$-groups because they allow us to extract numerical invariants and map
+elements of the $K_0$-group to complex numbers. For example, study of induced trace maps yield simple proofs of the underlying group structure of commonly-encountered $K_0$-groups,
+such as $K_0(M_n(\mathbb{C}))$, $K_0(B(H))$, and $K_0(C(X))$.
 
-\begin{claim}[Induced trace map]
-\end{claim}
-\begin{proof}
-  \end{proof}
-
-\noindent Trace maps of this form are vital to the analysis of $K_0$-groups. However, as it turns out, one will often encounter $C^{*}$-algebras which \emph{admit no non-trivial trace}.
-For example, one of the most important types of $C^{*}$-algebras are the so-called \emph{Cuntz algebras}, which are defined as follows.
+However, as it turns out, despite their usefulness, one will often encounter $C^{*}$-algebras which \emph{admit no non-trivial positive trace}. Thus, we have no hope of defining a induced trace on the $K_0$-group.
+As an instructive example, we consider one of the most important types of $C^{*}$-algebras are the so-called \emph{Cuntz algebras}, which are defined as follows.
 
 \begin{definition}[Cuntz algebra]
+  Let $H$ be an infinite-dimensional separable Hilbert space, let $n$ be a positive integer greater than or equal to $2$. Suppose we have $s_j \in B(H)$ such that
+  \begin{equation}
+    s_1^{*} s_1 = \cdots = s_n^{*} s_n = 1 = \displaystyle\sum_{j = 1}^{n} s_j s_j^{*}
+  \end{equation}
+  (as it turns out, we can always find a collection of isometries of this form, but this is unimportant for our discussion). Let $\mathcal{O}_n = C^{*}(s_1, \dots, s_n) \subset B(H)$.
+  We call the sub-$C^{*}$-algebra $\mathcal{O}_n$ a \emph{Cuntz algebra}.
+\end{definition}
+
+\noindent The Cuntz algebra is a simple example of a $C^{*}$-algebra admitting no non-trivial positive trace. The proof is delighfully straightforward.
+
+\begin{theorem}
+  The Cuntz algebra admits no non-trivial positive trace.
+\end{theorem}
+\begin{proof}
+  Suppose $\tau$ is a trace on $\mathcal{O}_n$, note that we then have
+  \begin{equation}
+    \tau(1) = \tau \left( \displaystyle\sum_{j = 1}^{n} s_j s_j^{*} \right) =  \displaystyle\sum_{j = 1}^{n} \tau(s_j^{*} s_j) = n \tau(1) \Longrightarrow (n - 1) \tau(1) = 0.
+  \end{equation}
+  Thus, since $n \geq 2$, $\tau(1) = 0$. Note that if $\tau(a) \geq 0$ for positive $a$, then for negative $a$, $\tau(-a) = - \tau(a) \geq 0 \Rightarrow \tau(a) \leq 0$.
+  Let $a$ be an arbitrary operator. Then clearly, $a - ||a|| \cdot 1$ is negative and $a + ||a|| \cdot 1$ is positive. But we have
+  \begin{equation}
+    \tau(a) = \tau(a \pm ||a|| \cdot 1 \mp ||a|| \cdot 1) = \tau(a \pm ||a|| \cdot 1) \mp ||a|| \tau(1) = \tau(a \pm ||a|| \cdot 1).
+  \end{equation}
+  But since $\tau(a + ||a|| \cdot 1) \geq 0$ and $\tau(a - ||a|| \cdot 1) \leq 0$, we must have $\tau(a) = a$, so $\tau$ is just the zero-map.
+  \end{proof}
+
+\noindent This potential non-existence of useful trace maps is a fundamental problem, as in such cases, it is very much unclear how one should go about extracting numerical invariants from $K_0$-groups.
+\emph{Cyclic cohomology}, discovered by Alain Connes, can be thought of as a remedy to this situation. To be more specific, recall the following definition
+
+\begin{definition}[Cohomology]
+  A sequence of mdoules $A = \{A_n\}$ connected by homomorphisms $d^n : A_n \rightarrow A_{n + 1}$ is said to be a \emph{cochain complex} if $d^{n + 1} \circ d^{n} = 0$ for all $n$.
+  The corresponding \emph{cohomology theory} of the cochain complex is the sequence of quotient module $H^{n} = \text{Ker}(d^{n}) / \text{Im}(d^{n - 1})$
   \end{definition}
 
-\noindent This is a problem, as in such cases, it is very much unclear how one should go about extracting numerical invariants from $K_0(A)$. Cyclic cohomology, discovered by Alain Connes, can
-be thought of as a remedy to this situation: it provides a different technique for mapping from $K_0$-groups to numbers.
+Arguably, the most well-known cohomology theory is the de Rham cohomology of the sequence of differential $k$-forms on manifold $M$, connected by the exterior derivative map:
+% https://q.uiver.app/#q=WzAsNSxbMCwwLCJcXGNkb3RzIl0sWzEsMCwiXFxPbWVnYV57ayAtIDF9KE0pIl0sWzIsMCwiXFxPbWVnYV57a30oTSkiXSxbMywwLCJcXE9tZWdhXntrICsgMX0oTSkiXSxbNCwwLCJcXGNkb3RzIl0sWzAsMSwiZCJdLFsxLDIsImQiXSxbMiwzLCJkIl0sWzMsNCwiZCJdXQ==
+\[\begin{tikzcd}
+\cdots & {\Omega^{k - 1}(M)} & {\Omega^{k}(M)} & {\Omega^{k + 1}(M)} & \cdots
+\arrow["d", from=1-1, to=1-2]
+\arrow["d", from=1-2, to=1-3]
+\arrow["d", from=1-3, to=1-4]
+\arrow["d", from=1-4, to=1-5]
+\end{tikzcd}\]
+On the other hand, we can also consider the \emph{singular cohomology} on a manifold: where the modules considered are the spaces of $k$-cochains on the manifold, $\text{Hom}(C^{k}(M), \mathbb{R})$, and
+the connecting homomorphisms are the coboundary maps $\partial^{*}$, which are the dual maps of the boundary operations $\partial$ taking a $k$-chain to its boundary (a $(k - 1)$-chain):
+% https://q.uiver.app/#q=WzAsNSxbMCwwLCJcXGNkb3RzIl0sWzEsMCwiXFx0ZXh0e0hvbX0oQ157ayAtIDF9KE0pKSJdLFsyLDAsIlxcdGV4dHtIb219KENee2t9KE0pKSJdLFszLDAsIlxcdGV4dHtIb219KENee2sgKyAxfShNKSkiXSxbNCwwLCJcXGNkb3RzIl0sWzAsMSwiXFxwYXJ0aWFsXnsqfSJdLFsxLDIsIlxccGFydGlhbF57Kn0iXSxbMiwzLCJcXHBhcnRpYWxeeyp9Il0sWzMsNCwiXFxwYXJ0aWFsXnsqfSJdXQ==
+\[\begin{tikzcd}
+\cdots & {\text{Hom}(C^{k - 1}(M))} & {\text{Hom}(C^{k}(M))} & {\text{Hom}(C^{k + 1}(M))} & \cdots
+\arrow["{\partial^{*}}", from=1-1, to=1-2]
+\arrow["{\partial^{*}}", from=1-2, to=1-3]
+\arrow["{\partial^{*}}", from=1-3, to=1-4]
+\arrow["{\partial^{*}}", from=1-4, to=1-5]
+\end{tikzcd}\]
+One of the most fundamental
+results in differential geometry is \emph{de Rham's theorem}, which states that de Rham cohomology is isomorphic to the singular cohomology, $H^{k}_{\text{de Rham}} \simeq H^{k}_{\text{singular}}$. Thus, when studying the de Rham cohomology, we can always simply
+think of $k$-cochains. From here, we make a key observation: $\text{Hom}(C^{k}(M))$ has more structure than just that of a generic module, \emph{it also has algebra structure, and moreover, it is commutative}. In other words, we
+can multiply cochains. Thus, singular cohomology and by the isomorphism, de Rham cohomology, can be thought of as a ``commutative'' cohomology theory. The idea behind cyclic cohomology 
 
-\appendix
 
-\section{Proof of Lem.~\ref{lem:}}
+\section{Basics of cyclic cohomology}
+
+\noindent To begin our discussion of cyclic cohomology, let us define some of the key constructions of which we will make heavy use through the subsequent sections. Let $A$ be an algebra over $\mathbb{C}$.
+We define $C_{\lambda}^{n}(A)$ to be the space of cyclic $n$-cochains on $A$, that is, the set of all $(n + 1)$-linear functionals satisfying
+\begin{equation}
+  \phi(a^{0}, a^{1} \dots, a^{n - 1}, a^{n}) = (-1)^{n} \phi(a^{1}, \dots, a^{n - 1}, a^n, a^{0})
+\end{equation}
+We also define a family of \emph{Hochschild coboundary maps}, $b : C_{\lambda}^{n} \rightarrow C_{\lambda}^{n + 1}$, such that
+\begin{equation}
+  (b \phi)(a^0, \dots, a^{n + 1}) = (-1)^{n + 1} \phi(a^{n + 1} a^{0}, \dots, a^{n}) + \displaystyle\sum_{j = 0}^{n} (-1)^{j} \phi(a^{0}, \dots, a^j a^{j + 1}, \dots, a^{n + 1}).
+\end{equation}
+The coboundary operator obeys the properties that it should. In particular,
+\begin{lemma}
+  It is true that $b(C_{\lambda}^{n}) \subset C_{\lambda}^{n + 1}$. In addition, $b^2 = 0$.
+\end{lemma}
+\begin{proof}
+Indeed, let $b_j$ be the map such that $(b_j \phi)(a^{0}, \dots, a^{n + 1}) = \phi(a^{0}, \dots, a^{j} a^{j + 1}, \dots, a^{n + 1})$.
+Let $b_{n + 1}$ be such that $(b_{n + 1} \phi)(a^{0}, \dots, a^{n + 1}) = \phi(a^{n + 1} a^{0}, \dots, a^{n})$. For $j$ and $k$
+\end{proof}
+
+\noindent It follows that we are able to define a cohomology with the complex $(\{C_{\lambda}^{n}\}, \{b_n\})$, where $b_n : C_{\lambda}^{n} \rightarrow C_{\lambda}^{n + 1}$: we take
+\begin{equation}
+  H^{n}(A) = \text{Ker}(b_n) / \text{Im}(b_{n + 1})
+\end{equation}
+to be the corresponding cohomology classes, and we call the corresponding collection the \emph{cyclic cohomology} of $A$.
+
+\subsection{Examples}
+
+\noindent Let us now consider examples of simple cyclic cohomology theories. Suppose $A = \mathbb{C}$.
+
+\noindent It is important to note that in the commutative case, cyclic cohomology reduces to de Rham cohomology!
+
+\section{The Connes-Chern Character}
+
+\section{Further implications and conclusion}
 
 \end{document}

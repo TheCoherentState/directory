@@ -1,0 +1,159 @@
+\documentclass[aps,pra,showpacs,notitlepage,onecolumn,superscriptaddress,nofootinbib]{revtex4-1}
+\usepackage[utf8]{inputenc}
+\usepackage[tmargin=1in, bmargin=1.25in, lmargin=1.5in, rmargin=1.5in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{datetime}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{import}
+\usepackage{mathtools}
+\usepackage{thmtools,thm-restate}
+\usepackage{tikz-cd}
+
+
+% package for commutative diagrams
+% \usepackage{tikz-cd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{crimson}{RGB}{186,0,44}
+\definecolor{moss}{RGB}{0, 186, 111}
+\newcommand{\pop}[1]{\textcolor{crimson}{#1}}
+\newcommand{\zcom}[1]{\noindent\textcolor{crimson}{(Z): #1}}
+\newcommand{\jcom}[1]{\noindent\textcolor{moss}{(J): #1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\pqeq}{\succcurlyeq}
+\newcommand{\pleq}{\preccurlyeq}
+\newcommand{\Wedge}{\bigwedge}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+    colorlinks,
+    linkcolor={crimson},
+    citecolor={crimson},
+    urlcolor={crimson}
+}
+
+\usepackage{qcircuit}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{reminder}{Reminder}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{answer}{Answer}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{claim}{Claim}[section]
+
+\newcommand{\hhrulefill}{\hspace{-1.5em} \hrulefill}
+
+\usepackage{geometry}
+\geometry{
+  left=25mm,
+  right=25mm,
+  top=20mm,
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{unsrt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\title{An primer on topological $K$-theory and a topological proof of Bott periodicity}
+\author{Jack Ceroni}
+\email{jackceroni@gmail.com}
+
+\date{\today}
+
+\maketitle
+
+\section{Introduction}
+
+\noindent \emph{This essay was written for the Fall 2023 session of MAT437: $K$-Theory and $C^{*}$-Algebras, taught by Professor George Elliott, at the University of Toronto.}
+\newline
+
+\noindent The goal of this essay is to discuss in greater detail than has been covered in class and in the text of Rordam, certain aspects of topological $K$-theory,
+and their relationship to the algebraic flavour of $K$-theory to which we have dedicated greater focus.
+
+\section{Basics}
+
+\noindent Let us begin by recalling a very basic definition:
+
+\begin{definition}[Complex vector bundle]
+  A complex vector bundle over topological space $X$ is defined to be a triple $\xi = (E, \pi, X)$, where $E$ is a topological space and $\pi : E \rightarrow X$ is a continuous surjection
+  from $E$ to $X$, the so-called \emph{base space}, where each \emph{fibre} $\pi^{-1}(x)$ has the structure of a complex finite-dimensional vector space. We require that $\xi$ has the following
+  local compatibility property: for each $x \in X$, there must exist a neighbourhood $U$ of $x$ and a homeomorphism $h : \pi^{-1}(U) \rightarrow U \times \mathbb{C}^n$ for some $n \in \mathbb{N}$
+  making the following diagram commute:
+  % https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXHBpXnstMX0oVSkiXSxbMiwwLCJVIFxcdGltZXMgXFxtYXRoYmJ7Q31ee259Il0sWzEsMSwiVSJdLFswLDEsImgiXSxbMCwyLCJcXHBpIiwyXSxbMSwyLCJcXGV0YSJdXQ==
+  \[\begin{tikzcd}
+	          {\pi^{-1}(U)} && {U \times \mathbb{C}^{n}} \\
+	          & U
+	          \arrow["h", from=1-1, to=1-3]
+	          \arrow["\pi"', from=1-1, to=2-2]
+	          \arrow["\eta", from=1-3, to=2-2]
+  \end{tikzcd}\]
+  where $\eta(x, v) = x$ is the projection onto the base, and, for each $y \in U$, the map $h : \pi^{-1}(y) \rightarrow \{y\} \times \mathbb{C}^n \simeq \mathbb{C}^n$ is a vector
+  space isomorphism. Intuitively, this simply means that locally, in the base space, the corresponding bundle of fibres in $E$ must resemble a trivial product space $U \times \mathbb{C}^n$,
+  both in a topological sense and an algebraic sense.
+\end{definition}
+
+\noindent The motivation for studying topological $K$-theory comes from the desire to classify all vector bundles over a given base space of a particular, fixed dimension $n$.
+To be more specific, we say that bundles $\xi = (E, \pi, X)$ and $\xi' = (E', \nu, X)$ are \emph{isomorphic} if there is a homeomorphism $h : E \rightarrow E'$ making the following diagram commute:
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJFIl0sWzIsMCwiRSciXSxbMSwxLCJYIl0sWzAsMSwiaCJdLFsxLDIsIlxcbnUiXSxbMCwyLCJcXHBpIiwyXV0=
+\[\begin{tikzcd}
+E && {E'} \\
+& X
+\arrow["h", from=1-1, to=1-3]
+\arrow["\nu", from=1-3, to=2-2]
+\arrow["\pi"', from=1-1, to=2-2]
+\end{tikzcd}\]
+such that the restricted map $h : \pi^{-1}(x) \rightarrow \nu^{-1}(x)$ is a vector space isomorphism for each $x \in X$. The task of computing the isomorphism classes
+of vector bundles (which we denote $\langle \xi \rangle$, where $\xi$ is an equivalence class representative) is a highly non-trivial task, and can only be done in very basic, often low-dimensional cases.
+Thus, in order to make partial progress on solving this profoundly difficult question, a natural question to ask is: \emph{are there weaker equivalence relations than the above notion of isomorphism which can more easily be computed, at the cost
+of ending up with a more crude classification?} The answer to this question is a resounding yes, via the construction of topological $K$-groups.
+
+\hhrulefill
+
+\noindent Treating vector bundle $\xi$ now as fundamental objects, let us define algebraic operations between them.
+
+\begin{lemma}[Direct sum of vector bundles]
+
+\end{lemma}
+
+\begin{lemma}[Inner products on vector bundles]
+\end{lemma}
+
+\begin{lemma}[Tensor products of vector bundles]
+\end{lemma}
+
+\begin{lemma}
+
+\end{lemma}
+
+\begin{theorem}[Equivalence of algebraic and topological $K$-theory]
+If $X$ is a compact Hausdorff space, then $K_0(C(X))$, the algebraic $K_0$-group of the $C^{*}$-algebra of functions $C(X)$, and $K(X)$, the topological $K^{0}$-group, are isomorphic as Abelian groups.
+\end{theorem}
+\begin{proof}
+
+  \end{proof}
+
+\section{Bott periodicity}
+
+\section{Characteristic classes}
+
+\end{document}

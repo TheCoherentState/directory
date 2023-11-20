@@ -1,0 +1,227 @@
+\documentclass[aps,pra,showpacs,notitlepage,onecolumn,superscriptaddress,nofootinbib]{revtex4-1}
+\usepackage[utf8]{inputenc}
+\usepackage[tmargin=1in, bmargin=1.25in, lmargin=1.5in, rmargin=1.5in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{datetime}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{import}
+\usepackage{mathtools}
+\usepackage{thmtools,thm-restate}
+\usepackage{comment}
+
+
+% package for commutative diagrams
+% \usepackage{tikz-cd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{crimson}{RGB}{186,0,44}
+\definecolor{moss}{RGB}{0, 186, 111}
+\newcommand{\pop}[1]{\textcolor{crimson}{#1}}
+\newcommand{\zcom}[1]{\noindent\textcolor{crimson}{(Z): #1}}
+\newcommand{\jcom}[1]{\noindent\textcolor{moss}{(J): #1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\pqeq}{\succcurlyeq}
+\newcommand{\pleq}{\preccurlyeq}
+\newcommand{\Wedge}{\bigwedge}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+    colorlinks,
+    linkcolor={crimson},
+    citecolor={crimson},
+    urlcolor={crimson}
+}
+
+\usepackage{qcircuit}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{reminder}{Reminder}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{answer}{Answer}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{claim}{Claim}[section]
+
+\newcommand{\hhrulefill}{\hspace{-1.5em} \hrulefill}
+
+\usepackage{geometry}
+\geometry{
+  left=25mm,
+  right=25mm,
+  top=20mm,
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{unsrt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{MAT437 problem set 8}
+\author{Jack Ceroni}
+\email{jackceroni@gmail.com}
+
+\date{\today}
+
+\maketitle
+
+\section{Problem 1}
+
+\noindent \pop{\emph{The proof of the following lemma included in RLL excludes many key parts, so for one of my exercises, I complete it}}
+\newline
+
+\noindent We start by proving a collection of technical lemma, which will be required for the following proof:
+
+\begin{lemma}
+If $v$ is a partial isometry (so $v^{*} v$ is a projection) then $v v^{*} v = v$.
+\end{lemma}
+\begin{proof}
+  Let $z = v - v v^{*} v = (1 - v v^{*})v$. Note that
+  \begin{equation}
+    z^{*} z = v^{*} (1 - v v^{*})^{*} (1 - v v^{*}) = v^{*} (1 - 2 v v^{*} +  v v^{*} v v^{*}) v = v^{*} v - 2 v^{*} v + v^{*} v = 0
+  \end{equation}
+  where we use that $(v^{*} v)^2 = v^{*} v$. Thus, $||z||^2 = ||z^{*} z|| = 0$, so $||z|| = 0$ and $v = v v^{*} v$, as desired.
+  \end{proof}
+
+\noindent Now, another lemma:
+
+\begin{lemma}
+  Suppose that $\{f_{ii}^{(k)} \ | \ 1 \leq k \leq r, 1 \leq i \leq n_k\}$ is a set of mutually orthogonal projections in $C^{*}$-algebra $B$ and that
+  \begin{equation}
+    f_{11}^{(k)} \sim f_{22}^{(k)} \sim \cdots \sim f_{n_k n_k}^{(k)}
+  \end{equation}
+  for each $k$. Then there is a system of matrix units $\{f_{ij}^{(k)}\}$ extending $\{f_{ii}^{(k)}\}$.
+\end{lemma}
+
+\noindent The idea behind constructing systems of matrix units is, essentially, to have a ``basis'' for each component of the direct sum
+that we will eventually demonstrate characterizes the $C^{*}$-algebra $B$. Each of the sets $\{f_{ii}^{(k)}\}$ are analogous to matrix projections
+with $1$ at the $i$-th slot on the diagonal, at the $k$-th slot in the direct sum. Let us now prove the lemma.
+
+\begin{proof}
+  Of course, here, we will make us of the Murray-von Neumann equivalence. Namely,
+  \begin{equation}
+    f_{11}^{(k)} \sim f_{jj}^{(k)} \Longrightarrow f_{11}^{(k)} = f_{1j}^{(k)} f_{1j}^{(k)^{*}} \ \ \ \text{and} \ \ \ f_{jj}^{(k)} = f_{1j}^{(k)^{*}} f_{1j}^{(k)}
+  \end{equation}
+  This notation is consistent, as $f_{11}^{(k)}$ is self-adjoint, so setting $j = 1$ above causes no problems.
+  Our claim is that if we set $\widetilde{f}_{ij}^{(k)} = f_{1i}^{(k)^{*}} f_{1j}^{(k)}$ then we will have the desired system of matrix units. This is in fact an extension of the system we are already provided. Namely, we have
+  \begin{equation}
+    \widetilde{f}_{jj}^{(k)} = f_{1j}^{(k)^{*}} f_{1j}^{(k)} = f_{jj}^{(k)}
+  \end{equation}
+  by definition. In fact, we might as well denote $\widetilde{f}_{ij}$ by $f_{ij}$, as for $i = 1$, we have
+  \begin{equation}
+    \widetilde{f}_{1j} = f_{11}^{(k)^{*}} f_{1j}^{(k)} = f_{1j}^{(k)} f_{1j}^{(k)^{*}} f_{1j}^{(k)} = f_{1j}^{(k)}
+    \end{equation}
+  where we use the above lemma and the fact that $f_{1j}^{(k)^{*}} f_{1j}^{(k)} = f_{jj}^{(k)}$ is a projection. Let us now complete our verification. Of course, we have
+  \begin{equation}
+    f_{pq}^{(k)} f_{qr}^{(k)} = f_{1p}^{(k)^{*}} f_{1q}^{(k)} f_{1q}^{(k)^{*}} f_{1r}^{(k)} = f_{1p}^{(k)^{*}} f_{11}^{(k)} f_{1r}^{(k)} = f_{1p}^{(k)^{*}} f_{1r}^{(k)} f_{1r}^{(k)^{*}} f_{1r}^{(k)} = f_{1p}^{(k)^{*}} f_{1r}^{(k)} = f_{pr}^{(k)}
+  \end{equation}
+  where we use the first lemma to note that $f_{1r}^{(k)} f_{1r}^{(k)^{*}} f_{1r}^{(k)} = f_{1r}^{(k)}$, as $f_{1r}^{(k)^{*}} f_{1r}^{(k)} = f_{rr}^{(k)}$ is a projection. Next, note that
+  \begin{equation}
+    f_{pq}^{(k)} f_{rs}^{(\ell)} = f_{1p}^{(k)^{*}} f_{1q}^{(k)} f_{1r}^{(\ell)^{*}} f_{1s}^{(\ell)}
+  \end{equation}
+  Once again using the first lemma, we have $f_{1q}^{(k)} = f_{1q}^{(k)} f_{1q}^{(k)^{*}} f_{1q}^{(k)} =  f_{1q}^{(k)}  f_{qq}^{(k)}$ and $f_{1r}^{(\ell)} = f_{1r}^{(\ell)} f_{1r}^{(\ell)^{*}} f_{1r}^{(\ell)} =  f_{1r}^{(\ell)} f_{rr}^{(\ell)}$
+  so that $f_{1r}^{(\ell)^{*}} = f_{rr}^{(\ell)} f_{1r}^{(\ell)^{*}}$. We then use the fact that the projections in our set are mutually orthogonal to conclude that
+  \begin{equation}
+    f_{1p}^{(k)^{*}} f_{1q}^{(k)} f_{1r}^{(\ell)^{*}} f_{1s}^{(\ell)} = f_{1p}^{(k)^{*}} f_{1q}^{(k)} (f_{qq}^{(k)}  f_{rr}^{(\ell)}) f_{1r}^{(\ell)^{*}} f_{1s}^{(\ell)} = 0
+  \end{equation}
+  which is $0$ when $q \neq r$ or $k \neq \ell$, as in these cases, $f_{qq}^{(k)}  f_{rr}^{(\ell)} = 0$. It is very immediately clear that $f_{ij}^{(k)^{*}} = f_{1j}^{(k)^{*}} f_{1i}^{(k)} = f_{ji}^{(k)}$,
+  so we have verified the third condition, and it follows that our set of $f_{ij}^{(k)}$ is in fact a system of matrix units in $B$ extending $\{f_{ii}^{(k)}\}$.
+\end{proof}
+
+\begin{comment}
+\section{Secondary technical lemmas: masas}
+
+\noindent Now, we prove a handful of technical results about masas (maximal Abelian sub-algebras).
+
+\begin{lemma}
+  A sub-$C^{*}$-algebra $D$ of a $C^{*}$-algebra $A$ is a masa if and only if $D' = D$, where $D'$ is the set of all elements in $A$ for such $da = ad$ for all $d \in D$.
+\end{lemma}
+\begin{proof}
+  We suppose first that $D$ is a masa. Note that $D'$ clearly contains $D$, as every element of $D$ commutes with every other element of $D$, since $D$ is Abelian.
+  Suppose $y \in D'$ and $y \notin D$. Then $yd = dy$ for all elements of $D$. It follows that $C(D \cup \{y\})$ is an Abelian sub-$C^{*}$-algebra which contains $D$ properly,
+  a clear contradiction, so we must have $D' \subset D$. We have inclusion both ways, so $D = D'$.
+
+  Conversely, suppose $D = D'$. Pick $x, y \in D$. Note that $x \in D'$ commutes with every element of $D$, so $xy = yx$. Thus, $D$ is an Abelian sub-$C^{*}$-algebra. Via Zorn's lemma,
+  we know that every Abelian sub-$C^{*}$-algebra is in a masa. Let $F$ be a masa containing $D$. Given some $f \in F$, note that $f$ will commute with every element of $D$, so that $f \in D' = D$. Thus,
+  we must have $D = F$, and the proof is complete.
+\end{proof}
+
+\noindent We have to prove one more lemma:
+
+\begin{lemma}
+  Let $D$ be a masa in a $C^{*}$-algebra $A$, then
+  \begin{enumerate}
+  \item If $a$ is an element in $A$ that commutes with every element in $D$, then $a$ belongs to $D$.
+  \item If $D$ is unital, then $A$ is unital, and the unit of $D$ is equal to the unit of $A$.
+  \item If $p$ is a projection in $D$ satisfying $pDp = \mathbb{C}p$, then $pAp = \mathbb{C}p$. In other words,
+    a minimal projection in $D$ is also a minimal projection in $A$.
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+  The first claim follows trivially from the proof of the previous lemma. Suppose $1_D$ is a unit in $D$. Then
+  \end{proof}
+
+\section{Main result}
+
+\noindent With our preliminary lemmas, we can now attempt to prove the main result.
+
+\begin{theorem}
+
+\end{theorem}
+\end{comment}
+
+\section{RLL Problem 7.4 (Suggested Problem 1)}
+
+\noindent \textbf{Part 1.} Suppose $A$ and $B$ both have the cancellation property, which means that the semigroups $\mathcal{D}(A)$ and $\mathcal{D}(B)$ have the cancellation property.
+Equivalently, some $X$ has the cancellation property if andf only if, for each $p, q \in \mathcal{P}_{\infty}(X)$, then
+\begin{equation}
+  [p]_0 = [q]_0 \Longleftrightarrow p \sim_0 q
+\end{equation}
+Recall from earlier in RLL that if $i_A$ and $i_B$ are canonical inclusion maps of $A$ and $B$ into $A \oplus B$, then $\Phi = K_0(i_A) \oplus K_0(i_B)$ is a group isomorphism.
+Suppose $p, q \in \mathcal{P}_{\infty}(A \oplus B)$. Of course, $p \sim_0 q$ implies $[p]_{\mathcal{D}} = [q]_{\mathcal{D}}$, which implies that $[p]_{0} = [q]_{0}$.
+
+Conversely, suppose
+that $[p]_0 = [q]_0$, where $p, q$ are projections in $\mathcal{P}_{\infty}(A \oplus B)$ It is easy to see in this case that $p = p_1 \oplus p_2$ and $q = q_1 \oplus q_2$ for $p_1, p_2 \in \mathcal{P}_{\infty}(A)$ and $q_1, q_2 \in \mathcal{P}_{\infty}(B)$.
+Then note that $\Phi^{-1}([p]_0) = [p_1]_0 \oplus [p_2]_0 = \Phi^{-1}([q]_0) = [q_1]_0 \oplus [q_2]_0$, so that $[p_1]_0 = [q_1]_0$ in $K_0(A)$ and $[p_2]_0 = [q_2]_0$ in $K_0(B)$. Thus, since
+we have the canellation property in these algebras, $p_1 \sim_0 q_1$ and $p_2 \sim_0 q_2$. It follows that $p_1 \oplus p_2 = p \sim_0 q_1 \oplus q_2 = q$, clearly. This completes the proof.
+\newline
+
+\noindent \textbf{Part 2.} Suppose the sequence of $C^{*}$-algebras has the the cancellation property. We will use continuity of $K_0$ to show that their inductive limit has the cancellation property.
+In particular, note that
+\begin{equation}
+  \lim_{\longrightarrow} K_0(A_n) \simeq K_0(\lim_{\longrightarrow} A_n) = K_0(A)
+\end{equation}
+where the isomorphism is clearly of Abelian groups. Suppose $p, q \in \mathcal{P}_{\infty}(A)$ with $[p]_0, [q]_0 \in K_0(A)$ are such that $[p]_0 = [q]_0$. Let $\Phi$ be
+the isomorphism so that
+$$p' = \Phi([p]_0) = \Phi([q]_0) = q' \in \lim_{\longrightarrow} K_0(A_n).$$
+By definition, $p'$ and $q'$ are both equivalence classes in $\prod_{k} K_0(A_k) \Big/ \sum_{k} K_0(A_k)$,.
+\newline
+
+\noindent \textbf{Part 3.} Let us prove that any matrix algebra over $\mathbb{C}$ has the cancellation property. If we can do this, then
+since AF algebras are simply direct limits of direct sums of matrix algebras, we will have proved that all AF algebras have the cancellation property.
+\newline
+
+\noindent Indeed, suppose $[x]_{\mathcal{D}} + [y]_{\mathcal{D}}, [z]_{\mathcal{D}} + [y]_{\mathcal{D}} \in \mathcal{D}(M_n(\mathbb{C}))$, the semigroup of the matrix algebra. This implies that $x \oplus y \sim_0 z \oplus y$,
+so $x \oplus y = v^{*} v$ and $z \oplus y = v v^{*}$. Suppose $x$ is size $n$, $z$ is size $m$.
+
+\section{RLL Problem 7.5 (Suggested Problem 2)}
+
+\noindent 
+
+\end{document}

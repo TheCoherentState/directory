@@ -1,0 +1,230 @@
+\documentclass[aps,pra,showpacs,notitlepage,onecolumn,superscriptaddress,nofootinbib]{revtex4-1}
+\usepackage[utf8]{inputenc}
+\usepackage[tmargin=1in, bmargin=1.25in, lmargin=1.5in, rmargin=1.5in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{datetime}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{import}
+\usepackage{mathtools}
+\usepackage{thmtools,thm-restate}
+\usepackage{comment}
+
+
+% package for commutative diagrams
+% \usepackage{tikz-cd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{crimson}{RGB}{186,0,44}
+\definecolor{moss}{RGB}{0, 186, 111}
+\newcommand{\pop}[1]{\textcolor{crimson}{#1}}
+\newcommand{\zcom}[1]{\noindent\textcolor{crimson}{(Z): #1}}
+\newcommand{\jcom}[1]{\noindent\textcolor{moss}{(J): #1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\pqeq}{\succcurlyeq}
+\newcommand{\pleq}{\preccurlyeq}
+\newcommand{\Wedge}{\bigwedge}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+    colorlinks,
+    linkcolor={crimson},
+    citecolor={crimson},
+    urlcolor={crimson}
+}
+
+\usepackage{qcircuit}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{reminder}{Reminder}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{answer}{Answer}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{claim}{Claim}[section]
+
+\newcommand{\hhrulefill}{\hspace{-1.5em} \hrulefill}
+
+\usepackage{geometry}
+\geometry{
+  left=25mm,
+  right=25mm,
+  top=20mm,
+}
+\usepackage{tikz-cd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{unsrt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{MAT437 problem set 9}
+\author{Jack Ceroni}
+\email{jackceroni@gmail.com}
+
+\date{\today}
+
+\maketitle
+
+\hhrulefill
+
+\section{RLL Problem 8.2}
+
+\noindent  Recall that $K_1(C(X)) \simeq K_0(SC(X))$, where $SC(X)$ is the set of suspensions over $C(X)$, namely,
+\begin{equation}
+  SC(X) = \{f \in C([0, 1], C(X)) \ | \ f(0) = f(1) = 0\}
+\end{equation}
+where $0$ is the zero-function.
+
+\begin{lemma}
+  Let $A$ and $B$ be topological spaces with $B$ compact. Let $R$ be a $C^{*}$-algebra. Then, as topological spaces with the uniform metric, $C(A, C(B, R))$ and $C(A \times B, R)$ are homeomorphic. In
+  fact, they are $*$-isomorphic as $C^{*}$-algebras.
+\end{lemma}
+\begin{proof}
+  Let $\Phi : C(A, C(B, R)) \rightarrow C(A \times B, R)$ be the map such that $\Phi(f)(a, b) = f(a)(b)$. We need to show that
+  this map is actually well-defined. Indeed, suppose $f$ is continuous in $C(A, C(B))$. We need to show that $\Phi(f)$ is continuous.
+
+  Let $W_{\varepsilon}$ be the $\varepsilon$-ball
+  around $f(a) \in C(B)$. Of course, since $f : A \rightarrow C(B)$ is continuous, we can pick open $U$ in $A$ around $a$ such that $f(U) \subset W_{\varepsilon}$.
+  In particular, this means that for any $x \in U$ and $f(x) \in f(U) \subset W_{\varepsilon}$, we have $\sup_{y \in B} ||f(x)(y) - f(a)(y)|| < \varepsilon$.
+  We then pick $V$ open in $B$ such that $f(a)(V) \subset (f(a)(b) - \varepsilon, f(a)(b) + \varepsilon)$. Thus, if we pick some $(x, y) \in U \times V$, then
+  \begin{equation}
+    ||\Phi(f)(x, y) - \Phi(f)(a, b) || = || f(x)(y) - f(a)(b) || \leq || f(x)(y) - f(a)(y) || + ||f(a)(y) - f(a)(b)|| \leq 2 \varepsilon
+  \end{equation}
+  Since we can do this for arbitrary $\varepsilon > 0$, $\Phi(f)$ must be a continuous function. Conversely, define $\Phi^{-1}(f)(a)(b) = f(a, b)$. It is clear that
+  $\Phi^{-1}(f)(a)$ is an element of $C(B)$, as it is the restriction of a continuous function to one input variable. All that remains is to show that $\Phi^{-1}(f) : A \rightarrow C(B)$
+  is continuous.
+
+  For fixed $a$, if we choose for each point $(a, b)$ for some $b \in B$ some $U_b \times V_b$ which is mapped by $f$ into $B_{\varepsilon}(f(a, b))$ (the $\varepsilon$-ball about $f(a, b)$), then since $B$ is compact, we
+  can take a finite subcover of $V_b$, and intersect all of the $U_b$ associated to get an open set $U$ such that for some $x \in U$ and any $b \in B$, $||f(x, b) - f(a, b)|| < \varepsilon$. Thus, for $x \in U$,
+  \begin{equation}
+    || \Phi^{-1}(f)(x) - \Phi^{-1}(f)(a) ||_{\infty} = \sup_{b \in B} ||f(x, b) - f(a, b)|| \leq \varepsilon
+  \end{equation}
+  so it follows immediately that $\Phi^{-1}(f)$ is continuous.
+  \newline
+
+  \noindent It is obvious that $\Phi$ and $\Phi^{-1}$ are inverses of each other. Clearly, $\Phi$ is linear and preserves multiplication. Moreover, $\Phi(f^{*})(x, y) = f(x)(y)^{*} = \Phi(f)(x, y)^{*}$,
+  with the same of course holding true for $\Phi^{-1}$. Thus, we do in fact have a well-defined $*$-isomorphism between the two spaces.
+\end{proof}
+
+Now, it is very clear that the subset of $f \in C([0, 1], C(X))$ for which $f(0) = f(1) = 0$ is a sub-$C^{*}$-algebra of $C([0, 1], C(X))$. It is also clear that this function will be in bijective correspondence
+with the functions $g \in C([0, 1] \times X, R)$ for which $g(0, x) = 0$ and $g(1, x) = 0$ for all $x \in X$. Clearly, this is also a sub-$C^{*}$ algebra, this time of the algebra $C([0, 1] \times X)$.
+\newline
+
+\noindent From this result, it follows immediately that for compact Hausdorff space $X$,
+\begin{multline}
+  SC(X) \simeq \{f \in C([0, 1] \times X) \ | \ f(0, x) = f(1, x) = 0 \ \ \text{for all} \ \ x \in X\} \coloneqq A
+  \\ \Longrightarrow K_1(C(X)) \simeq K_0(SC(X)) \simeq K_0(A)
+\end{multline}
+Of course, $[0, 1] \times X$ is compact Hausdorff contractible. But we already know that for compact Hausdorff contractible space $Y$, $K_0(C(Y)) = 0$ (this was proved in an earlier chapter).
+Thus, $K_0(C([0, 1] \times X)) = 0$. Since $A$ is a sub-$*$-algebra, we must also have $K_0(A) = 0$.
+
+\section{RLL Problem 8.3}
+
+\noindent This problem will carry forward similarly to the previous problem. In particular, let us make note of the fact that $K_1(CA) \simeq K_0(SCA)$. Note that via the above
+proof (in the previous problem),
+\begin{equation}
+  SCA \simeq F = \{ f : [0, 1] \times [0, 1] \rightarrow A \ | \ f(0, t) = 0 \ \ \ \text{and} \ \ \ f(x, 0) = f(x, 1) = 0\}
+\end{equation}
+Of course, the right-hand side is a sub-$C^{*}$-algebra of $C([0, 1] \times [0, 1] \rightarrow A)$. Since $[0, 1] \times [0, 1]$ is compact Hausdorff contractible,
+the $K_0$-group of the space of fucntion is $0$. Thus, $K_0(F) = 0$, and $K_1(CA) = 0$ as well.
+
+\section{RLL Problem 8.5}
+
+\noindent Let us recall the identification of Proposition 8.1.6 of RLL. Namely, when we have a unital $C^{*}$-algebra $A$, then there exists an isomorphism $\rho : K_1(A) \rightarrow \mathcal{U}_{\infty}(A)/\sim_1$ making the
+following diagram commute:
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXG1hdGhjYWx7VX1fe1xcaW5mdHl9KFxcd2lkZXRpbGRle0F9KSJdLFsyLDAsIlxcbWF0aGNhbHtVfV97XFxpbmZ0eX0oQSkiXSxbMiwyLCJcXG1hdGhjYWx7VX1fe1xcaW5mdHl9KEEpL1xcc2ltXzEiXSxbMCwyLCJLXzEoQSkiXSxbMCwxLCJcXG11Il0sWzEsMl0sWzAsMywiW1xcY2RvdF1fMSIsMl0sWzMsMiwiXFxyaG8iLDJdXQ==
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXG1hdGhjYWx7VX1fe1xcaW5mdHl9KFxcd2lkZXRpbGRle0F9KSJdLFsyLDAsIlxcbWF0aGNhbHtVfV97XFxpbmZ0eX0oQSkiXSxbMiwyLCJcXG1hdGhjYWx7VX1fe1xcaW5mdHl9KEEpL1xcc2ltXzEiXSxbMCwyLCJLXzEoQSkiXSxbMCwxLCJcXG11Il0sWzEsMiwiW1xcY2RvdF1fMSJdLFswLDMsIltcXGNkb3RdXzEiLDJdLFszLDIsIlxccmhvIiwyXV0=
+\[\begin{tikzcd}
+	          {\mathcal{U}_{\infty}(\widetilde{A})} && {\mathcal{U}_{\infty}(A)} \\
+	          \\
+	            {K_1(A)} && {\mathcal{U}_{\infty}(A)/\sim_1}
+	            \arrow["\mu", from=1-1, to=1-3]
+	            \arrow["{[\cdot]_1}", from=1-3, to=3-3]
+	            \arrow["{[\cdot]_1}"', from=1-1, to=3-1]
+	            \arrow["\rho"', from=3-1, to=3-3]
+\end{tikzcd}\]
+where $\mu(a + \alpha (1_{\widetilde{A}} - 1_A)) = a$ is the projection map. Now, consider $\varphi : A \rightarrow B$. We can extend $\varphi$ to a map $\widetilde{\varphi} : \mathcal{U}_{\infty}(\widetilde{A}) \rightarrow \mathcal{U}_{\infty}(\widetilde{B})$
+between the matrix algebras of the unitizations, in the usual, element-wise way. In fact, we have $K_1(\varphi)([u]_1) = [\widetilde{\varphi}(u)]_1$ for $u \in \mathcal{U}_{\infty}(\widetilde{A})$, as was shown in RLL. Pick $u \in \mathcal{U}_n(\mathcal{A})$.
+Let $1_{\widetilde{A}}$ be the unit in $\widetilde{A}$. Let $1_A$ be the unit in $A$. Note that
+Note that
+\begin{equation}
+  \varphi(u + (1_{\widetilde{A}} - 1_A)) = u \ \ \ \text{and} \ \ \ (u + (1_{\widetilde{A}} - 1_A))^{*} (u + (1_{\widetilde{A}} - 1_A)) = u^{*} u - 1_{A} + 1_{\widetilde{A}} = 1_{\widetilde{A}}
+\end{equation}
+so $u + (1_{\widetilde{A}} - 1_A)$ is unitary in $\widetilde{A}$, the unitization. Via the above commutative diagram, we identify $[u]_1$ (one the right-hand side) with $[u + (1_{\widetilde{A}} - 1_A)]_1$ (on the left-hand side).
+We then have
+\begin{equation}
+  K_1(\varphi)([u + (1_{\widetilde{A}} - 1_A)]_1) = [\widetilde{\varphi}(u + (1_{\widetilde{A}} - 1_A))]_1 = [\varphi(u) + 1_{\widetilde{A}} - \varphi(1_A)]_1
+\end{equation}
+To find the equivalence class of $\mathcal{U}_{\infty}(A)/\sim_1$ to which this element of the $K_1$-group corresponds, we map via $\rho$, which via the above diagram,
+is equivalent to mapping the unitary representative $\varphi(u) + 1_{\widetilde{A}} - \varphi(1_A)$ via $\mu$, and then by $[\cdot]_1$ (the projection on the right). We have
+\begin{equation}
+  \mu(\varphi(u) + 1_{\widetilde{A}} - \varphi(1_A)) = \mu(\varphi(u) - \varphi(1_A) + 1_A + (1_{\widetilde{A}} - 1_A)) = \varphi(u) + 1_A - \varphi(1_A)
+\end{equation}
+so the corresponding equivalence class is $[\varphi(u) + 1_A - \varphi(1_A)]_1$, as desired. Thus, if $\varphi$ is unital, then the equivalence class will be $[\varphi(u)]_1$,
+and the $*$-homomorphism will respect the structure of the unitization.
+
+\begin{comment}
+\section{RLL Problem 8.6}
+
+\noindent Suppose that $\varphi(v) = u \oplus 1_{m - n}$, for some $m \geq n$. Via the identification, $[u]_1$ is identified with $[u + (1_{\widetilde{B}} - 1_B)]_1$. Note that
+\begin{equation}
+  \widetilde{\varphi}(v + (1_{\widetilde{A}} - 1_A)) = \varphi(v) - \varphi(1_A) + 1_{\widetilde{A}} = 
+  \end{equation}
+
+\noindent Suppose  that $[u]_1 \in\text{Im}( K_1(\varphi))$. Once again, recall that via the identification, this is precisely the condition that $[u + (1_{\widetilde{B}} - 1_B)]_1$
+be in the image of $K_1(\varphi)$. Thus, we have $\widetilde{\varphi}(v') \sim_1 u + (1_{\widetilde{B}} - 1_B)$ for some unitary $v' \in \mathcal{U}_{\infty}(\widetilde{A})$. Note that since the algebra
+$A$ is unital, we can decompose $v' = v + \alpha (1_{\widetilde{A}} - 1_{A})$. We must have $(v')^{*} v' = 1_{\widetilde{A}}$, which gives $v^{*} v = |\alpha|^2 1_A$ and $|\alpha|^2 = 1$, so
+$v$ is a unitary in $\mathcal{U}_{\infty}(A)$. Now, we must have
+\begin{equation}
+  \varphi(v) + e^{i \theta} 1_{\widetilde{B}} - e^{i \theta} \varphi(1_A) \sim_1 \varphi(v) + 1_{\widetilde{B}} - \varphi(1_A) \sim_1 u + (1_{\widetilde{B}} - 1_B)
+\end{equation}
+which implies that $\varphi(v) - \varphi(1_A) \sim_1 u - 1_B$.
+\end{comment}
+
+\section{RLL Problem 8.8}
+
+\noindent \textbf{Part 1.} Let $\alpha \in \text{Inn}(A)$, so that $\alpha(x) = uxu^{-1}$ for some unitary $u \in A$. Of course, we have $K_1(\alpha)([v]_1) = [\alpha(v)]_1 = [uvu^{-1}]_1$.
+From Whitehead lemma, we have
+\begin{equation}
+  \begin{pmatrix} uvu^{-1} & 0 \\ 0 & 1 \end{pmatrix} \sim_h \begin{pmatrix} vu^{-1} & 0 \\ 0 & u \end{pmatrix} \sim_h \begin{pmatrix} v & 0 \\ 0 & 1 \end{pmatrix}
+\end{equation}
+Therefore, $uvu^{-1} \sim_1 v$, so $[uvu^{-1}]_1 = [v]_1$. Therefore, $K_1(\alpha) = \text{id}$.
+\newline
+
+\begin{comment}
+\textbf{Part 2.} Let $\alpha \in \overline{\text{Inn}(A)}$. It follows that for each finite subset $F$ of $A$ and $\varepsilon > 0$, there exists an inner automorphism
+$\beta$ such that $||\alpha(x) - \beta(x)|| < \varepsilon$ for all $x \in F$. From here, note that $K_1(\alpha)([u]_1) = [\alpha(u)]_1$
+\end{comment}
+
+\noindent \textbf{Part 3.} Let us pick $\alpha \in \text{Aut}(A)$. Clearly, $K_1(\alpha) : K_1(A) \rightarrow K_1(A)$ is group homomorphism. We need to show that this homomorphism is an
+isomorphism. In particular, note that if $K_1(\alpha)([u]_1) = [1]_1$, then $[\alpha(u)]_1 = [1]_1$ so that $\alpha(u) \sim_1 1$. Since $\alpha$ is invertible and unit preserving, and we know
+that $\alpha(u) \oplus 1_m \sim_h 1$ via homotopy $f$, then the homotopy $\alpha^{-1}(f(t))$ will connect $u \oplus 1_m$ and $\alpha^{-1}(1) = 1$, so that $[u]_1 = [1]_1$. It
+follows that $K_1(\alpha)$ must be an injection. In additin, it is obviously a surjection as $K_1(\alpha)([\alpha^{-1}(u)]_1) = [u]_1$ for all $[u]_1 \in K_1(A)$. Thus,
+$K_1(\alpha) \in \text{Aut}(K_1(A))$ as desired.
+\newline
+
+\noindent \textbf{Part 4.} Of course, we showed that $K_1(\alpha) \in \text{Aut}(K_1(A))$. To show that this is a group homomorphism,
+we require that $K_1(\alpha \circ \beta) = K_1(\alpha) \circ K_1(\beta)$. In particular,
+\begin{equation}
+  K_1(\alpha \circ \beta)([u]_1) = [(\alpha \circ \beta)(u)]_1 = K_1(\alpha)([\beta(u)]_1) = (K_1(\alpha) \circ K_1(\beta))([u]_1)
+\end{equation}
+and the proposition is proved.
+
+\end{document}
