@@ -1,0 +1,180 @@
+\documentclass[aps,pra,showpacs,notitlepage,onecolumn,superscriptaddress,nofootinbib]{revtex4-1}
+\usepackage[utf8]{inputenc}
+\usepackage[tmargin=1in, bmargin=1.25in, lmargin=1.5in, rmargin=1.5in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{datetime}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{import}
+\usepackage{mathtools}
+\usepackage{thmtools,thm-restate}
+\usepackage{comment}
+
+
+% package for commutative diagrams
+% \usepackage{tikz-cd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{crimson}{RGB}{186,0,44}
+\definecolor{moss}{RGB}{0, 186, 111}
+\newcommand{\pop}[1]{\textcolor{crimson}{#1}}
+\newcommand{\zcom}[1]{\noindent\textcolor{crimson}{(Z): #1}}
+\newcommand{\jcom}[1]{\noindent\textcolor{moss}{(J): #1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\pqeq}{\succcurlyeq}
+\newcommand{\pleq}{\preccurlyeq}
+\newcommand{\Wedge}{\bigwedge}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+    colorlinks,
+    linkcolor={crimson},
+    citecolor={crimson},
+    urlcolor={crimson}
+}
+
+\usepackage{qcircuit}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{reminder}{Reminder}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{answer}{Answer}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{claim}{Claim}[section]
+
+\newcommand{\hhrulefill}{\hspace{-1.5em} \hrulefill}
+
+\usepackage{geometry}
+\geometry{
+  left=25mm,
+  right=25mm,
+  top=20mm,
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{unsrt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{MAT437 problem set 10}
+\author{Jack Ceroni}
+\email{jackceroni@gmail.com}
+
+\date{\today}
+
+\maketitle
+
+\section{Suggested problem 1}
+
+\noindent \textbf{Part 1.} Let us make note of the fact that if $f$ is essentially bounded (in $L^{\infty}(\mathbb{T})$), and $x \in L^{2}(\mathbb{T})$ is square integrable, then $fx \in L^2(\mathbb{T})$ (the product
+is clearly square integrable). It follows that
+\begin{equation}
+  ||T_f x|| = ||P(fx)|| = \left|\left|  P \left( \displaystyle\sum_{n < 0} \langle e_n, fx \rangle e_n + \displaystyle\sum_{n \geq 0} \langle e_n, fx \rangle e_n \right) \right| \right| =  \displaystyle\sum_{n \geq 0} \langle| e_n, fx \rangle| || e_n || = \displaystyle\sum_{n \geq 0} \langle| e_n, fx \rangle|
+\end{equation}
+where $\langle fx, e_n \rangle = \frac{1}{\sqrt{2\pi}} \int_{\mathbb{T}} fx z^n \ d\mu$, where $\mu$ is the uniform Haar measure on the circle. Of course,
+\begin{equation}
+  \displaystyle\sum_{n \geq 0} \langle| e_n, fx \rangle| \leq \displaystyle\sum_{n \in \mathbb{Z}} \langle| e_n, fx \rangle| = ||fx|| \leq ||f|| ||x|| \leq M ||x||
+\end{equation}
+as $f$ is essentially bounded by some $M$, so that $||T_f x|| \leq M ||x||$, and by definition, $T_f$ is bounded.
+\newline
+
+\noindent \textbf{Part 2.} In the above proof, we have $M = ||f||_{\infty}$. Thus, we have already shown that $\frac{||T_f x||}{||x||} \leq ||f||_{\infty}$ for all $x$. Thus,
+\begin{equation}
+  ||T_f|| = \sup_{x} \frac{||T_f x||}{||x||} \leq ||f||_{\infty}
+\end{equation}
+as well. Let us also note that for basis vectors $e_j, e_k \in H^2(\mathbb{T})$ with $j, k \geq 0$, we have
+\begin{equation}
+  \langle T_f e_j, e_k \rangle = \langle P(f e_j), e_k \rangle = \frac{1}{\sqrt{2\pi}} \displaystyle\sum_{i \in \mathbb{Z}} \langle f, e_i \rangle \langle e_{i + j}, e_k \rangle = \frac{1}{\sqrt{2\pi}} \langle f, e_{k - j} \rangle
+\end{equation}
+where we make use of the fact that $e_a \cdot e_b = \frac{1}{2\pi} z^{a} \cdot z^{b} = \frac{1}{2\pi} z^{a + b} = \frac{1}{\sqrt{2\pi}} e_{a + b}$. Moreover, note that
+\begin{equation}
+  \langle e_j, T_{\overline{f}} e_k \rangle = \langle e_j, P(\overline{f} e_k) \rangle = \frac{1}{\sqrt{2\pi}} \displaystyle\sum_{i \in \mathbb{Z}}  \langle e_{j}, \overline{\langle f, e_i \rangle} e_{k - i} \rangle = \frac{1}{\sqrt{2\pi}} \langle f, e_{k - j} \rangle
+  \end{equation}
+where we use the fact that if $f = \sum_{k} \langle \langle f, e_k \rangle e_k$, then $\overline{f} = \sum_{k} \overline{\langle f, e_k \rangle} e_{-k}$ as $\overline{z^k} = z^{-k}$ for $k \in \mathbb{T}$. Thus, by
+definition, $T_f^{*} = T_{\overline{f}}$.
+\newline
+
+\noindent \textbf{Part 3.} We have
+\begin{equation}
+  T_f e_n = P(f e_n) = \frac{1}{\sqrt{2\pi}} P \left( \displaystyle\sum_{m \in \mathbb{Z}} \langle f, e_m \rangle e_{m + n} \right) =  \frac{1}{\sqrt{2\pi}} \displaystyle\sum_{m + n \geq 0} \langle f, e_m \rangle e_{m + n} =
+  \frac{1}{\sqrt{2\pi}} \displaystyle\sum_{m \geq 0} \langle f, e_{m - n} \rangle e_{m}
+\end{equation}
+which immediately yields the desired result, as clearly,
+\begin{equation}
+  \langle f, e_{m - n} \rangle = \frac{1}{\sqrt{2\pi}} \displaystyle\int_{\mathbb{T}} f(z) z^{n - m} \ d\mu = \frac{1}{\sqrt{2\pi}} \displaystyle\int_{0}^{1} f(e^{2 \pi i\theta}) e^{-2\pi (m - n) \theta i} \ d\theta = \hat{f}(m - n)
+\end{equation}
+is the $m - n$-th Taylor series coefficient.
+\newline
+
+\noindent \textbf{Part 4.} Note that $T_{e_k}(e_j) = \frac{1}{\sqrt{2\pi}} P(e_{k + j})$, which is $\frac{1}{\sqrt{2\pi}}$ for $k + j \geq 0$ and $0$ otherwise. Thus, the induced operator $\widetilde{T}_{e_k}$ must send $\delta_{n}$ to $\frac{1}{\sqrt{2\pi}} \delta_{n + k}$,
+so it follows that this operator is precisely the $k$-th power of the unilateral shift, composed with multiplication by $\frac{1}{\sqrt{2\pi}}$.
+\newline
+
+\noindent \textbf{Part 5.} Clearly, if $f = 0$, the operator is compact. Now, conversely, suppose that $T_f$ is compact. Recall that in a Hilbert space, a sequence $x_n$ is said to converge weakly if for every $y \in H$,
+we have $\lim_{n \to \infty} \langle x_n, y \rangle = 0$. Since the $e_n$ form a Hilbert space basis, $\sum_{n \in \mathbb{Z}} |\langle e_n, y \rangle|^2 = ||y||^2$ for some $y$. Thus, the series $\langle e_n, y \rangle$
+converges absolutely, so $\langle e_n, y \rangle \rightarrow 0$, so the sequence of $e_n$ converges weakly.
+\newline
+
+\noindent Since $T_f$ is compact, $T_fe_n$ converges strongly, $||T_f e_n|| \rightarrow 0$. Thus, it follows that
+\begin{equation}
+  ||T_f e_n ||^2 = \displaystyle\sum_{k \in \mathbb{Z}} | \langle T_f e_n, e_{n + k} \rangle|^2.
+\end{equation}
+Via the same logic as before, $\langle T_f e_n, e_{n + k} \rangle \rightarrow 0$ for $k \to \pm \infty$, as the sum converges. From Part 3 that $\langle T_f e_n, e_{n + k} \rangle = \sum_{m \geq 0} \hat{f}(m - n) \langle e_n, e_{n + k} \rangle = \hat{f}(k)$
+converges to $0$ as we take $k \to \infty$. \pop{I wasn't sure where to go from here: just because $\hat{f}(k) \to 0$, why does this imply $\hat{f} = 0$, as is stated in the hint?}
+\newline
+
+\noindent \textbf{Part 6.} Suppose first that $f = e_k$ and $g$ arbitrary. Note that, from Part 3,
+\begin{multline}
+  (T_{e_k} T_g - T_g T_{e_k}) e_n = T_{e_k} \displaystyle\sum_{m \geq 0} \hat{g}(m - n) e_m - T_g \left( \frac{1}{\sqrt{2\pi}} e_{k + n} \right)
+  \\ = \frac{1}{\sqrt{2\pi}} \displaystyle\sum_{m \geq 0} \hat{g}(m - n) e_{m + k} - \frac{1}{\sqrt{2\pi}} \displaystyle\sum_{m \geq 0} \hat{g}(m - k - n) e_{m} = -\frac{1}{\sqrt{2\pi}} \displaystyle\sum_{m = -k}^{-1} \hat{g}(m - n) e_{m + k}
+\end{multline}
+Thus, the image of any of the basis vectors $e_n$ under the commutator map can be written as a linear combination of the basis vectors $e_{0}, \dots, e_{k - 1}$. It follows immediately that $[T_{e_k}, T_g]$ has finite rank.
+This implies that the operator is compact: given a sequence $\{x_n\}$ of functions, their image under this operator must be bounded (this comes from finite rank), so Bolzano-Weierstrass gives a convergent subsequence and the operator is compact.
+\newline
+
+\noindent Now, let us turn our attention to the general case. Since $f$ is continuous on $\mathbb{T}$, Stone-Wierestrass implies that we can approximate it uniformaly with trig polynomials. Clearly, $T_f$ is linear, in the sense
+that $T_{\lambda f + g} = \lambda T_f + T_g$. Thus, we can find a sequence $f_n = \sum_{|k| \leq n} c_k e_k$ which converges uniformly to $f$ for $|k| \to \infty$. Each operator
+\begin{equation}
+  [T_g, T_{f_n}] = \left[ T_g, \sum_{|k| \leq n} c_k T_{e_k} \right] = \sum_{|k| \leq n} c_k [T_g, T_{e_k}]
+\end{equation}
+is a finite sum of compact operators, and is thus compact. Since the compact operators form a sub-$C^{*}$-algebra, the limit point of this sequence, which is precisely $[T_g, T_f]$, will also
+be compact, and the proof is complete.
+\newline
+
+\noindent The proof for the operator $T_f T_g - T_{fg}$ carries forward similarly: we let $f = e_k$. Note that
+\begin{equation}
+  T_{e_k g} = \displaystyle\sum_{m \geq 0} \widehat{e_k g}(m - n) e_m = \frac{1}{\sqrt{2\pi}} \displaystyle\sum_{m \geq 0} \widehat{g}(m - n - k) e_m
+\end{equation}
+so once again, $T_{f} T_g = $
+\newline
+
+\noindent \textbf{Part 7.} Recall that an operator $T$ is Fredholm if we can find another operator $S \in B(H)$ such that $1 - ST$ and $1 - TS$ are both compact.
+In the case that $f$ is non-zero, so that $f^{-1}$ is well-defined, we have $T_{f f^{-1}} = T_1$, which is clearly the identity on $H^2(\mathbb{T})$. Moreover,
+from Part 6, we have that
+\begin{equation}
+  T_{f f^{-1}} - T_{f} T_{f^{-1}} = 1 - T_f T_{f^{-1}} \ \ \ \ \text{and} \ \ \ \ T_{f^{-1} f} - T_{f^{-1}} T_f = 1 - T_{f^{-1}} T_f
+\end{equation}
+are both compact, so $T_f$ is automatically Fredholm.
+
+\noindent \textbf{Part 8.}
+
+\noindent \textbf{Part 9.}
+
+\end{document}

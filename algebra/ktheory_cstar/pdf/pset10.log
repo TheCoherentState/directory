@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.8.13)  21 NOV 2023 11:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.8.13)  23 NOV 2023 11:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**essay4.tex
-(./essay4.tex
+**pset10.tex
+(./pset10.tex
 LaTeX2e <2020-10-01> patch level 4
 L3 programming layer <2021-02-18>
 (/usr/local/texlive/2021/texmf-dist/tex/latex/revtex4-1/revtex4-1.cls
@@ -540,307 +540,10 @@ Package: thm-restate 2020/08/01 v0.72
 Package: thm-amsthm 2020/08/01 v0.72
 \thmt@style@headstyle=\toks40
 ))
-(/usr/local/texlive/2021/texmf-dist/tex/latex/tikz-cd/tikz-cd.sty
-Package: tikz-cd 2018/11/19 v0.9f Commutative diagrams with TikZ
+(/usr/local/texlive/2021/texmf-dist/tex/latex/comment/comment.sty
+\CommentStream=\write4
 
-(/usr/local/texlive/2021/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
-(/usr/local/texlive/2021/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
-(/usr/local/texlive/2021/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.te
-x
-\pgfutil@everybye=\toks41
-\pgfutil@tempdima=\dimen177
-\pgfutil@tempdimb=\dimen178
-
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-li
-sts.tex))
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
-\pgfutil@abb=\box67
-) (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/pgf.revision.tex)
-Package: pgfrcs 2020/12/27 v3.1.8b (3.1.8b)
-))
-Package: pgf 2020/12/27 v3.1.8b (3.1.8b)
-
-(/usr/local/texlive/2021/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
-(/usr/local/texlive/2021/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
-Package: pgfsys 2020/12/27 v3.1.8b (3.1.8b)
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks42
-\pgfkeys@temptoks=\toks43
-
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.c
-ode.tex
-\pgfkeys@tmptoks=\toks44
-))
-\pgf@x=\dimen179
-\pgf@y=\dimen180
-\pgf@xa=\dimen181
-\pgf@ya=\dimen182
-\pgf@xb=\dimen183
-\pgf@yb=\dimen184
-\pgf@xc=\dimen185
-\pgf@yc=\dimen186
-\pgf@xd=\dimen187
-\pgf@yd=\dimen188
-\w@pgf@writea=\write4
-\r@pgf@reada=\read2
-\c@pgf@counta=\count320
-\c@pgf@countb=\count321
-\c@pgf@countc=\count322
-\c@pgf@countd=\count323
-\t@pgf@toka=\toks45
-\t@pgf@tokb=\toks46
-\t@pgf@tokc=\toks47
-\pgf@sys@id@count=\count324
-
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
-File: pgf.cfg 2020/12/27 v3.1.8b (3.1.8b)
-)
-Driver file for pgf: pgfsys-pdftex.def
-
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.d
-ef
-File: pgfsys-pdftex.def 2020/12/27 v3.1.8b (3.1.8b)
-
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-p
-df.def
-File: pgfsys-common-pdf.def 2020/12/27 v3.1.8b (3.1.8b)
-)))
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.
-code.tex
-File: pgfsyssoftpath.code.tex 2020/12/27 v3.1.8b (3.1.8b)
-\pgfsyssoftpath@smallbuffer@items=\count325
-\pgfsyssoftpath@bigbuffer@items=\count326
-)
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.
-code.tex
-File: pgfsysprotocol.code.tex 2020/12/27 v3.1.8b (3.1.8b)
-))
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
-Package: pgfcore 2020/12/27 v3.1.8b (3.1.8b)
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
-\pgfmath@dimen=\dimen189
-\pgfmath@count=\count327
-\pgfmath@box=\box68
-\pgfmath@toks=\toks48
-\pgfmath@stack@operand=\toks49
-\pgfmath@stack@operation=\toks50
-)
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.
-tex
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic
-.code.tex)
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigo
-nometric.code.tex)
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.rando
-m.code.tex)
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.compa
-rison.code.tex)
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.
-code.tex)
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round
-.code.tex)
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.
-code.tex)
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integ
-erarithmetics.code.tex)))
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count328
-)) (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.co
-de.tex
-File: pgfcorepoints.code.tex 2020/12/27 v3.1.8b (3.1.8b)
-\pgf@picminx=\dimen190
-\pgf@picmaxx=\dimen191
-\pgf@picminy=\dimen192
-\pgf@picmaxy=\dimen193
-\pgf@pathminx=\dimen194
-\pgf@pathmaxx=\dimen195
-\pgf@pathminy=\dimen196
-\pgf@pathmaxy=\dimen197
-\pgf@xx=\dimen198
-\pgf@xy=\dimen199
-\pgf@yx=\dimen256
-\pgf@yy=\dimen257
-\pgf@zx=\dimen258
-\pgf@zy=\dimen259
-)
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconst
-ruct.code.tex
-File: pgfcorepathconstruct.code.tex 2020/12/27 v3.1.8b (3.1.8b)
-\pgf@path@lastx=\dimen260
-\pgf@path@lasty=\dimen261
-)
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage
-.code.tex
-File: pgfcorepathusage.code.tex 2020/12/27 v3.1.8b (3.1.8b)
-\pgf@shorten@end@additional=\dimen262
-\pgf@shorten@start@additional=\dimen263
-)
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.co
-de.tex
-File: pgfcorescopes.code.tex 2020/12/27 v3.1.8b (3.1.8b)
-\pgfpic=\box69
-\pgf@hbox=\box70
-\pgf@layerbox@main=\box71
-\pgf@picture@serial@count=\count329
-)
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicst
-ate.code.tex
-File: pgfcoregraphicstate.code.tex 2020/12/27 v3.1.8b (3.1.8b)
-\pgflinewidth=\dimen264
-)
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransform
-ations.code.tex
-File: pgfcoretransformations.code.tex 2020/12/27 v3.1.8b (3.1.8b)
-\pgf@pt@x=\dimen265
-\pgf@pt@y=\dimen266
-\pgf@pt@temp=\dimen267
-)
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.cod
-e.tex
-File: pgfcorequick.code.tex 2020/12/27 v3.1.8b (3.1.8b)
-)
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.c
-ode.tex
-File: pgfcoreobjects.code.tex 2020/12/27 v3.1.8b (3.1.8b)
-)
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathproce
-ssing.code.tex
-File: pgfcorepathprocessing.code.tex 2020/12/27 v3.1.8b (3.1.8b)
-)
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.co
-de.tex
-File: pgfcorearrows.code.tex 2020/12/27 v3.1.8b (3.1.8b)
-\pgfarrowsep=\dimen268
-)
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.cod
-e.tex
-File: pgfcoreshade.code.tex 2020/12/27 v3.1.8b (3.1.8b)
-\pgf@max=\dimen269
-\pgf@sys@shading@range@num=\count330
-\pgf@shadingcount=\count331
-)
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.cod
-e.tex
-File: pgfcoreimage.code.tex 2020/12/27 v3.1.8b (3.1.8b)
-
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.
-code.tex
-File: pgfcoreexternal.code.tex 2020/12/27 v3.1.8b (3.1.8b)
-\pgfexternal@startupbox=\box72
-))
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.co
-de.tex
-File: pgfcorelayers.code.tex 2020/12/27 v3.1.8b (3.1.8b)
-)
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretranspare
-ncy.code.tex
-File: pgfcoretransparency.code.tex 2020/12/27 v3.1.8b (3.1.8b)
-)
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.
-code.tex
-File: pgfcorepatterns.code.tex 2020/12/27 v3.1.8b (3.1.8b)
-)
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.
-tex
-File: pgfcorerdf.code.tex 2020/12/27 v3.1.8b (3.1.8b)
-)))
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.cod
-e.tex
-File: pgfmoduleshapes.code.tex 2020/12/27 v3.1.8b (3.1.8b)
-\pgfnodeparttextbox=\box73
-)
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.
-tex
-File: pgfmoduleplot.code.tex 2020/12/27 v3.1.8b (3.1.8b)
-)
-(/usr/local/texlive/2021/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
--0-65.sty
-Package: pgfcomp-version-0-65 2020/12/27 v3.1.8b (3.1.8b)
-\pgf@nodesepstart=\dimen270
-\pgf@nodesepend=\dimen271
-)
-(/usr/local/texlive/2021/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
--1-18.sty
-Package: pgfcomp-version-1-18 2020/12/27 v3.1.8b (3.1.8b)
-))
-(/usr/local/texlive/2021/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
-(/usr/local/texlive/2021/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)
-) (/usr/local/texlive/2021/texmf-dist/tex/latex/pgf/math/pgfmath.sty
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
-Package: pgffor 2020/12/27 v3.1.8b (3.1.8b)
-
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
-\pgffor@iter=\dimen272
-\pgffor@skip=\dimen273
-\pgffor@stack=\toks51
-\pgffor@toks=\toks52
-))
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.cod
-e.tex
-Package: tikz 2020/12/27 v3.1.8b (3.1.8b)
-
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothan
-dlers.code.tex
-File: pgflibraryplothandlers.code.tex 2020/12/27 v3.1.8b (3.1.8b)
-\pgf@plot@mark@count=\count332
-\pgfplotmarksize=\dimen274
-)
-\tikz@lastx=\dimen275
-\tikz@lasty=\dimen276
-\tikz@lastxsaved=\dimen277
-\tikz@lastysaved=\dimen278
-\tikz@lastmovetox=\dimen279
-\tikz@lastmovetoy=\dimen280
-\tikzleveldistance=\dimen281
-\tikzsiblingdistance=\dimen282
-\tikz@figbox=\box74
-\tikz@figbox@bg=\box75
-\tikz@tempbox=\box76
-\tikz@tempbox@bg=\box77
-\tikztreelevel=\count333
-\tikznumberofchildren=\count334
-\tikznumberofcurrentchild=\count335
-\tikz@fig@count=\count336
-
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.cod
-e.tex
-File: pgfmodulematrix.code.tex 2020/12/27 v3.1.8b (3.1.8b)
-\pgfmatrixcurrentrow=\count337
-\pgfmatrixcurrentcolumn=\count338
-\pgf@matrix@numberofcolumns=\count339
-)
-\tikz@expandcount=\count340
-
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
-s/tikzlibrarytopaths.code.tex
-File: tikzlibrarytopaths.code.tex 2020/12/27 v3.1.8b (3.1.8b)
-)))
-(/usr/local/texlive/2021/texmf-dist/tex/generic/tikz-cd/tikzlibrarycd.code.tex
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
-s/tikzlibrarymatrix.code.tex
-File: tikzlibrarymatrix.code.tex 2020/12/27 v3.1.8b (3.1.8b)
-)
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
-s/tikzlibraryquotes.code.tex
-File: tikzlibraryquotes.code.tex 2020/12/27 v3.1.8b (3.1.8b)
-)
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.
-meta.code.tex
-File: pgflibraryarrows.meta.code.tex 2020/12/27 v3.1.8b (3.1.8b)
-\pgfarrowinset=\dimen283
-\pgfarrowlength=\dimen284
-\pgfarrowwidth=\dimen285
-\pgfarrowlinewidth=\dimen286
-)))
+Excluding comment 'comment')
 Package hyperref Info: Option `colorlinks' set `true' on input line 37.
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/qcircuit/qcircuit.sty
@@ -857,51 +560,51 @@ catcodes, docmode,
  Xy-pic is free software: see the User's Guide for details.
 
 Loading kernel: messages; fonts; allocations: state,
-\X@c=\dimen287
-\Y@c=\dimen288
-\U@c=\dimen289
-\D@c=\dimen290
-\L@c=\dimen291
-\R@c=\dimen292
-\Edge@c=\toks53
-\X@p=\dimen293
-\Y@p=\dimen294
-\U@p=\dimen295
-\D@p=\dimen296
-\L@p=\dimen297
-\R@p=\dimen298
-\Edge@p=\toks54
-\X@origin=\dimen299
-\Y@origin=\dimen300
-\X@xbase=\dimen301
-\Y@xbase=\dimen302
-\X@ybase=\dimen303
-\Y@ybase=\dimen304
-\X@min=\dimen305
-\Y@min=\dimen306
-\X@max=\dimen307
-\Y@max=\dimen308
-\lastobjectbox@=\box78
-\zerodotbox@=\box79
-\almostz@=\dimen309
+\X@c=\dimen177
+\Y@c=\dimen178
+\U@c=\dimen179
+\D@c=\dimen180
+\L@c=\dimen181
+\R@c=\dimen182
+\Edge@c=\toks41
+\X@p=\dimen183
+\Y@p=\dimen184
+\U@p=\dimen185
+\D@p=\dimen186
+\L@p=\dimen187
+\R@p=\dimen188
+\Edge@p=\toks42
+\X@origin=\dimen189
+\Y@origin=\dimen190
+\X@xbase=\dimen191
+\Y@xbase=\dimen192
+\X@ybase=\dimen193
+\Y@ybase=\dimen194
+\X@min=\dimen195
+\Y@min=\dimen196
+\X@max=\dimen197
+\Y@max=\dimen198
+\lastobjectbox@=\box67
+\zerodotbox@=\box68
+\almostz@=\dimen199
  direction,
-\d@X=\dimen310
-\d@Y=\dimen311
-\K@=\count341
-\KK@=\count342
-\Direction=\count343
-\K@dXdY=\dimen312
-\K@dYdX=\dimen313
-\xyread@=\read3
+\d@X=\dimen256
+\d@Y=\dimen257
+\K@=\count320
+\KK@=\count321
+\Direction=\count322
+\K@dXdY=\dimen258
+\K@dYdX=\dimen259
+\xyread@=\read2
 \xywrite@=\write5
-\csp@=\count344
-\quotPTK@=\dimen314
+\csp@=\count323
+\quotPTK@=\dimen260
 
 utility macros; pictures: \xy, positions,
-\swaptoks@@=\toks55
-\connectobjectbox@@=\box80
+\swaptoks@@=\toks43
+\connectobjectbox@@=\box69
  objects,
-\styletoks@=\toks56
+\styletoks@=\toks44
  decorations;
 kernel objects: directionals, circles, text; options; algorithms: directions,
 edges, connections;  Xy-pic loaded)
@@ -914,13 +617,13 @@ Package: xy 2013/10/06 Xy-pic version 3.8.9
  Xy-pic option: PDF driver v.1.7 loaded))
 (/usr/local/texlive/2021/texmf-dist/tex/generic/xypic/xymatrix.tex
  Xy-pic option: Matrix feature v.3.14
-\Row=\count345
-\Col=\count346
-\queue@=\toks57
-\queue@@=\toks58
-\qcount@=\count347
-\qcount@@=\count348
-\matrixsize@=\count349
+\Row=\count324
+\Col=\count325
+\queue@=\toks45
+\queue@@=\toks46
+\qcount@=\count326
+\qcount@@=\count327
+\matrixsize@=\count328
  loaded)
 (/usr/local/texlive/2021/texmf-dist/tex/generic/xypic/xyframe.tex
  Xy-pic option: Frame and Bracket extension v.3.14 loaded)
@@ -928,15 +631,15 @@ Xy-pic pdf driver: `frame' extension support
 (/usr/local/texlive/2021/texmf-dist/tex/generic/xypic/xypdf-fr.tex
 (/usr/local/texlive/2021/texmf-dist/tex/generic/xypic/xycurve.tex
  Xy-pic option: Curve and Spline extension v.3.12 curve,
-\crv@cnt@=\count350
-\crvpts@=\toks59
-\splinebox@=\box81
-\splineval@=\dimen315
-\splinedepth@=\dimen316
-\splinetol@=\dimen317
-\splinelength@=\dimen318
+\crv@cnt@=\count329
+\crvpts@=\toks47
+\splinebox@=\box70
+\splineval@=\dimen261
+\splinedepth@=\dimen262
+\splinetol@=\dimen263
+\splinelength@=\dimen264
  circles,
-\L@=\dimen319
+\L@=\dimen265
  loaded)
 Xy-pic pdf driver: `curve' extension support
 (/usr/local/texlive/2021/texmf-dist/tex/generic/xypic/xypdf-cu.tex loaded)
@@ -945,51 +648,51 @@ loaded) (/usr/local/texlive/2021/texmf-dist/tex/generic/xypic/xyarrow.tex
 (/usr/local/texlive/2021/texmf-dist/tex/generic/xypic/xyarc.tex
  Xy-pic option: Circle, Ellipse, Arc feature v.3.8 circles, ellipses,
 elliptical arcs, loaded))
-\c@definition=\count351
-\c@lemma=\count352
-\c@theorem=\count353
-\c@corollary=\count354
-\c@remark=\count355
-\c@conjecture=\count356
-\c@example=\count357
-\c@reminder=\count358
-\c@problem=\count359
-\c@question=\count360
-\c@answer=\count361
-\c@fact=\count362
-\c@claim=\count363
+\c@definition=\count330
+\c@lemma=\count331
+\c@theorem=\count332
+\c@corollary=\count333
+\c@remark=\count334
+\c@conjecture=\count335
+\c@example=\count336
+\c@reminder=\count337
+\c@problem=\count338
+\c@question=\count339
+\c@answer=\count340
+\c@fact=\count341
+\c@claim=\count342
 Class revtex4-1 Info: Unrecognized LaTeX tabular. Please update this document c
-lass! (Proceeding with fingers crossed.) on input line 75.
-Class revtex4-1 Info: cite was not loaded (OK!) on input line 75.
-Class revtex4-1 Info: mcite was not loaded (OK!) on input line 75.
-Class revtex4-1 Info: multicol was not loaded (OK!) on input line 75.
+lass! (Proceeding with fingers crossed.) on input line 74.
+Class revtex4-1 Info: cite was not loaded (OK!) on input line 74.
+Class revtex4-1 Info: mcite was not loaded (OK!) on input line 74.
+Class revtex4-1 Info: multicol was not loaded (OK!) on input line 74.
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2021-03-18 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count364
-\l__pdf_internal_box=\box82
+\l__color_backend_stack_int=\count343
+\l__pdf_internal_box=\box71
 )
-(pdf/essay4.aux)
-\openout1 = `essay4.aux'.
+(pdf/pset10.aux)
+\openout1 = `pset10.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1027,17 +730,17 @@ LaTeX Font Info:    ... okay on input line 75.
 
 (/usr/local/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count365
-\scratchdimen=\dimen320
-\scratchbox=\box83
-\nofMPsegments=\count366
-\nofMParguments=\count367
-\everyMPshowfont=\toks60
-\MPscratchCnt=\count368
-\MPscratchDim=\dimen321
-\MPnumerator=\count369
-\makeMPintoPDFobject=\count370
-\everyMPtoPDFconversion=\toks61
+\scratchcounter=\count344
+\scratchdimen=\dimen266
+\scratchbox=\box72
+\nofMPsegments=\count345
+\nofMParguments=\count346
+\everyMPshowfont=\toks48
+\MPscratchCnt=\count347
+\MPscratchDim=\dimen267
+\MPnumerator=\count348
+\makeMPintoPDFobject=\count349
+\everyMPtoPDFconversion=\toks49
 ) (/usr/local/texlive/2021/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -1050,7 +753,7 @@ e
 (/usr/local/texlive/2021/texmf-dist/tex/latex/fmtcount/fc-english.def
 File: fc-english.def 2016/01/12
 )
-Package hyperref Info: Link coloring ON on input line 75.
+Package hyperref Info: Link coloring ON on input line 74.
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
@@ -1062,96 +765,126 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count371
+\c@section@level=\count350
 )
-LaTeX Info: Redefining \ref on input line 75.
-LaTeX Info: Redefining \pageref on input line 75.
-LaTeX Info: Redefining \nameref on input line 75.
- (pdf/essay4.out) (pdf/essay4.out)
+LaTeX Info: Redefining \ref on input line 74.
+LaTeX Info: Redefining \pageref on input line 74.
+LaTeX Info: Redefining \nameref on input line 74.
+ (pdf/pset10.out) (pdf/pset10.out)
 \@outlinefile=\write6
-\openout6 = `essay4.out'.
+\openout6 = `pset10.out'.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 75.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 74.
 
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 75.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 74.
 
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Package xypdf Info: Line width: 0.39998pt on input line 75.
-Class revtex4-1 Info: Taking \maketitle back from hyperref on input line 75.
-\openout3 = `essay4Notes.bib'.
+Package xypdf Info: Line width: 0.39998pt on input line 74.
+Class revtex4-1 Info: Taking \maketitle back from hyperref on input line 74.
+\openout3 = `pset10Notes.bib'.
 
 
 
 Class revtex4-1 Warning: Assuming \noaffiliation for authors.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 87--89
+Underfull \hbox (badness 10000) in paragraph at lines 94--97
 
  []
 
-Package hyperref Info: bookmark level for unknown definition defaults to 0 on i
-nput line 104.
-Package hyperref Info: bookmark level for unknown theorem defaults to 0 on inpu
-t line 112.
+
+Underfull \hbox (badness 10000) in paragraph at lines 109--113
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 122--125
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 126--129
+
+ []
+
 [1{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 154--160
+Underfull \hbox (badness 10000) in paragraph at lines 130--134
 
  []
 
-Package hyperref Info: bookmark level for unknown lemma defaults to 0 on input 
-line 163.
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 184.
+Underfull \hbox (badness 10000) in paragraph at lines 138--142
+
+ []
 
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 184.
+Underfull \hbox (badness 10000) in paragraph at lines 147--151
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 156--160
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 164--167
+
+ []
 
 [2]
-Package hyperref Info: bookmark level for unknown example defaults to 0 on inpu
-t line 206.
+No file pset10.bbl.
+[3] (pdf/pset10.aux)
 
-No file essay4.bbl.
-[3] (pdf/essay4.aux)
-Package rerunfilecheck Info: File `essay4.out' has not changed.
-(rerunfilecheck)             Checksum: AB4E8E2866E75D9362EF64A50EBD31C4;1964.
+Package rerunfilecheck Warning: File `pset10.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `pset10.out':
+(rerunfilecheck)             Before: 5A9E172BFCC753B951319D9CC57382BE;571
+(rerunfilecheck)             After:  5524F2DD8AA1B3349566C5C16E4EA9E3;312.
  ) 
 Here is how much of TeX's memory you used:
- 28133 strings out of 478994
- 493029 string characters out of 5858184
- 878714 words of memory out of 5000000
- 45068 multiletter control sequences out of 15000+600000
- 412214 words of font info for 63 fonts, out of 8000000 for 9000
+ 17262 strings out of 478994
+ 244418 string characters out of 5858184
+ 664607 words of memory out of 5000000
+ 34437 multiletter control sequences out of 15000+600000
+ 411868 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 101i,15n,102p,1401b,1120s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
-></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></
-usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></u
-sr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr
-/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/l
-ocal/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loc
-al/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/
-texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/tex
-live/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texliv
-e/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2
-021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/20
-21/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2021
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2021/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2021/te
-xmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on pdf/essay4.pdf (3 pages, 177947 bytes).
+ 83i,9n,88p,1401b,379s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{section.2} has been referenced but does not exist
+, replaced by a fixed one
+
+</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><
+/usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></
+usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></us
+r/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr
+/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/
+local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/lo
+cal/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/loca
+l/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/
+texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/tex
+live/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texliv
+e/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2
+021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2021
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2021/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2021/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2021/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2021/texmf-dis
+t/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2021/texmf
+-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
+Output written on pdf/pset10.pdf (3 pages, 189317 bytes).
 PDF statistics:
- 158 PDF objects out of 1000 (max. 8388607)
- 135 compressed objects within 2 object streams
- 37 named destinations out of 1000 (max. 500000)
- 77 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 130 PDF objects out of 1000 (max. 8388607)
+ 104 compressed objects within 2 object streams
+ 20 named destinations out of 1000 (max. 500000)
+ 25 words of extra memory for PDF output out of 10000 (max. 10000000)
 

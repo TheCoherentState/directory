@@ -87,25 +87,38 @@
 \noindent \emph{This essay was written for the Fall 2023 session of MAT437: $K$-Theory and $C^{*}$-Algebras, taught by Professor George Elliott, at the University of Toronto.}
 \newline
 
-\noindent The goal of this paper is to introduce some of the main ideas related to the Gelfand transformation, Gelfand duality, and
-Pontryagin duality. We will discuss the implications of these results in the study of $C^{*}$-algebras, in particular how this allows for constructions
+\noindent The goal of this paper is to introduce some of the main ideas related to the Gelfand transformation and Gelfand duality.
+We will discuss the implications of these results in the study of $C^{*}$-algebras, in particular how this allows for constructions
 such as the ``continuous functional calculus'' which is briefly discussed in the first Chapter of Rordam's K-theory textbook. We will conclude the essay by
 discussing some $K$-theoretic implications of these results.
 
 \section{Introducing the Gelfand transformation}
 
-\noindent We begin by providing some information on the main construction of interest: the Gelfand transformation, and some related results such as Gelfand duality and Pontryagin
-duality.
+\noindent We begin by providing some information on the main construction of interest: the Gelfand transformation, and some related results.
 
 \subsection{The main idea}
 
+\noindent Recall that a \emph{Banach algebra} $A$ is a norm-closed algebra satisfying sub-multiplicativity: $||xy|| \leq ||x|| ||y||$ for all $x, y \in A$. Suppose $A$ is over the field $\mathbb{C}$
+and is commutative. Let $\Delta(A)$ denote the set of all non-zero algebra homomorphisms $\chi : A \rightarrow \mathbb{C}$. We will call this the set of \emph{characters} of $A$.
 
+\begin{definition}[The weak-$*$ topology]
+
+  \end{definition}
 
 \subsection{Gelfand duality and the continuous function calculus}
 
-\subsection{Pontryagin duality}
+\noindent As it turns out, when the Banach algebra that we use to construct a Gelfand transformation is in fact a $C^{*}$-algebra, the Gelfand transformation induces an \emph{isomorphism}.
+
+\begin{theorem}[Gelfand duality]
+\end{theorem}
+
+\begin{theorem}[The continuous function calculus]
+  \end{theorem}
 
 \section{Implications in K-theory}
+
+\noindent We will dedicate the second part of this essay to discussing some of the implications of Gelfand duality in $K$-theory, in particular, for building a bridge which begins with
+an arbitrary algebraic $K$-theory (the lower $K$-groups), to a topological $K$-theory.
 
 \subsection{A short aside: topological K-theory}
 
@@ -173,10 +186,25 @@ If $X$ is a compact Hausdorff space, then $K_0(C(X))$, the algebraic $K_0$-group
 \noindent Of course, any time that we induce a $*$-homomorphism between $C^{*}$-algebras, there will be an induced group homomorphism between the corresponding
 $K_0$-groups. Seeing as, in the case of $C^{*}$ algebras we in fact have a $*$-isomorphism from $A$ to $C(\text{Spec}(A))$, it follows immediately that their $K_0$-groups
 are isomorphic. Recall in addition that the $K_0$-group of the algebra $C(X)$ is precisely $K^{0}(X)$ when $X$ is compact Hausdorff. It follows immediately that
-\begin{equation}
+\begin{align}
   K_0(A) \simeq K_0(C(\text{Spec}(A))) \simeq K^0(\text{Spec}(A))
-\end{equation}
+\end{align}
 In other words, we have a well-behaved correspondence between an algebraic invariant of the space $A$, namely its $K_0$-group, and
-a purely topological object: the topological $K_0$-group of the topological space $\text{Spec}(A)$.
+a purely topological object: the topological $K_0$-group of the topological space $\text{Spec}(A)$. Carrying this same reasoning forward,
+we have
+\begin{equation}
+  K_1(A) \simeq K_0(SA) \simeq  K_0(C(\text{Spec}(SA))) \simeq K^0(\text{Spec}(SA))
+\end{equation}
+In particular, note that $\text{Spec}(SA) = \text{Hom}(SA, \mathbb{C})$: all $*$-homomorphisms (thus, automatically continuous) from $SA$ to $\mathbb{C}$, with the weak-$*$ topology.
+In other words, the topology on $\text{Hom}(SA, \mathbb{C})$ is the weakest topology such that all evaluation maps $\text{eval}_{f}(\Phi) = \Phi(f)$
+are continuous.
+
+\begin{theorem}[Riesz-Markov]
+
+  \end{theorem}
+
+\begin{example}[Finite-dimensional algebras]
+  Suppose $A$ is a finite-dimensional 
+  \end{example}
 
 \end{document}

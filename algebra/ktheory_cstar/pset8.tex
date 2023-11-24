@@ -207,21 +207,40 @@ In particular, note that
 \begin{equation}
   \lim_{\longrightarrow} K_0(A_n) \simeq K_0(\lim_{\longrightarrow} A_n) = K_0(A)
 \end{equation}
-where the isomorphism is clearly of Abelian groups. Suppose $p, q \in \mathcal{P}_{\infty}(A)$ with $[p]_0, [q]_0 \in K_0(A)$ are such that $[p]_0 = [q]_0$. Let $\Phi$ be
-the isomorphism so that
-$$p' = \Phi([p]_0) = \Phi([q]_0) = q' \in \lim_{\longrightarrow} K_0(A_n).$$
-By definition, $p'$ and $q'$ are both equivalence classes in $\prod_{k} K_0(A_k) \Big/ \sum_{k} K_0(A_k)$,.
+where the isomorphism is clearly of Abelian groups. Suppose $p, q \in \mathcal{P}_{\infty}(A)$ with $[p]_0, [q]_0 \in K_0(A)$ are such that $[p]_0 = [q]_0$.
+Recall that from the continuity, we know that:
+\begin{equation}
+  K_0(A) = \displaystyle\bigcup_{n = 1}^{\infty} K_0(\mu_n)(K_0(A_n))
+\end{equation}
+so it follows that we can writen $[p]_0 = [\mu_n(p_n)]_0$ and $[q]_0 = [\mu_m(q_m)]_0$ for some $n$ and $m$, as well as $p_n \in \mathcal{P}_{\infty}(A_n)$ and $q_m \in \mathcal{P}_{\infty}(A_m)$,
+where $(A, \{\mu_n\})$ is ther inductive limit of the algebras. Without loss of generality, we can assume $m = n$, as if $m < n$ for example, we can always note that
+\begin{equation}
+  \mu_n(p_n) = (\varphi_{n, m} \circ \mu_m)(p_n)
+\end{equation}
+via the connection maps. Thus, we will have $K_0(\mu_n)([p_n]_0 - [q_m]_0)$. Again from continuity, we know that $[p_n]_0 - [q_m]_0$ must be in the kernel of some connection map $\Phi = K_0(\varphi_{a, n})$,
+so that $[\Phi(p_n)]_0 = [\Phi(q_m)]_0$. Since each algebra $A_n$ has the cancellation property, $\Phi(p_n) \sim_0 \Phi(q_m)$. Thus, $\mu_n(p_n) \sim_0 \mu_n(q_m)$, which implies that $p \sim_0 q$, and we have the
+desired cancellation property.
 \newline
 
 \noindent \textbf{Part 3.} Let us prove that any matrix algebra over $\mathbb{C}$ has the cancellation property. If we can do this, then
 since AF algebras are simply direct limits of direct sums of matrix algebras, we will have proved that all AF algebras have the cancellation property.
 \newline
 
-\noindent Indeed, suppose $[x]_{\mathcal{D}} + [y]_{\mathcal{D}}, [z]_{\mathcal{D}} + [y]_{\mathcal{D}} \in \mathcal{D}(M_n(\mathbb{C}))$, the semigroup of the matrix algebra. This implies that $x \oplus y \sim_0 z \oplus y$,
-so $x \oplus y = v^{*} v$ and $z \oplus y = v v^{*}$. Suppose $x$ is size $n$, $z$ is size $m$.
+\begin{lemma}
+  The algebra $M_n(\mathbb{C})$ has the cancellation property.
+\end{lemma}
 
-\section{RLL Problem 7.5 (Suggested Problem 2)}
+\begin{proof}
+  Recall that if $p, q \in M_n(\mathbb{C})$ are projections, then $p \sim q$ if and only if $\text{Tr}(p) = \text{Tr}(q)$. Moreover, recall that the trace map
+  induces a map $K_0(\text{Tr}) : K_0(M_n(\mathbb{C})) \rightarrow \mathbb{Z}$ which is in fact a group isomorphism. Given $[p]_0 = [q]_0$, it follows immediately that
+  $$K_0(\text{Tr})([p]_0) = \text{Tr}(p) = K_0(\text{Tr})([q]_0) = \text{Tr}(q)$$
+  Note that $p, q \in \mathcal{P}_{\infty}(M_n(\mathbb{C}))$, which means that they are projections in some $M_{n_{1}}(\mathbb{C})$ and $M_{n_{2}}(\mathbb{C})$ repsectivelty. Without
+  loss of generality, suppose $n_1 \geq n_2$. We have $\text{Tr}(q) = \text{Tr}(q \oplus 0_{n_{1} - n_{2}})$, so $q \sim q \oplus 0_{n_{1} - n_{2}}$ from the first sentence,
+  which means that $p \sim_0 q$. This completes the proof: the complex matrix algebra has the cancellation property.
+\end{proof}
 
-\noindent 
+\noindent To reiterate, if we have an AF algebra $A$, then
+$$A = \lim_{\longrightarrow} A_n = \lim_{\longrightarrow} M_{j(n)_1}(\mathbb{C}) \oplus \cdots \oplus M_{j(n)_k}(\mathbb{C})$$
+Since each $M_{j(n)_k}$ has the cancellation property, so does each direct sum, and thus so too does the direct limit, implying $A$ has the cancellation property.
 
 \end{document}
