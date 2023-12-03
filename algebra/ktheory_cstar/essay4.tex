@@ -89,31 +89,306 @@
 
 \noindent The goal of this paper is to introduce some of the main ideas related to the Gelfand transformation and Gelfand duality.
 We will discuss the implications of these results in the study of $C^{*}$-algebras, in particular how this allows for constructions
-such as the ``continuous functional calculus'' which is briefly discussed in the first Chapter of Rordam's K-theory textbook. We will conclude the essay by
+such as the ``continuous functional calculus'' which is briefly discussed in the first chapter of Rordam's K-theory textbook. We will conclude the essay by briefly
 discussing some $K$-theoretic implications of these results.
 
 \section{Introducing the Gelfand transformation}
 
-\noindent We begin by providing some information on the main construction of interest: the Gelfand transformation, and some related results.
+\noindent We begin by providing some information on the main construction of interest: the Gelfand transformation, and some related results. Our goal is to provide a \emph{detailed, self-contained} proof
+of this result.
 
 \subsection{The main idea}
 
 \noindent Recall that a \emph{Banach algebra} $A$ is a norm-closed algebra satisfying sub-multiplicativity: $||xy|| \leq ||x|| ||y||$ for all $x, y \in A$. Suppose $A$ is over the field $\mathbb{C}$
 and is commutative. Let $\Delta(A)$ denote the set of all non-zero algebra homomorphisms $\chi : A \rightarrow \mathbb{C}$. We will call this the set of \emph{characters} of $A$.
 
-\begin{definition}[The weak-$*$ topology]
+\begin{lemma}
+  \label{lem:one}
+  A character on $A$ is automatically continuous.
+\end{lemma}
 
+\begin{proof}
+  We will prove the unital case: the case for a non-unital algebra follows similarly from considering the unitization.
+  \newline
+
+  \noindent Given some $\phi \in \Delta(A)$, because $\phi$ is an algebra homomorphism, we immediately see that
+  \begin{equation}
+    || \phi(x) - \phi(y) || = || \phi(x - y) ||
+  \end{equation}
+  Thus, if we can show that $\phi$ is a bounded operator, then we will automatically have shown that it satisfies the Lipschitz
+  condition, and is therefore continuous. It is clear that $\phi$ will fix $0$. Assume that $|\phi(x)| > ||x||$, so that $\phi(x)$
+  has positive magnitude, implying $x \neq 0$. It follows immediately that $\phi(x)^{-1} \in \mathbb{C}$ is well-defined, and $|| \phi(x)^{-1} x || < 1$.
+  \newline
+
+  \noindent Now, recall the result
+  which states that if $a$ is an element of the algebra which has norm less than $1$, then $1 - a$ is invertible. This is due to the fact that the series:
+  \begin{equation}
+    \displaystyle\sum_{k = 0}^{\infty} a^{k} \rightarrow \frac{1}{1 - a}
+  \end{equation}
+  as is the case in standard analysis. We know that each $a^k$, and their sum will be in the algebra, and since it is closed, their limit will be as well, so $1 - a$
+  has its inverse. Using this fact, note that $1 - \phi(x)^{-1} x$ is invertible. We will call its inverse $z$. It is once again easy to see that $\phi(1) = 1$. Then we have
+  \begin{equation}
+    1 = \phi(1) = \phi(z) \phi(1 - \phi(x)^{-1} x) = \phi(z) (1 - \phi(x)^{-1} \phi(x)) = 0
+  \end{equation}
+  and obvious contradiction, assuming $A$ is not trivial. Thus, we must have $|\phi(x)| \leq ||x||$, so that $\phi$ is bounded and thus continuous.
+\end{proof}
+
+\noindent This result implies that the set of characters $\Delta(A)$ is in fact a subset of the space of continuous linear functionals on $A$, which we call $A^{*}$
+in line with standard notation. Let us consider the following definitions:
+
+\begin{definition}[The weak-$*$ topology]
+  \label{def:weak}
+  Let $X$ be a topological space $X$. Let $X^{*}$ be the dual space of $X$: the space of continuous linear functionals to a base field, which we will
+  assume is $\mathbb{C}$. For some $x \in X$, let $\Gamma_x : X^{*} \rightarrow \mathbb{C}$ be the map such that $\Gamma_x(\phi) = \phi(x)$. Clearly,
+  each map $\Gamma_x$ is linear:
+  \begin{equation}
+    \Gamma_x(\phi + c \cdot \gamma) = \phi(x) + c \gamma(x) = \Gamma_x(\phi) + c \Gamma_x(\gamma)
+  \end{equation}
+  We define the \emph{weak-$*$ topology} on $X^{*}$ to be the coarsest topology such that each function $\Gamma_x : X^{*} \rightarrow \mathbb{C}$ is continuous.
+
+  We know such a topology exists because we can write it down: the collection of $\Gamma_x^{-1}(V)$ for some $x \in X$ and
+  some $V$ open in $\mathbb{C}$ generates a subbasis for the topology. Of course, any topology which makes each $\Gamma_x$ continuous must contain all
+  set of this form, as well as their unions and finite intersections.
+\end{definition}
+
+\noindent We claim the following:
+
+\begin{claim}
+  When equipped with the weak-$*$ topology, $\Delta(A) \subset A^{*}$, the space of characters in the dual space of the algebra, is a locally compact Hausdorff space.
+  When $A$ is unital, $\Delta(A)$ is compact Hausdorff.
+  \end{claim}
+
+\begin{remark}
+The Hausdorff property is clear: given $\phi, \gamma \in A^{*}$, we simply take some $y \in X$ for which $\phi(y) \neq \gamma(y)$,
+take disjoint neighbourhoods $U$ and $V$ of these points in $\mathbb{C}$, and note that the inverse images of these neighbourhoods under $\Gamma_y$, $\Gamma_y^{-1}(U)$ and $\Gamma_y^{-1}(V)$ will be open,
+by definition of the topology, and will also be disjoint, containing $\phi$ and $\gamma$
+respectively.
+\end{remark}
+
+Thus, all that remains is to prove is local compactness/compactness. We will focus primarily on the unital case, and prove compactness, but
+we will sketch the outline of the proof for the non-unital case as well, as it follows similarly, but is slightly more complicated. The main
+idea is to demonstrate that $\Delta(A)$ is a closed subset, in the weak-$*$ topology, of $A^{*}$. We will then show, via a result known as \emph{Banach-Alaoglu theorem},
+that $\Delta(A)$ is in fact contained within a particular compact subset of $A^{*}$, and is thus itself compact (as it is closed). To begin:
+
+\begin{lemma}
+  \label{lem:help}
+  If $A$ is unital, then the zero-character $0 \in A^{*}$ is contained in an open neighbourhood disjoint from $\Delta(A)$.
+\end{lemma}
+\begin{proof}
+  Suppose $\phi \in \Delta(A)$. It follows by definition that $\phi(x) = \phi(1 \cdot x) = \phi(1) \phi(x)$ for all $x \in A$. In particular,
+  $\phi(1)^2 = \phi(1)$, with $\phi(1) \in \mathbb{C}$, so we must have $\phi(1) \in \{0, 1\}$. Suppose $\phi(1) = 0$. Then the above formula implies
+  $\phi(x) = 0$ for every $x \in A$, and $\phi = 0$, a contradiction. Thus, $\phi(1) = 1$.
+
+  Consider the map $\Gamma_1 : A^{*} \rightarrow \mathbb{C}$, which is defined by $\Gamma_1(\phi) = \phi(1)$. By definition of the topology, $U_0 = \Gamma_1^{-1}(-1/2, 1/2)$
+  is open in $A^{*}$. Note that $\Gamma_1(0) = 0$, so $0 \in U_0$. But $\Gamma_1(\phi) = \phi(1) = 1$ for all $\phi \in \Delta(A)$, so $\phi \notin U_0$ and $U_0 \cap \Delta(A) = \emptyset$.
+\end{proof}
+
+\begin{lemma}
+  If $A$ is unital, then $\Delta(A) \cup \{0\} \subset A^{*}$ is closed in the weak-$*$ topology.
+\end{lemma}
+
+\begin{proof}
+  When we include the zero-character, the set $\Delta(A) \cup \{0\}$ has a nice characterization:
+  \begin{equation}
+    \Delta(A) \cup \{0\} = \displaystyle\bigcap_{x, y \in A} P_{x, y} = \displaystyle\bigcap_{x, y \in A} \left\{ \varphi \big| \varphi(xy) - \varphi(x) \varphi(y) = 0 \right\}.
+  \end{equation}
+  We will show that each $P_{x, y}$ is closed in the weak-$*$ topology. Define the map $\Phi_{x, y} : A^{*} \rightarrow \mathbb{C}^{3}$ as
+  \begin{equation}
+    \Phi_{x, y}(\varphi) = (\Gamma_{xy}(\varphi), \Gamma_{x}(\varphi), \Gamma_y(\varphi)) = (\varphi(xy), \varphi(x), \varphi(y))
+  \end{equation}
+  By definition of the topology on $A^{*}$, this is a continuous map. We also define $F : \mathbb{C}^{3} \rightarrow \mathbb{C}$ as
+  $F(a, b, c) = a - bc$. Of course, this function is also continuous. Then $(F \circ \Phi) : A^{*} \rightarrow \mathbb{C}$ is continuous,
+  so $(F \circ \Phi)^{-1}(\{0\}) = P_{x, y}$ is closed. This completes the proof.
+\end{proof}
+
+\begin{corollary}
+  \label{cor:one}
+  If $A$ is unital, then $\Delta(A)$ is closed in the weak-$*$ topology.
+\end{corollary}
+\begin{proof}
+  The sets $\Delta(A) \cup \{0\}$ and $A^{*} - U_0$ are closed. We know that
+  \begin{equation}
+    \Delta(A) \subset A^{*} - U_0 \ \ \text{and} \ \ 0 \notin A^{*} - U_0 \Longrightarrow (\Delta(A) \cup \{0\}) \cap (A^{*} - U_0) = \Delta(A)
+    \end{equation}
+  so $\Delta(A)$ is the intersection of closed sets, and is thus closed.
+  \end{proof}
+
+\begin{remark}
+If $X$ is a normed space, there is a natural way to put a norm on $X^{*}$, namely
+\begin{equation}
+  || \phi ||_{*} = \sup_{||x|| \leq 1} |\phi(x)|.
+\end{equation}
+In the proof of Lem.~\ref{lem:one}, we showed that for any $\phi \in \Delta(A)$, $|\phi(x)| \leq ||x||$, so that with respect to the above norm, $||\phi||_{*} \leq 1$, and
+$\phi(A) \subset B^{*}$, the closed unit ball with respect to $||\cdot||_{*}$ about the origin in $A^{*}$.
+\end{remark}
+
+\noindent Now, as promised, we will present an elementary proof of the Banach-Alaoglu theorem: this will show that the set $B^{*}$ is compact in the
+weak-$*$ topology.
+
+\begin{theorem}[Banach-Alaoglu]
+  The closed unit ball $B^{*} = \{\phi \in A^{*} \ | \ ||\phi||_{*} \leq 1\}$ is compact in the weak-$*$ topology.
+\end{theorem}
+
+\begin{proof}
+  Let us begin by defining $D_x \subset \mathbb{C}$ to be the set of all $z \in \mathbb{C}$ for which $|z| \leq ||x||$ (i.e. it is the closed ball of radius $||x||$).
+  We know that $D_x$ is compact, and thus by Tychonoff's theorem, the set $D = \prod_{x \in X} D_x$ will be as well. But of course, this is precisely the space of functionals $\mu : X \rightarrow \mathbb{C}$
+  such that $|\mu(x)| \leq ||x||$. In particular $B^{*} \subset D$ is the subspace of \emph{linear} functionals $\mu : X \rightarrow \mathbb{C}$ with $|\mu(x)| \leq ||x||$.
+
+  When we say that that \emph{$D$ is compact}, we mean it is compact in the product topology. We will complete the proof is two stages:
+  \begin{enumerate}
+  \item We will show that $B^{*} \subset D$ is closed with respect to the product topology in inherits from $D$. Thus, $B^{*}$ will
+    have been shown to be a closed subset of a compact space, therefore compact itself (in the inherited product topology).
+  \item We will show that the inherited product topology on $B^{*}$ is the same as the weak-$*$ topology, impyling that $B^{*}$ is compact in
+    the weak-$*$ topology, as desired.
+  \end{enumerate}
+  \textbf{Stage 1.} Suppose $\{\mu_i\}_{i \in I}$ is a net is $B^{*}$ which converges to an element $\mu \in D$. Of course, we know that projection
+  maps are continuous functions from a product space to one of its factors. Let $\Gamma_x$ be the projection onto $D_x$ (using the same notation as above), it follows that $\Gamma_x(\mu_i)$
+  converges to $\Gamma_x(\mu)$, for each $x$. By definition, $\Gamma_x(\mu_i) = \mu_i(x)$ and $\Gamma_x(\mu) = \mu(x)$ (these are just evaluation maps). In particular,
+  note that, for any $x, y \in X$ and $\lambda \in \mathbb{C}$, we have
+  \begin{equation}
+    \label{eq:one}
+    \Gamma_{x + \lambda y}(\mu_i) = \mu_i(x + \lambda y) = \mu_i(x) + \lambda \mu_i(y) = \Gamma_x(\mu_i) + \lambda \Gamma_y(\mu_i)
+  \end{equation}
+  as each $\mu_i \in B^{*}$, and is thus linear. Of course, $\Gamma_{x + \lambda y}(\mu_i) \rightarrow \Gamma_{x + \lambda y}(\mu)$
+  and $\Gamma_x(\mu_i) + \lambda \pi_y(\mu_i) \rightarrow \Gamma_x(\mu) + \lambda \Gamma_y(\mu)$, from above. But by uniqueness of convergence and Eq.~\eqref{eq:one}, we have
+  \begin{equation}
+    \mu(x + \lambda y) = \mu(x) + \lambda \mu(y)
+  \end{equation}
+  so $\mu$ is linear and thus $\mu \in B^{*}$. It follows that $B^{*}$ contains its limit points in the product topology, and is thus closed.
+  \newline
+
+  \noindent \textbf{Stage 2.} Recall
+  the definition of the product topology on $\prod_{k} X_k$: it is precisely the topology with subbasis given by $\pi_i^{-1}(U_i)$, where $U_i \subset X_i$ is
+  open and $\pi_i$ is the projection onto the $i$-th factor. Thus, via identical logic to that which was invoked in Def.~\ref{def:weak}, \emph{the product topology
+  is the coarsest topology in which each projection map is continuous}. But we have already shown that the projection maps, in the case of $D$, are simply the
+  maps $\Gamma_x$. Again, by definition, we took the weak-$*$ topology to be the weakest topology with respect to which these maps are continuous. Thus, the
+  product and weak-$*$ topologies must coincide.
+  \end{proof}
+
+\begin{corollary}
+  When $A$ is unital, the space of characters, $\Delta(A)$, is compact.
+\end{corollary}
+
+\begin{proof}
+  Cor.~\ref{cor:one} demonstrated that the space $\Delta(A)$ is closed when $A$ is unital.
+ In addition, we showed that $\Delta(A) \subset B^{*}$, which Banach-Alaoglu theorem demonstrates is compact. Thus,
+  in the unital case, $\Delta(A)$ is a closed subset of a compact space, and is therefore compact.
+\end{proof}
+
+\begin{remark}[The non-unital case]
+  The proof of the non-unital case uses most of the machinery developed above, with one distinct difference: the proof of Lem.~\ref{lem:help} does not carry forward, as
+  we explicitly make use of the unit. It follows that we cannot prove that the zero-character is isolated from the set $\Delta(A)$, and utilize the same proof that $\Delta(A)$
+  is closed. The idea, in this case, is to show that $\Delta(A) \cup \{0\}$ is in fact the \emph{one-point compactification} of $\Delta(A)$, via shwoing its compactness via
+  the same technique (with Banach-Alaoglu) as used above. This will in turn imply that $\Delta(A)$ is \emph{locally compact} rather than compact.
+\end{remark}
+
+\hhrulefill
+\newline
+
+\noindent From here, let us complete the construction of the Gelfand transformation. We know that $\Delta(A)$ is locally compact Hausdorff, and when $A$ is unital, it is compact Hausdorff.
+\newline
+
+\noindent Let $\widehat{\Gamma}$ be the map which takes $x \in A$ to $\Gamma_x : A^{*} \rightarrow \mathbb{C}$, which we recall is the map $\Gamma_x(\phi) = \phi(x)$. We will restrict the domain
+of $\Gamma_x$, in this mapping, to $\Delta(A)$. Let us recall a definition:
+
+\begin{definition}[Function vanishing at infinity]
+  Recall that a function $f : X \rightarrow \mathbb{C}$ on a \emph{locally compact space}
+  vanishes at infinity if given any $\varepsilon > 0$, there exists a compact subset $K$ such that $|f(x)| < \varepsilon$ for $x$ outside of $K$.
+  \newline
+
+  \noindent There is a reason why this definition is only useful
+  when describing locally compact spaces. Suppose $X$ is \emph{not} locally compact: then there exists $x_0 \in X$ such that no neighbourhood of $x$ is contained in a compact subset of $K$. Suppose
+  $f$ is some continuous function vanishing at infinity. Let $\varepsilon_0 = f(x_0)$. Every point $x$ with $|f(x)| \geq \varepsilon_0/2$ must be contained in a compact set. Because $f$ is continuous, there must be a neighbourhood $U_0$
+  of $x_0$ such that $f(y_0) \geq \varepsilon_0/2$ for $y_0 \in U_0$, so $x_0 \in U_0 \subset K$, where $K$ is compact. But this can't be, by our choice of $x_0$. It follows that \emph{no} continuous function
+  vanishes at infinity when the space isn't locally comapct, so in this case, the definition would be useless.
   \end{definition}
+
+\begin{lemma}
+  Each $\Gamma_x$ is an element of $C_0(\Delta(A))$, the set of complex-valued functions on $\Delta(A)$ which are continuous (with respect to the weak-$*$ topology) and vanish at infinity (this
+  condition makes sense, as we showed $\Delta(A)$ is locally compact).
+\end{lemma}
+\begin{proof}
+  Clearly, each $\Gamma_x$ is continuous by definition of the weak-$*$ topology. Moreover, if we pick $\varepsilon > 0$, and consider all $\phi$ such that $|\Gamma_x(\phi)| = |\phi(x)| \geq \varepsilon$,
+  it is clear that such a set will be closed in the unit ball, which we proved is compact. Thus, this set is compact as well, and by definition, $\Gamma_x \in C_0(\Delta(A))$.
+\end{proof}
+
+\noindent Now, comes the main result:
+
+\begin{theorem}[Gelfand transformation]
+  The map $\widehat{\Gamma} : A \rightarrow C_0(\Delta(A))$ is a norm-decreasing, unit-preserving algebra homomorphism. We call this map the \emph{Gelfand map}, and
+  for an element $x \in A$, we call $\widehat{\Gamma}(x)$ the \emph{Gelfand transformation} of $x$.
+\end{theorem}
+
+\begin{proof}
+  The fact that $\widehat{\Gamma}$ is norm-decreasing follows from the fact that
+  \begin{equation}
+    || \widehat{\Gamma}(x) || = || \Gamma_x || = \sup_{|| \phi ||_{*} \leq 1} | \Gamma_x(\phi) | = \sup_{|| \phi ||_{*} \leq 1} |\phi(x)| \leq \sup_{|| \phi ||_{*} \leq 1} ||x|| = ||x||
+  \end{equation}
+  In addition, $\widehat{\Gamma}(1) = \Gamma_1$ is simply the evaluation map of any $\phi$ on $1$. We showed above that $\phi(1) = 1$ for non-zero algebra homomorphisms $\phi$,
+  so $\widehat{\Gamma}(1)$ is also simply the unit map. We already showed that $\Gamma_{x + \lambda y} = \Gamma_x + \lambda \Gamma_y$, showing linearity of the the map. Finally,
+  \begin{equation}
+    \widehat{\Gamma}(xy)(\phi) = \Gamma_{xy}(\phi) = \phi(xy) = \phi(x) \phi(y) = \widehat{\Gamma}(y)(\phi) \widehat{\Gamma}(y)(\phi)
+  \end{equation}
+  so $\widehat{\Gamma}(xy) = \widehat{\Gamma}(x) \widehat{\Gamma}(y)$, and $\widehat{\Gamma}$ is an algebra homomorphism as desired.
+\end{proof}
+
+\begin{remark}[Vector spaces]
+  Effectively, we have constructed an algebra homomorphism which sends an element of an algebra to an evaluation map on $\Delta(A)$. Note that each of these evaluation maps are linear:
+$\Gamma_{x + \lambda y} = \Gamma_x + \lambda \Gamma_y$, as was shown earlier, so it is in fact true that $\Gamma_x \in \Delta(A)^{*}$, the continuous dual space of $\Delta(A)$. Since $\Delta(A) \subset A^{*}$,
+  we are more or so less embedding $A$ into its double dual. Of course, it is a well-know fact that for finite-dimensional vector spaces, $V$ is canonically isomorphic to its double dual, $V^{**}$, but
+  in the infinite dimensional case, $V$ is only isomorphic to a subspace of $V^{**}$ (via a natural homomorphism, which is injective). Thus, this construction lines up with our prior knowledge of vector spaces.
+\end{remark}
 
 \subsection{Gelfand duality and the continuous function calculus}
 
-\noindent As it turns out, when the Banach algebra that we use to construct a Gelfand transformation is in fact a $C^{*}$-algebra, the Gelfand transformation induces an \emph{isomorphism}.
+\noindent In general, the Gelfand transformation is not injective nor surjective. However,
+as it turns out, when the Banach algebra that we use to construct a Gelfand transformation is in fact a $C^{*}$-algebra, the Gelfand transformation induces an \emph{isomorphism} of algebras!
 
 \begin{theorem}[Gelfand duality]
+  Let $A$ be a commutative $C^{*}$-algebra. Then, the Gelfand map $\widehat{\Gamma} : A \rightarrow C_0(\Delta(A))$ is an isometric $*$-isomorphism of $C^{*}$-algebras.
 \end{theorem}
 
+\noindent In the case of $C^{*}$-algebras, we will often refer to $\Delta(A)$ as $\text{Spec}(A)$ and call it the \emph{spectrum} of the $C^{*}$-algebra.
+\newline
+
+\noindent This result is
+invaluable throughout the theory of $C^{*}$-algebras. In fact, we now arrive at the main result of this section, arguably one of the most important theorems in the study of $C^{*}$-algebras, and by extension $K$-theory of $C^{*}$-algebras.
+The continuous function calculus allows us to have a good notion of continuous functions acting on elements $a$ of a $C^{*}$-algebra, via their algebraic spectrum: this is the set of all $\lambda \in \mathbb{C}$ such
+that $a - \lambda \cdot \widetilde{1}$ is non-invertible, where $\widetilde{1}$ is the unit in the unitization.
+
+\begin{lemma}
+  Given an element $a \in A$ (where we assume $A$ is unital), the algebra spectrum $\sigma(a) = \{\lambda \in \mathbb{C} \ | \ a - \lambda \cdot 1 \ \ \ \text{not invertible}\}$ is compact in $\mathbb{C}$.
+\end{lemma}
+
 \begin{theorem}[The continuous function calculus]
-  \end{theorem}
+  Suppose $A$ is a unital $C^{*}$-algebra and that $a$ is a normal element in $A$, so $a a^{*} = a^{*} a$. Then there is an isometric $*$-isomorphism
+  from the space of continuous functions on the algebraic spectrum of $a$, which we call $\sigma(a)$, and the $C^{*}$-algebra generated by $a$ and the unit. We call this map $\Psi_a : C(\sigma(a)) \rightarrow C^{*}(\{1, a\})$.
+  In addition, $\Psi(\text{id}) = a$.
+\end{theorem}
+
+\noindent This theorem allows us to speak of ``functions acting on normal elements''. Given a continuous function $f$ defined from $\sigma(a)$ to $\mathbb{C}$,
+we can identify $f(a)$ with the element $\Psi_a(f) \in C^{*}(\{1, a\}) \subset A$. We will provide an elemtary proof of this result, using the powerful Gelfand duality (which follows from the Gelfand transformation):
+
+\begin{proof}
+  Of course, $C^{*}(\{1, a\})$ is a unital commutative $C^{*}$-algebra. It follows that the \emph{Gelfand duality} gives us a map $\widehat{\Gamma} : C^{*}(\{1, a\}) \rightarrow C_0(\text{Spec}(C^{*}(\{1, a\})))$
+  which is an isometric $*$-isomorphism. Since the algebra is unital, $\text{Spec}(C^{*}(\{1, a\}))$ is compact (not just locally compact), so $C_0(\text{Spec}(C^{*}(\{1, a\}))) = C(\text{Spec}(C^{*}(\{1, a\})))$.
+  \newline
+
+  To construct a map between $C(\sigma(a))$ and $C(\text{Spec}(C^{*}(\{1, a\})))$, note that is two complex homomorphisms $f$ and $g$ are such that $f(a) = g(a)$, then $f$ and $g$
+  agree an all elements of $C^{*}(\{1, a\})$. Thus, any $\phi \in \text{Spec}(C^{*}(\{1, a\}))$ is uniquely determined by its value $\phi(a) = \Gamma_a(\phi)$. The function $\Gamma_a : \text{Spec}(C^{*}(\{1, a\})) \rightarrow \mathbb{C}$
+  is continuous, by definition of the weak-$*$ topology on the spectrum. Moreover, note that $\sigma(a)$ is precisely all complex numbers of the form $\phi(a)$, for $\phi \in \text{Spec}(C^{*}(\{1, a\}))$ (this is a fairly involved result, so
+  we will skip its proof for the sake of brevity).
+  \newline
+
+  Thus, $\Gamma_a : \text{Spec}(C^{*}(\{1, a\})) \rightarrow \sigma(a)$ is a continuous bijection. Since the domain and codomain are compact Hausdorff, it is actually a homeomorphism.
+  Thus, let us define $\Xi_a : C(\sigma(a)) \rightarrow C(\text{Spec}(C^{*}(\{1, a\})))$ as $\Xi_a(f)(\phi) = f(\Gamma_a(\phi))$. Since $\Gamma_a$ is a homeomorphism, this is in fact an
+  isometric-$*$ isomorphism.
+  \newline
+
+  If we simply let $\Psi_a = \widehat{\Gamma}^{-1} \circ \Xi_a$, then we immediately have our map from $C(\sigma(a))$ to $C^{*}(\{1, a\})$. In particular, note that
+  $$\Psi_{a}(\text{id}) = \widehat{\Gamma}^{-1}(\Xi_a(\text{id})) = \widehat{\Gamma}^{-1}(\Gamma_a) = a$$
+  as expected, and the proof is complete.
+  \end{proof}
 
 \section{Implications in K-theory}
 
@@ -136,7 +411,7 @@ an arbitrary algebraic $K$-theory (the lower $K$-groups), to a topological $K$-t
 	          \arrow["h", from=1-1, to=1-3]
 	          \arrow["\pi"', from=1-1, to=2-2]
 	          \arrow["\eta", from=1-3, to=2-2]
-  \end{tikzcd}\]
+  \end{tikzcd}\]i
   where $\eta(x, v) = x$ is the projection onto the base, and, for each $y \in U$, the map $h : \pi^{-1}(y) \rightarrow \{y\} \times \mathbb{C}^n \simeq \mathbb{C}^n$ is a vector
   space isomorphism. Intuitively, this simply means that locally, in the base space, the corresponding bundle of fibres in $E$ must resemble a trivial product space $U \times \mathbb{C}^n$,
   both in a topological sense and an algebraic sense.
@@ -158,53 +433,54 @@ Thus, in order to make partial progress on solving this profoundly difficult que
 of ending up with a more crude classification?} The answer to this question is a resounding yes, via the construction of topological $K$-groups.
 \newline
 
-\noindent Treating vector bundle $\xi$ now as fundamental objects, let us define algebraic operations between them.
+\noindent Treating vector bundle classes $\langle \xi \rangle$ now as fundamental objects, let us define algebraic operations between them. Let $\text{Vect}(X)$ be the set of all vector bundle classes
+over base space $X$.
 
-\begin{lemma}[Direct sum of vector bundles]
+\begin{remark}[Sum of vector bundle classes]
+  Given vector bundle classes $\langle \psi \rangle$ and $\langle \sigma \rangle$ in $\text{Vect}(X)$, we define
+  \begin{equation}
+    \langle \psi \rangle + \langle \sigma \rangle = \langle \psi \oplus \sigma \rangle
+  \end{equation}
+  where the direct sum of vector bundles is defined as:
+  \begin{equation}
+    \psi \oplus \sigma = \{ (v, w) \ | \ v \in E_{\psi}, w \in E_{\sigma}, \ \pi_{\psi}(v) = \pi_{\sigma}(w)\}
+  \end{equation}
+  In other words, we take the direct sum of fibres above each point in $X$.
 
-\end{lemma}
+  Showing that this operation is well-defined is not challenging: it is straightforward to write down the isomorphism between direct sums of different representatives from the equivalence classes as the
+  direct sum of two individual isomorphisms between the representatives.
+\end{remark}
 
-\begin{lemma}[Inner products on vector bundles]
-\end{lemma}
+\noindent This allows us to define the \emph{topological $K$-group}:
 
-\begin{lemma}[Tensor products of vector bundles]
-\end{lemma}
+\begin{definition}[Topological $K$-group]
+  For some topological space $X$, we define the topological $K^{0}$-group to be the Grothendieck group of the semigroup $(\text{Vect}(X), +)$, where the addition is the direct sum of vector bundle classes defined above.
+  \end{definition}
 
-\begin{lemma}
+\subsection{The $K$-theoretic correspondence induced by Gelfand duality}
 
-\end{lemma}
+\noindent As it turns out, we have the following result, connecting topological and algebraic $K$-theory:
 
 \begin{theorem}[Equivalence of algebraic and topological $K$-theory]
 If $X$ is a compact Hausdorff space, then $K_0(C(X))$, the algebraic $K_0$-group of the $C^{*}$-algebra of functions $C(X)$, and $K(X)$, the topological $K^{0}$-group, are isomorphic as Abelian groups.
 \end{theorem}
-\begin{proof}
 
-  \end{proof}
-
-\subsection{The $K$-theoretic correspondence induced by Gelfand duality}
+\noindent This allows us to prove a nice correspondence via Gelfand duality.
+\newline
 
 \noindent Of course, any time that we induce a $*$-homomorphism between $C^{*}$-algebras, there will be an induced group homomorphism between the corresponding
-$K_0$-groups. Seeing as, in the case of $C^{*}$ algebras we in fact have a $*$-isomorphism from $A$ to $C(\text{Spec}(A))$, it follows immediately that their $K_0$-groups
+$K_0$-groups. Seeing as, in the case of $C^{*}$ algebras we in fact have a $*$-isomorphism from $A$ to $C(\text{Spec}(A))$ via Gelfand duality, it follows immediately that their $K_0$-groups
 are isomorphic. Recall in addition that the $K_0$-group of the algebra $C(X)$ is precisely $K^{0}(X)$ when $X$ is compact Hausdorff. It follows immediately that
 \begin{align}
   K_0(A) \simeq K_0(C(\text{Spec}(A))) \simeq K^0(\text{Spec}(A))
 \end{align}
-In other words, we have a well-behaved correspondence between an algebraic invariant of the space $A$, namely its $K_0$-group, and
-a purely topological object: the topological $K_0$-group of the topological space $\text{Spec}(A)$. Carrying this same reasoning forward,
-we have
+Carrying this same reasoning forward, we have
 \begin{equation}
   K_1(A) \simeq K_0(SA) \simeq  K_0(C(\text{Spec}(SA))) \simeq K^0(\text{Spec}(SA))
 \end{equation}
-In particular, note that $\text{Spec}(SA) = \text{Hom}(SA, \mathbb{C})$: all $*$-homomorphisms (thus, automatically continuous) from $SA$ to $\mathbb{C}$, with the weak-$*$ topology.
-In other words, the topology on $\text{Hom}(SA, \mathbb{C})$ is the weakest topology such that all evaluation maps $\text{eval}_{f}(\Phi) = \Phi(f)$
-are continuous.
-
-\begin{theorem}[Riesz-Markov]
-
-  \end{theorem}
-
-\begin{example}[Finite-dimensional algebras]
-  Suppose $A$ is a finite-dimensional 
-  \end{example}
+In other words, we have a well-behaved correspondence between a algebraic invarianst of the space $A$, namely its $K_0$ and $K_1$-group, and
+a purely topological object: the topological $K_0$-group of the topological spaces $\text{Spec}(A)$ and $\text{Spec}(SA)$! Of course,
+this nice correspondence as all due to Gelfand duality: a broadly powerful tool, which has many applications beyond those discussed in this essay, including
+in the classification of finite-dimensional $C^{*}$-algebras, developing constructions such as the Fourier transform/Pontryagin duality, and more.
 
 \end{document}
