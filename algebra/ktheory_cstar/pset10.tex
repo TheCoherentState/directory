@@ -86,7 +86,7 @@
 \noindent \textbf{Part 1.} Let us make note of the fact that if $f$ is essentially bounded (in $L^{\infty}(\mathbb{T})$), and $x \in L^{2}(\mathbb{T})$ is square integrable, then $fx \in L^2(\mathbb{T})$ (the product
 is clearly square integrable). It follows that
 \begin{equation}
-  ||T_f x|| = ||P(fx)|| = \left|\left|  P \left( \displaystyle\sum_{n < 0} \langle e_n, fx \rangle e_n + \displaystyle\sum_{n \geq 0} \langle e_n, fx \rangle e_n \right) \right| \right| =  \displaystyle\sum_{n \geq 0} \langle| e_n, fx \rangle| || e_n || = \displaystyle\sum_{n \geq 0} \langle| e_n, fx \rangle|
+  ||T_f x|| = ||P(fx)|| = \left|\left|  P \left( \displaystyle\sum_{n < 0} \langle e_n, fx \rangle e_n + \displaystyle\sum_{n \geq 0} \langle e_n, fx \rangle e_n \right) \right| \right| =  \displaystyle\sum_{n \geq 0} \langle| e_n, fx \rangle| || e_n || = \displaystyle\sum_{n \geq 0} | \langle e_n, fx \rangle|
 \end{equation}
 where $\langle fx, e_n \rangle = \frac{1}{\sqrt{2\pi}} \int_{\mathbb{T}} fx z^n \ d\mu$, where $\mu$ is the uniform Haar measure on the circle. Of course,
 \begin{equation}
@@ -132,12 +132,14 @@ we have $\lim_{n \to \infty} \langle x_n, y \rangle = 0$. Since the $e_n$ form a
 converges absolutely, so $\langle e_n, y \rangle \rightarrow 0$, so the sequence of $e_n$ converges weakly.
 \newline
 
-\noindent Since $T_f$ is compact, $T_fe_n$ converges strongly, $||T_f e_n|| \rightarrow 0$. Thus, it follows that
+\noindent Since $T_f$ is compact, $T_fe_n$ converges strongly, $||T_f e_n|| \rightarrow 0$. Thus, it follows from Part 3 that
 \begin{equation}
-  ||T_f e_n ||^2 = \displaystyle\sum_{k \in \mathbb{Z}} | \langle T_f e_n, e_{n + k} \rangle|^2.
+  ||T_f e_n ||^2 = \displaystyle\sum_{m = 0}^{\infty} |\hat{f}(m - n)|^2 \rightarrow 0
 \end{equation}
-Via the same logic as before, $\langle T_f e_n, e_{n + k} \rangle \rightarrow 0$ for $k \to \pm \infty$, as the sum converges. From Part 3 that $\langle T_f e_n, e_{n + k} \rangle = \sum_{m \geq 0} \hat{f}(m - n) \langle e_n, e_{n + k} \rangle = \hat{f}(k)$
-converges to $0$ as we take $k \to \infty$. \pop{I wasn't sure where to go from here: just because $\hat{f}(k) \to 0$, why does this imply $\hat{f} = 0$, as is stated in the hint?}
+as we take $n \to \infty$. This mean that $\hat{f}(m - n) \rightarrow 0$ as we taken $n \to \infty$, for each $m \in \mathbb{Z}_{+} \cup \{0\}$ uniformly over all $m$. Of course, this means
+that for some $\varepsilon > 0$, we can pick $n$ big enough such that we have $|\widehat{f}(m - n)| \leq \varepsilon$ for each non-negative integer $m$. If we set $m = n + m_0$ for some $m_0 \in \mathbb{Z}$ (WLOG, we can assume $n$ is large
+enough such that $n + m_0 \geq 0$),
+this shows that $|\widehat{f}(m_0)| \leq \varepsilon$. We can do this for any $\varepsilon > 0$ and any $m_0$, so that $\widehat{f} = 0$. This immediately implies that $f = 0$ as well.
 \newline
 
 \noindent \textbf{Part 6.} Suppose first that $f = e_k$ and $g$ arbitrary. Note that, from Part 3,
@@ -158,11 +160,7 @@ is a finite sum of compact operators, and is thus compact. Since the compact ope
 be compact, and the proof is complete.
 \newline
 
-\noindent The proof for the operator $T_f T_g - T_{fg}$ carries forward similarly: we let $f = e_k$. Note that
-\begin{equation}
-  T_{e_k g} = \displaystyle\sum_{m \geq 0} \widehat{e_k g}(m - n) e_m = \frac{1}{\sqrt{2\pi}} \displaystyle\sum_{m \geq 0} \widehat{g}(m - n - k) e_m
-\end{equation}
-so once again, $T_{f} T_g = $
+\noindent The proof for the operator $T_f T_g - T_{fg}$ carries forward in the exact same way.
 \newline
 
 \noindent \textbf{Part 7.} Recall that an operator $T$ is Fredholm if we can find another operator $S \in B(H)$ such that $1 - ST$ and $1 - TS$ are both compact.
@@ -171,10 +169,39 @@ from Part 6, we have that
 \begin{equation}
   T_{f f^{-1}} - T_{f} T_{f^{-1}} = 1 - T_f T_{f^{-1}} \ \ \ \ \text{and} \ \ \ \ T_{f^{-1} f} - T_{f^{-1}} T_f = 1 - T_{f^{-1}} T_f
 \end{equation}
-are both compact, so $T_f$ is automatically Fredholm.
+are both compact, so $T_f$ is automatically Fredholm. Since $|f|$ is simply a scalar, it factors out: $T_f = T_{|f| \cdot f/|f|} = |f| T_{u}$. Of course, multiplication
+by a (non-zero) scalar does not have an effect on index, as it has no influence on the dimension of the kernel or cokernel. Thus, $\text{index}(T_f) = \text{index}(T_u)$.
+\newline
 
-\noindent \textbf{Part 8.}
+\noindent \textbf{Part 8.} Letting $f_t$ be our desired homotopy, we know that small perturbations in operator norm to Fredholm operators preserve
+the Fredholm property, and the index remains the same. It follows that $T_{f_t}$ and $T_{f_s}$ will have the same index for $s$ and $t$
+sufficiently close, as $||T_{f_t} - T_{f_s}||$ is clearly upper-bounded by the distance between functions $f_t$ and $f_s$.
+To be more specific, note that $f_t$ is unitary so it is invertible and $T_{f_s \circ f_t^{-1} \circ f_t} - T_{f_s \circ f_t^{-1}} T_{f_t}$ is compact,
+from above, so subtracting it from the operator $T_{f_s}$ does not change the index.
+\newline
 
-\noindent \textbf{Part 9.}
+\noindent Thus, we simply need to show that $T_{f_t}$ and $T_{f_s \circ f_t^{-1}} T_{f_t}$ have the same index for $t$ and $s$ close, which boils down
+to showing that $||1 - T_{f_s \circ f_t^{-1}}||$ is small enough, for $t$ and $s$ close, which is striaghtforward from the definitions.
+\newline
+
+\noindent Since $[0, 1]$ is compact, we can choose a finite collection of $[s_i, t_i]$ covering the interval,
+on which the index of $T_{f_t}$ does not change, impyling the index remains the same throughout the homtopy.
+\newline
+
+\noindent \textbf{Part 9.} We know that the indices of $T_f$ and $T_g$ for which $f$ and $g$ are homotopic are the same. Of course,
+$f$ and $g$ are homotopic if and only if they have the same winding number, so each $\text{index}(T_f)$ for $f$ with a fixed winding
+number is a fixed integer value. Clearly, $e_k$ has winding number $k$, and moreover, $f$ has winding number $k$ when $f$ is homotopic to $e_k$ (each
+$f$ will be homotopic to some such $e_k$).
+\newline
+
+\noindent Thus, all we have to do to prove the claim is show that $\text{index}(T_{e_k}) = -k$. But this follows immediately from the definition. For
+some non-negative $k$, multiplying by $e_k$ and projecting has an empty kernel. Menawhile, the cokernel is the codomian quotiented by the image,
+which is clearly all functions comprised of a linear combination of terms $e_j$ with $j \geq k$. Thus, the dimension of the quotient is precisely $k$,
+as all contribution to any function in $H^2(\mathbb{T})$, $e_j$ with $j \geq k$ are quotiented together.
+\newline
+
+It follows that $\text{index}(T_{e_k}) = \dim \text{ker}(e_k) - \dim \text{coker}(e_k) = -k$. In addition, note that $T_{e_{-k}} = T_{\overline{e_k}} = T^{*}_{e_k}$
+for $k \geq 0$. It is obvious that $\text{index}(T^{*}) = -\text{index}(T)$, as the kernel and cokernel trade places, so $\text{index}(T_{e_{-k}}) = k$, and the result holds
+for all integer $k$.
 
 \end{document}

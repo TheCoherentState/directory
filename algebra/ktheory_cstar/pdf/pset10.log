@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.8.13)  23 NOV 2023 11:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.8.13)  17 DEC 2023 16:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -820,71 +820,91 @@ Underfull \hbox (badness 10000) in paragraph at lines 130--134
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 138--142
+Underfull \hbox (badness 10000) in paragraph at lines 138--144
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 147--151
+Underfull \hbox (badness 10000) in paragraph at lines 149--153
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 156--160
+Underfull \hbox (badness 10000) in paragraph at lines 158--162
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 164--167
+Underfull \hbox (badness 10000) in paragraph at lines 163--165
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 171--175
 
  []
 
 [2]
+Underfull \hbox (badness 10000) in paragraph at lines 176--182
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 183--186
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 187--190
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 191--196
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 197--202
+
+ []
+
 No file pset10.bbl.
 [3] (pdf/pset10.aux)
-
-Package rerunfilecheck Warning: File `pset10.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `pset10.out':
-(rerunfilecheck)             Before: 5A9E172BFCC753B951319D9CC57382BE;571
-(rerunfilecheck)             After:  5524F2DD8AA1B3349566C5C16E4EA9E3;312.
+Package rerunfilecheck Info: File `pset10.out' has not changed.
+(rerunfilecheck)             Checksum: 5524F2DD8AA1B3349566C5C16E4EA9E3;312.
  ) 
 Here is how much of TeX's memory you used:
- 17262 strings out of 478994
- 244418 string characters out of 5858184
- 664607 words of memory out of 5000000
- 34437 multiletter control sequences out of 15000+600000
+ 17258 strings out of 478994
+ 244373 string characters out of 5858184
+ 665607 words of memory out of 5000000
+ 34435 multiletter control sequences out of 15000+600000
  411868 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  83i,9n,88p,1401b,379s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{section.2} has been referenced but does not exist
-, replaced by a fixed one
-
-</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><
-/usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></
-usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></us
-r/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr
-/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/
-local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/lo
-cal/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/loca
-l/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/
-texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/tex
-live/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texliv
-e/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2
-021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2021
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2021/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2021/texmf
--dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2021/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2021/texmf-dis
-t/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2021/texmf
--dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on pdf/pset10.pdf (3 pages, 189317 bytes).
+</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></
+usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></u
+sr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
+r/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/
+local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/lo
+cal/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loca
+l/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/t
+exlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texl
+ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive
+/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/20
+21/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2021/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2021/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2021/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2021/texmf-d
+ist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2021/tex
+mf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
+Output written on pdf/pset10.pdf (3 pages, 194318 bytes).
 PDF statistics:
- 130 PDF objects out of 1000 (max. 8388607)
- 104 compressed objects within 2 object streams
- 20 named destinations out of 1000 (max. 500000)
- 25 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 123 PDF objects out of 1000 (max. 8388607)
+ 98 compressed objects within 1 object stream
+ 18 named destinations out of 1000 (max. 500000)
+ 17 words of extra memory for PDF output out of 10000 (max. 10000000)
 
