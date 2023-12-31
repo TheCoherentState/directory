@@ -1,0 +1,342 @@
+\documentclass[aps,pra,showpacs,notitlepage,onecolumn,superscriptaddress,nofootinbib]{revtex4-1}
+\usepackage[utf8]{inputenc}
+\usepackage[tmargin=1in, bmargin=1.25in, lmargin=1.5in, rmargin=1.5in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{datetime}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{import}
+\usepackage{mathtools}
+\usepackage{thmtools,thm-restate}
+\usepackage{comment}
+
+
+% package for commutative diagrams
+% \usepackage{tikz-cd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{crimson}{RGB}{186,0,44}
+\definecolor{moss}{RGB}{0, 186, 111}
+\newcommand{\pop}[1]{\textcolor{crimson}{#1}}
+\newcommand{\zcom}[1]{\noindent\textcolor{crimson}{(Z): #1}}
+\newcommand{\jcom}[1]{\noindent\textcolor{moss}{(J): #1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\pqeq}{\succcurlyeq}
+\newcommand{\pleq}{\preccurlyeq}
+\newcommand{\Wedge}{\bigwedge}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+    colorlinks,
+    linkcolor={crimson},
+    citecolor={crimson},
+    urlcolor={crimson}
+}
+
+\usepackage{qcircuit}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{reminder}{Reminder}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{answer}{Answer}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{claim}{Claim}[section]
+
+\usepackage{tikz-cd}
+
+\newcommand{\hhrulefill}{\hspace{-1.5em} \hrulefill}
+
+\usepackage{geometry}
+\geometry{
+  left=25mm,
+  right=25mm,
+  top=20mm,
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{unsrt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{Motivating non-commutative geometry via non-commutative vector bundles}
+\author{Jack Ceroni}
+\email{jackceroni@gmail.com}
+
+\date{\today}
+
+\maketitle
+
+\section{Introduction}
+
+\noindent The goal of this essay is to introduce some of the core ideas which motivate \emph{non-commutative geometry}. The majority of this essay will be
+dedicated to constructing a non-commutative version of a vector bundle, and proving the Serre-Swan theorem. Much of the work in non-commutative geometry began with Connes,
+and has been extended in recent years by several other individuals. According to Connes (at the very least, according to the talk he gave at the Fields institute in December
+of 2023), the origins of non-commutative geometry take their inspiration from quantum mechanics, in particular, the non-commutative character of operators which makes
+this physical theory markedly distinct from its classical counterparts.
+
+\section{Introduction: the space/algebra correspondence}
+
+\noindent Given some \emph{topological space} $X$, it is often true that the best way to study this space is via an \emph{algebra} of well-chosen functions on $X$. For example, one may be interested
+in continuous functions from $X$ to some field, $C(X)$, continuous functions which become arbitrarily small outside compact sets, $C_0(X)$, or perhaps in $X$ is a smooth manifold,
+and has differential structure, the space of smooth function $C^{\infty}(X)$. When speaking generally, we will let $F(X)$ denote \emph{some} space of continuous/continuous vanishing/smooth
+functions from $X$ to a field, usually
+the reals or complex numbers.
+
+As it turns out, topological spaces are algebras are connected in a more formal fashion than the broad strokes outlined above. \emph{Gelfand duality}, is a pair of contravariant functor, $C$ and $\text{Spec}$, the first of which
+goes from the category of compact topological spaces (with morphisms as continuous functions) to $C^{*}$-algebras (with morphisms as $*$-homomorphisms), with the other functor going in the opposite direction.
+In particular, space $X$ is taken to the $C^{*}$-algebra $C(X)$ and $f : X \rightarrow Y$ is taken to $f^{*}(g) = g \circ f$. In the other direction, a $C^{*}$-algebra $A$ is taken to the space $\text{Spec}(A)$,
+its space of characters, which are non-zero homomorphism $\mu : A \rightarrow \mathbb{C}$ with the weak-$*$ topology. A $*$-homomorphism $\phi : A \rightarrow B$ is taken to $\phi^{*}(\mu) = \mu \circ \phi$.
+
+It is crucial to note that no information is lost when these functors are composed (i.e. we have an equivalence of categories). To see this, let us note that for a given topological space $X$,
+if $x \in X$, then we can define a map $\text{eval}_x \in \text{Spec}(C(X))$ such that $\text{eval}_x(f) = f(x)$. In fact, this mapping $\Phi$ from $x \mapsto \text{eval}_x$ is a homeomorphism of topological spaces.
+Moreover, given $a \in A$, where $A$ is a \emph{commutative} $C^{*}$-algebra,
+the map $\widehat{a} : \text{Spec}(A) \rightarrow \mathbb{C}$ such that $\mu$ is taken to $\mu(a)$ is continuous, which immediately implies that the mapping $\Gamma$ of $a \mapsto \widehat{a}$ is a $*$-isomorphism.
+It is straightforward to verify that the mappings are ``functorial'', in the sense that the diagrams commute:
+% https://q.uiver.app/#q=WzAsOCxbMCwwLCJYIl0sWzIsMCwiWSJdLFsyLDIsIk0oQyhZKSkiXSxbMCwyLCJNKEMoWCkpIl0sWzQsMCwiQSJdLFs0LDIsIkMoTShBKSkiXSxbNiwyLCJDKE0oQikpIl0sWzYsMCwiQiJdLFswLDEsImYiXSxbMSwyLCJcXFBoaSJdLFswLDMsIlxcUGhpIiwyXSxbMywyLCJNKEMoZikpIiwyXSxbNCw3LCJcXHBoaSJdLFs0LDUsIlxcR2FtbWEiLDJdLFs1LDYsIkMoTShcXHBoaSkpIiwyXSxbNyw2LCJcXEdhbW1hIl1d
+\[\begin{tikzcd}
+X && Y && A && B \\
+\\
+	{M(C(X))} && {M(C(Y))} && {C(M(A))} && {C(M(B))}
+	\arrow["f", from=1-1, to=1-3]
+	\arrow["\Phi", from=1-3, to=3-3]
+	\arrow["\Phi"', from=1-1, to=3-1]
+	\arrow["{M(C(f))}"', from=3-1, to=3-3]
+	\arrow["\phi", from=1-5, to=1-7]
+	\arrow["\Gamma"', from=1-5, to=3-5]
+	\arrow["{C(M(\phi))}"', from=3-5, to=3-7]
+	\arrow["\Gamma", from=1-7, to=3-7]
+\end{tikzcd}\]
+
+\noindent This fact leads us to the primary starting-point of non-commutative geometry. Notice that the above constructions yield as a consequence many strong correspondences between spaces and $C^{*}$-algebras.
+In particular, note that two commuative $C^{*}$-algebras $A$ and $B$ are isomorphic if and only if their character spaces $M(A)$ and $M(B)$ are homeomorphic. This
+follows from the fact that if $\phi : A \rightarrow B$ is an algebra homomorphism, then $M\phi$ is a continuous map from $M(B)$ to $M(A)$, so if $\phi$ is an isomorphism, then
+we can apply the same logic to the inverse function to conclude that $M\phi$ and $M\phi^{-1}$ yield the desired homeomorphism.
+
+Because there is such a strong correspondence between topological spaces and \emph{commutative}
+algebras (as an algebra of the form $C(X)$ is commutative when we define function multiplication in the usual way, $(f_1 \cdot f_2)(x) = f_1(x) \cdot f_2(x)$), can one
+use the functors in their most general sense to consider topological spaces associated to \emph{non-commutative} $C^{*}$-algebras? As it turns out, the answer to this question
+is yes, as we will see in the following sections.
+
+\section{Non-commutative vector bundles}
+
+\noindent As a further example of the geometry-algebra correspondence, let us attempt to construct a ``non-commutative vector bundle''.
+\newline
+
+\noindent In order to accomplish anything interesting with the hypothesized correspondence between algebras and spaces, we must define more ``non-commutative analogues''
+of standard structures in topology and geometry. We have seen that ``non-commutative spaces'' correspond to non-commutative $C^{*}$-algebras. Our goal now
+is to consider the specific case where the space is a smooth manifold, and construct the non-commutative analogue of a vector bundle structure on the ``non-commutative manifold''.
+It is very import to make note of the following fact:
+
+\begin{fact}
+  Given manifold $M$, and $A = C^{\infty}(M)$ (the natural set of functions on $M$), it is only possible to recover $M$ \emph{topologically} from the algebaric properties of $A$.
+  In particular, we require \emph{extra} information to re-deduce the geometric structure of $M$ (such as the notion of differential forms, the ability to integrate, etc.).
+  Our definition of non-commutative vector bundles will be a first step in this direction, as it will surely end up being ``extra information'' which is specified on
+  top of a given $C^{*}$-algebra.
+\end{fact}
+
+First, let $B = C^{\infty}(M)$, which is a $*$-algebra. This is of course a dense subalgebra of $A = C(M)$, which follows from Stone-Weierstrass (as every polynomial
+function is smooth). A character $\mu : B \rightarrow \mathbb{C}$ can be uniquely extended to a character on $\overline{B} = A$, so that we don't lose any
+information by working with $M(B)$ rather than $M(A)$.
+
+Now, consider a vector bundle with base space $M$, and projection $\pi : E \rightarrow M$. We define our bundle morphisms $\phi : E \rightarrow E'$ in the usual sense
+as continuous maps satisfying the compatibility condition $\pi' \circ \phi = \pi$ where the fibre-restricted maps $\phi_x : E_x \rightarrow E_x'$ are required to be linear maps between vector spaces.
+Let $\Gamma(E) = C^{\infty}(M, E)$, the space of smooth sections (for $f \in \Gamma(E)$ and $x \in M$, $f(x) \in E_x$). For a given bundle map $\phi : E \rightarrow E'$, we can define $\Gamma \phi$ as the conjugate map from $\Gamma(E)$ to $\Gamma(E')$, with $\Gamma \phi(f) = \phi \circ f$.
+It follows that for $a \in B$,
+\begin{equation}
+  \Gamma \phi(a \cdot s)(x) = (\phi \circ (a \cdot s))(x) = \phi(a(x) \cdot s(x)) = \phi_x(a(x) \cdot s(x)) = a(x) \cdot \phi(s(x)) = (a \cdot \Gamma \phi(s))(x)
+\end{equation}
+so $\Gamma \phi(a \cdot s) = a \cdot \Gamma \phi(s)$. Note that the multiplication between $a(x) \in \mathbb{C}$ and $s(x) \in E$ is done in the exepct way: $s(x) \in E_x$, which has the structure of a vector
+space over $\mathbb{C}$, so we just do multiplication in this sense. Similarly, $\phi(s(x)) \in E'_x$, so the exterior multiplication by $a(x)$ works here as well. It follows that $\Gamma \phi$ is always
+a morphism of $B$-modules, for a given bundle map $\phi$. It follows that $\Gamma$ can be thought of as a functor between vector bundles and $B$-modules (clearly, $C^{\infty}(M, E)$ is in fact such a module)!
+
+From here, note that many standard operations which can be carried out on and between vector bundles factor through $\Gamma$ nicely. For example, the tensor product of vector bundles $E$ and $E'$
+is merely defined as $\pi \otimes \pi' : E \otimes E' \rightarrow B$. It is straightforward to verify that
+\begin{equation}
+  \Gamma(E \otimes E') \simeq \Gamma(E) \otimes_B \Gamma(E')
+\end{equation}
+where $\otimes_B$ is all finite sums $\sum_j s_j \otimes s_j'$ subject to $as \otimes s' - s \otimes as' = 0$ for $a \in B$, $s \in \Gamma(E)$, $s' \in \Gamma(E')$.
+
+Of course, $\Gamma(\textbf{Vector bundles})$ (the image of the functor), will (likely) not be \emph{all} $B$-modules (of which there are a lot), it will be some subcollection.
+To figure out our desired algebra-geometry correspondence, it is necessary to identify precisely what this set is. To this end, we make use of the \emph{Serre-Swan theorem}.
+First, we need a definition:
+
+\begin{definition}
+  An $A$-module $P$ is said to be \emph{projective} if for any surjective $A$-module homomorphism $f : M \rightarrow N$ and any $A$-module homomorphism $g : P \rightarrow N$,
+  there exists an $A$-module homomorphism $h : P \rightarrow M$ such that $f \circ h = g$.
+  \end{definition}
+
+\begin{theorem}[Serre-Swan]
+  Let $X$ be a compact Hausdorff space. Then a $C(X)$-module $P$ is isomorphic to a $C(X)$-module of the form $\Gamma(E)$ (a space of sections for some vector bundle $E$ over $X$) if and only if
+  $P$ is finitely generated and projective.
+\end{theorem}
+
+\begin{remark}
+  Note that in the case of $X$ being a manifold $M$, the above theorem carries over to the specific case when $P$ is a $C^{\infty}(M)$-module, and $\Gamma(E)$ is
+  a space of \emph{smooth} sections.
+\end{remark}
+
+To prove this result, we will require a collection of lemmas. To get a feel for the main ideas of the proof, let us prove an easier version
+of the theorem, for the case of trivial bundles
+
+\begin{theorem}[Trivial Serre-Swan]
+  For $X$ a topological space, a $C(X)$-module $P$ is isomorphic to a $C(X)$-module $\Gamma(E)$ where $E$ is a \emph{trivial bundle} (of the form $X \times \mathbb{F}^k$) if and only if
+  $P$ is finitely generated and \emph{free}.
+\end{theorem}
+
+\begin{proof}
+  Suppose that $E = X \times \mathbb{F}^{k}$ for some $k$, then the collection $\{(x, e_1), \dots, (x, e_k)\}$ for the $e_j$ are
+  the standard basis for $\mathbb{F}^k$ are a global free basis for the \emph{module} $\Gamma(E)$, and thus $\Gamma(E)$ is free (and finitely generated).
+  Conversely, if $P$ is finitely generated and free, $P = \langle e_1, \dots, e_r \rangle$ for some $r$. Thus, a generic element of $P$ (as a $C(X)$-module)
+  is of the form
+  \begin{equation}
+    p = c_1(x) e_1 + \cdots + c_r(x) e_r \simeq (c_1(x), \dots, c_r(x))
+  \end{equation}
+  which immediately implies that $P$ is isomorphic to $C(X, \mathbb{F}^r) \simeq \Gamma(X \times \mathbb{F}^r)$.
+\end{proof}
+
+\begin{remark}
+  To prove one direction of the more general theorem, the main idea will be to demonstrate that a vector bundle $E$ can be written as a direct summand of a trivial bundle (i.e. there is another bundle $\widetilde{E}$ such that
+  the Whitney sum $E \oplus \widetilde{E}$ is trivial). Then, we can use the above result to conclude that $\Gamma(E \oplus \widetilde{E}) \simeq \Gamma(E) \oplus \Gamma(\widetilde{E})$ is isomorphic to the finitely-generated free $C(X)$-module,
+  which will in turn allow us to show that $\Gamma(E)$ is projective.
+\end{remark}
+
+\begin{lemma}
+  Suppose $P$ is a finitely-generated $A$-module. Then, there exists a finitely-generated $A$-module $Y$ such that $P \oplus Y$ is free if and only if $P$ is a projective module.
+\end{lemma}
+\begin{proof}
+  To begin, assume $P$ is a projective $A$ module with the usual definition. Let $\{p_i\}_{i = 1}^{n}$ be a set of generators for $P$. Let $F = \langle e_1, \dots, e_n \rangle$.
+  Define $f : F \rightarrow P$ as $f(e_i) = p_i$ extended linearly. This is clearly a surjective homomorphism. Thus, this map gives rise to the following short exact sequence:
+  \begin{equation}
+    0 \longrightarrow \text{Ker}(f) \longrightarrow F \longrightarrow P \longrightarrow 0
+  \end{equation}
+  where the first map is an inclusion $j$ and the second is $f$. In particular, $\text{Im}(f) = P$, so the final mapping sending all of $P$
+  to $0$ satisfies the exactness condition. From the definition of $P$ being projective, with $N = P, M = F$ and $g = \text{id}$, there
+  exists a map $h : P \rightarrow F$ such that $f \circ h = \text{id}$, or in other words, $f$ has a right-inverse. When we put $h$
+  on the left, and $h \circ f$ is a map from $F$ to $F$, we notice that
+  \begin{equation}
+    (h \circ f) \circ (h \circ f) = h \circ (f \circ h) \circ f = h \circ f
+  \end{equation}
+  so that $h \circ f$ is a \emph{projection mapping}. It follows immediately that $h \circ f$ splits the space $F$ as $F = \text{Im}(h \circ f) \oplus \text{Ker}(h \circ f)$.
+  This simply follows from the fact that for $m \in M$,
+  \begin{equation}
+    m = (h \circ f)(m) \oplus (1 - (h \circ f))(m)
+  \end{equation}
+  where $(h \circ f)(m)$ is in the image, and $(1 - (h \circ f))(m)$ is clearly in the kernel. Since $f$ is surjective, $\text{Im}(h \circ f) = \text{Im}(h)$. Of course, $h : P \rightarrow h(P)$
+  has been shown to have an inverse: $f$ restricted to $\text{Im}(h)$, so $h(P) \simeq P$. Moreover, since $h$ is invertible, $\text{Ker}(h \circ f) = \text{Ker}(f)$. Thus, $F \simeq P \oplus \text{Ker}(f)$,
+  where $F$ is free, by definition.
+
+  Conversely, suppose that there exists $Y$ such that $F = P \oplus Y$ is free. Let $M, N$, $f : M \rightarrow N$ and $g : P \rightarrow N$ be
+  as they are in the definition of a projective module. Let $k : F \rightarrow N$ be an arbitrary function such that $k|_P = g$. If
+  we take $\{e_i\}_{i = 1}^{n}$ as the generating set for $F$, then $k(e_i) \in N$ for each $e_i$. Since $f$ is surjective, we can
+  find for each $e_i$ some $t_i \in M$ where $f(t_i) = k(e_i)$. We define $q : F \rightarrow M$ as $q(e_i) = t_i$, and extend linearly, which is obviously a module homomorphism.
+  If we let $h = q|_{P}$ be a map from $P$ to $M$, then we immediately see that for $\sum_{j} c_j e_j \in P$, then
+  \begin{equation}
+    (f \circ h)\left(\sum_{j} c_j e_j\right) = \sum_{j} c_j f(t_j) = \sum_{j} c_j k(e_j) = g \left( \sum_{j} c_j e_j \right)
+  \end{equation}
+  so that $f \circ h = g$, and by definition, $P$ is a projective module.
+\end{proof}
+
+Now, let us prove the desired result which will allow us to conclude one direction of the Serre-Swan theorem: that every vector bundle will be a direct summand of a trivial bundle.
+Let us state a technical lemma related to vector bundles which we will make use of, but will skip for the sake of brevity (as it is fairly involved):
+
+\begin{lemma}
+  If $X$ is a normal topological space, then given any $C(X)$-module homomorphism $F : \Gamma(E) \rightarrow \Gamma(E')$ between spaces of sections, there
+  is a unique bundle map $f : E \rightarrow E'$ (i.e. a continuous map where the restirction to the fibres is an homomorphism of vector spaces) such that $F = \Gamma(f)$ (where
+  we are using $\Gamma$ in the functorial sense here).
+\end{lemma}
+
+Making use of this result, we can prove two technical lemmas:
+
+\begin{lemma}
+  Let $X$ be a compact Hausdorff space (thus normal), let $E$ be a vector bundle. Then there exists a trivial bundle $\Pi$
+  and a surjective bundle map $f : \Pi \rightarrow E$.
+\end{lemma}
+
+\begin{proof}
+  The main idea here is to choose a local basis $s(x) = (s_1(x), \dots, s_n(x))$ for each fibre in $E$ (we can do this as $E$ is locally trivial). Since $X$ is normal,
+  we can find a partition of unity which combines all of the $s(x)$ in a continuous (or smooth, if it is a smooth manifold) fashion, which yields a global
+  basis $\widetilde{s}(x)$ for the fibre over each $x \in X$. We let $\Pi = X \times \mathbb{F}^n$, where $\mathbb{F}^n$ always has a basis $\{e_i\}_{i = 1}^{n}$. Define $F : \Gamma(\Pi) \rightarrow \Gamma(E)$
+  as $F(e_i) = \widetilde{s}_i$, extended linearly. From the previous theorem, there is a unique bundle map $f : \Pi \rightarrow E$ such that $F = \Gamma(f)$, so $f \circ e_i = \widetilde{s}_i$.
+  It follows that $\widetilde{s}_i(x)$ is in the image of $f$, so any $x$, and since this collection spans each fibre, the map $f$ is surjective.
+  \end{proof}
+
+\begin{lemma}
+  Let $E$ be a vector bundle with an inner product, and let $E'$ be a subbundle. Then, any exact sequence
+  \begin{equation}
+    0 \longrightarrow E' \longrightarrow E \longrightarrow G \longrightarrow 0
+  \end{equation}
+  splits, with $E \simeq E' \oplus G$.
+\end{lemma}
+\begin{proof}
+  \textbf{Note:} This proof largely follows the exact same logic as Lemma III.1, so we leave out some details.
+  \newline
+
+  Let $j$ be the inclusion map from $E'$ to $E$, let $b$ be the map from $E$ to $G$. We define $p : E \rightarrow E'$ as the orthogonal projection via the inner product onto
+  $E'$ (as $E'$ is a subbundle). Note that because the sequence is exact, $\text{Ker}(b) = j(E') = E' = \text{Im}(p)$.
+  The restriction of $b$ to $\text{Ker}(p)$ will induce an isomorphism $G \simeq \text{Im}(b)$, and will induce the desired splitting via the same logic as was applied in Lemma III.1.
+
+  From here, since the sequence splits, $b$ has a right-inverse, $b \circ a = 1$, with $a : G \rightarrow E$. It is easy to see that $a \circ b$ is a projection (again, via the same
+  logic as Lemma III.1), so $E = \text{Im}(a \circ b) \oplus \text{Ker}(a \circ b)$. Again, via the same logic as Lemma III.1, $\text{Im}(a \circ b) \simeq G$ and $\text{Ker}(a \circ b) \simeq \text{Ker}(b) = E'$,
+  so $E \simeq E' \oplus G$ as desired.
+  \end{proof}
+
+From these two results, the following result holds immediately:
+
+\begin{theorem}[Serre-Swan, first direction]
+  If $X$ is a compact Hausdorff space, and $\Gamma(E)$ is the space of sections over the space treated as a $C(X)$-module, then it is finitely generated and projective.
+\end{theorem}
+
+\begin{proof}
+  Let $\Pi$ be a trivial bundle, from above, we can find a surjective bundle map $f : \Pi \rightarrow E$. The sequence $\text{Ker}(f) \to \Pi \to E$
+  is clearly an exact sequence, implying (from above), that $\Pi \simeq \text{Ker}(f) \oplus E$. Thus, $\Gamma(\Pi) \simeq \Gamma(\text{Ker}(f)) \oplus \Gamma(E)$.
+  $\Gamma(E)$ is a direct summand of the free-module $\Gamma(\Pi)$ (we proved this module is free earlier), so $\Gamma(E)$ is finitely-generated and projective.
+  \end{proof}
+
+Proving the other direction requires a little bit more work, but we can do it right away:
+
+\begin{theorem}[Serre-Swan, other direction]
+If $P$ is a finitely-generated projective $C(X)$-module, for some compact Hausdorff space $X$, then $P \simeq \Gamma(E)$, for some vector bundle $E$ over $X$.
+\end{theorem}
+
+\begin{proof}
+  Let $P$ be a finitely generated projective $C(X)$-module. We already proved that $P$ is then a direct summand of a finitely-generated free $C(X)$-module $F$.
+  Of course, then $P$ is the image of a projection map $p$ from $F$ to itself, which takes $P$ to $P$ and the other direct summand of the free group to $0$.
+  We know that $F = \Gamma(\Pi)$, for a trivial bundle $\Pi$. Thus, $p$ is actually a map from $\Gamma(\Pi)$ to itself, so by Lemma III.2, $p$ lifts
+  to a bundle map $\widetilde{p} : \Pi \rightarrow \Pi$ with $\Gamma(\widetilde{p}) = p$. But then $\Gamma(\text{Im}(\widetilde{p})) = \text{Im}(p) = P$,
+  so that $P$ is in fact $\Gamma(E)$, with $E = \text{Im}(\widetilde{p})$, and we are done.
+  \end{proof}
+
+\hhrulefill
+
+\noindent Now that we have proved Serre-Swan, let us return to the idea of a non-commutative vector bundle. In particular, recall
+that we were concerned with finding the image of the function $\Gamma$. The above theorem has shown a direct correspondence between
+smooth sections and finitely-generated projective modules. Thus, we arrive at the pentultimate result:
+
+\begin{claim}
+  Just as a ``non-commutative topological space'' is essentially just a non-commutative $C^{*}$-algebra, a ``non-commutative vector bundle''
+  is simply a finitely-generated projective module. This is due to the fact that $\Gamma$ is a covariant (as it does not reverse the direction of morphisms)
+  functor from the category of vector bundles over $M$ to the category of projective modules over $C^{\infty}(M)$.
+\end{claim}
+
+As it turns out, there are many more results just like this, which yield non-commutative variants of spin structure, the Dirac operator,
+and many other important constructs in differential geometry and topology. All of these constructions, combined together under a unified
+framework, is the motivation and the starting point for the rich field of \emph{non-commutative geometry}.
+
+\end{document}
