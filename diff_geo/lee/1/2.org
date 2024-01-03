@@ -1,4 +1,0 @@
-#+TITLE: Lee Problem 1.2
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
-#+HTML_HEAD: <style> body {font-size:15px;} </style>
-

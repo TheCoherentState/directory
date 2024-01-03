@@ -2,13 +2,28 @@
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
 #+HTML_HEAD: <style> body {font-size:15px;} </style>
 
-This space is topolgized by taking all $U$ open in $M$ where $\pi^{-1}(U)$ is open in $X = X^{+} \cup X^{-}$. Let $\varphi$ be the obvious homeomorphism between $X^{+}$ and $X^{-}$.
+Let $X^{\pm} = \{(x, \pm 1) \ | \ x \in \mathbb{R}\}$. Clearly, $X = X^{+} \cup X^{-}$. Let $X/\sim$ be the quotient space, which is topologized
+by taking the set of all $U$ such that $\pi^{-1}(U)$ is open in $X$ as a subspace of $\mathbb{R}^2$ ($\pi$ is the quotient map).
 
-Clearly, taking all open intervals $U$ of rational radius around each of the individual points of $M$ will have $\pi^{-1}(U)$ open in $X$. In the case that $(0, \pm 1) \notin U$, then
-$\pi^{-1}(U) = U \cup \varphi(U)$ (we abuse notation, but it is clear what is meant). If $(0, 1) \in U$, then $\pi^{-1}(U) = U \cup \left(\varphi(U) - \{(0, -1)\}\right)$, which is clearly open. Similar applies
-to when $(0, -1) \in U$. It is obvious that this collection is a countable basis.
+For each equivalence class in $X/\sim$ containing $(x, \pm 1)$, identify this class with $x \in \mathbb{R}$. We let $\mathcal{B}$ be the collection
+of all open balls centred at rational $x$ with rational radius, not containing $0$ (so the notion of an open ball is well-defined under our identification).
+Clearly, the inverse image under $\pi^{-1}$ for any of these sets is open in $X$.
 
-As for the local Euclidean property, we simply take as charts $(x, \pm 1) \mapsto x$ on $M - (0, -1)$ and on $M - (0, 1)$, both of which are clearly open as their inverse images under $\pi^{-1}$ are open.
+Let $\mathcal{B}'$ be the collection of all open balls of rational radius centred at $(0, 1)$ and $(0, -1)$, individually. Note that
+the inverse image under $\pi^{-1}$ for these sets will be open as well:
 
-Finally, note that this space is not Hausdorff. Suppose $U$ contains $(0, 1)$ and $V$ contains $(0, -1)$. Then $\pi^{-1}(U)$ and $\pi^{-1}(V)$ are open and saturated, so each contain all $(x, \pm 1)$ for $0 < x < \epsilon$ and
-$0 < x < \epsilon'$ repsectively. Thus, $\pi^{-1}(U) \cap \pi^{-1}(V) \neq \emptyset$, and so $U \cap V \neq \emptyset$.
+$$\pi^{-1}(B_r((0, \pm 1))) = (-r, r) \times \{\pm 1\} \cup \left( (-r, 0) \cup (0, r) \right) \times \{\mp 1\}$$
+
+Of course, $\mathcal{B} \cup \mathcal{B}'$ is countable. It is also a basis for the topology: each element of the basis is open in the quotient topology as we have shown,
+and in addition, given a generic element of the topology, $U$ with $\pi^{-1}(U)$ open in $X$, note that $\pi^{-1}(U)$ can be written as a union of rational-radius balls
+centred at points along the two copies of $\mathbb{R}$ not containing $0$, as well as rational-radius balls centred at $0$. $\pi$ clearly sends these elements to elements
+of $\mathcal{B} \cup \mathcal{B}'$, so $\pi(\pi^{-1}(U)) = U$ (as $\pi$ is surjective) is a union of elements of the countable set $\mathcal{B} \cup \mathcal{B}'$.
+
+It follows immediately that $\mathcal{B} \cup \mathcal{B}'$ is a countable basis for the quotient topology.
+
+This space is also clearly locally Euclidean: the charts sending the two open sets $U_{\pm} = \{ x \neq 0 \} \cup (0, \pm 1)$ to their projection onto the
+first coordinate are homeomorphisms $\varphi_{\pm} U_{\pm} \rightarrow \mathbb{R}$.
+
+Finally, note that the space is not Hausdorff. Suppose $V_{\pm}$ are open sets about $(0, \pm 1)$, so $\pi^{-1}(V_{\pm})$ are open in $X$. Then the
+$\pi^{-1}(V_{\pm})$ must each contain some interval $(-\varepsilon, \varepsilon) \cup \{ \pm 1\}$
+respectively: but then $V_{+} \cap V_{-} \neq \emptyset$.

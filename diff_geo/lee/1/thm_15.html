@@ -3,12 +3,14 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-01-01 Mon 15:23 -->
+<!-- 2024-01-02 Tue 21:57 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Lee Problem 1.1</title>
+<title>Lee Theorem 1.15</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="Jack Ceroni" />
+<meta name="description" content="Directory"
+ />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -242,52 +244,78 @@
 </head>
 <body>
 <div id="content">
-<h1 class="title">Lee Problem 1.1</h1>
+<h1 class="title">Lee Theorem 1.15</h1>
 <p>
-Let \(X^{\pm} = \{(x, \pm 1) \ | \ x \in \mathbb{R}\}\). Clearly, \(X = X^{+} \cup X^{-}\). Let \(X/\sim\) be the quotient space, which is topologized
-by taking the set of all \(U\) such that \(\pi^{-1}(U)\) is open in \(X\) as a subspace of \(\mathbb{R}^2\) (\(\pi\) is the quotient map).
+We wish to prove the following:
+</p>
+
+<hr />
+
+<p>
+<b>Theorem.</b> <i>Every topological manifold is paracompact.</i>
+</p>
+
+<hr />
+
+<p>
+Recall that paracompactness is the condition that for each open cover of a given space, there exists a locally finite refinement.
+Our strategy for proving this result hinges on some important lemmas, namely the following:
+</p>
+
+<hr />
+
+<p>
+<b>Lemma.</b> <i>Every topological manifold is locally compact.</i>
 </p>
 
 <p>
-For each equivalence class in \(X/\sim\) containing \((x, \pm 1)\), identify this class with \(x \in \mathbb{R}\). We let \(\mathcal{B}\) be the collection
-of all open balls centred at rational \(x\) with rational radius, not containing \(0\) (so the notion of an open ball is well-defined under our identification).
-Clearly, the inverse image under \(\pi^{-1}\) for any of these sets is open in \(X\).
+This follow from the fact that we have a pre-compact basis, so each \(x \in X\) is contained in neighbourhood \(B\) such that \(B \subset C\)
+for some compact set \(C\) (here, \(C = \overline{B}\), as \(B\) is precompact).
 </p>
 
 <p>
-Let \(\mathcal{B}'\) be the collection of all open balls of rational radius centred at \((0, 1)\) and \((0, -1)\), individually. Note that
-the inverse image under \(\pi^{-1}\) for these sets will be open as well:
+<b>Lemma.</b> <i>Every second-countable locally compact Hausdorff space has an exhaustion by compact sets.</i>
 </p>
 
 <p>
-\[\pi^{-1}(B_r((0, \pm 1))) = (-r, r) \times \{\pm 1\} \cup \left( (-r, 0) \cup (0, r) \right) \times \{\mp 1\}\]
+By exhaustion, we mean a sequence of nested compact sets \(K_i\), such that \(K_i \subset \text{Int}(K_{i + 1})\). To show this, the idea
+will be to make use of the countable basis. In particular, since the space is locally compact, each \(x \in X\) has a compact neighbourhood \(x \in U_x \subset C_x\).
+Choose some element \(B_x\) of the countable basis which contains \(x\) and is in \(U_x\). Thus, the \(B_x\) are all compact neighbourhoods and are a countable cover of \(X\).
+We label these sets \(\mathcal{B} = \{B_1, B_2, \dots\}\), and let the corresponding compact sets be \(C_1, C_2, \dots\).
 </p>
 
 <p>
-Of course, \(\mathcal{B} \cup \mathcal{B}'\) is countable. It is also a basis for the topology: each element of the basis is open in the quotient topology as we have shown,
-and in addition, given a generic element of the topology, \(U\) with \(\pi^{-1}(U)\) open in \(X\), note that \(\pi^{-1}(U)\) can be written as a union of rational-radius balls
-centred at points along the two copies of \(\mathbb{R}\) not containing \(0\), as well as rational-radius balls centred at \(0\). \(\pi\) clearly sends these elements to elements
-of \(\mathcal{B} \cup \mathcal{B}'\), so \(\pi(\pi^{-1}(U)) = U\) (as \(\pi\) is surjective) is a union of elements of the countable set \(\mathcal{B} \cup \mathcal{B}'\).
+From here, note that \(\overline{B_k} \subset \overline{C_k} = C_k\) is closed in a compact set, and is thus compact (we know that \(C_k\) is closed as it is compact is a Hausdorff space).
+We let \(U_1 = B_1\). We then form a finite cover of \(\overline{U_1}\) (as this set is compact) with elements of \(\mathcal{B}\), which we call \(V_2\), and let \(U_2 = V_2 \cup B_2\). \(V\) is a finite union of precompact sets,
+and is thus precompact. Thus, we can repeat this process with \(U_k = V_k \cup B_k\), with \(V_k\) being a finite cover of \(\overline{U_{k - 1}}\).
 </p>
 
 <p>
-It follows immediately that \(\mathcal{B} \cup \mathcal{B}'\) is a countable basis for the quotient topology.
+It is easy to check that the sequence of compact sets \(K_i = \overline{U_i}\) is the desired exhaustion of \(X\).
+</p>
+
+<hr />
+
+<p>
+Now, let us move forth, and prove the theorem. Of course, we will make use of the exhaustion. Let \(\mathcal{U}\) be an open cover for the space \(X\). The main idea
+will be to use the compact exhaustion to express the space as a union of a bunch of "finite" shells.
 </p>
 
 <p>
-This space is also clearly locally Euclidean: the charts sending the two open sets \(U_{\pm} = \{ x \neq 0 \} \cup (0, \pm 1)\) to their projection onto the
-first coordinate are homeomorphisms \(\varphi_{\pm} U_{\pm} \rightarrow \mathbb{R}\).
+Let's be more specific: let \(K_i\) denote our exhaustion. We define \(W_i = (X - K_{i - 1}) \cap \text{Int}(K_{i + 1})\). Clearly, this is an open set.
+From \(\mathcal{U}\), we define our new refined cover as follows: we take a finite subcover \(\mathcal{V}_1\) for \(K_1\) from \(\mathcal{U} \cap K_2\). We then proceed inductively
+and finitely cover \(K_i\) using \(\mathcal{V}_{i - 1}\) and \(\mathcal{U} \cap W_i\), forming \(\mathcal{V}_i\).
 </p>
 
 <p>
-Finally, note that the space is not Hausdorff. Suppose \(V_{\pm}\) are open sets about \((0, \pm 1)\), so \(\pi^{-1}(V_{\pm})\) are open in \(X\). Then the
-\(\pi^{-1}(V_{\pm})\) must each contain some interval \((-\varepsilon, \varepsilon) \cup \{ \pm 1\}\)
-respectively: but then \(V_{+} \cap V_{-} \neq \emptyset\).
+We take \(\mathcal{V} = \mathcal{V}_1 \cup \mathcal{V}_2 \cup \cdots\). Clearly, this is a cover and a refinement of \(\mathcal{U}\). Moreover, it is locally finite:
+given \(x \in X\), note that \(x \in \text{Int}(K_i)\) for some \(i\). For some \(V \in \mathcal{V}_k\) for \(k \geq i + 1\), note that \(V \subset X - K_{i}\), implying that \(V \cap \text{Int}(K_i) = \emptyset\).
+Thus, \(x \in \text{Int}(K_i)\), which can only intersect elements of \(\mathcal{V}_1 \cup \cdots \cup \mathcal{V}_i\), a finite set.
 </p>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jack Ceroni</p>
-<p class="date">Created: 2024-01-01 Mon 15:23</p>
+<p class="date">Created: 2024-01-02 Tue 21:57</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

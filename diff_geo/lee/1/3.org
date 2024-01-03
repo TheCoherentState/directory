@@ -1,4 +1,19 @@
-#+TITLE:Lee's Introduction to Smooth Manifolds: Solution Manual and Notes
+#+TITLE:Lee Problem 1.3
 #+DESCRIPTION:Directory
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
-#+HTML_HEAD: <style> body {font-size:15px; background-color:black; color:white;} .title {color:white;} h2, h3, h4 {color:white;} a{color:red} </style>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+
+First, suppose that $X$ is locally Euclidean Hausdorff. Assume that $X$ is $\sigma$ -compact, so $X = X_1 \cup X_2 \cup \cdots$, where each $X_k$
+is compact. For some $x \in X$, $x \in U_x$, the domain of some coordinate chart $\varphi : U_x \rightarrow \hat{U}_x \subset \mathbb{R}^n$.
+We take a countable basis for each $\hat{U}_x$, which we call $\mathcal{B}_x$. The countable collection of open sets $\varphi^{-1}(\mathcal{B}_x)$ is clearly a countable basis for the subspace $U_x$.
+
+Since each $X_k$ is compact, each is covered by a finite number of the $U_x$, so their countable union is covered by a countable number of the $U_x$. We combine
+the corresponding countable collection of countable bases, to get the countable set $\mathcal{S}$ of sets open in $X$. Taking all finite intersections of elements
+of $\mathcal{S}$ will result in a new countable set $\mathcal{S}'$: we claim that this is a basis for $X$. Indeed, given $U$ open in $X$, and $y \in U$, $y$ will
+be in some $U_x$ in the countable cover. $U \cap U_x$ is open in $U_x$, so we can find $y \in \varphi^{-1}(B_x) \subset U_x$ for some $B_x \in \mathcal{B}_x$.
+
+-------------------
+
+Conversely, suppose that $X$ is locally Euclidean Hausdorff and second-countable (i.e. a topological manifold). We know from Lemma 1.10 that
+it has a countable basis of precompact coordinate balls, so we simply take the closure of these balls to get a countable collection of compact
+sets whose union in $X$. Thus, $X$ is $\sigma$ -compact by definition.

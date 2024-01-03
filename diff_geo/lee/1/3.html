@@ -3,12 +3,14 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-01-01 Mon 15:23 -->
+<!-- 2024-01-01 Mon 16:35 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Lee Problem 1.1</title>
+<title>Lee Problem 1.3</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="Jack Ceroni" />
+<meta name="description" content="Directory"
+ />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -242,52 +244,31 @@
 </head>
 <body>
 <div id="content">
-<h1 class="title">Lee Problem 1.1</h1>
+<h1 class="title">Lee Problem 1.3</h1>
 <p>
-Let \(X^{\pm} = \{(x, \pm 1) \ | \ x \in \mathbb{R}\}\). Clearly, \(X = X^{+} \cup X^{-}\). Let \(X/\sim\) be the quotient space, which is topologized
-by taking the set of all \(U\) such that \(\pi^{-1}(U)\) is open in \(X\) as a subspace of \(\mathbb{R}^2\) (\(\pi\) is the quotient map).
+First, suppose that \(X\) is locally Euclidean Hausdorff. Assume that \(X\) is \(\sigma\) -compact, so \(X = X_1 \cup X_2 \cup \cdots\), where each \(X_k\)
+is compact. For some \(x \in X\), \(x \in U_x\), the domain of some coordinate chart \(\varphi : U_x \rightarrow \hat{U}_x \subset \mathbb{R}^n\).
+We take a countable basis for each \(\hat{U}_x\), which we call \(\mathcal{B}_x\). The countable collection of open sets \(\varphi^{-1}(\mathcal{B}_x)\) is clearly a countable basis for the subspace \(U_x\).
 </p>
 
 <p>
-For each equivalence class in \(X/\sim\) containing \((x, \pm 1)\), identify this class with \(x \in \mathbb{R}\). We let \(\mathcal{B}\) be the collection
-of all open balls centred at rational \(x\) with rational radius, not containing \(0\) (so the notion of an open ball is well-defined under our identification).
-Clearly, the inverse image under \(\pi^{-1}\) for any of these sets is open in \(X\).
+Since each \(X_k\) is compact, each is covered by a finite number of the \(U_x\), so their countable union is covered by a countable number of the \(U_x\). We combine
+the corresponding countable collection of countable bases, to get the countable set \(\mathcal{S}\) of sets open in \(X\). Taking all finite intersections of elements
+of \(\mathcal{S}\) will result in a new countable set \(\mathcal{S}'\): we claim that this is a basis for \(X\). Indeed, given \(U\) open in \(X\), and \(y \in U\), \(y\) will
+be in some \(U_x\) in the countable cover. \(U \cap U_x\) is open in \(U_x\), so we can find \(y \in \varphi^{-1}(B_x) \subset U_x\) for some \(B_x \in \mathcal{B}_x\).
 </p>
 
-<p>
-Let \(\mathcal{B}'\) be the collection of all open balls of rational radius centred at \((0, 1)\) and \((0, -1)\), individually. Note that
-the inverse image under \(\pi^{-1}\) for these sets will be open as well:
-</p>
+<hr />
 
 <p>
-\[\pi^{-1}(B_r((0, \pm 1))) = (-r, r) \times \{\pm 1\} \cup \left( (-r, 0) \cup (0, r) \right) \times \{\mp 1\}\]
-</p>
-
-<p>
-Of course, \(\mathcal{B} \cup \mathcal{B}'\) is countable. It is also a basis for the topology: each element of the basis is open in the quotient topology as we have shown,
-and in addition, given a generic element of the topology, \(U\) with \(\pi^{-1}(U)\) open in \(X\), note that \(\pi^{-1}(U)\) can be written as a union of rational-radius balls
-centred at points along the two copies of \(\mathbb{R}\) not containing \(0\), as well as rational-radius balls centred at \(0\). \(\pi\) clearly sends these elements to elements
-of \(\mathcal{B} \cup \mathcal{B}'\), so \(\pi(\pi^{-1}(U)) = U\) (as \(\pi\) is surjective) is a union of elements of the countable set \(\mathcal{B} \cup \mathcal{B}'\).
-</p>
-
-<p>
-It follows immediately that \(\mathcal{B} \cup \mathcal{B}'\) is a countable basis for the quotient topology.
-</p>
-
-<p>
-This space is also clearly locally Euclidean: the charts sending the two open sets \(U_{\pm} = \{ x \neq 0 \} \cup (0, \pm 1)\) to their projection onto the
-first coordinate are homeomorphisms \(\varphi_{\pm} U_{\pm} \rightarrow \mathbb{R}\).
-</p>
-
-<p>
-Finally, note that the space is not Hausdorff. Suppose \(V_{\pm}\) are open sets about \((0, \pm 1)\), so \(\pi^{-1}(V_{\pm})\) are open in \(X\). Then the
-\(\pi^{-1}(V_{\pm})\) must each contain some interval \((-\varepsilon, \varepsilon) \cup \{ \pm 1\}\)
-respectively: but then \(V_{+} \cap V_{-} \neq \emptyset\).
+Conversely, suppose that \(X\) is locally Euclidean Hausdorff and second-countable (i.e. a topological manifold). We know from Lemma 1.10 that
+it has a countable basis of precompact coordinate balls, so we simply take the closure of these balls to get a countable collection of compact
+sets whose union in \(X\). Thus, \(X\) is \(\sigma\) -compact by definition.
 </p>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jack Ceroni</p>
-<p class="date">Created: 2024-01-01 Mon 15:23</p>
+<p class="date">Created: 2024-01-01 Mon 16:35</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

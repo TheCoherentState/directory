@@ -1,0 +1,49 @@
+#+TITLE:Lee Theorem 1.15
+#+DESCRIPTION:Directory
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+
+We wish to prove the following:
+
+---------------------------
+
+*Theorem.* /Every topological manifold is paracompact./
+
+---------------------------
+
+Recall that paracompactness is the condition that for each open cover of a given space, there exists a locally finite refinement.
+Our strategy for proving this result hinges on some important lemmas, namely the following:
+
+-----------------------
+
+*Lemma.* /Every topological manifold is locally compact./
+
+This follow from the fact that we have a pre-compact basis, so each $x \in X$ is contained in neighbourhood $B$ such that $B \subset C$
+for some compact set $C$ (here, $C = \overline{B}$, as $B$ is precompact).
+
+*Lemma.* /Every second-countable locally compact Hausdorff space has an exhaustion by compact sets./
+
+By exhaustion, we mean a sequence of nested compact sets $K_i$, such that $K_i \subset \text{Int}(K_{i + 1})$. To show this, the idea
+will be to make use of the countable basis. In particular, since the space is locally compact, each $x \in X$ has a compact neighbourhood $x \in U_x \subset C_x$.
+Choose some element $B_x$ of the countable basis which contains $x$ and is in $U_x$. Thus, the $B_x$ are all compact neighbourhoods and are a countable cover of $X$.
+We label these sets $\mathcal{B} = \{B_1, B_2, \dots\}$, and let the corresponding compact sets be $C_1, C_2, \dots$.
+
+From here, note that $\overline{B_k} \subset \overline{C_k} = C_k$ is closed in a compact set, and is thus compact (we know that $C_k$ is closed as it is compact is a Hausdorff space).
+We let $U_1 = B_1$. We then form a finite cover of $\overline{U_1}$ (as this set is compact) with elements of $\mathcal{B}$, which we call $V_2$, and let $U_2 = V_2 \cup B_2$. $V$ is a finite union of precompact sets,
+and is thus precompact. Thus, we can repeat this process with $U_k = V_k \cup B_k$, with $V_k$ being a finite cover of $\overline{U_{k - 1}}$.
+
+It is easy to check that the sequence of compact sets $K_i = \overline{U_i}$ is the desired exhaustion of $X$.
+
+-----------------------
+
+Now, let us move forth, and prove the theorem. Of course, we will make use of the exhaustion. Let $\mathcal{U}$ be an open cover for the space $X$. The main idea
+will be to use the compact exhaustion to express the space as a union of a bunch of "finite" shells.
+
+Let's be more specific: let $K_i$ denote our exhaustion. We define $W_i = (X - K_{i - 1}) \cap \text{Int}(K_{i + 1})$. Clearly, this is an open set.
+From $\mathcal{U}$, we define our new refined cover as follows: we take a finite subcover $\mathcal{V}_1$ for $K_1$ from $\mathcal{U} \cap K_2$. We then proceed inductively
+and finitely cover $K_i$ using $\mathcal{V}_{i - 1}$ and $\mathcal{U} \cap W_i$, forming $\mathcal{V}_i$.
+
+We take $\mathcal{V} = \mathcal{V}_1 \cup \mathcal{V}_2 \cup \cdots$. Clearly, this is a cover and a refinement of $\mathcal{U}$. Moreover, it is locally finite:
+given $x \in X$, note that $x \in \text{Int}(K_i)$ for some $i$. For some $V \in \mathcal{V}_k$ for $k \geq i + 1$, note that $V \subset X - K_{i}$, implying that $V \cap \text{Int}(K_i) = \emptyset$.
+Thus, $x \in \text{Int}(K_i)$, which can only intersect elements of $\mathcal{V}_1 \cup \cdots \cup \mathcal{V}_i$, a finite set.
+
