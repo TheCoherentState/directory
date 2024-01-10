@@ -1,0 +1,12 @@
+#+TITLE: November 29th, 2023
+#+DESCRIPTION:Directory
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+
+I'm doing some thinking today about quantum field theory. I'm starting off by reading Witten's paper
+on topological QFT. Here are a few thoughts:
+
+- He makes a few interesting claims about the "atlas" which maps between physics and differential geometry.
+  In particular, he states that the Hamiltonian corresponding to a classical particle moving on a Riemannian manifold
+  is the Laplace-Beltrami operator, which does make sense, as the Hamiltonian corresponding to a free particle in $n$ -dimensional Euclidean
+  space is of course just of the form $H = \frac{1}{2m} \Delta$.

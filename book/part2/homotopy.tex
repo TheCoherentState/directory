@@ -1,0 +1,259 @@
+\documentclass[10pt, oneside]{amsart} 
+\usepackage{amsmath, amsthm, amssymb, calrsfs, wasysym, verbatim, bbm, color, graphics, geometry, hyperref, biblatex, mathtools}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{tcolorbox}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	urlcolor=blue
+}
+
+\addbibresource{ref.bib}
+
+\geometry{tmargin=1.25in, bmargin=1.25in, lmargin=1.25in, rmargin =1.25in}
+
+\tcbuselibrary{theorems}
+
+    \newcommand{\R}{\mathbb{R}}
+    \newcommand{\C}{\mathbb{C}}
+    \newcommand{\Z}{\mathbb{Z}}
+    \newcommand{\N}{\mathbb{N}}
+    \newcommand{\Q}{\mathbb{Q}}
+    \newcommand{\Cdot}{\boldsymbol{\cdot}}
+
+    \newtheorem{definition}{Definition}
+    \newtheorem{lemma}{Lemma}
+    \newtheorem{theorem}{Theorem}
+    \newtheorem{corollary}{Corollary}
+    \newtheorem{conjecture}{Conjecture}
+    \newtheorem{problem}{Problem}
+    \newtheorem{reminder}{Reminder}
+    \newtheorem{question}{Question}
+    \newtheorem{answer}{Answer}
+    \newtheorem{fact}{Fact}
+    \newtheorem{claim}{Claim}
+    \newtheorem{proposition}{Proposition}
+
+    \theoremstyle{definition}
+    \newtheorem{example}{Example}
+    \newtheorem{remark}{Remark}
+
+    \newcommand{\Tr}{\mathrm{Tr}}
+    \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+
+ \title{Chapter 2.1: Basics of homotopy}
+ \author{Jack Ceroni}
+ \email{jackceroni@gmail.com}
+ \date{\today}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\section{Introduction}
+
+\noindent One of the central concepts in algebraic topology is that of \emph{homotopy}: a continuous deformation of one continuous map into another.
+The notion of homotopy will allow us to define notions of ``equivalence'' for topological spaces that are weaker than homeomorphism, but still
+imply preservation of many nice properties, such as the \emph{fundamental group}: something of fundamental (pun intended) importance that will be discussed
+in a later chapter.
+
+\section{Homotopy}
+
+\noindent The definition of homotopy is pretty much what was stated above:
+
+\begin{definition}[Homotopy]
+  A homotopy is a continuous map of the form $F : X \times [0, 1] \rightarrow Y$, where $X$ and $Y$ are topological spaces. Maps $f, g : X \rightarrow Y$
+  are said to be \emph{homotopic} if there exists a homotopy between them, that is, some homotopy $F : X \times [0, 1] \rightarrow Y$ such that $f(x) = F(x, 0)$
+  and $g(x) = F(x, 1)$. If $f$ and $g$ are homotopic, we use notation $f \simeq g$. It is easy to check that homotopy is an equivalence relation.
+\end{definition}
+
+\begin{example}[Path homotopy]
+  We will often be interested in homotopy of paths (i.e. when $X = [0, 1]$, and we have two paths $f, g : [0, 1] \rightarrow Y$). Such a homotopy
+  will be a continuous map of the form $F : [0, 1] \times [0, 1] \rightarrow Y$ with $F(x, 0) = f(x)$ and $F(x, 1) = g(x)$. We say that
+  two paths $f$ and $g$ which share beginning and endpoints are \emph{path homotopic} if they are homotopic with a homotopy which fixes the endpoints
+  (i.e. $F(0, t) = f(0) = g(0)$ and $F(1, t) = f(1) = g(1)$ for all $t \in [0, 1]$).
+\end{example}
+
+\begin{remark}[Relative homotopy]
+  More generally, a homotopy $F$ which fixes some $A \subset X$ is said to be a \emph{homotopy relative to $A$}. A path homotopy is a homotopy relative to
+  the two-point set $\{0, 1\} \subset [0, 1]$.
+\end{remark}
+
+\noindent Note that a map $f : X \rightarrow Y$ that is homotopic to a constant map is said to be \emph{nullhomotopic}.
+
+\section{Deformation retracts and the mapping cylinder}
+
+\noindent We will dedicate the first part of this section to discussion of a particular, important kind of homotopy: a deformation retract.
+
+\begin{definition}[Retraction]
+  A continuous map $r : X \rightarrow A$ is said to be a \emph{retraction} of $X$ onto some subspace $A \subset X$ if $r|_{A} = \text{id}$.
+\end{definition}
+
+\noindent In this sense, a retraction can be thought of as a map which ``compresses'' a space down to some principal subset.
+
+\begin{definition}
+  Given a space $X$ and a subspace $A \subset X$, a deformation retract of $X$ onto $A$ is a homotopy relative to $A$ of the identity map $\text{id} : X \rightarrow X$
+  with a retraction $r$ of $X$ onto $A$ (actually, $j \circ r$, the retraction embedded in the ambient space $X$, where $j : A \rightarrow X$ is inclusion).
+  Given a space $X$ and a subspace $A$, if a deformation retract exists, we say that $X$ deformation retracts to $A$.
+\end{definition}
+
+\noindent In this sense, a deformation retraction can be thought of a continuous, gradual ``compression'' of a space down to some principal subset.
+There is another way in which we can think of deformation retracts, which provides some nice geometric intuition: this is the mapping cylinder.
+
+\begin{definition}[Mapping cylinder]
+  Given a continuous map $f : X \rightarrow Y$, we define the mapping cylinder $M_f$ associated with $f$ to be the quotient space
+  $(X \times [0, 1]) \sqcup Y / \sim$, where we identify $(x, 1) \sim f(x)$.
+\end{definition}
+
+\noindent Intuitively, the points at the ``end'' of the ``cylinder'' $X \times [0, 1]$ are glued to the point in $Y$ to which they are sent by $X$.
+We have the following nice result, which makes intuitive sense if we think about ``sliding'' points of $X \times [0, 1]$ along their trajectories,
+parameterized by $[0, 1]$, to their corresponding points on $Y$:
+
+\begin{proposition}
+  Let $f : X \rightarrow Y$ be a continuous map, let $M_f$ be the mapping cylinder. Then $M_f$ deformation retracts to $Y$.
+\end{proposition}
+\begin{proof}
+  We simply have to write down such a deformation retract. Let $Z = (X \times [0, 1]) \sqcup Y$. We start by defining $F : Z \times [0, 1] \rightarrow M_f$
+  as
+  \begin{equation}
+    F((x, s), t) = [(x, 1 - (1 - s)(1 - t))] = [(x, s + t - st)]
+  \end{equation}
+  on $X \times [0, 1] \times [0, 1]$ and $F(y, t) = [y]$ on $Y \times [0, 1]$. Note that $[\cdot]$ denotes the equivalence classes of $\sim$. $F$ is of course the
+  composition of a continuous map from $Z \times [0, 1]$ to $Z$ with the quotient map $[\cdot] : Z \rightarrow M_f$: both maps are continuous, and thus $F$ is as well.
+
+  By the universal property of the quotient, $F$ descends to a map $F : M_f \rightarrow M_f$ which is also continuous. Moreover, note that $F([(x, s)], 0) = [(x, s)]$,
+  so $F(z, 0) = \text{id}(z)$, and in addition,
+  \begin{equation}
+    F([(x, s)], 1) = [(x, 1)] = [f(x)],
+  \end{equation}
+  so $F(z, 1)$ takes $M_f$ to the copy of $Y$ embedded in $M_f$. Note that
+  $F([(x, 1)], 1) = [(x, 1)]$, so that $F(z, 1)$ is the identity on the embedded copy of $Y$. Finally, note that $F$
+  fixes the copy of $Y$ embedded in $M_f$, so it is a homotopy relative to this subset.
+
+  Thus, by definition, $F$ is a deformation retract of $M_f$ to $Y$, and we are done.
+\end{proof}
+
+\noindent The previous proof is one of the rare instances where we will take great care to actual explicitly write down a homotopy/check that it is continuous/etc.
+Standard practice is algebraic topology is usually to provide diagrammatic justification, and this is good enough (provided you know what you are doing, and
+what you are saying is correct).
+
+We know that $M_f$ deformation retracts to $Y$, what about $X$? The property of $M_f$ deformation retracting to $X$ definitely does \textbf{not} hold in general!
+  For instance, consider the ``dunce cap'', where we define $f : S^1 \rightarrow \{x\}$
+  as the constant map, and take the mapping cylinder $M_f$. It is clear that $M_f$ will deformation retract to the single point at the top of the cap, but we \emph{cannot}
+  deformation retract this space to a circle.
+
+  Why is this the case? Well, note that $M_f = (S^1 \times [0, 1]) \sqcup \{x\}$ is homeomorphic to a disk. A retraction of the disk onto its boundary, the circle, cannot exist
+  (we will show this later), so there certainly cannot be a \emph{deformation} retract.
+  \section{Homotopy equivalence}
+
+  \noindent Now, let us move on to \emph{homotopy equivalence}: the weaker notion of ``equivalence of topological spaces'' alluded to earlier.
+
+  \begin{definition}[Homotopy equivalence]
+    A continuous map $f : X \rightarrow Y$ is a homotopy equivalence if there exists $g : Y \rightarrow X$ such that $f \circ g$ and $g \circ f$ are homotopic
+    to the identity on $Y$ and $X$ respectively. If, for two spaces $X$ and $Y$, there exists a homotopy equivalence $f : X \rightarrow Y$, we say that
+    $X$ and $Y$ are homotopy equivalent.
+  \end{definition}
+
+  \begin{example}[Deformation retract and homotopy equivalence]
+    Let us consider deformation retracts in the context of homotopy equivalence. Suppose $X$ deformation retracts to $A$.
+    Let $j : A \rightarrow X$ be the inclusion map of $A$ in $X$, let $r : X \rightarrow A$ be the retraction. Note that, by
+    definition, $r \circ j = \text{id}|_{A}$. Moreover, note that by definition, since $X$ deformation retracts to $A$, $j \circ r \simeq \text{id}|_X$.
+
+    Thus, $X$ and $A$ are homotopy equivalent.
+    \end{example}
+
+\begin{example}
+  A space $X$ is said to be \emph{contractible} if it is homotopy equivalent to a single point. Note that $X$ being contractible does not necessarily
+  imply that $X$ deformation retracts to a point. However, the converse is true (as we showed above that a deformation retract gives a homotopy equivalence).
+\end{example}
+
+\noindent The main idea with homotopy equivalence is that we can go back and forth between
+two spaces in such a way that this action of ``going back and forth'' can be continuously deformed to the identity map.
+The notion of homotopy equivalence gives rise to \emph{homotopy type}, where we say that two spaces $X$ and $Y$ are of the samer homotopy type
+if there exists a homotopy equivalence between them. The spaces of the same homotopy type, as it turns out, are equivalence classes: homotopy equivalence
+is an equivalence relation. Reflexivity and symmetry are obvious, so it remains to show that it is transitive.
+
+\begin{proposition}
+  Composition of homotopy equivalences is a homotopy equivalence. It follows immediately that if $X$ and $Y$ are homotopy equivalent,
+  and $Y$ and $Z$ are homotopy equivalent, then $X$ and $Z$ are homotopy equivalent.
+\end{proposition}
+
+\begin{proof}
+  Suppose $f : X \rightarrow Y$ and $g : Y \rightarrow Z$ are homotopy equivalences, let $f'$ and $g'$ be the corresponding maps in the other direction.
+  Note that
+  \begin{equation}
+    (f \circ g) \circ (g' \circ f') = f \circ (g \circ g') \circ f' \simeq f \circ f' \simeq \text{id}
+  \end{equation}
+  and
+  \begin{equation}
+    (g' \circ f') \circ (f \circ g) = g' \circ (f' \circ f) \circ g \simeq g' \circ g \simeq \text{id}
+  \end{equation}
+  so the claim follows immediately.
+\end{proof}
+
+If you found the definition of a homotopy equivalence a bit opaque, that's no problem, we are about to provide (half of) an
+alternate, equivalent definition of homotopy equivalence which is easier to visualize.
+
+\begin{proposition}
+  Let $X$ and $Y$ be topological spaces, let $Z$ be a common space in which $X$ and $Y$ are embedded via embeddings $j_X : X \rightarrow Z$ and $j_Y : Y \rightarrow Z$.
+  If $Z$ deformation retracts to both $j_X(X)$ and $j_Y(Y)$, then $X$ and $Y$ are homotopy equivalent.
+\end{proposition}
+\begin{proof}
+  This follows immediately from the fact that deformation retracts are homotopy equivalences. In particular, $j_X(X)$ is homotopy equivalent to $Z$, which
+  is homotopy equivalent to $j_Y(Y)$. Thus, $j_X(X)$ and $j_Y(Y)$ are homotopy equivalent. $X$ and $Y$ are homeomorphic to these spaces respectively,
+  and are thus homotopy equivalent (it is trivial to check homotopy equivalence persists under homeomorphism).
+  \end{proof}
+
+\begin{comment}
+  Let $r_X$ be the retraction onto $X$ and let $r_Y$ be the retraction onto $Y$. Take $f = r_X \circ j_Y$ and $g = r_Y \circ j_X$. Note that since $Z$ deformation retracts to $X$ and $Y$,
+  $j_X \circ r_X \simeq \text{id}$ and $j_Y \circ r_Y \simeq \text{id}$. Thus,
+  \begin{equation}
+    f \circ g = r_X \circ (j_Y \circ r_Y) \circ j_X \simeq r_X \circ j_X = \text{id}_X
+  \end{equation}
+  and
+  \begin{equation}
+    g \circ f = r_Y \circ (j_X \circ r_X) \circ j_Y \simeq r_Y \circ j_Y = \text{id}_Y
+  \end{equation}
+  so $f : Y \rightarrow X$ is a homotopy equivalence, and the proof is complete.
+\end{comment}
+
+\noindent As it turns out, the converse holds as well, in the following sense:
+
+\begin{claim}
+  \label{claim:1}
+  Two topological spaces $X$ and $Y$ are homotopy equivalent if and only if there exists a common space $Z$ and embeddings $j_X : X \rightarrow Z$ and $j_Y : Y \rightarrow Z$
+  such that $Z$ deformation retracts to both $j_X(X)$ and $j_Y(Y)$.
+\end{claim}
+
+\noindent We will prove this in the next section.
+
+\section{Homotopy extension property}
+
+\noindent The goal of this (final) section is to prove a condition for homotopy equivalence which as a consequence will
+allow us to prove Claim.~\ref{claim:1}. The main definition we will require is that of the \emph{homotopy extension property}.
+
+\begin{definition}[Homotopy extension property]
+  Suppose $f : X \rightarrow Y$ is a continuous map, and suppose that $f_t : A \rightarrow Y$ is a homotopy with $f_0 = f|_A$,
+  where $A \subset X$. If $(X, A)$ has the property that for any $f$ and any $f_t$ as above, $f_t$ can be extended to a homotopy
+  on all of $X$, $f_t : X \rightarrow Y$, then $(X, A)$ has the homotopy extension property.
+\end{definition}
+
+\begin{lemma}
+a pair $(X, A)$ has the homotopy extension property if and only if $Z = X \times \{0\} \sqcup A \times I$ is a retract of $X \times I$.
+\end{lemma}
+\begin{proof}
+  Suppose $Z$ is a retract of $X \times I$. Let $f : X \rightarrow Y$ be a map, let $F : A \times I \rightarrow Y$ be a homotopy with $F(x, 0) = f$. Let $r$ be the retraction.
+  We claim that $F \circ r : X \times I \rightarrow Y$ is the desired extension. Indeed, this map is well-defined and continuous. Moreover,
+  \begin{equation}
+    (F \circ r)(x, 0) = F(x, 0) = f(x)
+  \end{equation}
+
+  \end{proof}
+
+\vspace{20pt}
+    
+\end{document}

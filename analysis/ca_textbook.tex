@@ -1,0 +1,585 @@
+\documentclass[aps,pra,showpacs,notitlepage,onecolumn,superscriptaddress,nofootinbib]{revtex4-1}
+\usepackage[utf8]{inputenc}
+\usepackage[tmargin=1in, bmargin=1.25in, lmargin=1.5in, rmargin=1.5in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{datetime}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{import}
+\usepackage{mathtools}
+\usepackage{thmtools,thm-restate}
+\usepackage{comment}
+
+
+% package for commutative diagrams
+% \usepackage{tikz-cd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{crimson}{RGB}{186,0,44}
+\definecolor{moss}{RGB}{0, 186, 111}
+\newcommand{\pop}[1]{\textcolor{crimson}{#1}}
+\newcommand{\zcom}[1]{\noindent\textcolor{crimson}{(Z): #1}}
+\newcommand{\jcom}[1]{\noindent\textcolor{moss}{(J): #1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\pqeq}{\succcurlyeq}
+\newcommand{\pleq}{\preccurlyeq}
+\newcommand{\Wedge}{\bigwedge}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+    colorlinks,
+    linkcolor={crimson},
+    citecolor={crimson},
+    urlcolor={crimson}
+}
+
+\usepackage{qcircuit}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{reminder}{Reminder}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{answer}{Answer}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{claim}{Claim}[section]
+\newtheorem{exercise}{Exercise}[section]
+
+\newcommand{\hhrulefill}{\hspace{-1.5em} \hrulefill}
+
+\usepackage{geometry}
+\geometry{
+  left=25mm,
+  right=25mm,
+  top=20mm,
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{unsrt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{A brief course in basic complex analysis}
+\author{Jack Ceroni}
+\email{jackceroni@gmail.com}
+\affiliation{Department of Mathematics, University of Toronto}
+
+\date{\today}
+
+\maketitle
+
+\tableofcontents
+
+\section{Introduction}
+
+\noindent The goal of these notes is to follow a very elementary first course in complex analysis, with similar structure to Edward Bierstone's course at the University of Toronto (MAT354), in the Fall of 2023. I will
+also be adding information from my own readings/other resources, and modifying/expanding upon certain explanations as I see fit. I hope that someone finds these notes useful. However, in the event that no one does, I certainly will!
+(I'm writing these notes as I am studying for the MAT354 exam!)
+
+Here is a list of resources that I will draw from in these notes:
+
+\begin{itemize}
+\item Professor Edward Bierstone's lectures (MAT354, University of Toronto, Fall 2023)
+\item The MAT354 tutorial worksheets, prepared by Vicente Marin-Marquez
+  \item Cartan, \textit{Elementary theory of analytic functions of one or several complex variables}
+  \item Ahlfors, \textit{Complex analysis}
+\end{itemize}
+
+\section{Basics, the complex plane and the Riemann sphere}
+
+\section{Introduction to complex functions}
+
+\section{Holomorphic functions}
+
+\begin{definition}[Branch]
+\end{definition}
+
+\begin{definition}[Branch cut]
+  \end{definition}
+
+\section{Power series and analytic functions}
+
+\begin{theorem}
+  The zeros of an analytic function for a discrete set. That is, each is contained in a neighbourhood not containing any
+  of the others.
+\end{theorem}
+
+\begin{proof}
+  Let $f$ be an analytic function, let $a$ be a zero of the function. Of course, we can expand $f$ locally as
+  $$f(z) = \sum_{k = 0}^{\infty} c_k (z - a)^{k} = (z - a)^{n} \sum_{k = 0}^{\infty} c_{k + n} (z - a)^{k} = (z - a)^{n} g(z)$$
+  where we assume that $c_n \neq 0$. In particular, $g(a) \neq 0$. Therefore, since $g$ is continuous, we can choose an open neighbourhood
+  around $a$ for which $g(z) \neq 0$. Thus, there is a neighbourhood around $a$ for which $a$ is the only root.
+\end{proof}
+
+\begin{theorem}[Analytic continuation]
+  Let $f$ be an analytic function in connected open set $D \subset \mathbb{C}$. Let $x_0 \in D$. Then the following conditions are equivalent:
+  \begin{itemize}
+  \item $f^{(n)}(x_0) = 0$ for all non-negative integers $n$
+  \item $f$ is identically $0$ in a neighbourhood of $x_0$
+    \item $f$ is identically $0$ on the entire set $D$
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+
+\end{proof}
+
+\noindent This proof has a few immediate corollaries:
+
+
+
+\subsection{Interlude: exercises}
+
+\noindent Another exercise interlude:
+
+\hhrulefill
+
+\begin{exercise}[MAT354 6.2]
+  Recall that if all derivatives of an analytic function are equal to $0$ anywhere, then the function is identically $0$. Since $f$ is $0$ on $S = D \cap \{\text{Im}(z) = 0\}$,
+  it follows immediately that $\partial_x^{(n)} f(0) = 0$. Thus, since $f$ is holomorphic, $\partial_y^{(n)} f(0) = 0$ as well. It follows that $f$ has all of its derivatives
+  equal to $0$ at the origin, so it must be identically $0$.
+  \newline
+
+  \noindent In the case that $f$ is meromorphic, it can be expressed as a quotient $g/h$ of analytic functions. If it is $0$ on $S$, then $g$ is $0$ on $S$, so
+  $g = 0$ on $D$, and $f$ is $0$ on $D$ as well.
+  \end{exercise}
+
+\hhrulefill
+
+\section{Conformal maps}
+
+\noindent We conclude the first part of this course with a brief discussion of conformal mappings of the plane.
+
+\subsection{Interlude: exercises}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Part 2: COMPLEX INTEGRATION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Complex integration}
+
+\noindent We now move into the next major topic in our study of complex analysis: integration over complex domains. The tools that we
+develop in this section will prove to be uniquely useful in proving many major results in complex analysis.
+
+\subsection{Basics and notation}
+
+\noindent Recall that a function $f : \mathbb{C} \rightarrow \mathbb{C}$ is, topologically, a map $f : \mathbb{R}^2 \rightarrow \mathbb{R}^2$. Of course, from our studies in standard analysis,
+we already know how to integrate differential $1$-forms $\omega = p(x, y) dx + q(x, y) dy$ and $2$-forms $\eta = f(x, y) dx \wedge dy$ over chains in $\mathbb{R}^2$, with $p, q, f \in C(\mathbb{R}^2, \mathbb{R})$.
+However, in the complex case, it will often be true that we will want to integrate \emph{complex-valued} forms over complex domains. This leads us to the following, somewhat obvious, definitions:
+\begin{align}
+  \displaystyle\int_{\gamma} p(x, y) dx + q(x, y) dy \coloneqq \displaystyle\int_{\gamma} \text{Re}[p](x, y) dx + \text{Re}[q](x, y) dy + i \displaystyle\int_{\gamma} \text{Im}[p](x, y) dx + \text{Im}[q](x, y) dy \\
+  \displaystyle\int_{\Omega} f(x, y) dx \wedge dy \coloneqq  \displaystyle\int_{\Omega} \text{Re}[f](x, y) dx \wedge dy + i \displaystyle\int_{\Omega} \text{Im}[f](x, y) dx \wedge dy
+\end{align}
+when $p, q, f \in C(\mathbb{R}^2, \mathbb{C})$. When the component functions of a form are continuous, we call the form continuous. Generally speaking, every form that we consider in this section
+will be continuous (at least). When the functions are continuously differentiable, we call
+the form continuously differentiable, or a $C^1$-form.
+\newline
+
+\noindent We make one more generalization. Generally, when integrating one-forms over paths $\gamma$, we make the implicit assumption that $\gamma$ is continuously differentiable. Thus is required in the standard
+definition of the integral $\int_{\gamma} \omega$, as when the integral is pulled back to an integral over an interval, we must take a derivative of $\gamma$. Let us suppose instead that $\gamma$ is piecewise-$C^1$,
+meaning that it is characterized by a finite collection of $C^1$ curves $\gamma_k$ which, when appended together, form a continuous path. We define the integral over $\gamma$ as
+\begin{equation}
+  \displaystyle\int_{\gamma} \omega \coloneqq \displaystyle\sum_{k = 1}^{n} \displaystyle\int_{\gamma_k} \omega.
+\end{equation}
+
+
+\subsection{Closed and exact forms}
+
+\noindent We begin by recalling definitions from standard analysis:
+\begin{definition}[Closed and exact forms]
+  A continuously differentiable form $\omega$ is \emph{closed} if $d\omega = 0$, where $d$ is the standard exterior derivative, extended linearly from the case of real forms to complex forms in the obvious way.
+  A form $\omega$ is called \emph{exact} if there exists a $C^1$-form $\eta$ such that $d\eta = \omega$. In particular, when $\omega$ is a $1$-form, $\omega$ is exact if there exists a $C^1$-function $F$ such that $dF = \omega$.
+  We call such a function a \emph{primitive} of $\omega$.
+\end{definition}
+
+\noindent We won't deal with closed forms too much in subsequent sections, to the exactness property will prove to be very important. We begin with the following equivalence:
+\begin{lemma}
+  Let $\omega$ be a $1$-form on a connected open set $\Omega$ in the complex plane. Then $\Omega$ is exact if and only if, for every piecewise-$C^1$ closed path $\gamma$ lying in $\Omega$ ($\gamma$
+  has the same start and end points), we have $\int_{\gamma} \omega = 0$.
+\end{lemma}
+
+\begin{corollary}
+  Let $\omega$ be a $1$-form on a disk $D$ in the complex plane. Then $\Omega$ is exact if and only if, for every piecewise-$C^1$ closed path $\eta$ lying on the boundary of a rectangle in $D$, we have $\int_{\eta} \omega = 0$.
+\end{corollary}
+
+\begin{comment}
+\begin{lemma}[Green-Riemann formula]
+  Let $\omega = p dx + q dy$ be a $C^1$-form on connected open set $\Omega$. Then, if $R$ is a rectangle lying in $\Omega$, and $\gamma$ is the curve describing its boundary:
+  \begin{equation}
+    \displaystyle\int_{\gamma} p(x, y) dx + q(x, y) dy = \displaystyle\int_{R} \left( \frac{\partial p}{\partial y} - \frac{\partial q}{\partial x} \right) dx \wedge dy
+    \end{equation}
+\end{lemma}
+\begin{proof}
+  This is an immediate consequence of Stokes' theorem.
+  \newline
+
+  \noindent Of course, we can also prove this fact without Stokes' theorem.
+\end{proof}
+\end{comment}
+
+\noindent This leads us to the following result:
+\begin{lemma}
+  If $\omega$ defined on open connected $\Omega$ is an exact $C^1$-form, then it is closed. If $\Omega$ is an open disc, and $\omega$ is closed, then it is exact.
+  \end{lemma}
+
+\subsection{Locally exact forms}
+
+\noindent Exact forms have useful properties, as we have seen, but exactness if a fairly strong condition. As it turns out, if we weaken the exactness condition such as to make it \emph{local} rather than global,
+we achieve a much more broadly-useful class of forms, which still have some pretty nice properties.
+
+\begin{definition}
+\end{definition}
+
+\begin{remark}
+  Some authors, such as Cartan, will call locally exact forms \emph{closed forms}. As we will see below, this is because in the case of $C^1$-forms, the definitions of equvalent. However,
+  for continuous forms which are not $C^1$, the definitions are different (the closed property isn't defined).
+\end{remark}
+
+\begin{lemma}
+  A form $\omega$ is locally exact at $x$ if and only if, for a sufficiently small rectangular boundary around $x$, $\gamma$, we have $\int_{\gamma} \omega = 0$. In addition,
+  a $C^1$-form is locally exact if and only if it is closed.
+\end{lemma}
+\begin{proof}
+\end{proof}
+
+\subsection{Integrating locally exact forms}
+
+\noindent We now move on to the main technical lemma of this section, which will prove invaluable for our study of integration of locally exact forms.
+At a high-level, this result will tell us that given two paths $\gamma_1$ and $\gamma_2$ which are homotopic, we can always choose primitives along
+intermediate paths of the homotopy which vary continuously.
+
+In the case of exact $1$-forms, we know that we can always find a global primitive. Thus, it is easy to integrate exact forms, via the fundamental theorem
+of calculus. In particular, we have $\omega = dF$ for some $F$. If $\gamma$ is a $C^1$ curve, we then have
+\begin{equation}
+  \displaystyle\int_{\gamma} \omega = \displaystyle\int_{a}^{b} \gamma^{*}(dF) = \displaystyle\int_{a}^{b} \frac{d (F \circ \gamma)(t)}{dt} \ dt = f(b) - f(a)
+\end{equation}
+where $f = F \circ \gamma$.
+
+But what about the case when a form is locally exact? Integrals are local in the sense that they ``sum'' a form over a path by individually accumulating values
+at individual points along a curve, so it would make sense to assume that we can also integrate locally exact forms via the fundamental theorem of calculus.
+We cannot find a global primitive, but, as we will see, it suffices to find local primitives which vary continuously, and sum over them.
+
+
+\begin{definition}[Primitive along a path and primitive on a region]
+  Let $\gamma : [a, b] \rightarrow \Omega$ be a continuous path, let $\omega$ be locally exact. We say that a function $f : [a, b] \rightarrow \mathbb{C}$ is a primitive along the path $\gamma$
+  if, for each point on the curve, $\gamma(t)$, there exists a function $F$ such that in a neighbourhood of $\gamma(t)$, $F$ is a primitive of $\omega$, and for all $x$ in
+  some neighbourhood of $t$, $f(x) = (F \circ \gamma)(x)$.
+
+  
+\end{definition}
+
+\noindent This definition is effectively a ``local'' version of the $f$ in the previous paragraph, which was the composition of the global primitive with the path.
+
+\begin{remark}
+  Note that the definition of a primitive along a path is a special case of the primitive on a region, where the rectangle from which we map
+  has one of its side-lengths equal to $0$.
+\end{remark}
+
+\hhrulefill
+
+\begin{lemma}[The general primitive lemma]
+  If $\omega$ is locally exact, and $\delta : [a, b] \times [a', b'] \rightarrow \Omega$ is a continuous mapping of the rectangle $R = [a, b] \times [a', b']$ into
+  $\Omega$, then there always exists a primitive $f(x, y)$ on the region. Moreover, it is unique up to addition of a constant.
+
+  Finally, if $S = \{F_1, F_2, \dots\}$ is a set of functions
+  such that for any $x \in \Omega$, there exists $F_k \in S$ which is a local primitive of $\omega$ near $x$, and for any $i, j, k$, $F_i + (F_j - F_k) \in S$, then $f(x, y) = F_k(\gamma(x, y))$
+  for some $k$, for each point $(x, y) \in R$.
+\end{lemma}
+
+\begin{proof}
+  Clearly, $R$ is compact, so its image under the continuous function $\delta$ is compact. Let us choose an open cover $\{A_k\}$ of $\delta(R)$, its inverse image
+  is an open cover of $R$. It follows from the Lebesgue number lemma that there exists $\varepsilon$ sufficiently small such that any rectangle with side lengths
+  less than or equal to $\varepsilon$ is contained in an element of $\{\delta^{-1}(A_k)\}$.
+  \end{proof}
+
+\hhrulefill
+
+\subsection{An illustrative example: winding number}
+
+\noindent We dedicate a section of these notes to explaining a particular useful example of the integration of a locally exact form, $\omega = dz/z$.
+
+\begin{lemma}[Winding number for $C^1$-curves]
+  If $\gamma : [0, 1] \rightarrow \Omega$ is a $C^1$ curve which does not pass through point $a$, then the integral
+  \begin{equation}
+    w(\gamma, a) = \frac{1}{2\pi i} \displaystyle\int_{\gamma} \frac{dz}{z - a}
+  \end{equation}
+  is an integer. We call $w(\gamma, a)$ the winding number of $\gamma$ about $a$.
+\end{lemma}
+
+\begin{proof}
+  Of course, we have
+  \begin{equation}
+    \displaystyle\int_{\gamma} \frac{dz}{z - a} = \displaystyle\int_{0}^{1} \frac{\gamma'(t)}{\gamma(t) - a} \ dt
+    \end{equation}
+Let us define $f(s) = \int_{0}^{s} \frac{\gamma'(t)}{\gamma(t) - a} \ dt$. We know that such a function is differentiable, with
+\begin{equation}
+  f'(s) = \frac{\gamma'(s)}{\gamma(s) - a} \Longrightarrow (\gamma(s) - a) f'(s) = \gamma'(s)
+\end{equation}
+Let $F(s) = e^{-f(s)} (\gamma(s) - a)$. From above, $F'(s) = 0$, so $F$ is a constant. In particular, $F(s) = F(0) = \gamma(0) - a$. Thus,
+$e^{f(s)} = \frac{\gamma(s) - a}{\gamma(0) - a}$. We then have $e^{f(1)} = 1$, as $\gamma(0) = \gamma(1)$. This implies that $f$ must be an integer
+multiple of $2\pi i$. Therefore, $w(\gamma, a)$ is an integer.
+\end{proof}
+
+\noindent We now prove the general version of the winding number lemma, where we only require that $\gamma$ is continuous.
+
+\begin{lemma}[Adult winding-number lemma]
+  If $\gamma : [0, 1] \rightarrow \Omega$ is a continuous curve which does not pass through point $a$, then the integral
+  \begin{equation}
+    w(\gamma, a) = \frac{1}{2\pi i} \displaystyle\int_{\gamma} \frac{dz}{z - a}
+  \end{equation}
+  is an integer. We call $w(\gamma, a)$ the winding number of $\gamma$ about $a$.
+  \end{lemma}
+
+\subsection{Cauchy's theorem and its implications}
+
+\noindent The goal of this section is to prove the most broadly useful theorem in the study of complex integration: Cauchy's theorem. We will use this result to prove
+a plethora of further results, including incredibly deep statements such as the equivalence between holomorphic and analytic functions, and by extension Liouville's theorem
+and the fundamental theorem of algebra.
+\newline
+
+\noindent Let us begin by proving a baby version of the theorem:
+
+\begin{theorem}[$C^1$-Cauchy's theorem]
+  Recall that $dz \coloneqq dx + i dy$. If $f$ is a holomorphic function with continuous complex derivative, then the form $\omega = f(z) dz$ is closed.
+\end{theorem}
+\begin{proof}
+  We have
+  \begin{equation}
+    d\omega = \left( \frac{\partial f}{\partial y} - i \frac{\partial f}{\partial y} \right) dx \wedge dy = 0
+  \end{equation}
+  where we simply used the characteristic identity of holomorphic functions, $\partial_x f = i \partial_y f$.
+\end{proof}
+
+\noindent We will see, very soon, that holomorphic functions are smooth, so this version of the proof actually does hold for any holomorphic $f$. However, it is the following proof
+that we will \emph{use} to show that holomorphic functions are analytic, and thus smooth!
+
+\begin{theorem}[Cauchy's theorem]
+  If $f$ is a holomorphic function, then the form $\omega = f(z) dz$ is locally exact.
+\end{theorem}
+\begin{proof}
+  For this proof, we must take a more direct approach.
+\end{proof}
+
+\begin{theorem}[The equivalence theorem]
+  Let $f$ be a function defined on connected open set $\Omega$. The following properties are equivalent:
+  \begin{enumerate}
+  \item $f$ is holomorphic in $\Omega$.
+  \item The form $\omega = f(z) dz$ is locally exact in $\Omega$.
+  \item Cauchy's integral formula holds. That is,
+    \begin{equation}
+      f(z) = \displaystyle\int_{\gamma} \frac{f(t)}{z - t} dz
+    \end{equation}
+    for any closed piecewise $C^1$ path around $z$ in $\Omega$.
+    \item $f$ is analytic on $\Omega$.
+    \end{enumerate}
+\end{theorem}
+
+\subsection{Interlude: exercises}
+
+\noindent We take a small break from presenting new material to solve a few problems from Cartan, Ahlfors, and the MAT354 tutorial worksheets. Note that we will use a few concepts
+introduced in subsequent sections in these problems (i.e. the definition of a meromorphic function).
+
+\hhrulefill
+
+\begin{exercise}[Cartan 2.2]
+  Recall the definition of an integral of a locally exact form over a continuous path $\gamma : [a, b] \rightarrow \mathbb{C}$: it is the difference $f(b) - f(a)$, where
+  $f$ is the primitive along $\gamma$ (unique up to a constant).
+  \newline
+
+  \noindent Of course, if $\omega_1$ and $\omega_2$ are locally exact, then their sum $\omega_1 + \omega_2$ is as well: given $x \in \Omega$, let $F_1$ and $F_2$ be local primitives
+  of $\omega_1$ and $\omega_2$ on $U_1$ and $U_2$ respectively. Then $F_1 + F_2$ is a local primitive on $U_1 \cap U_2$, an open neighbourhood of $x$. Moreover, let $f_1$
+  be the primitive along $\gamma$ of $\omega_1$, let $f_2$ be the primitive along $\gamma$ of $\omega_2$. Let $f = f_1 + f_2$. By definition, given $t \in [a, b]$, we can
+  choose $x \in (t - \varepsilon, t + \varepsilon)$.
+\end{exercise}
+
+\hhrulefill
+
+\begin{exercise}[Cartan 2.3]
+  Recall that if a sequence of continuous functions $f_n$ converges uniformly to $f$ (which is continuous via uniform limit theorem), then
+  \begin{equation}
+    \lim_{n \to \infty} \displaystyle\int_{I} f_n = \displaystyle\int_{I} f
+    \end{equation}
+\end{exercise}
+
+\hhrulefill
+
+\begin{exercise}[MAT354 8.1 and 8.2]
+
+  Clearly, if $\gamma$ is piecewise-$C^1$ with $C^1$-components $\gamma_k$, then $f \circ \gamma$ is piecewise-$C^1$ with $C^1$-components $f \circ \gamma_k$, so this construction is well-defined. By definition, we have
+  \begin{align}
+    \alpha(f) & = w(f \circ \sigma, 0) = \frac{1}{2\pi i} \displaystyle\int_{f \circ \sigma} \frac{dz}{z} = \frac{1}{2\pi i} \displaystyle\int_{0}^{1} (f \circ \sigma)^{*}(z^{-1}) d (f \circ \sigma)^{*}(z)
+    \\ & = \frac{1}{2\pi i} \displaystyle\int_{0}^{1} \sigma^{*}(f(z)^{-1}) d \sigma^{*}(f(z)) = \frac{1}{2\pi i} \displaystyle\int_{\sigma} \frac{df}{f} = \frac{1}{2\pi i} \displaystyle\int_{\sigma} \frac{f'}{f} dz
+  \end{align}
+  This immediately implies that
+  \begin{equation}
+    \alpha(f g) = \frac{1}{2\pi i} \displaystyle\int_{\sigma} \frac{(fg)'}{fg} dz = \frac{1}{2\pi i} \displaystyle\int_{\sigma} \frac{(f'g + f g'}{fg} dz = \frac{1}{2\pi i} \displaystyle\int_{\sigma} \frac{f'}{f} dz + \frac{1}{2\pi i} \displaystyle\int_{\sigma} \frac{g'}{g} dz = \alpha(f) + \alpha(g).
+  \end{equation}
+  Clearly, for $c \neq 0$, $\alpha(c) = 0$. Thus, for $f$ non-zero on $S^1$, we have
+  \begin{equation}
+    0 = \alpha(1) = \alpha\left( \frac{f}{f} \right) = \alpha(f) + \alpha\left(\frac{1}{f} \right) \Longrightarrow \alpha\left( \frac{1}{f} \right) = -\alpha(f).
+  \end{equation}
+\end{exercise}
+
+\hhrulefill
+
+\begin{exercise}[MAT354 8.3]
+  Note that $f(z) = 2z^3 - 5z^2 + 2z = z (z - 2)(2z - 1)$. It follows that
+  $$\alpha(f) = \alpha(z) + \alpha(z - 2) + \alpha(2z - 1) = \alpha(z) + \alpha(z - 2) + \frac{1}{2} \alpha\left( z - \frac{1}{2} \right).$$
+  Of course, for a function of the form $p(z) = z - c$, we have $\alpha(p) = w(\sigma, c)$ (from Problem 8.2 above). $\sigma$ is a circular path
+  around the origin of unit radius. Thus, if $c$ lies in the unit disk, then $w(\sigma, c) = 1$ and otherwise, $w(\sigma, c) = 0$. Therefore,
+  \begin{equation}
+    \alpha(z) + \alpha(z - 2) + \frac{1}{2} \alpha\left( z - \frac{1}{2} \right) = 1 + 0 + \frac{1}{2} = \frac{3}{2}.
+  \end{equation}
+  We can compure $\alpha(4z^2 + 1)$ in an identical fashion. In particular, note that $f(z) = 4z^2 + 1 = (2z + i)(2z - i)$. Thus,
+  \begin{equation}
+    \alpha(f) = \alpha(2z + i) + \alpha(2z - i) = \frac{1}{2} \alpha\left(z + \frac{i}{2} \right) + \frac{1}{2} \alpha \left( z - \frac{i}{2} \right) = \frac{1}{2} + \frac{1}{2} = 1.
+  \end{equation}
+  It follows that $\alpha(1/f) = -\alpha(f) = -1$. Note that $f$ is non-zero on $S^1$, so we can apply this identity.
+\end{exercise}
+
+\hhrulefill
+
+\begin{exercise}[MAT354 8.4]
+  Recall that if a form is locally exact on $\Omega$, and $\gamma_1$ and $\gamma_2$ two free homotopic loops in $\Omega$, then $\int_{\gamma_1} \omega = \int_{\gamma_2} \omega$.
+  Since $f$ is non-zero on $\overline{D}$, $f'/f$ is holomorphic on $\overline{D}$. Clearly, $\sigma$ is free homotopic to the constant zero-path. By Cauchy's theorem, the form $f' dz / f$ is locally exact.
+  Therefore,
+  \begin{equation}
+    \alpha(f) = \frac{1}{2\pi i} \displaystyle\int_{\gamma} \frac{f'}{f} dz = 0.
+    \end{equation}
+  \end{exercise}
+
+\hhrulefill
+
+\begin{exercise}[MAT354 8.5]
+  Without loss of generality, we can assume that we never have $\nu_k = \mu_j$. Define the rational function
+  \begin{equation}
+    R(z) = \frac{\prod_{i = 1}^{s} (z - \mu_i)^{m_i}}{\prod_{j = 1}^{r} (z - \nu_i)^{n_i}}
+  \end{equation}
+  and let $g(z) = R(z) f(z)$. Clearly, this function is meromorphic, as it is the product of meromorphic functions. Moreover, for a given root $\nu_k$, note that
+  we can write $f(z) = (z - \nu_k)^{n_k} f_k(z)$ where $f_k(z)$ does not have a root nor a pole at $\nu_k$. Thus,
+  \begin{equation}
+    g(z) = \frac{\prod_{i = 1}^{s} (z - \mu_i)^{m_i}}{\prod_{j = 1}^{r} (z - \nu_j)^{n_j}} (z - \nu_k)^{n_k} f_k(z) = \frac{\prod_{i = 1}^{s} (z - \mu_i)^{m_i}}{\prod_{j \neq k} (z - \nu_j)^{n_j}} f_k(z)
+  \end{equation}
+  Clearly, the right-hand side is a meromorphic function with no root and no pole at $\nu_k$. We can repeat this process for all $\nu_k$, and similarly for all $\mu_k$. Thus, $g$
+  does not have roots or poles at any of the points $\{\nu_k\}$ or $\{\mu_k\}$. But of course, the only possible locations of roots and poles within the disk for $g(z) = R(z) f(z)$ are at these points,
+  so we can conclude that $g$ has no roots or poles in the disk. It follows that
+  \begin{equation}
+    f(z) = \frac{\prod_{j = 1}^{r} (z - \nu_j)^{n_j}}{\prod_{i = 1}^{s} (z - \mu_i)^{m_i}} g(z)
+  \end{equation}
+  and, from the previous problems above, we have
+  \begin{equation}
+    \alpha(f) = \alpha \left( \frac{\prod_{j = 1}^{r} (z - \nu_j)^{n_j}}{\prod_{i = 1}^{s} (z - \mu_i)^{m_i}} g(z) \right) = \displaystyle\sum_{j} n_j \alpha\left((z - \nu_j)\right) - \displaystyle\sum_{j} m_j \alpha\left((z - \mu_j) \right) + \alpha(g)
+  \end{equation}
+  where we use $\alpha(fg) = \alpha(f) + \alpha(g)$ and $\alpha(1/f) = -\alpha(f)$. Since each $\nu_j$ and each $\mu_j$ lies in the unit disk, each of the $\alpha(\cdot)$ expression above evaluates to $1$, except for $\alpha(g)$, which is $0$ from 8.4.
+  Thus,
+  \begin{equation}
+    \alpha(f) = \displaystyle\sum_{j} n_j - \displaystyle\sum_{j} m_j
+  \end{equation}
+  as desired.
+  \end{exercise}
+
+\hhrulefill
+
+\begin{exercise}[MAT354 8.6 and 8.7]
+  We will once again use the equivalence of integrals around homotopic paths. In particular, we will demonstrate that the homotopy $F_t(x) = f(x) + t g(x)$ never crosses
+  the origin. Indeed, for some $t \in [0, 1]$, note that for any $x \in S^1$,
+  $$|F_t(x)| \geq ||f(x)| - t |g(x)|| \geq ||f(x)| - |g(x)||.$$
+  We know that $|f(x)| \geq m$, while $|g(x)| < m$, immediately implying that $|F_t(x)| > 0$. Thus, it is in fact true that the homotopy never crosses the origin. It follows
+  immediately that the path $t \mapsto f(e^{2\pi i t})$ and $t \mapsto (f + g)(e^{2 \pi i t})$ are free-homotopic, so
+  \begin{equation}
+    \alpha(f) = w(f \circ \sigma, 0) = \frac{1}{2\pi i} \displaystyle\int_{f \circ \sigma} \frac{dz}{z} = \frac{1}{2\pi i} \displaystyle\int_{(f + g) \circ \sigma} \frac{dz}{z} = w((f + g) \circ \sigma, 0) = \alpha(f + g).
+  \end{equation}
+  This completes the proof.
+  \newline
+
+  \noindent Now, note that $h(z) = 7z^5 - 2e^{z}$ is holomorphic (and thus meromorphic with no poles). Clearly, $|7 z^5| = 7 |z|^5 = 7$ for $z \in S^1$, while $|-2e^{z}| \leq 2 e^{|z|} = 2e < 6$ for $z \in S^1$.
+  It follows from the previous problems that the number of roots of $h$ is $\alpha(7 z^{5}) = 5 \alpha(z) = 5$.
+\end{exercise}
+
+\hhrulefill
+
+\begin{exercise}[MAT354 8.8]
+  Obviously, we have for $|z| = R$
+  \begin{equation}
+    \frac{|g(z)|}{R^n} \leq \displaystyle\sum_{k = 0}^{n - 1} |g_k| \frac{|z|^k}{R^n} = \displaystyle\sum_{k = 0}^{n - 1} |g_k| R^{k - n} \rightarrow 0 \ \ \ \ \text{as} \ R \to \infty
+  \end{equation}
+  So for large enough $R$, $|g(z)| < R^n$. It follows that $f(Rz) = (Rz)^n + g(Rz)$ satisfies the conditions to apply Problem 8.6 for sufficiently large $R$,
+  so $\alpha(f(Rz)) = \alpha((Rz)^n) = n$. Since $f$ has no roots as it is a polynomial, this implies that the number of zeros is $n \geq 1$, so $f(Rz)$ has a root in the unit disk.
+\end{exercise}
+
+\hhrulefill
+
+\subsection{The Cauchy inequalities and their implications}
+
+\subsection{The mean value property and its implications}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Meromorphic functions and Laurent expansions}
+
+\begin{definition}[Meromorphic function]
+  A function $f$ taking values in the complex plane is said to be meromorphic on $\Omega$ if there exists a set of isolated points, $\{p_k\}$, such that $f$
+  is well-defined and holomorphic on $\Omega - \{p_k\}$.
+\end{definition}
+
+\begin{theorem}
+  If $f$ is meromorphic, then it can be expressed as the quotient of two entire functions.
+\end{theorem}
+\begin{proof}
+  Let $f$ be meromorphic, let
+\end{proof}
+
+\begin{remark}[Functions of the Riemann sphere]
+\end{remark}
+
+\noindent This set of definitions allows us to prove theorems of the following form:
+
+\begin{theorem}
+  If an entire function has a pole at $\infty$, then it is a polynomial.
+  \end{theorem}
+
+\begin{theorem}
+  If a function $f$ is meromorphic on $S^2$, then it is rational.
+\end{theorem}
+\begin{proof}
+  \noindent Recall that $f$ is meromorphic on $S^2$ if and only if it is meromorphic on the plane, and $f(1/z)$ is meromorphic around the origin.
+  First of all, $f(1/z)$ being meromorphic at the origin means that there exists some $M$ such that $z^M f(1/z)$ can be extended to an analytic function
+  at the origin. In particular, this function is bounded in a neighbourhood of the origin, so we have for $|z| \leq R$,
+  \begin{equation}
+    \left| z^M f\left( \frac{1}{z} \right) \right| \leq C \Longrightarrow |f(z)| \leq C |z|^M \ \ \ \ \text{for} \ |z| \geq R.
+  \end{equation}
+  Now, let us prove that $f$ has a finite number of poles. Indeed, suppose not, so $\{\alpha_k\}$ is an infinite sequence of poles.
+  Note that the set of $1/\alpha_k$ are poles of $f(1/z)$, which is meromorphic. If the sequence of unbounded, then $f(1/z)$ will have
+  infinitely many poles arbitrarily close to $0$. Thus, $f(1/z)$ cannot be analytic at $0$, so it must have a pole here, but then this pole won't be isolated, a contradiction.
+  Similarly, if the $\alpha_k$ are bounded, then they have a convergent subsequence. This point will necessarily be a pole, but also can't be isolated, a contradiction.
+
+  Thus, $f$ must have a finite number of poles $\alpha_1, \dots, \alpha_n$. Let
+  \begin{equation}
+    g(z) = \displaystyle\prod_{j} (z - \alpha_j)^{m_j} \right) f(z)
+  \end{equation}
+  which is analytic at all points in the plane. For $|z|$ large enough, we have
+  \begin{equation}
+    |g(z)| \leq C |z|^M  \displaystyle\prod_{j} |z - \alpha_j|^{m_j}
+  \end{equation}
+  which implies from the Cauchy inequalities that $g$ must be a polynomial. Thus, $f$ is rational, as desired.
+  \end{proof}
+\subsection{Interlude: exercises}
+
+\noindent It is time for another exercise interlude.
+
+\begin{exercise}
+  \end{exercise}
+
+\end{document}

@@ -1,0 +1,10 @@
+#+TITLE:January 1st, 2024
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+
+Happy new year! Today, I'm looking into Freedman and Hasting's paper /Entanglement of sections/. My goal for this writing session
+is to develop a somewhat deeper understanding of their preliminary results, so that I might be able to make some kind of contribution
+to their developing theory.
+
+To start, the authors note that $\mathcal{H} = H_1 \otimes \cdots \otimes H_n$ with $\dim(H_k) = d_k$ has a "symmetry group" $U(d_1) \times \cdots \times U(d_n)$,
+which is meant to say that application of a local unitary does not change many relevant properties of a state, such as its entanglement.

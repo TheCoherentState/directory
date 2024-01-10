@@ -1,0 +1,89 @@
+#+TITLE:January 5th, 2024
+#+DESCRIPTION:Directory
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="http://tikzjax.com/v1/fonts.css">
+#+HTML_HEAD: <script src="http://tikzjax.com/v1/tikzjax.js"></script>
+
+-----------------------
+
+/Today, I am having a hard time attempting to understand the index map, in the context of algebraic $K$ -theory. I'm going to dedicate this post
+to trying to explain it in my own words./
+
+----------------------
+
+The main idea with the index map (I've been told) is to construct a bridge between short exact sequence of $K_0$ and $K_1$ -groups.
+In particular, we begin with a short exact sequence of algebras:
+\begin{equation}
+0 \longrightarrow I \xrightarrow[]{\varphi} A \xrightarrow[]{\psi} B \longrightarrow 0
+\end{equation}
+Because $K_0$ and $K_1$ are covariant functors, we get analogous short exact sequences when we map everything under either functor:
+\begin{equation}
+0 \longrightarrow K_0(I) \xrightarrow[]{K_0(\varphi)} K_0(A) \xrightarrow[]{K_0(\psi)} K_0(B) \longrightarrow 0
+\end{equation}
+as well as
+\begin{equation}
+0 \longrightarrow K_1(I) \xrightarrow[]{K_1(\varphi)} K_1(A) \xrightarrow[]{K_1(\psi)} K_1(B) \longrightarrow 0.
+\end{equation}
+We desire an index map $\delta_1 : K_1(B) \rightarrow K_0(I)$, which pastes together the two short exact sequence into a
+single sequence of six different groups: we cycle through all the $K_1$ groups, then map under $\delta_1$ and cycle through all
+of the $K_0$ groups.
+
+With this, let us recall what $K_1(B)$ and $K_0(I)$ actually are. The $K_0$ -group, in the case that the underlying algebra is not necessarily unital
+is slightly more complicated to construct than in the unital case: $K_0(I)$ is precisely $\text{Ker}(K_0(\pi))$ where $\pi$ is the scalar projection
+associated with the short exact sequence
+\begin{equation}
+0 \longrightarrow I \xrightarrow[]{\text{inclusion}} \widetilde{I} \xrightarrow[]{\pi} \mathbb{C} \longrightarrow 0
+\end{equation}
+where $\widetilde{I}$ is the unitization (i.e. the algebra of formal sums $a + \alpha 1$ for $a \in I$ and $\alpha \in \mathbb{C}$ with arithmetic defined in the obvious way).
+In the case of $K_0(\pi)$, $K_0$ is the functor as it is defined in the unital sense (I won't review this here, as this definition of lengthy and is outlined in Chapters 2-3 of Rordam).
+It follows that for some $[(p_{ij} + \alpha_{ij} 1)_{ij}]_0 \in K_0(\widetilde{I})$ where $(p_{ij} + \alpha_{ij} 1)_{ij} \in \mathcal{P}_{\infty}(\widetilde{I})$, we have
+\begin{equation}
+K_0(\pi)([(p_{ij} + \alpha_{ij} 1)_{ij}]_0) = [(\alpha_{ij})_{ij}]_0 \in K_0(\mathbb{C}) = \displaystyle\sum_{i} \alpha_{ii} \in \mathbb{Z}
+\end{equation}
+where $K_0(\text{Tr})([p]_0) = \text{Tr}(p)$ for $p \in \mathcal{P}_{\infty}(\mathbb{C})$ is a group isomorphism. Indeed,
+since $(p_{ij} + \alpha_{ij} 1)_{ij}$ is necessarily a projection, it is easy to check that $(\alpha_{ij})_{ij}^2 = (\alpha_{ij})_{ij}$, so $\alpha$ is a projection matrix with entries in $\mathbb{C}$.
+
+A generic element of $K_0(\widetilde{I})$ is of the form $[p + \alpha 1]_0 - [q + \beta 1]_0$ where $p + \alpha 1, q + \beta 1 \in \mathcal{P}_{\infty}(\widetilde{I})$. Thus,
+it follows that:
+\begin{equation}
+K_0(I) = \text{Ker}(K_0(\pi)) = \left\{ [p + \alpha 1]_0 - [q + \beta 1]_0 \ \big| \ p + \alpha 1, q + \beta 1 \in \mathcal{P}_{\infty}(\widetilde{I}), \ \text{where} \ \alpha, \beta = 0 \ \text{or} \ \alpha, \beta = 1 \right\}
+\end{equation}
+An equivalent definition, as is outlined is Rordam is the following:
+\begin{equation}
+K_0(I) = \left\{[p]_0 - [s(p)]_0 \ \big| \ p \in \mathcal{P}_{\infty}(\widetilde{I})\right\}
+\end{equation}
+where $s = \text{inclusion} \circ \pi$ is a map from $\widetilde{I}$ to itself: it strips off the scalar part of some element of the unitization.
+(this proof is also in Rordam). Having reviewed what $K_0(I)$ means, let us turn our attention to $K_1(B)$. This is somewhat easier: $K_1(B) = \mathcal{U}_{\infty}(\widetilde{B}) / \sim_1$,
+where $\mathcal{U}_{\infty}(\widetilde{B})$ is the space of all unitaries in each of the matrix algebras over $\widetilde{B}$, and $\sim_1$ is homotopy equivalence (under the assumption
+we are allowed to embed unitaries $u$ and $v$ as blocks in larger matrix $u \oplus \mathbb{I}$ and $v \oplus \mathbb{I}$). We also have,
+\begin{equation}
+K_1(B) = \left\{[u]_1 \ \big| \ u \in \mathcal{U}_{\infty}(\widetilde{B}) \right\}
+\end{equation}
+which is slightly nicer behaviour than the $K_0$ -group.
+
+------------------------------
+
+As is usually the case when constructing maps between "quotients", we'll have to define a map between the un-quotiented spaces, and
+then hope that the map is well-defined under the quotient. In the case of $\delta_1$, we have to achieve a map of the form
+\begin{equation}
+\delta_1 : [u]_1 \mapsto [p]_0 - [s(p)]_0.
+\end{equation}
+To do so, we will try to construct a mapping to $p \in \mathcal{P}_{\infty}(\widetilde{I})$, from some $u \in \mathcal{U}_{\infty}(\widetilde{B})$,
+and then check that this map lifts to a well-defined $\delta_1$. Let us be more specific: starting with some $u \in \mathcal{U}_{n}(\widetilde{B})$,
+we can show that there exists $v \in \mathcal{U}_{2n}(\widetilde{A})$ and $p \in \mathcal{P}_{2n}(\widetilde{I})$ such that $\widetilde{\psi}(v) = \text{diag}(u, u^{*})$,
+$\widetilde{\varphi}(p) = v (\mathbb{I}_n \oplus 0_n) v^{*}$, and $s(p) = \mathbb{I}_n \oplus 0_n$. Recall that $\psi$ and $\varphi$ are the maps associated with the short exact sequence.
+
+Moreover, if $w$ and $q$ are chosen analogously to $u$ and $p$,
+and satisfy the first two equations, then automatically, $s(q) = \mathbb{I}_n \oplus 0_n$ and $p \sim_u q$ (i.e. they are unitary equivalent). This uniqueness result (modulo a certain equivalence)
+will allow us to actually show that the maps we construct are well-defined.
+
+The proof of this result is straightforward: we simply use Lemma 2.1.7 of Rordam's book (which itself relies on a bunch of other lemmas about equivalences of unitaries),
+which immediately gives the element $v \in \mathcal{U}_{2n}(\widetilde{A})$ that we want. Suppose we are able to find the desired $p$, then it is obvious that $s(p) = \mathbb{I}_n \oplus 0_n$,
+as
+\begin{equation}
+\widetilde{\varphi}(p) = \widetilde{\varphi}((a)_{ij} + (\alpha 1)_{ij}) = \varphi((a)_{ij}) + (\alpha 1)_{ij} = v (\mathbb{I}_n \oplus 0_n) v^{*}
+\end{equation}
+so $s(p) = s(\widetilde{\varphi}(p)) = s(v (\mathbb{I}_n \oplus 0_n) v^{*})$.
+
+

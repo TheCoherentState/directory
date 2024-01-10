@@ -1,0 +1,24 @@
+\contentsline {title}{Complex analysis exam prep}{1}{section*.1}%
+\tocdepth@munge 
+\tocdepth@restore 
+\contentsline {section}{\numberline {I}Introduction}{1}{section.1}%
+\contentsline {section}{\numberline {II}Part 0: Preliminaries}{1}{section.2}%
+\contentsline {section}{\numberline {III}Part 1: Introduction to complex functions}{2}{section.3}%
+\contentsline {subsection}{\numberline {A}Complex polynomials and rational functions}{2}{subsection.3.1}%
+\contentsline {section}{\numberline {IV}Part 2: Holomorphic/analytic functions and basic conformal mappings}{3}{section.4}%
+\contentsline {subsection}{\numberline {A}Analytic functions}{3}{subsection.4.1}%
+\contentsline {subsection}{\numberline {B}Logarithm and exponential functions}{3}{subsection.4.2}%
+\contentsline {section}{\numberline {V}Part 3: Introduction to complex integration and Cauchy's theorem}{4}{section.5}%
+\contentsline {subsection}{\numberline {A}Review: integrating differential forms}{4}{subsection.5.1}%
+\contentsline {subsection}{\numberline {B}Integrating over a complex domain}{5}{subsection.5.2}%
+\contentsline {subsection}{\numberline {C}Cauchy's theorem}{6}{subsection.5.3}%
+\contentsline {subsection}{\numberline {D}Winding number}{6}{subsection.5.4}%
+\contentsline {subsection}{\numberline {E}Implications of Cauchy's theorem}{7}{subsection.5.5}%
+\contentsline {subsection}{\numberline {F}Exercises}{8}{subsection.5.6}%
+\contentsline {section}{\numberline {VI}Part 4: Meromorphic functions, Laurent series, residue theorem, advanced conformal mappings}{8}{section.6}%
+\contentsline {subsection}{\numberline {A}Meromorphic function}{8}{subsection.6.1}%
+\contentsline {subsection}{\numberline {B}Laurent series}{8}{subsection.6.2}%
+\contentsline {subsection}{\numberline {C}Integration on oriented boundaries}{8}{subsection.6.3}%
+\contentsline {subsection}{\numberline {D}The residue theorem}{9}{subsection.6.4}%
+\contentsline {subsection}{\numberline {E}Advanced conformal mappings}{10}{subsection.6.5}%
+\contentsline {section}{\numberline {VII}Part 5: Harmonic functions}{11}{section.7}%

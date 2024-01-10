@@ -1,0 +1,723 @@
+\documentclass[aps,pra,showpacs,notitlepage,onecolumn,superscriptaddress,nofootinbib]{revtex4-1}
+\usepackage[utf8]{inputenc}
+\usepackage[tmargin=1in, bmargin=1.25in, lmargin=1.5in, rmargin=1.5in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{datetime}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{import}
+\usepackage{mathtools}
+\usepackage{thmtools,thm-restate}
+\usepackage{comment}
+
+
+% package for commutative diagrams
+% \usepackage{tikz-cd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{crimson}{RGB}{186,0,44}
+\definecolor{moss}{RGB}{0, 186, 111}
+\newcommand{\pop}[1]{\textcolor{crimson}{#1}}
+\newcommand{\zcom}[1]{\noindent\textcolor{crimson}{(Z): #1}}
+\newcommand{\jcom}[1]{\noindent\textcolor{moss}{(J): #1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\pqeq}{\succcurlyeq}
+\newcommand{\pleq}{\preccurlyeq}
+\newcommand{\Wedge}{\bigwedge}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+    colorlinks,
+    linkcolor={crimson},
+    citecolor={crimson},
+    urlcolor={crimson}
+}
+
+\usepackage{qcircuit}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{reminder}{Reminder}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{answer}{Answer}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{claim}{Claim}[section]
+\newtheorem{exercise}{Exercise}[section]
+
+\newcommand{\hhrulefill}{\hspace{-1.5em} \hrulefill}
+
+\usepackage{geometry}
+\geometry{
+  left=25mm,
+  right=25mm,
+  top=20mm,
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{unsrt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{Complex analysis exam prep}
+\author{Jack Ceroni}
+\email{jackceroni@gmail.com}
+\affiliation{Department of Mathematics, University of Toronto}
+
+\date{\today}
+
+\maketitle
+
+\tableofcontents
+
+\section{Introduction}
+
+\noindent The goal of these notes is to help myself prepare for my complex analysis exam. I think better when I write stuff out in full, rather than scribbling away on paper.
+
+\hhrulefill
+
+\section{Part 0: Preliminaries}
+
+\begin{proposition}
+  Via stereographic projection, all circles in $S^2$ correspond to circles and lines in $\overline{\mathbb{C}}$. Conversely, all
+  circles and lines in $\overline{\mathbb{C}}$ correspond to circles in $S^2$.
+\end{proposition}
+
+\begin{proof}
+  Let $C$ be a circle in $S^2$. Recall that the stereographic projection is precisely the map $p : S^2 \rightarrow \overline{\mathbb{C}}$ such that
+  \begin{equation}
+    p(x, y, z) = \frac{1}{1 - z} (x, y)
+  \end{equation}
+  
+  \end{proof}
+
+\section{Part 1: Introduction to complex functions}
+
+\subsection{Complex polynomials and rational functions}
+
+\noindent A rational function $R(z)$ is a function from $\overline{\mathbb{C}}$ to itself (or, perhaps the complex plane minus some finite collection of poles to the complex plane,
+depending on our point of view). We say that $P(z)/Q(z)$ is the \emph{reduced form} of a rational $R$ if $R = P/Q$ and if $P$ and $Q$ share no common polynomial factors, which can be cancelled.
+Thus, a rational function can have many different representatives of the form $P/Q$, but will have a unique reduced form representative.
+\newline
+
+\noindent Given a rational $R = P/Q$ in reduced form, we say that $z$ is a \emph{root} of $R$ if $P(z) = 0$. We say that $z$ is a \emph{pole} of $R$ if $Q(z) = 0$.
+\newline
+
+Suppose we are given a rational function $R = P/Q$, where $\text{deg}(P) = m$ and $\text{deg}(Q) = n$. We ask: \emph{how many roots and poles does $R$ have?} Clearly, $P$ has $m$ finite roots, while $Q$
+has $n$ finite roots (so $R$ has $n$ finite poles). Thus, the only case remaining to consider is poles/roots at infinity. Recall the definition of infinite poles/roots: they are precisely the zero-poles/roots
+of the rational function $R(1/z)$, which is given by
+\begin{equation}
+  R(1/z) = \frac{P(1/z)}{Q(1/z)} \frac{\sum_{k = 0}^{m} p_k z^{-k}}{\sum_{k = 0}^{n} q_k z^{-k}} = z^{n - m} \frac{\sum_{k = 0}^{m} p_k z^{m - k}}{\sum_{k = 0}^{n} q_k z^{n - k}} = z^{n - m} \frac{\widetilde{P}(z)}{\widetilde{Q}(z)}
+\end{equation}
+where $p_m$ and $q_n$ are non-zero (by the degrees of the polynomials). Because $p_m, q_n \neq 0$, it follows that $\widetilde{P}(0), \widetilde{Q}(0) \neq 0$. In the case that $n = m$, then it is clear that
+we will have no poles/roots at $z = 0$. If $n > m$, then $n - m > 0$, so that we have an order $(n - m)$-zero root. If $n - m < 0$, we have a degree $(m - n)$-zero pole. In each case, we can check that
+the following holds true:
+
+\begin{proposition}
+  Let $m, n = \text{deg}(P), \text{deg}(Q)$ where $R = P/Q$ in reduced form. Let $k = \max \{m, n\}$. Then $R$ has precisely $k$ roots, and $k$ poles.
+  We call $k$ the \emph{order} of the rational function.
+
+  As an immediate consequence, for any $a \in \mathbb{C}$, the equation $R(z) - a = 0$
+  has precisely $\text{max} \{m, n\}$ solutions, as $R(z) - a$ has precisely the same poles
+  as $R(z)$, so they have the same number of roots as well.
+\end{proposition}
+
+\noindent From here, let us move to one of the most important results related to rational functions: \emph{the partial fraction decomposition}.
+
+\begin{theorem}[Complex partial fraction decomposition]
+  Let $R$ be a rational function with unique finite poles at $\beta_1, \dots, \beta_m$, as well as possibly at infinity, there exist polynomials
+  $G, G_1, \dots, G_m$ such that
+  \begin{equation}
+    R(z) = G(z) + \displaystyle\sum_{k = 1}^{m} G_k \left( \frac{1}{z - \beta_k} \right)
+  \end{equation}
+  where the order of $G_k$ is equal to the order of the pole at $\beta_k$.
+\end{theorem}
+\begin{proof}
+  Let us begin by considering the case when $R$ has a pole at infinity. It follows that if $R = P/Q$ in reduced form, then the degree of $P$ must
+  be strictly greater than that of $Q$. In fact, as we showed above, the order of this pole is precisely $k = \text{deg}(P) - \text{deg}(Q)$. Thus, we can perform polynomial division:
+  \begin{equation}
+    P(z) = G(z) Q(z) + H(z)
+  \end{equation}
+  where $G$ is a degree-$k$ polynomial with no constant terms, and $H$ has degree less than or equal to the degree of $Q$. It follows that $R = G + (H/Q)$. Clearly, $\widetilde{H} = H/Q$ goes to a constant
+  when we take $z \to \infty$. We call $G(z)$ the \emph{principal component} of $R$ at infinity.
+
+  We can repeat this procedure for pole $\beta_k$, by noting that $R_k(z) = R(1/z + \beta_k)$ has a pole at infinity, so we can write $R_k(z) = G_k(z) + \widetilde{H}_k(z)$
+  where $\widetilde{H}_k(z)$ approaches a constant for $z \to \infty$. It then follows that
+  \begin{equation}
+    R_k\left( \frac{1}{z - \beta_k} \right) = R \left(z\right) = G_k\left( \frac{1}{z - \beta_k} \right) + \widetilde{H}_k\left( \frac{1}{z - \beta_k} \right)
+  \end{equation}
+  Our claim is that
+  \begin{equation}
+    D(z) = R(z) - \left[ G(z) + \displaystyle\sum_{k} G_k \left( \frac{1}{z - \beta_k} \right) \right] = \text{constant}
+  \end{equation}
+  To prove this, note that the only poles of this rational function are at $\infty$ and $\beta_1, \dots, \beta_k$. But we have
+  \begin{equation}
+    D(z) = \widetilde{H} \left( \frac{1}{z - \beta_j} \right) + \left[ G(z) + \displaystyle\sum_{k \neq j} G_k \left( \frac{1}{z - \beta_k} \right) \right]
+  \end{equation}
+  for each $\beta_j$, so it follows that $D$ has no poles. Thus, it has no roots either. A rational function with no roots and no poles, of course, must be constant.
+  Thus, by adding a constant to our decomposition (absorbing it into $G(z)$), and we have proved equality, and thus the theorem.
+  \end{proof}
+
+\noindent 
+
+\section{Part 2: Holomorphic/analytic functions and basic conformal mappings}
+
+\begin{proposition}[Basic results about holomorphic functions]
+\end{proposition}
+
+\subsection{Analytic functions}
+
+\begin{remark}
+  Suppose $f$ is a function on the real-line which has a convergent power series representation in some open ball $I_a(r)$ of radius $r$ about the point $a \in \mathbb{R}$.
+  Then automatically, $f$ has an analytic extension in the complex plane, where we simply utilize the exact same coefficients in the real power series, but replace $x$
+  with the complex variable $z$.
+
+  Such a power series will have some radius of convergence, and since it converges absolutely in $I_a(r)$, this radius must be at least $r$, so the series converges
+  in $B_a(r)$, the ball in the complex plane of radius $r$ about $a$.
+\end{remark}
+
+\subsection{Logarithm and exponential functions}
+
+\begin{definition}[The argument function]
+\end{definition}
+
+\begin{theorem}
+  Let $f$ be analytic. Suppose $f$ is not identically $0$ on a neighbourhood of some point $x$. Then there exists a neighbourhood of $x_0$
+  such that $f$ is non-zero on $U - \{x_0\}$. 
+\end{theorem}
+\begin{proof}
+  If $f$ is non-zero at $x_0$, then there exists a neighbourhood $U$ of $x_0$ on which $f \neq 0$, by continuity. If $f(x_0) = 0$, then the series expansion
+  about $x_0$ in some neighbourhood $U$ is of the form
+  \begin{equation}
+    f = \displaystyle\sum_{n = 1}^{\infty} a_n x^n = (x - x_0)^k \left( a_k + \displaystyle\sum_{n = 1}^{\infty} a_{n + k} (x - x_0)^{n} \right)
+  \end{equation}
+  Of course, $g = \displaystyle\sum_{n = 1}^{\infty} a_{n + k} (x - x_0)^{n}$ is analytic and $0$ at $x_0$. Thus, we choose $x$ sufficiently close to $x_0$ such that $|g| < a_1$, so
+  that $f$ is non-zero in this neighbourhood of $x_0$.
+  \end{proof}
+
+\begin{theorem}[Principle of analytic continuation]
+  Let $f$ be analytic in connected domain $\Omega$. The following are equivalent:
+  \begin{enumerate}
+  \item All derivatives of $f$ vanish at a point in $\Omega$.
+  \item $f$ vanishes on a neighbourhood of $\Omega$.
+    \item $f$ vanishes on all of $\Omega$.
+  \end{enumerate}
+\end{theorem}
+\begin{proof}
+  Let $x_0$ be a point such that $f^{(k)}(x_0) = 0$ for all $k$. There is a series expansion in a neighbourhood about $x_0$ given by $\sum_{j = 0}^{\infty} a_k (x - x_0)^k$.
+  It is easy to check that $a_k = f^{(k)}(x_0)/k!$, so $a_k = 0$ and $f = 0$ in a neighbourhood.
+
+  Obviously, (3) implies (1). We must conclude by showing that (2) implies (3). There are a couple ways to prove this result, and for the most part,
+  they rely on the fact that the space is connected. Let $A$ be the set of all point $x \in \Omega$ such that $f$ vanishes on a neighbourhood of $x$.
+  Clearly, these points form an open set. Let $B$ be the complement: all point for which $f$ does not vanish on a neighbourhood about this point.
+  Then given $y \in B$, note that $y \in U$ such that $f$ is non-zero on $U - \{y\}$. Given any $z \in U - \{y\}$, note that $f$ doesn't vanish on a neighbourhood
+  of $z$, obviously, as $f(z) \neq 0$. Thus, $U \subset B$, and $B$ is open as well. But this can't be, as $A \cup B = \Omega$ is a partition of the connected set.
+
+  An alternative proof of this fact comes from proving that the set $A$ is both open and closed.
+\end{proof}
+
+\noindent Now, another nice theorem:
+
+\begin{theorem}
+  Let $f$ be an analytic function in the open unit disk $D$. Then $f$ has a countable number of roots. In fact, in any compact/closed subset, it has a finite number of roots.
+\end{theorem}
+\begin{proof}
+  Let $B_n$ be the closed ball of radius $1 - 1/n$ contained in $D$. Consider the set of all roots of $f$ contained inside $B_n$, $S_n$. Given $r \in S_n$, note that
+  $r$ is isolated from the other roots, so $d(r, S_n - \{r\}) = \varepsilon_r > 0$ for each $r$. In the case that the collection of all $\varepsilon_r$ has a non-zero
+  lower bound, it follows that the number of roots must be finite, as we can only fit a finite number of open sets with some fixed non-zero diameter inside $B_n$.
+  \newline
+
+  \noindent In the case that the set of $\varepsilon_r$ does not have a non-zero lower bound, it follows that we can choose a sequence of $r$ such that
+  they become arbitrarily close to the other elements of $S_n$. Call this sequence $\{r_k\}$. Clearly, this sequence is Cauchy, so it converges. Its limit
+  point $r'$ must be contained in $B_n$, and by continuity, will also be a root of $f$. But of course, this can't be, as $r'$ isn't isolated.
+  \newline
+
+  \noindent Thus, the number of roots in $B_n$ must be finite. Taking the union of all roots in each $B_n$, we get a countable set of roots in $D$.
+\end{proof}
+
+\section{Part 3: Introduction to complex integration and Cauchy's theorem}
+
+\subsection{Review: integrating differential forms}
+
+\begin{definition}[$C^1$ differential $1$-forms]
+  A differential $1$-form $\omega$ is said to be $C^1$ if its component functions are $C^1$. Such a form is said to be exact if there exists
+  some function $f$ such that $\omega = df$. A $C^1$ $1$-form is said to be closed if $d\omega = 0$.
+\end{definition}
+
+\noindent In general, we will not assume that one-forms are $C^1$, but they will always be piecewise continuous (this will ensure that the component functions are integrable).
+
+\begin{lemma}
+  Let $\Omega$ be a connected open region in the plane. Then $\Omega$ is path-connected.
+\end{lemma}
+\begin{proof}
+  Assume $\Omega$ is non-empty. Pick $x \in U \subset \Omega$, where $U$ is an open ball about $x$. Of course, $U$ is path connected. Let $\Omega_x$ denote the set of
+  points in $y \in \Omega$ such that there exists a path in $\Omega$ connecting $x$ and $y$. Of course, this set will be open in $\Omega$, as if $y \in \Omega_x$, then an open
+  ball about $\Omega_x$ will also be in $\Omega_x$. Moreover, suppose that $y \in \overline{\Omega_x}$, then any set of the form $U \cap \Omega$ must contain a point
+  $z \in \Omega_x$. We can write down a path from $x$ to $z$ and then from $z$ to $y$ in this case, so $y \in \Omega_x$. Thus, $\Omega_x$ is open and closed in $\Omega$,
+  so $\Omega_x = \Omega$.
+  \end{proof}
+
+\begin{theorem}
+ If $\omega$ is a one-form in connected open set $\Omega$ such that $\int_{\gamma} \omega = 0$ for every closed curve in $\Omega$, then $\omega$ is exact on $\Omega$. The converse is also true.
+\end{theorem}
+\begin{proof}
+  One direction is easy: if $\omega$ is exact, then $\omega = df$, so that for a closed curve, $\int_{\gamma} \omega = \int_{\gamma} df = f(\gamma(1)) - f(\gamma(0)) = 0$.
+
+  Conversely, suppose we have that $\int_{\gamma} \omega = 0$ for any closed curve. Since $\Omega$ is connected, it is path-connected. Fix a basepoint $x_0 \in \Omega$. Let
+  $\gamma(x)$ be a curve from $x_0$ to $x$. Let us define
+  \begin{equation}
+    F(x) = \displaystyle\int_{\gamma(x)} \omega
+  \end{equation}
+  Note that $F$ is well-defined independent of the choice of $\gamma(x)$, due to the closed curve property.
+\end{proof}
+
+\noindent There is a generally powerful result that we can make use of throughout this section:
+
+\begin{theorem}[Stokes' theorem]
+  Suppose $\omega$ is a $C^1$ one-form. Suppose $K$ is a compact region in the plane, let $\partial K$ denote the oriented boundary of $K$. Then we have
+  \begin{equation}
+    \displaystyle\int_{K} d\omega = \displaystyle\int_{\partial K} \omega
+    \end{equation}
+\end{theorem}
+
+However, we will avoid use of Stokes' theorem until later chapters of these notes, to show that it is almost ``too powerful'' for most of our purposes.
+
+\subsection{Integrating over a complex domain}
+
+\noindent Now, let us spend some time discussing the integration of locally exact forms: a much more non-trivial subject, as integrals of such forms don't simply vanish (around closed loops)!
+\newline
+
+\begin{definition}[Primitive along a curve]
+  Let $\gamma$ be a curve in the complex plane, contained in some connected open subset $\Omega$. Suppose $\omega$ is a form in $\Omega$. We say that a function $f : [0, 1] \rightarrow \Omega$
+  is a \emph{primitive of $\omega$ along $\gamma$} if, for each point $\gamma(t_0)$ along the curve, we can find a neighbourhood $U$ around $\gamma(t_0)$ and a function $F$ on $U$ which is, locally,
+  a primitive of $\omega$, such that $f(t) = F(\gamma(t))$ for all $t$ in some open neighbourhood around $t_0$.
+\end{definition}
+
+\begin{definition}[Local primitive system]
+  Suppose set $S$ is a list of functions $F$ such that given form $\omega$ along curve $\gamma$, for each point $\gamma(t)$ in the curve, there is an element of $S$
+  which is a local primitive for $\omega$. Given $F_1$ and $F_2$ in $S$ defined on open sets $U_1$ and $U_2$ such that $U_1 \cap U_2 = U \neq \emptyset$, we have
+  $d(F_1 - F_2) = 0$ on $U$. Thus, $\partial_x(F_1 - F_2) = \partial_y(F_1 - F_2) = 0$, so $F_1 - F_2$ is a constant $c$ in $U$. We say that $S$ is a \emph{local primitive system}
+  is for each such $c$ obtained from pairs of $F_i, F_j \in S$ with overlapping support, $F_1 - c$ (supported on $U_1$) is also in $S$.
+\end{definition}
+
+\begin{theorem}
+  If $\omega$ is a locally exact one-form and $\gamma$ is a curve, we can always find a primitive along $\gamma$ for $\omega$, which we call $f$. This primitive
+  is unique up to additive constant. Moreover, if $S$ is a local primitive system for $\gamma$ and $\omega$, then the local primitives $F$ of Def.~\ref{def:primitive}
+  are each elements of $S$ (in other words, $f(t)$ is always the image of $\gamma(t)$ under some element of $S$).
+\end{theorem}
+
+\begin{proof}
+\end{proof}
+
+\noindent This proof immediately yields the following result:
+
+\begin{corollary}[Integral of locally exact form]
+  If $\omega$ is locally exact, the integral $\int_{\gamma} \omega$ is precisely the difference $f(1) - f(0)$, where $f$ is a primitive along $\gamma$. Note that this
+  value is unique, as the primitive along $\gamma$ is unique up to additive constant. If $S$ is a local primitive system, then the integral will
+  be of the form $F_1(\gamma(1)) - F_0(\gamma(0))$, where $F_1, F_0 \in S$.
+\end{corollary}
+\begin{proof}
+  \noindent 
+  \end{proof}
+
+\begin{example}[Logarithm]
+  Let's consider what is actually happening when we define a primitive along the circular curve about the origin corresponding to the locally exact form $\frac{dz}{z}$.
+  We will take extreme care with this example.
+  \end{example}
+
+\subsection{Cauchy's theorem}
+
+\noindent We now have all of the tools we need to prove Cauchy's theorem. First, let us prove a baby version:
+
+\begin{theorem}[Baby's first Cauchy's theorem]
+  If $f$ is holomorphic in some open set $\Omega$ of the complex plane \emph{and is also $C^{1}$}, then the form $\omega = f(z) \ dz$ is closed in $\Omega$,
+  and therefore locally exact.
+\end{theorem}
+
+\begin{proof}
+  Note that $\omega = f dx + i f dy$, so
+  $$d\omega = (\partial_y f - i  \partial_x f) \ dx \wedge dy = -i \partial_{\overline{z}} f \ dx \wedge dy = 0,$$
+  so it follows that $\omega$ is closed. Since $f$ is $C^{1}$, it follows that it is locally exact.
+\end{proof}
+
+\begin{theorem}[Cauchy]
+  If $f$ is holomorphic in some open set $\Omega$ of the complex plane, then the form $f(z) \ dz$ is locally exact in $\Omega$
+\end{theorem}
+
+\begin{proof}
+  Recall that local exactness is precisely equivalent to 
+\end{proof}
+
+\begin{theorem}[Master theorem]
+  The following \emph{master theorem} combines essentially all the basic facts we have learned in this section, showing that they are equivalent.
+  In particular, the following statements are all equivalent:
+  \begin{enumerate}
+  \item The function $f$ is holomorphic on connected open set $\Omega$.
+  \item The form $f(z) \ dz$ is locally exact in $\Omega$.
+  \item The Cauchy integral formula holds in $\Omega$. That is,
+    for any $a \in \Omega$, we have
+    \begin{equation}
+      f(a) = \frac{1}{2\pi i} \displaystyle\int_{\gamma} \frac{f(z)}{z - a} \ dz
+    \end{equation}
+    for some closed curve $\gamma$ in $\Omega$ around $a$.
+  \item The function $f$ is analytic in $\Omega$, and thus infinitely complex differentiable.
+    \end{enumerate}
+\end{theorem}
+
+The implication of (1) to (2) in Cauchy's theorem. The implication of (2) to (1) is Morera's theorem, with the proof generally progressing by showing (2) implies (3) implies (4) implies (1).
+It's also possible to see (3) implies (2) directly. Let $\omega = f \ dz$. Pick some closed $\gamma$ in $\Omega$, and some $a$ it encloses. Clearly, $g(z) = f(z) (z - a)$ is holomorphic on $\Omega$.
+We then have
+\begin{equation}
+\displaystyle\int_{\gamma} \omega = \displaystyle\int_{\gamma} f(z) \ dz = \displaystyle\int_{\gamma} \frac{f(z) (z - a)}{z - a} \ dz = \displaystyle\int_{\gamma} \frac{g(z)}{z - a} \ dz = g(a) = 0
+\end{equation}
+so by definition, $f(z) \ dz$ is locally exact. This is pretty much all we can hope for when it comes to direct proofs of these results from one another, most of the other implications have
+to be arrived at by going through the full cycle from (1) to (4).
+
+\subsection{Winding number}
+
+\begin{definition}[Winding number]
+  \end{definition}
+
+\begin{theorem}[Winding number master theorem]
+\end{theorem}
+
+\begin{proof}
+  \end{proof}
+
+\begin{lemma}
+  Let $\gamma_1$ and $\gamma_2$ be closed curves about the point $0$. Let $\gamma = \gamma_1 \gamma_2$. Then $w(\gamma, 0) = w(\gamma_1, 0) + w(\gamma_2, 0)$.
+\end{lemma}
+
+\begin{proof}
+  This follows immediately from the 
+  \end{proof}
+
+\begin{corollary}
+  If $\gamma$ is a closed curve about $0$, then $w(\gamma, 0) = -w(\gamma^{-1}, 0)$ (as $\gamma(t)^{-1}$ is also a closed curve about $0$).
+\end{corollary}
+
+\begin{lemma}[Baby Rouche]
+
+\end{lemma}
+
+\noindent One more nice lemma about winding numbers:
+
+\begin{lemma}
+
+  \end{lemma}
+
+\subsection{Implications of Cauchy's theorem}
+
+\begin{lemma}[Cauchy's inequalities]
+  \end{lemma}
+
+\begin{theorem}[Liouville]
+\end{theorem}
+
+\begin{theorem}[Weirestrass]
+\end{theorem}
+
+\begin{definition}
+  Suppose $f$ is a function on domain $D$. $f$ is said to have the \emph{mean value property} if, for every compact disk $S \subset D$, the value
+  of $f$ at the centre $a$ of $S$ is equal to the mean of its values on the boundary $\gamma$:
+  \begin{equation}
+    f(a) = \frac{1}{2\pi} \displaystyle\int_{0}^{2\pi} f(a + re^{it}) \ dt
+  \end{equation}
+  where the curve $t \mapsto a + re^{it}$ describes the boundary $\gamma$ about the centre $a$ at radius $r$.
+  \end{definition}
+
+\begin{prop}
+  If $f$ is holomorphic in domain $D$, then $f$ satisfies the mean-value property.
+\end{prop}
+\begin{proof}
+  This is trivial. Let $a$ be a point, let $\gamma$ describe a curve of radius $r$ about $a$ contained in $D$, so $\gamma(t) = a + r e^{it}$. Then we have
+  \begin{equation}
+    f(a) = \frac{1}{2\pi i} \displaystyle\int_{\gamma} \frac{f(z)}{z - a} \ dz = \frac{1}{2\pi} \displaystyle\int_{0}^{2\pi} f(a + re^{it}) \ dt
+  \end{equation}
+  and the proof is complete.
+\end{proof}
+
+\noindent Now, let us prove the maximum modulus principle.
+
+\begin{theorem}[Maximum modulus principle]
+If $f$ is a continuous function in the domain $\Omega$ with the mean-value property, then $f$ is constant in a neighbourhood of any local maximum of $|f|$.
+\end{theorem}
+\begin{proof}
+  This proof is also trivial (lucky us)! Suppose $a$ is a local maximum, so that in $V$, $|f(z)| \leq |f(a)|$. Of course, we can assume $f(a) \neq 0$, as the result holds trivially here. Pick a circle $C \subset V$ of radius $r$.
+  By the mean value property, we have
+  \begin{equation}
+    f(a) = \frac{1}{2\pi} \displaystyle\int_{0}^{2\pi} f(a + re^{it}) \ dt
+  \end{equation}
+  Because $|f(z)| \leq |f(a)|$ on the circle, it follows that $M = \sup_{z \in \partial C} |f(z)| \leq |f(a)|$. But from the above equation, $|f(a)| \leq M$, so
+  $M = |f(a)|$. Suppose $|f(a + re^{it_0})| < |f(a)|$ for some $t_0$. Then, by continuity, there will exists some interval of $t \in W = [t_0 - \varepsilon, t_0 + \varepsilon]$
+  for which $|f(a + r e^{it})| \leq m < |f(a)|$. Thus, we have
+  \begin{equation}
+    f(a) = \frac{1}{2\pi} \left[ \displaystyle\int_{W} f(a + r e^{it}) \ dt + \displaystyle\int_{[0, 2\pi] - W} f(a + r e^{it}) \ dt \right]
+  \end{equation}
+  which implies that $|f(a)| \leq \frac{1}{2\pi} (2(\pi - \varepsilon) M + 2 \varepsilon m) < M$, a clear contradiction, so we must have $|f(a + re^{it})| \geq M$ for all $t$.
+  But $M$ is the least upper-bound, so $|f(a + re^{it})| = M$ for all $t$, and $|f(z)| = |f(a)|$ holds on the boundary of $C$. We can apply this argument to \emph{any} circle
+  of radius less than $r$ as well, impyling that $f$ is constant on the entire disk of radius $r$, and we done.
+\end{proof}
+
+\pop{OMG, the above proof is wrong! It only shows that the \textbf{MODULUS} is constant!}
+\newline
+
+\noindent To make the second part of this proof correct, we should assume that $f(a)$ is real and greater than $0$, which we can ensure by multiplying by some phase. Thus, $|f(a)| = f(a)$.
+Because $|f(z)| \leq |f(a)| = f(a)$, it follows that $\text{Re}[f](z) \leq f(a)$ on the circle. Of course, we should have
+\begin{equation}
+  \frac{1}{2\pi} \displaystyle\int_{0}^{2\pi} \text{Re} \left[ f(a) - f(a + e^{it}) \right] \ dt = 0
+\end{equation}
+But since $f(a) - \text{Re}[f](z) \geq 0$, it follows that $f(a) = \text{Re}[f](z)$ for all $z$ in the circle. Again from $|f(z)| \leq f(a)$, we
+have $\text{Im}[f](z) = 0$, so $f(z) = f(a)$ on the circle.
+\newline
+
+\begin{remark}[The other maximum modulus principle]
+  We can use the maximim modulus principle to prove another, arguably even more useful result. Namely, if $f$ is a continuous function having the MVP (mean value property) in the open
+  domain $\Omega$ (connected), then if $M$ is the upper bound for $f$ on $\partial \Omega$, we have $|f(z)| \leq M$ for all $z \in \Omega$, and, if $|f(z)| = M$
+  for some $z \in \Omega$, then $f$ is constant.
+  \newline
+
+  \noindent To prove this result, let $M'$ be the upper-bound on $|f(z)|$ on the entirety of $\overline{\Omega}$. Since the domain is compact,
+  there will be some $a \in \Omega$ for which $|f(a)| = M'$. This of course must be a local maximum, so $f$ is constant (it is $M'$) in a neighbourhood.
+  But, note that the previous result shows that the set of $z$ for which $f$ is constant on a neighbourhood is open. It is closed, as it is $f^{-1}(\{M'\})$,
+  where $\{M'\}$ is closed in $\overline{\Omega}$ and $f$ is continuous. Thus, $f$ is constant on $\overline{\Omega}$, and must in fact be $M$, as
+  this is the upper-bound on the boundary.
+  \newline
+
+  \noindent Now, in the case that $M'$ is not achieved in $\Omega$, it must be achieved in $\partial \Omega$. But in this case, we must just have $M' = M$, so
+  $|f(z)| \leq M$ over $\Omega$.
+\end{remark}
+
+\begin{lemma}[Schwarz's lemma]
+  Let $f$ be a holomorphic function in the open unit disk $D$. If $f(0) = 0$ and $|f(z)| \leq 1$ on $D$, then $|f(z)| < |z|$. Moreover, if $|f(z)| = |z|$
+  at some non-zero point, then $f(z) = \lambda z$.
+\end{lemma}
+\begin{proof}
+
+  \end{proof}
+
+\begin{problem}[Extended Schwarz's lemma, Term Test 2 Question 3]
+
+  \end{problem}
+
+\subsection{Exercises}
+
+\noindent Time for another exericse break.
+
+\section{Part 4: Meromorphic functions, Laurent series, residue theorem, advanced conformal mappings}
+
+\noindent In the previous sections, we made regular use of the power series representation of analytic/holomorphic functions within
+
+\subsection{Meromorphic function}
+
+\noindent A function $f$ is said to be meromorphic on $D$ if it is analytic on $D$, except at a collection of isolated points, at which
+$f$ has poles, so $f$ can be written as $f = (x - x_0)^{-k} g$ in some neighbourhood of $x_0$, where $g$ is analytic.
+
+\begin{prop}
+  A function $f$ is meromorphic if and only if in a punctured neighbourhood of each point $x \in D$, it can be written as a quotient
+  of analytic functions.
+\end{prop}
+\begin{proof}
+  Assume $f$ is meromorphic. Clearly, around each of the poles, this condition is satisfied. Away from the poles, $f$ is analytic, by definition,
+  so it can be written as $f/1$ in a neighbourhood.
+
+  Conversely, suppose $f$ can be written as $h/g$ in each punctured neighbourhood of $x_0$. If $g$ is non-zero at $x_0$, then $h/g$ is analytic
+  in a neighbourhood. Otherwise, $g(x_0) = 0$, and $g$ is non-zero on a punctured neighbourhood, impyling $h/g$ is analytic on a punctured neighbourhood.
+\end{proof}
+
+\subsection{Laurent series}
+
+\noindent The goal of this section is to explain Laurent series: a series representation of a holomorphic function in an annulus. In particular, let us suppose the
+function $f$ is \emph{holomorphic in an annulus} (not necessarily a disk). We will demonstrate that it is in fact possible to construct a series representation
+of this function ``about a point'' not contained within the annulus (rather, the point at which the annulus in centred), so long as we admit ourselves to utilize
+negative powers of $z$.
+\newline
+
+\begin{definition}
+
+\end{definition}
+
+\noindent It is similarly possible to compute and bound the coefficients in the Laurent expansion via Cauchy's inequalities. Of course, statements like
+Liouville's theorem no longer hold because of the fact that $r$ is Cauchy's inequalities may have a negative exponent.
+
+\subsection{Integration on oriented boundaries}
+
+\begin{definition}[Oriented boundary]
+  Let $K$ be a compact subset of the plane. In certain circumstances, the boundary of $K$, $\partial K$, can be parameterized as a curve, and
+  thus integrated on. 
+  \end{definition}
+
+\subsection{The residue theorem}
+
+\noindent Let us now move on to another fundamental theorem in the study of complex analysis: the residue theorem. This result will allow us to carry out complicated
+integrals, often over a real variable, via extension to ``simple'' integrals in the complex plane. Let's start with a theorem:
+
+\begin{theorem}
+  Let $f$ be a holomorphic function in the annulus $\rho_2 < |z| < \rho_1$ centred at the origin. If $\gamma$ is a closed path
+  in the annulus, then
+  \begin{equation}
+    \frac{1}{2\pi i} \displaystyle\int_{\gamma} f(z) \ dz = w(\gamma, 0) a_{-1}
+  \end{equation}
+  where $a_{-1}$ is the coefficient of $1/z$ in the Laurent expansion of $f$.
+\end{theorem}
+
+\begin{proof}
+  Note that we can expand $f$ by its Laurent series, $f(z) = \sum_{k = -\infty}^{\infty} a_k z^{k} = \frac{a_{-1}}{z} + \sum_{k \neq -1} a_k z^{k}$. Note that
+  the second term in this sum has a primitive in the annulus, so its integral about a closed curve will be $0$. Thus,
+  \begin{equation}
+    \frac{1}{2\pi i} \displaystyle\int_{\gamma} f(z) \ dz = \frac{a_{-1}}{2\pi i} \displaystyle\int_{\gamma} \frac{1}{z} \ dz = w(\gamma, 0) a_{-1}
+  \end{equation}
+  and the proof is complete (we just use the definition of winding number here).
+\end{proof}
+
+\begin{definition}
+  We refer to $a_{-1}$ for some function $f$ as the \emph{residue} of $f$. The above proof shows that if $\gamma$ is a small circle
+  around $0$, such that it is contained in an annulus about $0$ in which $f$ is holomorphic, then the residue of $f$ at $0$ is simply $\frac{1}{2\pi i} \int_{\gamma} f \ dz$.
+\end{definition}
+
+\begin{remark}
+  Note that the above proof generalizes Cauchy's integral formula. If $f$ is holomorphic, then $f(z)/z$ is holomorphic in an annulus about $0$ and has $a_{-1} = f(0)$, clearly.
+  so $\frac{1}{2 \pi i} \int_{\gamma} \frac{f(z)}{z} \ dz = f(0)$.
+\end{remark}
+
+\begin{remark}
+  Note that all of these constructions still hold in an identical fashion if we centre ourselves at some arbitrary point $a$ rather than $0$. In this case, we
+  consider the \emph{residue around $a$}.
+\end{remark}
+
+\noident It is often better to think of residues as being of \emph{holomorphic forms} rather than \emph{holomorphic functions}.
+
+\begin{remark}
+  Given a holomorphic function outside of some disk ($|z| > r$, for some $r$), we define the residue at infinity of $f$ to simply be the residue of the function which
+  is yielded from changing coordinates, and taking $0$ to $\infty$ and $\infty$ to $0$.
+  \end{remark}
+
+\noindent Now, let us move to the main proof of this section of the notes:
+
+\begin{theorem}[Finite residue theorem]
+  \pop{State it here!}
+\end{theorem}
+
+\begin{proof}
+  This proof is almost trivial, using all of the machinery we have already built. In particular, let $K$ be a compact set with oriented boundary $\Gamma$.
+  As we showed earlier, $f$ can only have a finite number of poles inside $K$. Suppose we remove small oriented circles $C_k$ about each of these poles, so
+  we are left with the compact region $K - \{C_k\}$ with oriented boundary $\Gamma - \{\gamma_k\}$, on which $f$ is holomorphic. It follows from Stokes' theorem that
+  \begin{equation}
+    \displaystyle\int_{\Gamma - \{\gamma_k\}} f(z) \ dz = \displaystyle\int_{K - \{C_k\}} d(f \ dz)  = 0 \Longrightarrow \displaystyle\int_{\Gamma} f \ dz = \displaystyle\sum_{k} \displaystyle\int_{\gamma_k} f \ dz = 2 \pi i \displaystyle\sum_{k} \text{Res}(f, \alpha_k)
+  \end{equation}
+  and the proof is complete!
+\end{proof}
+
+\begin{theorem}[Infinite residue theorem]
+  \pop{State it here!}
+\end{theorem}
+
+\begin{proof}
+The proof of this result carries forward similarly to the previous result. Suppose now that $K$ is a compact set in the Riemann sphere which contains the point at infinity.
+  \end{proof}
+
+\begin{theorem}[The Argument principle]
+  Let $f$ be a meromorphic function in some compact region $K$, with oriented boundary $\Gamma$. Then, the number of roots (counted with multiplicity), minus the number of poles (counted
+  with multiplicity) of $f$ contained in $K$ is given by $\frac{1}{2\pi i} \int_{\Gamma} \frac{f'}{f} \ dz$.
+\end{theorem}
+
+\begin{proof}
+  Let us consider the residues of $f'/f$. In particular, suppose $z_0$ is an order-$n$ root of $f$, so $f(z) = (z - z_0)^{n} f_0(z)$ where $f_0$ is holomorphic with $f_0(z_0) \neq 0$.
+  Then $f'(z) = n (z - z_0)^{n - 1} f_0(z) + (z - z_0)^{n} f'_0(z)$. It follows that in an annulus about $z = z_0$,
+  \begin{equation}
+    \frac{f'(z)}{f(z)} = \frac{n (z - z_0)^{n - 1} f_0(z) + (z - z_0)^{n} f'_0(z)}{(z - z_0)^{n} f_0(z)} = \frac{n}{z - z_0} + \frac{f'_0(z)}{f_0(z)}
+  \end{equation}
+  Note that $f'_0/f_0$ does not have a pole at $z_0$, and thus the coefficient of $\frac{1}{z - z_0}$ in its Laurent expansion in the annulus is $0$, so the combined
+  coefficient in this term in the Laurent expansion of the above is $n$, precisely the order of the root. The exact same argument, but swapping $n$ for $-n$ shows that
+  the residue will be $-n$ for an order-$n$ pole.
+  \newline
+
+  \noindent Thus, using the residue theorem, the integral around the oriented boundary is the sum of all the residues, which is just the signed roots/poles counted with multiplicity.
+  \end{proof}
+
+\noindent Now, let us prove a useful result for determination of the number of roots of a particular holomorphic function in a particular region of the complex plane.
+
+\begin{theorem}[Rouche's theorem]
+  Let $K$ be a compact set in connected open set $\Omega$ which has piecewise-$C^1$ oriented boundary $\Gamma$. Suppose $f$ and $g$ are holomorphic in $\Omega$.
+  Suppose $|f(z) - g(z)| < |f(z)|$ on $\Gamma$. Then $f$ and $g$ have the same number of roots in $K$.
+\end{theorem}
+
+\noindent \emph{The intuition for this theorem is as follows: the number of roots of a holomorphic function (no poles) can be computed by computing the winding number
+of the image of the boundary of a particular region about $0$, as was shown in the proof of the argument principle. This theorem states that if $f$ and $g$ carry
+this boundary to locations in the plane ``similar enough'' such that the winding number around $0$ isn't affected, then the number of roots will be the same, as we would expect.}
+\newline
+
+\begin{proof}
+  The proof follows from the intuition. The number of roots are $w(f \circ \Gamma, 0)$ and $w(g \circ \Gamma, 0)$, respectively, as the functions are holomorphic, so they have no poles (this follows from the argument principle).
+  \newline
+
+  \noindent In fact, this result follows almost immediately from
+  the baby Rouche lemma proved in the previous section. If it is the case that $|f(z) - g(z)| < |f(z)$ on $\Gamma$, then
+  \begin{equation}
+    \left| 1 - \frac{g(z)}{f(z)} \right| < 1
+  \end{equation}
+  on $\Gamma$, impyling the the image of the curve $(g \circ \Gamma)(t) / (f \circ \Gamma)(t)$ lies within the open unit disk centred at $z = 1$, and thus does not enclose $0$,
+  so the winding number of this curve is $0$.
+  \end{proof}
+
+\subsection{Advanced conformal mappings}
+
+\noindent \textbf{THIS SECTION IS VERY IMPORTANT FOR THE EXAM}
+\newline
+
+\noindent Some of the results proved in the previous section will better allow us to prove results about particular conformal mappings.
+
+\begin{lemma}
+  Let $z_0$ be a root of order $k$ of $f(z) = a$, $f$ being non-constant holomorphic in a neighbourhood of $a$. Then for any small enough
+  neighbourhood $V$ around $z_0$, and any $b$ sufficiently close to $a$, but not equal to $a$, the equation $f(z) = b$ has precisely $k$
+  simple solutions inside $V$.
+\end{lemma}
+
+\begin{proof}
+  Firstly, let us assume we are working in a region where $f$ has no poles, which is allowed, as $f$ is holomorphic. Thus, the argument, $\frac{1}{2\pi i} \int_{\Gamma} \frac{f'(z)}{f(z) - a} \ dz$
+  will count the number of solutions to $f(z) = a$, with multiplicity. Since $f(z_0) = a$, we can choose a region sufficiently small such that $f(z) \neq a$ except at $z_0$. We can do this because
+  $f(z) - a$ is analytic, and thus has isolated roots.
+
+  It follows immediately that
+  \begin{equation}
+    \frac{1}{2\pi i} \int_{\Gamma} \frac{f'(z)}{f(z) - a} \ dz = k
+  \end{equation}
+  where $\Gamma$ is boundary of some such small region about $z_0$. Let us also choose the region that we work in sufficiently small such that $f'(z) \neq 0$, except perhaps at $z_0$ (we can do this for the same reason
+  as above). Thus, if we have $f(y_0) = b$, then $f'(y_0) \neq 0$, so $y_0$ will be a simple root of $f(z) - b$. All the remains to show is that for $b$ close to $a$, the value of the argument (but swapping $a$ with $b$)
+  doesn't change. This simply follows from the fact that
+  \begin{equation}
+    \frac{1}{2\pi i} \int_{\Gamma} \frac{f'(z)}{f(z) - a} \ dz = w(f \circ \Gamma, a)
+  \end{equation}
+  which remains constant for $a$ chosen in the same connected component of the complement of the image of $f \circ \Gamma$. Thus, for $b$ sufficiently close to $a$, the argument integral is still $k$.
+\end{proof}
+
+\noindent As an immediate consequence, we have
+
+\begin{corollary}
+  At points $z_0$ where $f'(z_0) \neq 0$, the function $f$ is locally invertible. That is, there exists neighbourhood $V$ around $f(z_0)$ and $U$ around $z_0$ such that for each $y \in V$, there exists precisely
+  one $z \in U$ such that $f(z) = y$.
+  \end{corollary}
+
+\begin{theorem}[Open mapping theorem]
+  \end{theorem}
+
+\section{Part 5: Harmonic functions}
+
+\end{document}

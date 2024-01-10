@@ -1,0 +1,12 @@
+#+TITLE: Generalized Complex Geometry
+#+DESCRIPTION:Directory
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+
+/The purpose of these notes is to provide a brief introduction to the main ideas in generalized complex geometry: a program initiated by Nigel Hitchin and extended
+by Marco Gualtieri./
+
+----------------------
+
+*Definition 1.* Let $\langle \cdot, \cdot \rangle$ denote a quadratic form.
+

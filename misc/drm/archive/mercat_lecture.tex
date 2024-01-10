@@ -1,0 +1,103 @@
+\documentclass[aps,pra,showpacs,notitlepage,onecolumn,superscriptaddress,nofootinbib]{revtex4-1}
+\usepackage[utf8]{inputenc}
+\usepackage[tmargin=1in, bmargin=1.25in, lmargin=1.5in, rmargin=1.5in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{datetime}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{import}
+\usepackage{mathtools}
+\usepackage{thmtools,thm-restate}
+\usepackage{comment}
+
+
+% package for commutative diagrams
+% \usepackage{tikz-cd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{crimson}{RGB}{186,0,44}
+\definecolor{moss}{RGB}{0, 186, 111}
+\newcommand{\pop}[1]{\textcolor{crimson}{#1}}
+\newcommand{\zcom}[1]{\noindent\textcolor{crimson}{(Z): #1}}
+\newcommand{\jcom}[1]{\noindent\textcolor{moss}{(J): #1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\pqeq}{\succcurlyeq}
+\newcommand{\pleq}{\preccurlyeq}
+\newcommand{\hhrulefill}{\hspace{-1em} \hrulefill}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+    colorlinks,
+    linkcolor={crimson},
+    citecolor={crimson},
+    urlcolor={crimson}
+}
+
+\usepackage{qcircuit}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{reminder}{Reminder}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{answer}{Answer}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{claim}{Claim}[section]
+\newtheorem{proposition}{Proposition}[section]
+
+\usepackage{geometry}
+\geometry{
+  left=25mm,
+  right=25mm,
+  top=20mm,
+}
+\usepackage{mathtools}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{unsrt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{Discrete Riemann surfaces and the Ising model: presentation}
+\author{Jack Ceroni}
+\email{jackceroni@gmail.com}
+
+\date{\today}
+
+\maketitle
+
+\begin{itemize}
+\item The talk will begin with a summary of the results of the previous presentation. In particular, I will briefly re-describe the notion of the cell complex/dual complex
+  on some surface $\Sigma$. \emph{In addition, I will draw a picture very quickly, showing that intuitively, such a complex can be thought of as drawing coordinate axes on some arbitrary surface,
+  with the elements of $\Gamma$ corresponding to horizontal lines, and the elements of $\Gamma^{*}$ corresponding to vertical lines}.
+\item I won't really have to redescribe much else, except for the relevant intuition surrounding the \emph{de Rham cohomology}.
+\item In particular, I will first quickly describe again what a chain is, and how the boundary operator sends some $k$-chain to a $(k - 1)$-chain, with coefficients signs
+  determined by the same rules that someone like \emph{Spivak} uses in their work. I'll also make note of how this boundary operator gives us a \emph{chain complex}.
+\item From here, it is easy to write down what the space of cochains is: it is simply the space $\text{Hom}(C_k(\Lambda), \mathbb{C})$. We \textbf{call this} the space of \textbf{forms}.
+\item It is now our goal of defining the discrete analogue of differential forms (the usual definition of forms) on our discrete structure. In the usual formulation of differential geometry,
+  we defined forms as functions which yield alternating $k$-tensors on the tangent space of a manifold. We then defined the \emph{differential map}
+  acting on a form, the integral of a form, and from these definitions, we then proved Stokes' theorem.
+\item In our discrete context, we don't yet have the notion of a form or the differential or an integral. However, recall that \textbf{Hodge's theorem} gives a deep, dual connection between a homology group of
+  a chain complex and the de Rahm cohomology. In other words, this theorem gives an isomorphism between the dual of a homology group of a manifold and the associated de Rahm cohomology.
+\item \pop{State de Rham's theorem}
+\item This suggests that an equivalent way for us to \emph{define} de Rham cohomology in the discrete setting is simply via $\text{Hom}(C_k(\Lambda), \mathbb{C})$. In particular,
+  we \textbf{define}, using the integral notation, $\int_{c} \omega$ to be $\omega(c)$, where $\omega \in \text{Hom}(C_k(\Lambda), \mathbb{C})$ and $c \in C_k(\Lambda)$.
+  \item What we are calling ``forms'' here are actually equivalence classes of closed forms modulo exact forms.
+  \end{itemize}
+
+\end{document}

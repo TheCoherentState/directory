@@ -1,0 +1,110 @@
+\documentclass[aps,pra,showpacs,notitlepage,onecolumn,superscriptaddress,nofootinbib]{revtex4-1}
+\usepackage[utf8]{inputenc}
+\usepackage[tmargin=1in, bmargin=1.25in, lmargin=1.5in, rmargin=1.5in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{datetime}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{import}
+\usepackage{mathtools}
+\usepackage{thmtools,thm-restate}
+\usepackage{comment}
+
+
+% package for commutative diagrams
+% \usepackage{tikz-cd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{crimson}{RGB}{186,0,44}
+\definecolor{moss}{RGB}{0, 186, 111}
+\newcommand{\pop}[1]{\textcolor{crimson}{#1}}
+\newcommand{\zcom}[1]{\noindent\textcolor{crimson}{(Z): #1}}
+\newcommand{\jcom}[1]{\noindent\textcolor{moss}{(J): #1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\pqeq}{\succcurlyeq}
+\newcommand{\pleq}{\preccurlyeq}
+
+\newcommand{\hhrulefill}{\hspace{-1.0em}\hrulefill}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+    colorlinks,
+    linkcolor={crimson},
+    citecolor={crimson},
+    urlcolor={crimson}
+}
+
+\usepackage{qcircuit}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{reminder}{Reminder}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{answer}{Answer}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{claim}{Claim}[section]
+
+\usepackage{geometry}
+\geometry{
+  left=25mm,
+  right=25mm,
+  top=20mm,
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{unsrt}
+\setlength{\parindent}{0pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{A primer on generalized complex geometry}
+\author{Jack Ceroni}
+\email{jackceroni@gmail.com}
+
+\date{\today}
+
+\maketitle
+
+\hhrulefill
+
+\noindent \emph{The purpose of these notes is to introduce, with minimal assumed knowledge, the field of generalized complex geometry. These notes were written in the Fall of 2023.}
+
+\hhrulefill
+
+\begin{proposition}
+  Let $\langle \cdot, \cdot \rangle$ denote a bilinear form on $n$-dimensional vector space $V$. Then, there exists a basis $v_1, \dots, v_n$ for $V$ such that
+  \begin{equation}
+    \langle x_1 v_1 + \cdots + x_n v_n, x_1 v_1 + \cdots x_n v_n \rangle = x_1^2 + \cdots x_p^2 - x_{p + 1}^2 - \cdots x_{p + q}^2
+  \end{equation}
+  where $p + q = n$. Moreover, the pair $(p, q)$ is independent of choice of basis, and is called the \emph{signature} of the bilinear form.
+\end{proposition}
+
+\begin{proof}
+  \end{proof}
+
+\begin{definition}
+  Given vector space $V$ endowed with bilinear form $\langle \cdot, \cdot \rangle$, a subspace $W$ is said to be isotropic if the form vanishes for pairs $w_1, w_2 \in W$.
+\end{definition}
+
+Given $n$-dimensional vector space $V$, we take a double $\mathcal{D}V$ to be a $2n$-dimensional vector space endowed with $\langle \cdot, \cdot \rangle$ and projection $\pi : \mathcal{D}V \rightarrow V$
+such that $\text{Ker}(\pi)$ is isotropic with respect to $\langle \cdot, \cdot \rangle$. Note that $\text{Ker}(\pi)$ being isotropic implies that $\text{Ker}(\pi) \subset \text{Ker}(\pi)^{\perp}$.
+
+\end{document}

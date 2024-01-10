@@ -1,0 +1,174 @@
+\documentclass[aps,pra,showpacs,notitlepage,onecolumn,superscriptaddress,nofootinbib]{revtex4-1}
+\usepackage[utf8]{inputenc}
+\usepackage[tmargin=1in, bmargin=1.25in, lmargin=1.5in, rmargin=1.5in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{datetime}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{import}
+\usepackage{mathtools}
+\usepackage{thmtools,thm-restate}
+\usepackage{comment}
+
+
+% package for commutative diagrams
+% \usepackage{tikz-cd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{crimson}{RGB}{186,0,44}
+\definecolor{moss}{RGB}{0, 186, 111}
+\newcommand{\pop}[1]{\textcolor{crimson}{#1}}
+\newcommand{\zcom}[1]{\noindent\textcolor{crimson}{(Z): #1}}
+\newcommand{\jcom}[1]{\noindent\textcolor{moss}{(J): #1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\pqeq}{\succcurlyeq}
+\newcommand{\pleq}{\preccurlyeq}
+\newcommand{\Wedge}{\bigwedge}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+    colorlinks,
+    linkcolor={crimson},
+    citecolor={crimson},
+    urlcolor={crimson}
+}
+
+\usepackage{qcircuit}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{reminder}{Reminder}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{answer}{Answer}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{claim}{Claim}[section]
+\newtheorem{exercise}{Exercise}[section]
+
+\newcommand{\hhrulefill}{\hspace{-1.5em} \hrulefill}
+
+\usepackage{geometry}
+\geometry{
+  left=25mm,
+  right=25mm,
+  top=20mm,
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{unsrt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{Complex analysis exam prep}
+\author{Jack Ceroni}
+\email{jackceroni@gmail.com}
+\affiliation{Department of Mathematics, University of Toronto}
+
+\date{\today}
+
+\maketitle
+
+\tableofcontents
+
+\section{Introduction}
+
+\noindent Solutions to problems from Cartan, Ahlfors, and more.
+
+\section{Cartan}
+
+\hhrulefill
+
+\begin{problem}[Problem 1.7]
+  Let $S(X) = \sum_{n \geq 0} s_n X^n$ be an infinite series. We know that $S$ converges absolutely if and only if the absolute partial sums satisfy $\sum_{0 \leq n \leq k} |s_n| |X|^n \leq M$
+  for some fixed $M$.
+  Let $S_k(X)$ denote the $k$-th partial sum of the series $S(X)$. If $S$ is a series, let $\widetilde{S}$ denote the absolute sum. It is clear that
+  \begin{equation}
+    \widetilde{U}_k(X) \leq \widetilde{S}_k(X) + |X| \widetilde{S}_{k - 1}(X) + \cdots + |X|^{k} \widetilde{S}_0(X)
+  \end{equation}
+  If we choose $|X| < 1$, each $\widetilde{S}_k(X)$ will converge and be bounded above by some $M$, and we will find that the absolute series $\widetilde{U}_k$
+  is upper bounded by a geometric series, which converges. Thus, for $|X| < 1$, the series $U$ converges absolutely. Suppose $U$ converges absolutely for some $|X| > 1$.
+  Then the absolute partials $\widetilde{U}_k(X) - |X| \widetilde{U}_{k - 1}(X) = \widetilde{S}_k(X)$ converge, so $S$ also converges absolutely for this $X$, a contradiction.
+  Thus, the radius of convergence must be $1$.
+
+  To prove that the second sequence converges with the same radius, note that $\widetilde{T}_k(X) \leq \widetilde{P}_k(X)$ (where $P$ is the sum obtained from $U$ via the same transformation
+  which takes $S$ to $U$), so by direct comparison, the radius of convergence is
+  at least $1$, as $P$ will have radius of convergence equal to $1$, from the above result.
+
+  Now, suppose $|X| > 1$. We can choose $n$ large enough so that $|X|^n > n + 1$, so that for $m \geq n$,
+  \begin{equation}
+    |t_m| |X|^{m} = \frac{|X|^n}{n + 1} |s_0 + \cdots + s_m| |X|^{m - n} \geq |s_0 + \cdots + s_m| |X|^{m - n}
+    \end{equation}
+  Since $T$ converges absolutely, it follows via comparison that the sequence of $|X|^{-n} \widetilde{P}_k(X)$ converges absolutely, which would then imply
+  that $P$ converges absolutely for some $|X| > 1$, which can't be, as $P$ has radius of convergence $1$. Thus, $T$ must have radius of convergence $1$.
+  \newline
+
+  To arrive at the second conclusion, note that $a_n = s_n - s_{n - 1}$ for $n \geq 1$ and $a_0 = s_0$. Thus, for $|z|$ inside the radius of convergence,
+  \begin{equation}
+    \displaystyle\sum_{n \geq 0} a_n z^n = \displaystyle\sum_{n \geq 0} s_n z^n - z \displaystyle\sum_{n \geq 0} s_{n} z^{n} = (1 - z) \displaystyle\sum_{n \geq 0} s_n z^n
+  \end{equation}
+  where we are able to move terms and re-sum due to aboslute convergence. This implies the desired result.
+  \newline
+
+  \noindent Upon further reflection, another way to arrive at the radius of convergence for the second power series is by using the fact that derivatives
+  of power series will have the same radius of convergence.
+\end{problem}
+
+\hhrulefill
+
+\begin{problem}[Problem 1.16]
+  The first claim is trivial. To show that the sequence converges we will show that is Cauchy. Indeed,
+  \begin{equation}
+    \left| S_m(x) - S_n(x) \right| = |a_m x^{m} + a_{m - 1} x^{m - 1} + \cdots + a_{n + 1} x^{n + 1}| \leq |a_m + \cdots + a_{n + 1}| x^{n + 1} \leq |a_m + \cdots + a_{n + 1}|
+  \end{equation}
+  Of course, we can make $|a_m + \cdots + a_{n + 1}|$ small as $\sum_{k} a_k$ converges, \emph{over all $x \in [0, 1]$}. Thus, $S_n$ is Cauchy, so it converges to some $S(x)$.
+  To show that this convergence is uniform, note that
+  \begin{equation}
+    |S(x) - S_n(x)| = \lim_{m \to \infty} |S_m(x) - S_n(x)|
+  \end{equation}
+  which can be made arbitrarily small over all $x \in [0, 1]$ for $m, n$ large enough, so we can in fact find $n$ such that $S$ and $S_n$ become $\varepsilon$-close over
+  all $x \in [0, 1]$. Thus, the convergence is uniform.
+  \newline
+
+  \noindent To prove the second part of this statement, note that
+\end{problem}
+
+\hhrulefill
+
+\subsection{Locally exact forms}
+
+\noindent I need to dedicate some time to talking about locally exact forms. In particular, the fact that we can always choose a primitive along a curve corresponding to a locally exact form. To be more specific,
+we have the following definition:
+
+\begin{definition}[Primitive along a curve]
+  Given a curve $\gamma(t)$ and $1$-form $\omega$, we say that $f$ is a primitive of $\omega$ along the curve $\gamma$ if for each $\gamma(t)$ in the curve,
+  there is a neighbourhood around $\gamma(t)$ and a function $F$ which is a primitive of $\omega$ inside this neighbourhood, such that $f(s) = F(\gamma(s))$
+  for all $s$ in some neighbourhood around $t$.
+\end{definition}
+
+\begin{defintion}
+
+  \end{definition}
+
+\begin{theorem}
+  \end{theorem}
+
+\section{Ahlfors}
+
+\end{document}

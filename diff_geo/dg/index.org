@@ -1,0 +1,28 @@
+#+TITLE:A Complete Course on Basic Differential Topology
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px; </style>
+
+* Introduction
+
+  Welcome to my work-in-progress book on differential geometry and topology. I will keep this page updated with the different sections
+  as I construct them.
+
+* Chapters
+
+** Part 0: Topology crash-course
+
+** Part 1: Basics of differential geometry
+
+- Manifolds, maps between manifolds
+- Tangent space and the tangent bundle, differential forms
+- Integration on manifolds, Stokes' theorem
+
+** Part 2: Algebraic topology and differential geometry
+
+** Part 3: Riemannian geometry
+
+** Part 4: Complex geometry
+
+** Part 5: Current topics in geometry
+
+   /The goal of this section is to outline current research topics in differential geometry/

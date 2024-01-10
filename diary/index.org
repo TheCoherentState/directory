@@ -1,0 +1,11 @@
+#+TITLE: Math Diary
+#+DESCRIPTION: A diary, but for math
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+
+Welcome to the math diary of Jack Ceroni. The goal of this project is to create a place on the Internet where
+I'm able to write down thoughts I have on books/papers I'm reading, without actually doing a lengthy, edited, formal
+writeup. I think that oftentimes, it is easy for good ideas/good intuition to pass us by when we don't record it. I'm
+hoping to break this cycle.
+
+* December 2023

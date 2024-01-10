@@ -1,0 +1,68 @@
+#+TITLE: Method of characteristics
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px; </style>
+
+/The goal of this short note is to provide justification for the method of characteristics in the study of partial differential equations./
+
+* Theory
+
+* Applications
+
+  -------------------
+
+  *Problem 1.* What is the general solution to the first-order PDE of the form $u_t + V \cdot \nabla u + cu = f(x, t)$ with $u(x, 0) = g(x)$?
+
+  --------------------
+
+  /Solution./ We will utilize the method of characteristics. In particular, note that on any curve of the form $\gamma_s(t) = (t V + s, t)$, if $u$ is a solution to the PDE and $w_s(t) = u(\gamma_s(t))$, we will have
+  
+  \begin{equation}
+  (w_s)_t + cw_s = \partial_t \left[ u(\gamma_s(t)) \right] = u_t(\gamma_s(t)) + V \cdot \nabla u(\gamma_s(t)) + cu(\gamma_s(t)) = f(\gamma_s(t))
+  \end{equation}
+  In other words, we have reduced the PDE to a linear ODE of the function $w_s$. We can solve such an ODE to find $w_s$ using basic methods (we multiply by $e^{ct}$):
+  \begin{equation}
+  (w_s)_t + cw_s = f(\gamma_s(t)) \Longrightarrow \partial_t \left[ e^{ct} w_s \right] = e^{ct} f(\gamma_s(t)) \Longrightarrow w_s(t) = w_s(0) + \displaystyle\int_{0}^{t} f(\gamma_s(z)) e^{c[z - t]} \ dz
+  \end{equation}
+  or, in other words,
+  \begin{equation}
+  u(tV + s, t) = g(s) + \displaystyle\int_{0}^{t} f(zV + s, z) e^{c[z - t]} \ dz.
+  \end{equation}
+  Our goal is to find the value of $u(x, t)$ for some arbitrary point $(x, t)$. Note that the curves $\gamma_s(t)$ fill the entirety of the domain, when we vary $s$.
+  In particular, given point $(x, t)$, note that we can identify the $s$ such that $(tV + s, t) = (x, t)$ by noting that $s = x - tV$. Therefore,
+  \begin{equation}
+  u(x, t) = u \left( (x - tV) + tV, t \right) = g(x - tV) + \displaystyle\int_{0}^{t} f(x + (z - t)V, z) e^{c[z - t]} \ dz
+  \end{equation}
+  We have demonstrated with this proof that, /given a solution $u$ to the PDE/, it will be of the form in the above equation.
+
+  ----------------------
+
+  *Problem 2.* What is the general solution to Burgers' equation, $u_t + u u_x = 0$, with $u(x, 0) = f(x)$?
+
+  ----------------------
+
+  /Solution./ Once again, we can apply the method of characteristics. In particular, given a solution $u$ to the PDE, consider the /implicit/ equation
+  \begin{equation}
+  \label{eq:imp}
+  \gamma_s(t) = \left( s + \displaystyle\int_{0}^{t} u(\gamma_s(z)) \ dz, t \right)
+  \end{equation}
+  for the time-being, let us assume that there exists a smooth $\gamma_s(t)$ satisfying this relation. Then it is easy to see that is we let $w_s(t) = u(\gamma_s(t))$,
+  \begin{equation}
+  \partial_t w_s(t) = \partial_t u \left( s + \displaystyle\int_{0}^{t} u(\gamma_s(z)) \ dz, t \right) = u_t(\gamma_s(t)) + u(\gamma_s(t)) u_x(\gamma_s(t)) = 0
+  \end{equation}
+  From here, since $w_s(t)$ does not change with $t$, we have $w_s(t) = w_s(0) = u(\gamma_s(0)) = u(s, 0) = f(s)$. This also implies that
+  \begin{equation}
+  \displaystyle\int_{0}^{t} u(\gamma_s(z)) \ dz = \displaystyle\int_{0}^{t} w_s(z) \ dz = f(s) \displaystyle\int_{0}^{t} \ dz = t f(s)
+  \end{equation}
+  so that in fact $\gamma_s(t) = (s + t f(s), t)$. Therefore, to recap, we have demonstrated that
+  \begin{equation}
+  u(s + t f(s), t) = f(s)
+  \end{equation}
+  In order to find $u(x, t)$, we must identify some $s$ such that $x = s + t f(s)$. In the case we can do this, let such an $s$ be denoted $s(x)$. We then
+  will have $u(x, t) = u(s(x) + t f(s(x)), t) = f(s(x))$ as the solution to the PDE.
+
+  To summarize: we showed that *given a solution* to the original PDE, *such that the implicit functional relation of Eq. \eqref{eq:imp} admits a solution*, then
+  the solution will actually be of the form $u(x, t) = f(s(x))$, for some smooth solution $s(x)$ to the implicit dependence $x = s + t f(s)$, *assuming such a solution exists*.
+
+  *This raises the question of the circumstances under which we can make this slew of assumptions.*
+
+  ----------------------

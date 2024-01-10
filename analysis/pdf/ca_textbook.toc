@@ -1,0 +1,23 @@
+\contentsline {title}{A brief course in basic complex analysis}{1}{section*.1}%
+\tocdepth@munge 
+\tocdepth@restore 
+\contentsline {section}{\numberline {I}Introduction}{1}{section.1}%
+\contentsline {section}{\numberline {II}Basics, the complex plane and the Riemann sphere}{2}{section.2}%
+\contentsline {section}{\numberline {III}Introduction to complex functions}{2}{section.3}%
+\contentsline {section}{\numberline {IV}Holomorphic functions}{2}{section.4}%
+\contentsline {section}{\numberline {V}Power series and analytic functions}{2}{section.5}%
+\contentsline {subsection}{\numberline {A}Interlude: exercises}{2}{subsection.5.1}%
+\contentsline {section}{\numberline {VI}Conformal maps}{3}{section.6}%
+\contentsline {subsection}{\numberline {A}Interlude: exercises}{3}{subsection.6.1}%
+\contentsline {section}{\numberline {VII}Complex integration}{3}{section.7}%
+\contentsline {subsection}{\numberline {A}Basics and notation}{3}{subsection.7.1}%
+\contentsline {subsection}{\numberline {B}Closed and exact forms}{3}{subsection.7.2}%
+\contentsline {subsection}{\numberline {C}Locally exact forms}{4}{subsection.7.3}%
+\contentsline {subsection}{\numberline {D}Integrating locally exact forms}{4}{subsection.7.4}%
+\contentsline {subsection}{\numberline {E}An illustrative example: winding number}{5}{subsection.7.5}%
+\contentsline {subsection}{\numberline {F}Cauchy's theorem and its implications}{5}{subsection.7.6}%
+\contentsline {subsection}{\numberline {G}Interlude: exercises}{6}{subsection.7.7}%
+\contentsline {subsection}{\numberline {H}The Cauchy inequalities and their implications}{9}{subsection.7.8}%
+\contentsline {subsection}{\numberline {I}The mean value property and its implications}{9}{subsection.7.9}%
+\contentsline {section}{\numberline {VIII}Meromorphic functions and Laurent expansions}{9}{section.8}%
+\contentsline {subsection}{\numberline {A}Interlude: exercises}{9}{subsection.8.1}%

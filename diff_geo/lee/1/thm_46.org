@@ -1,0 +1,6 @@
+#+TITLE:Lee Theorem 1.46
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+
+We wish to prove the following result, about the smooth invariance of boundary (in smooth manifolds with boundary):
+

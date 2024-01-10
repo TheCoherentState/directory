@@ -1,23 +1,31 @@
 #+TITLE:Directory
 #+DESCRIPTION:Directory
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
-#+HTML_HEAD: <style> body {font-size:15px; background-color:black; color:white;} .title {color:white;} h2, h3, h4 {color:white;} </style>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
 
 Welcome to the *directory*, the place where I store most of the academic work/content that I create. This includes all notes and solution sets, among other things.
 Linked below are the subpages of this website, grouped by category.
 
+----------------
+For my math diary, click [[./diary/index.html][here]].
+----------------
+
 * Mathematics
+
+For my big, long-term project (a book on geometry and topology), click [[./book/index.html][here]]
 
 ** Solution Manuals
    + [[./diff_geo/lee/index.html][Solution manual for Lee's /Introduction to Smooth Manifolds/]]
    + [[./topology/munkres/index.html][Solution manual for Munkres' /Topology/]]
-   + [[./topology/big_list/index.html][Solutions to topology "Big List" problems]]
    + [[./topology/hatcher/index.html][Solution manual for Hatcher's /Introduction to Algebraic Topology/]]
 
 ** Notes
-   + [[./notes/pdf/hyperbolic_geo.pdf][Hyperbolic geometry (preparing for MAT1305)]]
+   + [[./analysis.html][Lecture notes on complex analysis]]
    
-  
 * Physics
 
+  + [[./physics/tqft.html][Lecture notes on topological quantum field theory]]
+
 * Computation
+
+  *Under construction*

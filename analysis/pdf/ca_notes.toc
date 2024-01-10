@@ -1,7 +1,7 @@
-\contentsline {title}{Complex Analysis}{1}{section*.1}%
+\contentsline {title}{A brief course in basic complex analysis}{1}{section*.1}%
 \tocdepth@munge 
 \tocdepth@restore 
-\contentsline {section}{\numberline {I}Introduction}{1}{section.1}%
+\contentsline {section}{\numberline {I}Introduction}{2}{section.1}%
 \contentsline {section}{\numberline {II}Basics and notation}{2}{section.2}%
 \contentsline {section}{\numberline {III}The Riemann sphere and complex projective space}{2}{section.3}%
 \contentsline {section}{\numberline {IV}Introduction to complex functions}{4}{section.4}%
@@ -11,7 +11,7 @@
 \contentsline {section}{\numberline {V}Holomorphic functions}{8}{section.5}%
 \contentsline {subsection}{\numberline {A}Introducing and motivating holomorphic functions}{9}{subsection.5.1}%
 \contentsline {subsection}{\numberline {B}A more sophisticated perspective}{11}{subsection.5.2}%
-\contentsline {subsection}{\numberline {C}Basic properties and implications}{11}{subsection.5.3}%
+\contentsline {subsection}{\numberline {C}Basic properties and implications}{12}{subsection.5.3}%
 \contentsline {section}{\numberline {VI}Examples of holomorphic functions}{13}{section.6}%
 \contentsline {subsection}{\numberline {A}Power series}{13}{subsection.6.1}%
 \contentsline {subsection}{\numberline {B}The complex exponential}{14}{subsection.6.2}%
@@ -19,3 +19,12 @@
 \contentsline {subsection}{\numberline {D}The complex logarithm and power functions}{15}{subsection.6.4}%
 \contentsline {subsection}{\numberline {E}Riemann surfaces}{16}{subsection.6.5}%
 \contentsline {section}{\numberline {VII}Conformal maps}{16}{section.7}%
+\contentsline {section}{\numberline {VIII}Analytic functions and analytic continuation}{16}{section.8}%
+\contentsline {section}{\numberline {IX}Complex integration}{16}{section.9}%
+\contentsline {subsection}{\numberline {A}A review of integration with differential forms}{17}{subsection.9.1}%
+\contentsline {subsection}{\numberline {B}Integrating over a complex domain}{17}{subsection.9.2}%
+\contentsline {subsection}{\numberline {C}Generalizing: homotopy}{21}{subsection.9.3}%
+\contentsline {subsection}{\numberline {D}Cauchy's theorem}{22}{subsection.9.4}%
+\contentsline {subsection}{\numberline {E}The substantial implications of Cauchy's theorem}{22}{subsection.9.5}%
+\contentsline {section}{\numberline {X}Harmonic functions}{22}{section.10}%
+\contentsline {section}{\numberline {XI}Meromorphic functions, Laurent series and essential singularities}{22}{section.11}%
