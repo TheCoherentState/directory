@@ -1,0 +1,328 @@
+\documentclass[aps,pra,showpacs,notitlepage,onecolumn,superscriptaddress,nofootinbib]{revtex4-1}
+\usepackage[utf8]{inputenc}
+\usepackage[tmargin=1in, bmargin=1.25in, lmargin=1.5in, rmargin=1.5in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{datetime}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{import}
+\usepackage{mathtools}
+\usepackage{thmtools,thm-restate}
+
+
+% package for commutative diagrams
+% \usepackage{tikz-cd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{crimson}{RGB}{186,0,44}
+\definecolor{moss}{RGB}{0, 186, 111}
+\newcommand{\pop}[1]{\textcolor{crimson}{#1}}
+\newcommand{\zcom}[1]{\noindent\textcolor{crimson}{(Z): #1}}
+\newcommand{\jcom}[1]{\noindent\textcolor{moss}{(J): #1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\pqeq}{\succcurlyeq}
+\newcommand{\pleq}{\preccurlyeq}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+    colorlinks,
+    linkcolor={crimson},
+    citecolor={crimson},
+    urlcolor={crimson}
+}
+
+\usepackage{qcircuit}
+\usepackage{comment}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{reminder}{Reminder}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{answer}{Answer}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{claim}{Claim}[section]
+\newtheorem{proposition}{Proposition}[section]
+
+\usepackage{geometry}
+\geometry{
+  left=25mm,
+  right=25mm,
+  top=20mm,
+}
+
+\newcommand{\hhrulefill}{\hspace{-1.5em} \hrulefill}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{unsrt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{MAT495 January report}
+
+\author{Jack Ceroni}
+\email{jack.ceroni@mail.utoronto.ca}
+
+\date{\today}
+
+\maketitle
+
+\section{Introduction}
+
+\noindent I spent the majority of the month looking into the classification theorem for finite-dimensional $C^{*}$-algebras. I will summarize the material that I covered in this report.
+
+\section{Classification of finite-dimensional $C^{*}$-algebras}
+
+\noindent The classification theorem for finite-dimensional $C^{*}$-algebras says the following:
+
+\begin{theorem}[Classification of finite-dimensional $C^{*}$-algebras]
+  Every finite dimensional $C^{*}$-algebra is $*$-isomorphic to a direct sum of matrix algebras over the complex numbers. In particular, if $A$ is a finite-dimensional
+  $C^{*}$-algebra, then for some collection of positive integers $\{n_1, \dots, n_k\}$,
+  \begin{equation}
+    \label{eq:sum}
+    A \simeq \displaystyle\bigoplus_{j = 1}^{N} M_{n_j}(\mathbb{C})
+    \end{equation}
+\end{theorem}
+
+\noindent Since the matrix algebra $M_n(\mathbb{C})$ is non-commutative for any $n > 1$, we have the immediately corollary:
+
+\begin{corollary}
+  If $A$ is a finite-dimensional, \emph{commutative} $C^{*}$-algebra, then $A \simeq \mathbb{C} \oplus \cdots \oplus \mathbb{C}$,
+  the direct sum of $k$ copies of the complex numbers, for some $k$.
+\end{corollary}
+
+\noindent A direct proof of this elementary result in more straightforward than the case of possibly non-Abelian $C^{*}$-algebras, so we will begin here. This proof, as well as the proof
+of the more general result will rely on the following:
+
+\begin{theorem}[Gelfand]
+  Every Abelian $C^{*}$-algebra is isometrically isomorphic to the algebra of continuous functions vanishing at infinity, $C_0(X)$, on some locally compact Hausdorff space $X$.
+\end{theorem}
+
+\noindent Making us of this result, we conclude that some finite-dimensional $C^{*}$-algebra $A$ will be $*$-isomorphic to $C_0(X)$ for some locally compact Hausdorff space $X$.
+Let us quickly prove a topological lemma:
+
+\begin{lemma}
+  \label{lem:exist}
+  Locally compact Hausdorff space separate points with continuous functions. That is, for $x_1, x_2 \in X$ distinct, there exists
+  a continuous function $f : X \rightarrow \mathbb{R}$ such that $f(x_1) \neq f(x_2)$ (it is completely regular).
+\end{lemma}
+\begin{proof}
+  This follows from the fact that we can embed $X$ into its one-point compactification , which is compact Hausdorff, and thus normal, a stronger
+  condition than being completely regular (this follows from Urysohn's lemma). A subspace will also be completely regular, so $X$ is.
+\end{proof}
+\noindent From this fact, it immediately follows that when $A$ is finite-dimensional, the corresponding $X$ must only have a finite number of points.
+For, let consider some set of distinct points $\{x_1, \dots, x_n\} \in X$. Let $f_k$ be a function which is $1$ at $x_k$ and $0$ at all the other $x_j$. Clearly,
+the collection of functions $f_1, \dots, f_n$ will be linearly independent. Since $C_0(X)$ is isomorphic to a finite-dimensional algebra $A$, we can have
+at most $\dim(A)$ such linearly independent functions, which implies that the number of distinct points in $X$ can be at most $\dim(A)$.
+
+Of course, a topological space with a finite number of points is compact, in this case, we can simply replace $C_0(X)$ with $C(X)$, the space of continuous functions.
+In fact, if $n = \dim(A)$, then the set of functions $(f_1, \dots, f_n)$ described above will clearly form a basis for $C(X)$. We can then define the map $\Psi : C(X) \rightarrow \mathbb{C} \oplus \cdots \oplus \mathbb{C}$,
+as the linear map such that $\Psi(f_k) = 0 \oplus \cdots \oplus 1 \oplus \cdots \oplus 0$, where the $1$ is placed at the $k$-th (out of $n$) direct summands.
+
+Verifying that this is a $*$-isomorphism is easy: it is linear, since $f_j f_k = \delta_{jk} f_j$, we have $\Psi(f_j f_k) = \Psi(f_j) \Psi(f_k)$, and clearly $\Psi(f_k^{*}) = \Psi(f_k)^{*}$. Thus,
+we have proved that $A \simeq \mathbb{C} \oplus \cdots \oplus \mathbb{C}$.
+
+\subsection{Proving the more general result}
+
+\noindent Now that we have proved the desired result for Abelian $C^{*}$-algebras, we must turn our attention to \emph{arbitrary} finite-dimensional $C^{*}$-algebras.
+Let us briefly begin at the end: consider the specific case of a finite-dimensional $C^{*}$-algebra that is \emph{a priori} the direct sum of matrix algebras, as in Eq.~\eqref{eq:sum}.
+A basis for this algebra is easy to write down: let $e(k, i, j)$ be the $k \times k$ matrix with $1$ at the $(i, j)$-th entry and $0$ elsewhere. In our case, the set
+\begin{equation}
+  \mathcal{B} = \left\{ e_{ij}^{(k)} = 0 \oplus \cdots \oplus e(n_k, i, j) \oplus \cdots \oplus 0 \ | \ 1 \leq k \leq N, \ 1 \leq i, j \leq n_k \right\}
+\end{equation}
+where in the direct sum for $e^{(k)}_ij$, $e(n_k, i, j)$ is the $k$-th direct summand. This collection will clearly form a basis. These elements have particular easy-to-verify properties, namely
+\begin{enumerate}
+\item $e^{(k)}_{ij} e^{(k)}_{jl} = e^{(k)}_{il}$
+\item $e_{ij}^{(k)} e_{mn}^{(l)} = 0 \ \text{if} \ k \neq l \ \text{or} j \neq m$
+  \item $(e_{ij}^{(k)})^{*} = e_{ji}^{(k)}$
+\end{enumerate}
+The idea for the proof of the classification theorem is that for an arbitrary finite-dimensional $C^{*}$-algebra, we will identify elements of the algebra which have
+this same behaviour, and in turn define a $*$-isomorphism from this collection of elements, to the matrix elements defined above, which form a basis for a direct sum
+of matrix algebras. Generally, we will call elements which satisfy the set of conditions of list \emph{matrix units}. To be more specific, we have the following:
+
+\begin{claim}
+  \label{claim:iso}
+  If $B$ is another $C^{*}$-algebra containing elements $f_{ij}^{(k)}$ which behave in the exact same way as the $e_{ij}^{(k)}$ (they are non-zero, have the same properties outlined in the list above,
+  and they span the algebra $B$), then there is a unique $*$-isomorphism $\varphi : A \rightarrow B$ such that $\varphi(e_{ij}^{(k)}) = f_{ij}^{(k)}$
+\end{claim}
+\begin{proof}
+  We define $\varphi$ as the unique linear extension of $\varphi(e_{ij}^{(k)}) = f_{ij}^{(k)}$. Checking whether multiplciation is preserved amounts to verifying
+  that $\varphi(e_{ij}^{(k)} e_{mn}^{(l)}) = \varphi(e_{ij}^{(k)}) \varphi(e_{mn}^{(l)}) = f_{ij}^{(k)} f_{mn}^{(l)}$, which can be immediately verified from
+  the list of properties which the $e_{ij}^{(k)}$ and the $f_{ij}^{(k)}$ verify. In addition,
+  \begin{equation}
+  \varphi((e_{ij}^{(k)})^*) = \varphi(e_{ji}^{(k)}) = f_{ji}^{(k)} = (f_{ij}^{(k)})^{*} = \varphi(e_{ij}^{(k)})^{*}
+  \end{equation}
+  so we have a $*$-isomorphism. If the $f_{ij}^{(k)}$ span $B$, then we have a surjection, and if none are zero, we have an empty kernel, so $\varphi$ is an injection.
+  Thus, it is a bijection, so $\varphi$ is a $*$-isomorphism.
+\end{proof}
+
+\noindent Now, let us begin our search for these $f_{ij}^{(k)}$. First, a small lemma:
+
+\begin{lemma}
+If $v$ is a partial isometry (so $v^{*} v$ is a projection) then $v v^{*} v = v$.
+\end{lemma}
+\begin{proof}
+  Let $z = v - v v^{*} v = (1 - v v^{*})v$. Note that
+  \begin{equation}
+    z^{*} z = v^{*} (1 - v v^{*})^{*} (1 - v v^{*}) = v^{*} (1 - 2 v v^{*} +  v v^{*} v v^{*}) v = v^{*} v - 2 v^{*} v + v^{*} v = 0
+  \end{equation}
+  where we use that $(v^{*} v)^2 = v^{*} v$. Thus, $||z||^2 = ||z^{*} z|| = 0$, so $||z|| = 0$ and $v = v v^{*} v$, as desired.
+  \end{proof}
+
+\noindent Now, another lemma:
+
+\begin{lemma}
+  Suppose that $\{f_{ii}^{(k)} \ | \ 1 \leq k \leq r, 1 \leq i \leq n_k\}$ is a set of mutually orthogonal projections in $C^{*}$-algebra $B$ and that
+  \begin{equation}
+    f_{11}^{(k)} \sim f_{22}^{(k)} \sim \cdots \sim f_{n_k n_k}^{(k)}
+  \end{equation}
+  for each $k$. Then there is a system of matrix units $\{f_{ij}^{(k)}\}$ extending $\{f_{ii}^{(k)}\}$.
+\end{lemma}
+
+\noindent The idea behind constructing systems of matrix units is, essentially, to have a ``basis'' for each component of the direct sum
+that we will eventually demonstrate characterizes the $C^{*}$-algebra $B$. Each of the sets $\{f_{ii}^{(k)}\}$ are analogous to matrix projections
+with $1$ at the $i$-th slot on the diagonal, at the $k$-th slot in the direct sum. Let us now prove the lemma.
+
+\begin{proof}
+  Of course, here, we will make us of the Murray-von Neumann equivalence. Namely,
+  \begin{equation}
+    f_{11}^{(k)} \sim f_{jj}^{(k)} \Longrightarrow f_{11}^{(k)} = f_{1j}^{(k)} f_{1j}^{(k)^{*}} \ \ \ \text{and} \ \ \ f_{jj}^{(k)} = f_{1j}^{(k)^{*}} f_{1j}^{(k)}
+  \end{equation}
+  This notation is consistent, as $f_{11}^{(k)}$ is self-adjoint, so setting $j = 1$ above causes no problems.
+  Our claim is that if we set $\widetilde{f}_{ij}^{(k)} = f_{1i}^{(k)^{*}} f_{1j}^{(k)}$ then we will have the desired system of matrix units. This is in fact an extension of the system we are already provided. Namely, we have
+  \begin{equation}
+    \widetilde{f}_{jj}^{(k)} = f_{1j}^{(k)^{*}} f_{1j}^{(k)} = f_{jj}^{(k)}
+  \end{equation}
+  by definition. In fact, we might as well denote $\widetilde{f}_{ij}$ by $f_{ij}$, as for $i = 1$, we have
+  \begin{equation}
+    \widetilde{f}_{1j} = f_{11}^{(k)^{*}} f_{1j}^{(k)} = f_{1j}^{(k)} f_{1j}^{(k)^{*}} f_{1j}^{(k)} = f_{1j}^{(k)}
+    \end{equation}
+  where we use the above lemma and the fact that $f_{1j}^{(k)^{*}} f_{1j}^{(k)} = f_{jj}^{(k)}$ is a projection. Let us now complete our verification. Of course, we have
+  \begin{equation}
+    f_{pq}^{(k)} f_{qr}^{(k)} = f_{1p}^{(k)^{*}} f_{1q}^{(k)} f_{1q}^{(k)^{*}} f_{1r}^{(k)} = f_{1p}^{(k)^{*}} f_{11}^{(k)} f_{1r}^{(k)} = f_{1p}^{(k)^{*}} f_{1r}^{(k)} f_{1r}^{(k)^{*}} f_{1r}^{(k)} = f_{1p}^{(k)^{*}} f_{1r}^{(k)} = f_{pr}^{(k)}
+  \end{equation}
+  where we use the first lemma to note that $f_{1r}^{(k)} f_{1r}^{(k)^{*}} f_{1r}^{(k)} = f_{1r}^{(k)}$, as $f_{1r}^{(k)^{*}} f_{1r}^{(k)} = f_{rr}^{(k)}$ is a projection. Next, note that
+  \begin{equation}
+    f_{pq}^{(k)} f_{rs}^{(\ell)} = f_{1p}^{(k)^{*}} f_{1q}^{(k)} f_{1r}^{(\ell)^{*}} f_{1s}^{(\ell)}
+  \end{equation}
+  Once again using the first lemma, we have $f_{1q}^{(k)} = f_{1q}^{(k)} f_{1q}^{(k)^{*}} f_{1q}^{(k)} =  f_{1q}^{(k)}  f_{qq}^{(k)}$ and $f_{1r}^{(\ell)} = f_{1r}^{(\ell)} f_{1r}^{(\ell)^{*}} f_{1r}^{(\ell)} =  f_{1r}^{(\ell)} f_{rr}^{(\ell)}$
+  so that $f_{1r}^{(\ell)^{*}} = f_{rr}^{(\ell)} f_{1r}^{(\ell)^{*}}$. We then use the fact that the projections in our set are mutually orthogonal to conclude that
+  \begin{equation}
+    f_{1p}^{(k)^{*}} f_{1q}^{(k)} f_{1r}^{(\ell)^{*}} f_{1s}^{(\ell)} = f_{1p}^{(k)^{*}} f_{1q}^{(k)} (f_{qq}^{(k)}  f_{rr}^{(\ell)}) f_{1r}^{(\ell)^{*}} f_{1s}^{(\ell)} = 0
+  \end{equation}
+  which is $0$ when $q \neq r$ or $k \neq \ell$, as in these cases, $f_{qq}^{(k)}  f_{rr}^{(\ell)} = 0$. It is very immediately clear that $f_{ij}^{(k)^{*}} = f_{1j}^{(k)^{*}} f_{1i}^{(k)} = f_{ji}^{(k)}$,
+  so we have verified the third condition, and it follows that our set of $f_{ij}^{(k)}$ is in fact a system of matrix units in $B$ extending $\{f_{ii}^{(k)}\}$.
+\end{proof}
+
+\noindent Going forward, our new strategy is to find the ``diagonal matrix elements'' $f_{ii}^{(k)}$, and then extend them to the full
+set of matrix units that we need. One nice fact we should notice is that they mutually commute, as they are mutually orthogonal. In fact, they
+are a \emph{maximal Abelian subalgebra} (or, a \emph{masa}) of $B$ (if they exist): an Abelian subalgebra which is not contained in any larger Abelian sualgebra.
+Via properties of masas, we will effectively attempt to reduce the problem of classifying finite-dimensional $C^{*}$-algebras to the easier case discussed above: classifying
+finite-dimensional \emph{Abelian} $C^{*}$-algebras.
+
+\begin{lemma}
+  A sub-$C^{*}$-algebra $D$ of a $C^{*}$-algebra $A$ is a masa if and only if $D' = D$, where $D'$ is the set of all elements in $A$ for such $da = ad$ for all $d \in D$.
+\end{lemma}
+\begin{proof}
+  We suppose first that $D$ is a masa. Note that $D'$ clearly contains $D$, as every element of $D$ commutes with every other element of $D$, since $D$ is Abelian.
+  Suppose $y \in D'$ and $y \notin D$. Then $yd = dy$ for all elements of $D$. It follows that $C(D \cup \{y\})$ is an Abelian sub-$C^{*}$-algebra which contains $D$ properly,
+  a clear contradiction, so we must have $D' \subset D$. We have inclusion both ways, so $D = D'$.
+
+  Conversely, suppose $D = D'$. Pick $x, y \in D$. Note that $x \in D'$ commutes with every element of $D$, so $xy = yx$. Thus, $D$ is an Abelian sub-$C^{*}$-algebra. Via Zorn's lemma,
+  we know that every Abelian sub-$C^{*}$-algebra is in a masa. Let $F$ be a masa containing $D$. Given some $f \in F$, note that $f$ will commute with every element of $D$, so that $f \in D' = D$. Thus,
+  we must have $D = F$, and the proof is complete.
+\end{proof}
+
+\begin{lemma}
+  Let $D$ be a masa in a $C^{*}$-algebra $A$, then
+  \begin{enumerate}
+  \item If $a$ is an element in $A$ that commutes with every element in $D$, then $a$ belongs to $D$.
+  \item If $D$ is unital, then $A$ is unital, and the unit of $D$ is equal to the unit of $A$.
+  \item If $p$ is a projection in $D$ satisfying $pDp = \mathbb{C}p$, then $pAp = \mathbb{C}p$. In other words,
+    a minimal projection in $D$ is also a minimal projection in $A$.
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  The first claim follows trivially from the proof of the previous lemma. For the second claim, suppose $1_D$ is a unit in $D$.
+  Let $z = a 1_D - a$, so that $zd = ad - ad = 0$ for all $d \in D$. Moroever, $d^{*} \in D$ so $z d^{*} = (d z^{*})^{*} = 0$, so $d z^{*} = 0$.
+  It follows that $d z^{*} z = 0$ and $z^{*} z d = 0$, so $z^{*} z \in D$, as it commutes with all elements of $D$. In particular, $(z^{*} z)^{2} = 0$,
+  so that $||(z^{*} z)^{2}|| = ||z^{*} z||^4 = ||z||^4 = 0$, so $||z|| = 0$, impyling $z = 0$, so $a 1_D = a$. In addition, $1_D a = (a^{*} 1_D)^{*} = (a^{*})^{*} = a$.
+  Thus, $1_D$ is a unit for $A$.
+
+  To conclude, let us consider the final point. Suppose $pDp = \mathbb{C} p$. Then since $p \in D$, $pd = dp = dp^2 = pdp = \lambda p$ for $\lambda \in \mathbb{C}$. Thus for $pap \in pAp$,
+  we have $dpap = \lambda pap = papd$, so $pap \in D$, implying that $pAp \in pDp \in \mathbb{C} p$ as desired.
+\end{proof}
+
+\noindent Now, we are finally in a position where we can prove the main theorem.
+\newline
+
+\noindent To start, let $A$ be a finite-dimensional $C^{*}$-algebra, and let $D$ be a masa in $A$. Using Gelfand's theorem again, we note that
+$D$ will be $*$-isomorphic to $C_0(X)$ for some locally compact space $X$, and as we argued earlier $X$ can only have a finite number of points,
+as $D$ is finite-dimensional.
+
+Since $X$ has a finite number of points, it is compact, so $C_0(X) = C(X)$ is unital (the constant $1$-function is the unit). It follows that $D$ must
+be unital, and via the lemma above where we showed that a unit in $D$ is a unit in $A$, it follows that $A$ is unital as well. Going forward, we
+let $X = \{x_1, \dots, x_n\}$, where we index the distinct points.
+
+Denote the $*$-isomorphism by $\Phi : D \rightarrow C(X)$. Let $f_1, \dots, f_n$ denote functions in $C(X)$ where $f_k(x_k) = 1$ and $f_k(x_j) = 0$
+for $j \neq k$. We know that continuous functions of this form exist from Lem.~\ref{lem:exist}. Clearly, $f_k^2 = f_k = f_k^{*}$. Moreover,
+the set of $f_k$ are mutually orthogonal, $f_k f_j = \delta_{jk} f_k$. We let $p_k = \Phi^{-1}(f_k)$, for each $k$. Since the $f_k$ are projections
+in $C(X)$, the $p_k$ will be projections in $D$ (and thus $A$). Finally, note
+\begin{equation}
+  f_1 + \cdots + f_n = 1 \ \ \ \ \text{and} \ \ \ \ f_k C(X) f_k = \mathbb{C} f_k
+\end{equation}
+for any $f_k$ (as if $f \in C(X)$ and $f(x_k) = c$, then $f_k f f_k$ is just $c f_k$. It follows via $\Phi$ that
+\begin{equation}
+  p_1 + \cdots + p_n = 1 \ \ \ \ \text{and} \ \ \ \ p_k D p_k = \mathbb{C} p_k
+\end{equation}
+It follows again from the earlier lemma that, since $p_k D p_k = \mathbb{C} p_k$, we have $p_k A p_k = \mathbb{C} p_k$.
+
+Let us assume that $p_j A p_k$ (with $j$ possibly not equal to $k$!) is non-zero, and choose some $v \in p_j A p_k$. Then $v/||v|| \in p_j A p_k$ as well, so without loss
+of generality, we can choose $v$ such that $||v|| = 1$. It follows that $v^{*} v \in p_k A p_k$ is positive and $||v^{*} v|| = ||v||^2 = 1$.
+Since $v^{*} v$ is of the form $p_k a p_k$, and thus of the form $\lambda p_k$ for some $\lambda \in \mathbb{C}$, we must have $||\lambda p_k|| = |\lambda| ||p_k|| = |\lambda| = 1$.
+Moreover, since $v^{*} v$ is positive, $\lambda$ must be real, so $\lambda = 1$ and $v^{*} v = p_k$. A repeat of the same argument shows that $v v^{*} = p_j$. Thus,
+in this case, $p_j \sim p_k$.
+
+Now, suppose $p_j a p_k$ is some other element of $p_j A p_k$. Note that $p_j a p_k = (p_j a p_k) p_k = (p_j a p_k v^{*}) v$. Since $v^{*} \in p_k A p_j$,
+it follows that $p_j a p_k v^{*} \in p_j A p_j = \mathbb{C} p_j$, so $p_j a p_k = \lambda p_j v = \lambda v$ (as $v \in p_j A p_k$, so $p_j v = v$). Thus,
+any element of $p_j A p_k$ is a scalar multiple of $v$. We have now show that two possibilities exist:
+
+\hhrulefill
+
+\noindent \emph{Either $p_j A p_k$ is empty, or if it is non-empty, $p_j \sim p_k$ and moreover, $p_j A p_k = \mathbb{C} v$, where
+$v$ is a partial isometry with $v^{*} v = p_k$ and $v v^{*} = p_j$.}
+
+\hhrulefill
+
+From here, we partition of the set of projections $\{p_1, \dots, p_n\}$ into equivalence classes based on Murray von-Neumann equivalence.
+We let $n_k$ denote the number of projections in the $k$-th equivalence class. We then label the elements of the $k$-th equivalence class in a suggestive way: $\{f_{11}^{(k)}, \dots, f_{n_k n_k}^{(k)}\}$.
+Our claim is that the resulting $f_{jj}^{(k)}$ will be a system of orthogonal projections we can extend to our system of matrix units.
+
+This fact is fairly easy to verify. Clearly, these projections are mutually orthogonal, as for $k \neq l$, we showed that $f_{ii}^{(k)} A f_{jj}^{(l)} = \{0\}$, so in particular for $1 \in A$,
+we have $f_{ii}^{(k)} f_{jj}^{(l)} = 0$. Moreover, by definition, $f_{ii}^{(k)} \sim f_{jj}^{(k)}$. Thus, we can find a system of matrix units $f_{ij}^{(k)}$ extending this system. In fact,
+if we back-step to the proof of this extension lemma, we can see that $v$ will be $f_{ij}^{(k)}$ for $f_{ii}^{(k)} = v^{*} v$ and $f_{jj}^{(k)} = v v^{*}$, so that $f_{ii}^{(k)} A f_{jj}^{(k)} = \mathbb{C} f_{ij}^{(k)}$
+from above.
+
+Thus, for $a \in A$, since $\sum_{k, i} f_{ii}^{(k)} = 1$, as was argued above,
+\begin{equation}
+  a = \left( \sum_{k, i} f_{ii}^{(k)} \right) a \left( \sum_{k, i} f_{ii}^{(k)} \right) = \sum_{k} \sum_{ij} f_{ii}^{(k)} a f_{jj}^{(k)} = \sum_{k} \sum_{ij} \lambda_{ij}^{(k)} f_{ij}^{(k)}
+\end{equation}
+for $\lambda_{ij}^{(k)} \in \mathbb{C}$. Thus, this system of matrix units spans $A$. They are all clearly non-zero, by definition. Thus, from Claim~\ref{claim:iso}, we have the desired isomorphism between
+$A$ and a direct sum of matrix algebras!
+
+\end{document}
