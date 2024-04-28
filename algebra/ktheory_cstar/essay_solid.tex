@@ -1,0 +1,339 @@
+\documentclass[aps,pra,showpacs,notitlepage,onecolumn,superscriptaddress,nofootinbib]{revtex4-1}
+\usepackage[utf8]{inputenc}
+\usepackage[tmargin=1in, bmargin=1.25in, lmargin=1.5in, rmargin=1.5in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{datetime}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{import}
+\usepackage{mathtools}
+\usepackage{thmtools,thm-restate}
+
+
+% package for commutative diagrams
+% \usepackage{tikz-cd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{crimson}{RGB}{186,0,44}
+\definecolor{moss}{RGB}{0, 186, 111}
+\newcommand{\pop}[1]{\textcolor{crimson}{#1}}
+\newcommand{\zcom}[1]{\noindent\textcolor{crimson}{(Z): #1}}
+\newcommand{\jcom}[1]{\noindent\textcolor{moss}{(J): #1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\pqeq}{\succcurlyeq}
+\newcommand{\pleq}{\preccurlyeq}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+    colorlinks,
+    linkcolor={crimson},
+    citecolor={crimson},
+    urlcolor={crimson}
+}
+
+\usepackage{qcircuit}
+\usepackage{comment}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{reminder}{Reminder}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{answer}{Answer}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{claim}{Claim}[section]
+
+\usepackage{geometry}
+\geometry{
+  left=25mm,
+  right=25mm,
+  top=20mm,
+}
+
+\newcommand{\hhrulefill}{\hspace{-1.5em} \hrulefill}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{unsrt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{MAT495 essay 3: Non-commutative geometry and solid-state physics, and the index map}
+\date{\today}
+\author{Jack Ceroni}
+\maketitle
+
+\section{Introduction}
+
+\noindent The goal of this essay is to outline and explain some of the key ideas in the formulation of solid-state physics in terms of non-commutative geometry and $C^{*}$-algebras.
+
+\section{Non-commutative geometry and solids}
+
+\noindent We begin by defining an appropriate model for a system of atoms $\mathcal{L}$ in ambient space $\mathbb{R}^{D}$, making up a solid. We assume that the solid is in idealized conditions, at $0$-temperature, so that the atoms are fixed in place. We naturally expect $\mathcal{L}$ to have certain properties: in particular, we expect that atoms are not spaced arbitrarily close or arbitrarily far away from each other.
+
+\begin{definition}
+   We say that $\mathcal{L} \subset \mathbb{R}^{D}$ is $r$-discrete is every open ball of radius-$r$ contains at most one point of $\mathcal{L}$. We say that $\mathcal{L}$ is $R$-dense if every ball of radius $R$ contains at least one point of $\mathcal{L}$. If $\mathcal{L}$ is $r$-discrete and $R$-dense, it is called an $(r, R)$-Delone set. A Delone set is of finite type when the set of relative displacements, $\mathcal{L} - \mathcal{L}$ is locally finite, it is a Meyer set if $\mathcal{L} - \mathcal{L}$ is a Delone set itself.
+\end{definition}
+
+\noindent The condition of ``not arbitrarily close and not arbitrarily far" is axiomatized as the condition of being a Delone set, so most solid systems considered will be modelled as Delone sets.
+
+\begin{definition}
+    Given $\mathcal{L}$ which is $r$-discrete, let $\nu^{\mathcal{L}}$ denote the counting measure of $\mathcal{L}$ on the the Borel sets of $\mathbb{R}^{D}$ as the measure which counts the number of elements of $\mathcal{L}$ contained inside some Borel set $A$:
+    \begin{equation}
+        \nu^{\mathcal{L}}(A) = \displaystyle\sum_{y \in \mathcal{L}} \displaystyle\sum_{a \in A} \delta(a - y)
+    \end{equation}
+    Note that this is a Radon measure on $\mathbb{R}^{D}$, due to the discreteness of $\mathcal{L}$: clearly it is finite on compact sets $C$ as we can cover $C$ by a finite number of $r$-balls. Inner and outer regularity are also easy to check.
+\end{definition}
+
+\begin{remark}
+    Since $\nu^{\mathcal{L}}$ is a Radon measure, it can be considered as an element of the dual space of $C_{c}(\mathbb{R}^{D})$. In this case, it is easy to see what this element will be:
+    \begin{equation}
+    \label{eq:count}
+        \nu^{\mathcal{L}}(f) = \displaystyle\sum_{y \in \mathcal{L}} f(y)
+    \end{equation}
+    where the sum is finite as $f$ has compact support.
+\end{remark}
+
+\begin{definition}
+    We call $\nu$ a counting measure on $\mathbb{R}^{D}$ if it is Radon and assigns an integer value to open balls $B \subset \mathbb{R}^{D}$. We say that $\nu$ is $r$-discrete is $\nu(B) \leq 1$ for balls $B$ of radius less than or equal to $r$. We say that $\nu$ is $R$-dense if $\nu(B) \geq 1$ for balls of radius greater than or equal to $R$. If $\nu$ is $r$-discrete and $R$-dense, we call it $(r, R)$-Delone.
+\end{definition}
+
+\noindent There is a clear $1$-to-$1$ correspondence between sets $\mathcal{L}$ and counting measures, and moreover, the properties of $r$-discreteness and $R$-density carry over exactly under this correspondence. Thus, we often will represent a system of atoms by a counting measure.
+
+If we let $\mathfrak{M}(\mathbb{R}^{D})$ denote the space of Radon measures on $\mathbb{R}^{D}$, we can endow it with the weak-$*$ topology: a sequence $\mu_n$ converges to $\mu$ if and only if $\mu_n(f) \rightarrow \mu(f)$ for any $f \in C_c(\mathcal{R}^{D})$. Then, closed sets are those which contain their limit points, and we have a topology.
+
+\begin{definition}
+    Given $a \in \mathbb{R}^{D}$, define the translation map $\tau^a : x \mapsto x + a$. Clearly, these maps form a group, and they act on $C_c(\mathbb{R}^{D})$ via $\tau^a f(x) = f(x - a)$ as
+    \begin{equation}
+    \tau^{a + b} f(x) = f(x - (a + b)) = (\tau^{a} \circ \tau^{b})f(x).
+    \end{equation}
+    Moreover, the translations act on $\mathfrak{M}(\mathbb{R}^{D})$ via $\tau^{a} \mu(f) = \mu(\tau^{-a} f)$, via noting that a counting measure can be represented as in Eq.~\eqref{eq:count} for some discrete $\mathcal{L}$.
+\end{definition}
+
+\begin{claim}
+    Let $QD(\mathbb{R}^{D})$ denote the set of counting measures in $\mathfrak{M}(\mathbb{R}^{D})$. This set is invariant under the action of $\tau^{a}$.
+\end{claim}
+\begin{proof}
+    Note that if $\nu$ is a counting measure, $\nu(f) = \sum_{y \in \mathcal{L}} f(y)$ for some $r$-discrete $\mathcal{L}$, so 
+    $$\tau^{a} \nu(f) = \nu(\tau^{-a} f) = \sum_{y \in \mathcal{L}} f(y + a) = \sum_{y \in \mathcal{L} + a} f(y)$$
+    where it is easy to see that $\mathcal{L} + a$ is $r$-discrete: if some ball $B_{r'}(s)$ of radius $r'$ less than or equal to $r$ contains $\ell + a$ and $\ell' + a$ for $\ell, \ell' \in \mathcal{L}$ and $\ell \neq \ell'$, then $B_{r'}(s - a)$ contains $\ell, \ell'$, contradicting the fact that $\mathcal{L}$ is $r$-discrete.
+\end{proof}
+
+\noindent Note that the above implies that each set $UD_r(\mathbb{R}^{D})$ of $r$-discrete counting measures (for fixed $r$) is individually invariant, a stronger result. It is equally easy to see that $\text{Del}_{r, R}(\mathbb{R}^{D})$, the set of $(r, R)$-Delone counting measures is invariant as well.
+
+\begin{claim}
+    Finite-type $\mathcal{L}$ will be sent by translation to finite-type sets.
+\end{claim}
+\begin{proof}
+    Translation doesn't change the set of relative displacements!
+\end{proof}
+
+\begin{definition}
+    Given some $r$-discrete $\mathcal{L}$, we define the \emph{hull} of $\mathcal{L}$ to be the dynamical systems $(\Omega, \mathbb{R}^{D}, \tau)$, where $\tau : (t, x) \mapsto \tau^{t}(x)$ and $\Omega$ is the closure of the orbit of counting measure $\nu^{\mathcal{L}}$ under the action of translation.
+\end{definition}
+
+\begin{remark}
+    It is possible to demonstrate that $UD_r(\mathbb{R}^{D})$ as well as $\text{Del}_{r, R}(\mathbb{R}^{D})$ are both closed and compact sets in the weak-$*$ topology on the space of measures. Equipped with this fact, note that the orbit of $\nu^{\mathcal{L}}$ will be contained in $UD_r(\mathbb{R}^{D})$ for some $r$, as $\mathcal{L}$ is $r$-discrete for some $r$, and we know that we have translation invariance under the action described above. Thus, the closure of this orbit must also be contained in $UD_r(\mathbb{R}^{D})$, and moreover, this orbit is compact, as it is a closed subset of a compact space.
+
+    It follows that given $\omega \in \Omega$, we know that $\omega$ will be a $r$-discrete measure. Thus, $\omega$ will describe an $r$-discrete set. In particular, we know that $\omega = \sum_{y \in \mathcal{L}_{\omega}} f(y)$ for some $r$-discrete $\mathcal{L}_{\omega}$.
+\end{remark}
+
+\begin{definition}
+    Given $\mathcal{L}$ and its hull $\Omega$, define the canonical transversal to be the subset $X \subset \Omega$ of $\omega$ such that $\mathcal{L}_{\omega}$ contains the origin.
+\end{definition}
+
+\section{Crossed products}
+
+Now that we have outlined some of the basic terminology related to the mathematical model of solids which we will make use of, we must understand the notion of a \emph{crossed product}, which will allow us to assign a $C^{*}$-algebra to the dynamical system $(\Omega, \mathbb{R}^{D}, \tau)$ discussed above.
+
+\begin{definition}[Representation]
+    Recall that a group representation of group $G$ on vector space $V$ is a group homomorphism  $\pi : G \rightarrow \text{GL}(V)$. A unitary representation is a group representation on Hilbert space $H$ such that $\pi(g)$ is unitary for each $g \in G$. Going forward, we will assume that all unitary representations we deal with are \emph{strongly continuous}, meaning that $G$ is a topological group (locally compact), and each map $g \mapsto \pi(g) v$ is norm-continuous for every $v \in H$.
+\end{definition}
+
+First, let $A$ be a $C^*$-algebra, and let $\alpha : G \rightarrow \text{Aut}(A)$ be a group action on $A$ by group $G$. We assume that $G$ is a locally compact topological group. Let us package together the triple $(G, A, \alpha)$. We then define a \emph{covariant representation} for the triple on Hilbert space $H$ to be a pair $(\pi, v)$ such that $\pi : A \rightarrow B(H)$ is a representation taking values in the \emph{bounded} operators on $H$, and $v : G \rightarrow U(H)$ is a unitary representation. In addition, the pair must satisfy the following condition:
+\begin{equation}
+    v(g) \pi(a) v(g)^{*} = \pi(\alpha_g(a))
+\end{equation}
+for all $g \in G$ and $a \in A$. The intuition behind this definition is clear: we want the action of the group to be represented via unitary conjugation in a way that is "compatible" with the operator representation of $a \in A$.
+
+\begin{example}[Quantum]
+   Here is an illuminating example. Suppose $(A, \sigma_t)$ is a $C^{*}$-dynamical system, then $\sigma : \mathbb{R} \rightarrow \text{Aut}(A)$ with $t \mapsto \sigma_t$ is a group action. In the context of quantum mechanics, the time-dynamics are often given by Heisenberg-picture evolution of observables, $\sigma_t(a) = e^{i h t} a e^{- i h t}$, where $h$ is self-adjoint, and $e^{iht}$ is thus unitary. In the case that $A = B(H)$, then $h$ self-adjoint in $B(H)$ immediately means that $e^{iht} \in U(H)$. Thus, setting $v(t) = e^{iht}$ and $\pi(a) = a$ immediately yields a covariant representation of $(\mathbb{R}, A, \sigma)$: clearly
+   \begin{equation}
+       v(t + s) = e^{i h (t + s)} = e^{iht} \circ e^{i h s} = v(t) \circ v(s) \ \ \ \text{and} \ \ \ \alpha(a \circ b) = \alpha(a) \circ \alpha(b)
+   \end{equation}
+   so these maps are homomorphisms, and thus valid representations.
+\end{example}
+
+\begin{remark}
+    We will assume that representations of $C^{*}$-algebras are $*$-representations going forward, meaning that $\pi(a^{*}) = \pi(a)^{*}$ (where we assume that this is a representation on a Hilbert space, so we have an involution in the codomain).
+\end{remark}
+
+\begin{definition}
+    Recall that a \emph{Haar measure} on locally compact topological group $G$ is a measure which is left-invariant, finite of compacts, outer regular on Borel sets, and inner regular on open sets. Up to multiplicative constant, Haar measure is unique.
+\end{definition}
+
+With this in mind, let $\mu$ be a fixed Haar-measure. Let $C_c(G, A, \alpha)$ be the algebra of compactly-supported continuous functions $f : G \rightarrow A$. The multiplication is defined using the Haar-measure, we take a "twisted convolution":
+\begin{equation}
+    (ab)(g) = \int_{G} a(h) \alpha_h( b(h^{-1} g)) d\mu(h).
+\end{equation}
+The involution is defined via
+\begin{equation}
+    a^{*}(g) = \Delta(g)^{-1} \alpha_g(a(g^{-1})^{*})
+\end{equation}
+where $\Delta$ is the \emph{modular function} associated with the group $G$. This function is defined via the following result:
+\begin{claim}
+   Given locally compact Hausdorff topological group $G$ with Haar-measure $\mu$, there exists a continuous homomorphism $\Delta : G \rightarrow \mathbb{R}^{+}$ such that for all $t \in G$ and all Borel subsets $S$, we have $\mu(S t) = \Delta(t^{-1}) \mu(S)$. In other words, we should have
+   \begin{equation}
+       \mu(St^{-1}) \mu(S)^{-1} = \Delta(t)
+   \end{equation}
+   for all $S$ such that $\mu(S) > 0$. To see that this holds, note that the function $\nu_t(S) = \mu(St)$ is a measure (for any $t$). Moreover, it is left-invariant, as $\nu_t(gS) = \mu(gSt) = \mu(St) = \nu_t(S)$. It follows by uniqueness of Haar-measure, up to scalar multiple, that $\mu(S) = \Delta(t) \nu_t(S)$ for some $\Delta(t)$ multiple. We then clearly have $\mu(S) = \Delta(t) \mu(St)$, so $\Delta(t)^{-1} \mu(S) = \mu(St)$.
+
+   Moreover, note that we have
+   \begin{equation}
+       \Delta(st)^{-1} \mu(S) = \mu(Sst) = \Delta(t)^{-1} \mu(Ss) = \Delta(t)^{-1} \Delta(s)^{-1} \mu(S)
+   \end{equation}
+   which implies that $\Delta(st) = \Delta(s) \Delta(t)$.In other words, $\Delta$ is a homomorphism.
+\end{claim}
+
+\begin{claim}
+    The involution defined above is in fact an involution
+\end{claim}
+\begin{proof}
+    Note that
+    \begin{align}
+        (a^{*})^{*}(g) = \Delta(g)^{-1} \alpha_g(a^{*}(g^{-1})^{*}) &= \Delta(g)^{-1} \alpha_g \left( \left[ \Delta(g^{-1})^{-1} \alpha_{g^{-1}}(a(g)^{*}) \right]^{*}\right)
+        \\ &= \Delta(g)^{-1} \Delta(g) (\alpha_{g} \circ \alpha_{g^{-1}})(a(g)) = a(g)
+    \end{align}
+    and we are done.
+\end{proof}
+
+With this structure, we know that $C_c(G, A, \alpha)$ is a $*$-algebra. To define a norm, we let
+\begin{equation}
+    ||a|| = \int_{G} ||a(g)|| d\mu(g)
+\end{equation}
+When we combine this norm with the involution defined above, and then take the completion of $C_c(G, A, \alpha)$, which we denote $L^1(G, A, \alpha)$, we obtain a Banach $*$-algebra.
+
+Having discussed representations of the original algebra $A$, let us now consider a representation of $C_c(G, A, \alpha)$. Let $(\pi, v)$ be a covariant representation of $(G, A, \alpha)$ on $H$, 
+then we define \emph{the integrated form} of $(v, \pi)$ to be the representation $\sigma$ of $C_c(G, A, \alpha)$ on $H$ sending elements of $C_c(G, A, \alpha)$ into $B(H)$ such that
+\begin{equation}
+    \sigma(a)\xi = \int_{G} \pi(a(g)) v(g) \xi 
+\end{equation}
+From here, we \emph{extend} this representation to a representation for the completion, $L^1(G, A, \alpha)$ with repsect to the norm given above. Given $(G, A, \alpha)$, we define 
+the \emph{universal representation} to be the direct sum of all non-degenerate representations of $L^1(G, A, \alpha)$. We denote 
+this map $\sigma$ We then define the \emph{crossed product} $A \rtimes_{\alpha} G$ to be the norm closure of $\sigma(C_c(G, A, \alpha))$. Note that if we are given a non-degenerate covariant 
+representation of $(G, A, \alpha)$, we automatically get a representation for the crossed product: we just take the integrated form, which is a representation of $C_c(G, A, \alpha)$. Given 
+element in the image of universal representation, we restrict to a direct summand, to get the image of $C_c(G, A, \alpha)$ under the integrated form (as this is a representation in the direct sum).
+
+\hhrulefill
+
+\section{The Brillouin zone and non-commutative Brillouin zone}
+
+Now that we have defined the crossed product, we are able to combine the machinery developed in the first section of this essay with this construction in order 
+to formulate a non-commutative geometric theory of aperiodic solids.
+
+To be more specific, recall that the \emph{hull} of an $r$-discrete set $\mathcal{L}$ naturally pairs with action under translation to form a dynamical system $(\Omega, \mathbb{R}^{D}, \tau)$. Given a 
+dynamical system, as was discussed in the previous section, we are able to form a natural corresponding $C^{*}$-algebra: the crossed product $C(\Omega) \rtimes \mathbb{R}^{D}$. Note that 
+we already showed that $\Omega$ is compact in the first section, so $C_c(\Omega) = C(\Omega)$ in this case.
+\newline
+
+From here, we define the \emph{non-commutative Brillouin zone} to be the topological manifold associate with the $C^{*}$-algebra $\Omega \rtimes \mathbb{R}^{D}$, where we assume the influence 
+of no external magnetic field. It is via understanding the translation symmetry of the underlying system as being engrained in the $C^{*}$-algebra describing the system's state space 
+that we are able to arrive at non-trivial facts about the system's dynamics (\emph{most of these results are incredibly complex, and I have realized lie very far outside my current capabilities 
+of understanding}).
+
+\hhrulefill
+
+\section{A few thoughts on the index map}
+
+\noindent \emph{This is a completely different topic than the rest of this essay, but I was also thinking about the index map in the last month of the course, so 
+here are a few notes on it.}
+\newline
+
+The main idea with the index map is to construct a bridge between short exact sequence of $K_0$ and $K_1$ -groups.
+In particular, we begin with a short exact sequence of algebras:
+\begin{equation}
+0 \longrightarrow I \xrightarrow[]{\varphi} A \xrightarrow[]{\psi} B \longrightarrow 0
+\end{equation}
+Because $K_0$ and $K_1$ are covariant functors, we get analogous short exact sequences when we map everything under either functor:
+\begin{equation}
+0 \longrightarrow K_0(I) \xrightarrow[]{K_0(\varphi)} K_0(A) \xrightarrow[]{K_0(\psi)} K_0(B) \longrightarrow 0
+\end{equation}
+as well as
+\begin{equation}
+0 \longrightarrow K_1(I) \xrightarrow[]{K_1(\varphi)} K_1(A) \xrightarrow[]{K_1(\psi)} K_1(B) \longrightarrow 0.
+\end{equation}
+We desire an index map $\delta_1 : K_1(B) \rightarrow K_0(I)$, which pastes together the two short exact sequence into a
+single sequence of six different groups: we cycle through all the $K_1$ groups, then map under $\delta_1$ and cycle through all
+of the $K_0$ groups.
+
+With this, let us recall what $K_1(B)$ and $K_0(I)$ actually are. The $K_0$ -group, in the case that the underlying algebra is not necessarily unital
+is slightly more complicated to construct than in the unital case: $K_0(I)$ is precisely $\text{Ker}(K_0(\pi))$ where $\pi$ is the scalar projection
+associated with the short exact sequence
+\begin{equation}
+0 \longrightarrow I \xrightarrow[]{\text{inclusion}} \widetilde{I} \xrightarrow[]{\pi} \mathbb{C} \longrightarrow 0
+\end{equation}
+where $\widetilde{I}$ is the unitization (i.e. the algebra of formal sums $a + \alpha 1$ for $a \in I$ and $\alpha \in \mathbb{C}$ with arithmetic defined in the obvious way).
+In the case of $K_0(\pi)$, $K_0$ is the functor as it is defined in the unital sense (I won't review this here, as this definition of lengthy and is outlined in Chapters 2-3 of Rordam).
+It follows that for some $[(p_{ij} + \alpha_{ij} 1)_{ij}]_0 \in K_0(\widetilde{I})$ where $(p_{ij} + \alpha_{ij} 1)_{ij} \in \mathcal{P}_{\infty}(\widetilde{I})$, we have
+\begin{equation}
+K_0(\pi)([(p_{ij} + \alpha_{ij} 1)_{ij}]_0) = [(\alpha_{ij})_{ij}]_0 \in K_0(\mathbb{C}) = \displaystyle\sum_{i} \alpha_{ii} \in \mathbb{Z}
+\end{equation}
+where $K_0(\text{Tr})([p]_0) = \text{Tr}(p)$ for $p \in \mathcal{P}_{\infty}(\mathbb{C})$ is a group isomorphism. Indeed,
+since $(p_{ij} + \alpha_{ij} 1)_{ij}$ is necessarily a projection, it is easy to check that $(\alpha_{ij})_{ij}^2 = (\alpha_{ij})_{ij}$, so $\alpha$ is a projection matrix with entries in $\mathbb{C}$.
+
+A generic element of $K_0(\widetilde{I})$ is of the form $[p + \alpha 1]_0 - [q + \beta 1]_0$ where $p + \alpha 1, q + \beta 1 \in \mathcal{P}_{\infty}(\widetilde{I})$. Thus,
+it follows that:
+\begin{equation}
+K_0(I) = \text{Ker}(K_0(\pi)) = \left\{ [p + \alpha 1]_0 - [q + \beta 1]_0 \ \big| \ p + \alpha 1, q + \beta 1 \in \mathcal{P}_{\infty}(\widetilde{I}), \ \text{where} \ \alpha, \beta = 0 \ \text{or} \ \alpha, \beta = 1 \right\}
+\end{equation}
+An equivalent definition, as is outlined is Rordam is the following:
+\begin{equation}
+K_0(I) = \left\{[p]_0 - [s(p)]_0 \ \big| \ p \in \mathcal{P}_{\infty}(\widetilde{I})\right\}
+\end{equation}
+where $s = \text{inclusion} \circ \pi$ is a map from $\widetilde{I}$ to itself: it strips off the scalar part of some element of the unitization.
+(this proof is also in Rordam). Having reviewed what $K_0(I)$ means, let us turn our attention to $K_1(B)$. This is somewhat easier: $K_1(B) = \mathcal{U}_{\infty}(\widetilde{B}) / \sim_1$,
+where $\mathcal{U}_{\infty}(\widetilde{B})$ is the space of all unitaries in each of the matrix algebras over $\widetilde{B}$, and $\sim_1$ is homotopy equivalence (under the assumption
+we are allowed to embed unitaries $u$ and $v$ as blocks in larger matrix $u \oplus \mathbb{I}$ and $v \oplus \mathbb{I}$). We also have,
+\begin{equation}
+K_1(B) = \left\{[u]_1 \ \big| \ u \in \mathcal{U}_{\infty}(\widetilde{B}) \right\}
+\end{equation}
+which is slightly nicer behaviour than the $K_0$ -group.
+
+As is usually the case when constructing maps between "quotients", we'll have to define a map between the un-quotiented spaces, and
+then hope that the map is well-defined under the quotient. In the case of $\delta_1$, we have to achieve a map of the form
+\begin{equation}
+\delta_1 : [u]_1 \mapsto [p]_0 - [s(p)]_0.
+\end{equation}
+To do so, we will try to construct a mapping to $p \in \mathcal{P}_{\infty}(\widetilde{I})$, from some $u \in \mathcal{U}_{\infty}(\widetilde{B})$,
+and then check that this map lifts to a well-defined $\delta_1$. Let us be more specific: starting with some $u \in \mathcal{U}_{n}(\widetilde{B})$,
+we can show that there exists $v \in \mathcal{U}_{2n}(\widetilde{A})$ and $p \in \mathcal{P}_{2n}(\widetilde{I})$ such that $\widetilde{\psi}(v) = \text{diag}(u, u^{*})$,
+$\widetilde{\varphi}(p) = v (\mathbb{I}_n \oplus 0_n) v^{*}$, and $s(p) = \mathbb{I}_n \oplus 0_n$. Recall that $\psi$ and $\varphi$ are the maps associated with the short exact sequence.
+
+Moreover, if $w$ and $q$ are chosen analogously to $u$ and $p$,
+and satisfy the first two equations, then automatically, $s(q) = \mathbb{I}_n \oplus 0_n$ and $p \sim_u q$ (i.e. they are unitary equivalent). This uniqueness result (modulo a certain equivalence)
+will allow us to actually show that the maps we construct are well-defined.
+
+The proof of this result is straightforward: we simply use Lemma 2.1.7 of Rordam's book (which itself relies on a bunch of other lemmas about equivalences of unitaries),
+which immediately gives the element $v \in \mathcal{U}_{2n}(\widetilde{A})$ that we want. Suppose we are able to find the desired $p$, then it is obvious that $s(p) = \mathbb{I}_n \oplus 0_n$,
+as
+\begin{equation}
+\widetilde{\varphi}(p) = \widetilde{\varphi}((a)_{ij} + (\alpha 1)_{ij}) = \varphi((a)_{ij}) + (\alpha 1)_{ij} = v (\mathbb{I}_n \oplus 0_n) v^{*}
+\end{equation}
+so $s(p) = s(\widetilde{\varphi}(p)) = s(v (\mathbb{I}_n \oplus 0_n) v^{*})$.
+
+
+\end{document}
