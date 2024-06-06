@@ -1,0 +1,11 @@
+\contentsline {title}{Rough notes}{1}{section*.1}%
+\tocdepth@munge 
+\tocdepth@restore 
+\contentsline {section}{\numberline {I}Basic constructs}{1}{section.1}%
+\contentsline {subsection}{\numberline {A}Lie groupoids and Lie algebroids}{1}{subsection.1.1}%
+\contentsline {subsection}{\numberline {B}Some categorical constructions}{2}{subsection.1.2}%
+\contentsline {subsection}{\numberline {C}Representations up to homotopy preliminaries}{3}{subsection.1.3}%
+\contentsline {section}{\numberline {II}Representations up to homotopy}{5}{section.2}%
+\contentsline {section}{\numberline {III}Chen's iterated integral and the Igusa map}{5}{section.3}%
+\contentsline {section}{\numberline {IV}Resources}{6}{section.4}%
+\contentsline {section}{\numberline {V}Questions}{6}{section.5}%

@@ -1,0 +1,15 @@
+\contentsline {title}{A basic course in differential geometry}{1}{section*.1}%
+\tocdepth@munge 
+\tocdepth@restore 
+\contentsline {section}{\numberline {I}Introduction}{1}{section.1}%
+\contentsline {section}{\numberline {II}Basics of smooth manifolds}{1}{section.2}%
+\contentsline {subsection}{\numberline {A}Mappings on manifolds}{2}{subsection.2.1}%
+\contentsline {section}{\numberline {III}The tangent space}{2}{section.3}%
+\contentsline {subsection}{\numberline {A}Basics}{2}{subsection.3.1}%
+\contentsline {subsection}{\numberline {B}The differential map}{5}{subsection.3.2}%
+\contentsline {subsection}{\numberline {C}The tangent bundle}{8}{subsection.3.3}%
+\contentsline {section}{\numberline {IV}Vector fields, Lie groups, and the Lie bracket}{10}{section.4}%
+\contentsline {subsection}{\numberline {A}Vector fields}{10}{subsection.4.1}%
+\contentsline {subsection}{\numberline {B}Lie groups and the Lie bracket}{11}{subsection.4.2}%
+\contentsline {section}{\numberline {V}Flows on a manifold}{12}{section.5}%
+\contentsline {section}{\numberline {VI}Submersions and imersions}{12}{section.6}%

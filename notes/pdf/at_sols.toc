@@ -1,0 +1,12 @@
+\contentsline {title}{Algebraic topology: problems and solutions}{1}{section*.1}%
+\tocdepth@munge 
+\tocdepth@restore 
+\contentsline {section}{\numberline {I}Chapter 0}{1}{section.1}%
+\contentsline {section}{\numberline {II}Chapter 1.1}{3}{section.2}%
+\contentsline {section}{\numberline {III}Chapter 1.2}{4}{section.3}%
+\contentsline {section}{\numberline {IV}Chapter 1.3}{4}{section.4}%
+\contentsline {section}{\numberline {V}Chapter 2.1}{5}{section.5}%
+\contentsline {section}{\numberline {VI}Relative homology review}{5}{section.6}%
+\contentsline {section}{\numberline {VII}Lifting correspondence and covering space review}{5}{section.7}%
+\contentsline {section}{\numberline {VIII}Seifert van-Kampen review}{5}{section.8}%
+\contentsline {section}{\numberline {IX}Fundamental groups of surfaces}{6}{section.9}%

@@ -1,0 +1,403 @@
+\documentclass[aps,pra,showpacs,notitlepage,onecolumn,superscriptaddress,nofootinbib]{revtex4-1}
+\usepackage[utf8]{inputenc}
+\usepackage[tmargin=1in, bmargin=1.25in, lmargin=1.5in, rmargin=1.5in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{datetime}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{import}
+\usepackage{mathtools}
+\usepackage{thmtools,thm-restate}
+
+
+% package for commutative diagrams
+% \usepackage{tikz-cd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{crimson}{RGB}{186,0,44}
+\definecolor{moss}{RGB}{0, 186, 111}
+\newcommand{\pop}[1]{\textcolor{crimson}{#1}}
+\newcommand{\zcom}[1]{\noindent\textcolor{crimson}{(Z): #1}}
+\newcommand{\jcom}[1]{\noindent\textcolor{moss}{(J): #1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\pqeq}{\succcurlyeq}
+\newcommand{\pleq}{\preccurlyeq}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+    colorlinks,
+    linkcolor={crimson},
+    citecolor={crimson},
+    urlcolor={crimson}
+}
+
+\usepackage{qcircuit}
+\usepackage{comment}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{reminder}{Reminder}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{answer}{Answer}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{claim}{Claim}[section]
+\newtheorem{proposition}{Proposition}[section]
+
+\usepackage{geometry}
+\geometry{
+  left=22mm,
+  right=22mm,
+  top=20mm,
+}
+
+\newcommand{\hhrulefill}{\hspace{-1.5em} \hrulefill}
+\renewcommand{\baselinestretch}{1.1} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{unsrt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{Rough notes}
+\date{\today}
+\maketitle
+
+\tableofcontents
+
+\section{Basic constructs}
+
+\noindent We begin with some basic constructs utilized throughout the notes.
+
+\subsection{Lie groupoids and Lie algebroids}
+
+\begin{definition}[Groupoid]
+    A category in which all arrows are reversible.
+\end{definition}
+
+\begin{definition}[Lie groupoid]
+    A groupoids in which the arrows form a smooth manifold, the objects are an embedded submanifold under the map sending each object to its identity arrow, and the source and target maps
+    are surjective submersions.
+\end{definition}
+
+\begin{definition}[Lie algebroid]
+A vector bundle $\pi_A : A \rightarrow M$ over a smooth manifold $M$, equipped with a bracket $[\cdot, \cdot]$ on the sections $\Gamma(A)$ and an anchor map $\rho : A \rightarrow TM$. The 
+anchor map is a vector bundle morphism, meaning that $\pi_A = \pi \circ \rho$. Moreover, the bracket must satisfy a Leibniz rule:
+\begin{equation}
+    [X, f Y] = \mathcal{L}_{\rho(X)}(f) \cdot Y + f [X, Y]
+\end{equation}
+where $\mathcal{L}_{\rho(X)}$ is the Lie derivative with respect to the vector field $\rho(X) \in \mathfrak{X}(M)$.
+\end{definition}
+
+\begin{remark}
+    I very much like Abad and Crainic's assertion in their paper \emph{Representations up to homotopy of Lie algebroids} that Lie algebroids are to be thought of as ``generalized tangent bundles associated 
+    to various geometric situations''.
+\end{remark}
+
+\begin{example}[Tangent bundle]
+    The most obvious example of a Lie algebroid is $TM$ itself. The anchor is the identity map and the bracket is the standard Lie bracket between smooth vector fields $X, Y \in \mathfrak{X}(M)$. Indeed,
+    \begin{equation}
+        [X, fY] = \mathcal{L}_{X}(fY) = X(f) \cdot Y + f \mathcal{L}_X(Y) = X(f) \cdot Y + f [X, Y]
+    \end{equation}
+    as required.
+\end{example}
+
+\begin{example}[Lie algebra]
+    One should think of a Lie algebroid as a generalized Lie algebra, in which the vector space is replaced with a vector bundle over a base space and 
+    the bracket of vectors is replaced by a bracket of sections of the bundle. 
+    
+    It is in this sense that a Lie algebra is a Lie algebroid: if $\mathfrak{g}$
+    is a Lie algebra, take $A = \mathfrak{g} \times M$ for some $M$, let $\pi : A \rightarrow M$ be the projection, let the anchor be trivial, $\rho(e) = 0_{\pi(e)} \in T_{\pi(e)}M$ for all $e$, 
+and let the bracket between sections be defined as $[X, Y](p) = [X(p), Y(p)]_{\mathfrak{g}}$, where $[\cdot, \cdot]_{\mathfrak{g}}$ is the bracket of the Lie algebra. $A$ is then a Lie algebroid.
+\end{example}
+
+\noindent Much like the case of Lie groups/Lie algebras, if given a Lie groupoid $G$, we can product a Lie algebroid, $\text{Lie}(G)$. This construction 
+is somewhat analogous to the Lie group to Lie algebra map, where we take the tangent space at the identity. For a Lie groupoid, each $p \in M$ (the base manifold of objects)
+has an associated identity in $G$ (the self-referential arrow), $e_p$. \pop{TODO: revisit, stress that the main difficulty comes from constructing the bracket}
+
+\subsection{Some categorical constructions}
+
+\noindent Categorical language is required for many of the results we wish to discuss. We review briefly.
+
+\begin{definition}[Simplicial sets, face and degeneracy maps]
+    Let $\Delta$ be the category of sets $[n] = \{0, \dots, n\}$ for $n \geq 0$ (the simplex category). The morphisms are non-order-decreasing set maps. A simplicial set is a contravariant 
+    functor $X : \Delta \rightarrow \texttt{Set}$. We denote $X([n])$ by $X_n$. Corresponding to simplicial set $X$, we have face maps for each image $X_n$, defined by $d_i : X_n \rightarrow X_{n - 1}$ 
+    for $i$ from $0$ to $n$. In particular, we let $\delta_i : [n-1] \rightarrow [n]$ be the unique non-decreasing map which 
+    doesn't hit $i \in [n]$. We then let $d_i = X(\delta_i)$. Similarly, if we let $\sigma_i : [n + 1] \rightarrow [n]$ be the unique non-decreasing map hitting $i$ twice and let 
+    $s_i = X(\sigma_i)$ be a map from $X_{n}$ to $X_{n+1}$, we call these the degeneracy maps.
+\end{definition}
+
+\begin{remark}
+    The face and degeneracy maps will satisfy certain compatibility conditions which follow immediately from the definitions and the contravariance of $X$:
+    \begin{enumerate}
+        \item $d_i d_j = d_{j - 1} d_i$ for $i < j$.
+        \item $d_i s_j = s_{j - 1} d_i$ for $i < j$.
+        \item $d_i s_j = \text{id}$ if $i = j$ or $i = j + 1$.
+        \item $d_i s_j = s_j d_{i - 1}$ for $i > j + 1$.
+        \item $s_i s_j = s_{j + 1} s_i$ for $i \leq j$.
+    \end{enumerate}
+    It is in fact true that if given a collection of sets $X_n$ and maps $d_n : X_n \rightarrow X_{n - 1}$ and $s_n : X_n \rightarrow X_{n + 1}$ which satisfy the above conditions, 
+    then there is a unique corresponding simplicial set.
+\end{remark}
+
+\begin{definition}[Nerve of a category]
+    Let $C$ be a small category. The nerve of $C$, $NC$, is a simplicial set which is constructed as follows. Let $X_0 = \text{ob}(C)$, $X_1 = \text{hom}(C)$, and more generally, $X_n$ is the collection of all $n$-fold compositions 
+    of arrows in the category. Each of the $X_n$ is an object of $\texttt{Set}$. We define maps $d_i$ and $s_i$ on each $X_n$ as follows: $d_i$ takes a chain of $n$ arrows, $A_0 \rightarrow \cdots \rightarrow A_n$ and composes the 
+    arrows going in and out of $A_i$ into a single arrow, leaving a chain of $n - 1$ arrows. $s_i$ takes $A_0 \rightarrow \cdots \rightarrow A_n$ and adds a self-referential arrow at the $i$-th object, yielding a chain of $n + 1$ arrows.
+    One can easily verify that these maps satisfy the conditions of the previous remark, so we let $NC$ be the unique simplicial set having $d_i$ and $s_i$ as face and degeneracy maps.
+
+    Why do we do this? Because simplicial sets have a nice associated homotopy theory, and our hope is that we can say things about $C$ by looking at homotopy of $NC$ (as it turns out, we can!).
+\end{definition}
+
+\begin{definition}[Natural transformation]
+    A natural transformation between functors $F, G : C \rightarrow D$ (both covariant or contravariant) is a family of morphisms $\eta_X : F(X) \rightarrow G(X)$ for all $X \in C$, such that if $f : X \rightarrow Y$ is in $\text{hom}(C)$, 
+    then $\eta_Y \circ F(f) = G(f) \circ \eta_X$ for covariant functors and $\eta_X \circ F(f) = G(f) \circ \eta_Y$ for contravariant functors.
+\end{definition}
+
+\subsection{Representations up to homotopy preliminaries}
+
+\noindent We will soon begin our discussion of representations up to homotopy. Let us build to this by describing rerpesentations in a series of increasing generality.
+
+\begin{quote}
+    \emph{Categories of representations are like how you can't see the face of God, you can only see Him through all of His actions.} 
+\end{quote}
+
+\noindent If you have a group or an algebra, its category of representations are all the ways that it can act on different things (vector spaces).
+
+\begin{definition}[Lie algebra representation]
+    Let $A$ be a Lie algebra with bracket $[\cdot, \cdot]_{A}$. A Lie algebra representation on vector space $V$ is the pair $(V, \rho)$ where $\rho : A \rightarrow \text{End}(V)$ is a linear map such that 
+    \begin{equation}
+        \label{eq:rho}
+    \rho([g, h]_A) = [\rho(g), \rho(h)]
+    \end{equation}
+    for all $g, h \in A$ and $[\cdot, \cdot]$ is the standard commutator of linear maps on $V$.
+\end{definition}
+
+\noindent Now, as an interlude, let us say some things about connections and parallel transport. This will motivate the definition of a Lie algebroid representation.
+
+\begin{definition}[Connection]
+    Let $A \rightarrow M$ be a Lie algebroid, let $E$ be a vector bundle over $M$. An $E$-connection relative to $A$ is an $\mathbb{R}$-bilinear map $\nabla : \Gamma(A) \times \Gamma(E) \rightarrow \Gamma(E)$, $(a, e) \mapsto \nabla_a e$
+    such that $\nabla_{fa} e = f \nabla_{a} e$ for all $f \in C^{\infty}(M)$, and
+    \begin{equation}
+        \nabla_{a} fe = \mathcal{L}_{\rho(a)}(f) \cdot e + f \nabla_{a} e
+    \end{equation}
+    where $\rho$ is the anchor of $A$. A connection is said to be flat if $\nabla_{[a, b]} = [\nabla_a, \nabla_b]$. Observe that fixing $a \in \Gamma(A)$, $\nabla_a$ is a linear map from $\Gamma(E)$ to itself satisfying the Leibniz 
+    rule of the above formula. In this sense, the flatness condition is very much a generalization of Eq.~\eqref{eq:rho} in the definition of a Lie algebra representation.
+\end{definition}
+
+\begin{example}
+    In the case that $A = TM$, we recover the definition of a connection on smooth manifold $M$.
+\end{example}
+
+\begin{example}
+    Suppose $A = \mathfrak{g} \times M$ for some Lie algebra $\mathfrak{g}$. Suppose $(V, \rho)$ is a Lie algebra representation. Let $E = V \times M$ be the trivial bundle. Define $\nabla : \Gamma(A) \times \Gamma(E) \rightarrow \Gamma(E)$
+    as $\nabla_a e = \rho(a) \cdot e$. Clearly, this map is bilinear, and is $C^{\infty}(M)$-linear in $a$ and $e$. It follows since $\rho = 0$ that the required conditions are satisfied and $\nabla$ defined directly from $\rho$ is a connection. 
+    In fact, it is a flat connection, as
+    \begin{equation}
+        \nabla_{[a, b]} = \rho([a, b]) = [\rho(a), \rho(b)] = [\nabla_a, \nabla_b].
+    \end{equation}
+\end{example}
+
+\noindent A connection gives us the machinery required to talk about parallel transport and holonomy in a vector bundle. We begin by restricting our attention to connections on $TM$. In particular, 
+given some $E$-connection $\nabla$ on $TM$, suppose $\gamma$ is a path in $M$. Let $E_{\gamma(0)}$ and $E_{\gamma(1)}$ denote the fibres over the endpoints. Our goal is to define an isomorphism 
+between the two fibres.
+
+\begin{definition}
+We say that a section $\sigma \in \Gamma(E)$ is flat relative to $\nabla$ along the path $\gamma$ if $\nabla_{\dot{\gamma}(t)}(\sigma)(\gamma(t)) = 0$ for all $t$.
+\end{definition}
+
+\begin{claim}
+    \label{claim:unique}
+    Given $\nabla$ and curve $\gamma$, there exists a unique flat section $\sigma \in \Gamma(E)$ relative to $\nabla$ along $\gamma$.
+\end{claim}
+
+\noindent We need a local form for $\nabla$:
+
+\begin{remark}
+    \pop{TODO: Should probably revisit and make this explanation a bit more clear/sequential}
+    Let $\nabla$ be an $E$-connection (where we assume $E$ to be an $n$-dimensional real vector bundle) on $TM$. Let $(U_{\alpha}, \varphi_{\alpha})$ be the local trivialization of $E$, so $\varphi_{\alpha} : \pi^{-1}(U_{\alpha}) \rightarrow U_{\alpha} \times \mathbb{R}^{n}$ 
+    is a homeomorphism. Then if $\sigma \in \Gamma(E)$, we have $\varphi_{\alpha} \circ \sigma|_{U_{\alpha}} : U_{\alpha} \rightarrow U_{\alpha} \times \mathbb{R}^{n}$ is well-defined, and is a section of the trivial bundle $U_{\alpha} \times \mathbb{R}^{n}$ over $U_{\alpha}$, as
+    \begin{equation}
+        \text{proj} \circ (\varphi_{\alpha} \circ \sigma|_{U_{\alpha}}) = \pi \circ \varphi^{-1}_{\alpha} \circ \varphi_{\alpha} \circ \sigma|_{U_{\alpha}} = \pi \circ \sigma|_{U_{\alpha}} = \text{id}|_{U_{\alpha}}.
+    \end{equation}
+    It is equally easy to show that if $\sigma \in \Gamma(U_{\alpha} \times \mathbb{R})$, then $\varphi_{\alpha}^{-1} \circ \sigma$ is in $\Gamma(\pi^{-1}(U_{\alpha}))$. 
+    Let us consider for some fixed $v \in \mathfrak{X}(M)$ the connection relative to $v$ on the trivial bundle, $\nabla_{v}|_{U_{\alpha}} \circ \varphi_{\alpha}^{-1}$. Note that $\nabla_v$ is defined 
+    on $\Gamma(E)$, the global sections. However, note that we can define a smooth partition of unity vanishing outside $U_{\alpha}$, implying we may extend any $\sigma \in \Gamma(\pi^{-1}(U_{\alpha}))$ 
+    to a global section $\widetilde{\sigma}$. In addition, we may prove that $\nabla_v$ is a local operation: if $\sigma$ and $\sigma'$ are in $\Gamma(E)$ and are the same on a neighbourhood $U$, then for $p \in U$, there 
+    is a neighbourhood $V$ of $p$, with $p \in V \subset U$ such that $\nabla_v(\sigma)(p) = \nabla_v(\sigma')(p)$. To prove this, note that since $M$ is a smooth manifold, we can always take $V$ to be a coordinate ball 
+    with closure inside $U$. We let $\chi$ be a smooth bump function equal to $1$ on $\overline{V}$ and vanishing outside $U$. We have $\chi \sigma = \chi \sigma'$. Then, for any $q \in V$,
+    \begin{equation}
+        \nabla_{v}(\chi \sigma)(q) = \mathcal{L}_v(\chi)(q) \cdot \sigma(q) + \nabla_v(\sigma)(q)
+    \end{equation}
+    as well as
+    \begin{equation}
+        \nabla_{v}(\chi \sigma')(q) = \mathcal{L}_v(\chi)(q) \cdot \sigma(q) + \nabla_v(\sigma)(q)
+    \end{equation}
+    which implies that $\nabla_v(\sigma)(q) = \nabla_v(\sigma')(q)$. It follows that $\nabla_v|_U$ is well-defined, and can easily be seen to be a connection on $\Gamma(\pi^{-1}(U))$.
+
+    The map $\nabla_v|_{U} \circ \varphi^{-1}$ is from $\Gamma(U \times \mathbb{R}^n)$ to $\Gamma(U)$. Note that any $\sigma \in \Gamma(U \times \mathbb{R}^n)$ is necessarily of the 
+    form $p \mapsto (f_1(p), \dots, f_n(p)) = f_1(p) e_1 + \cdots + f_n(p) e_n$. From linearity, we only need to know the action of $\nabla_v \circ \varphi^{-1}$ on $f_k \cdot e_k$.
+    Of course,
+    \begin{equation}
+        (\varphi^{-1} \circ (f_k e_k))(p) = \varphi^{-1}(p, f_k(p) e_k) = f_k(p) \varphi^{-1}(p, e_k)
+    \end{equation}
+    so that $\varphi^{-1} \circ f_k e_k = f_k \cdot \varphi^{-1}(\cdot, e_k)$. It follows that 
+    \begin{equation}
+        (\nabla_v|_U \circ \varphi^{-1})(f_k e_k) = \nabla_v(f_k \cdot \varphi^{-1}(\cdot, e_k)) = \mathcal{L}_v(f_k) \cdot \varphi^{-1}(\cdot, e_k) + f_k \cdot \nabla_v \varphi^{-1}(\cdot, e_k)
+    \end{equation}
+    We define $A_{jk}$ by
+    \begin{equation}
+        \nabla_v \varphi^{-1}(\cdot, e_j)(p) = \sum_{k} A_{jk}(p) \varphi^{-1}(p, e_k)
+    \end{equation}
+    It follows immediately that we can write $\nabla_v \circ \varphi^{-1}$ as $\mathcal{L}_v + A$, where we take the Lie derivative of the components of $\sigma$, and $A$ is a linear function depending on $p$. The 
+    condition of flatness along some curve $\gamma$ immediately reduces, locally, to solving a linear ODE. Local existence and uniqueness of solutions to ODEs of this form gives us the existence of uniqueness of a 
+    flat section \pop{TODO: elaborate}.
+\end{remark}
+
+\begin{definition}[Parallel transport operation]
+We define the parallel transport operation of $\nabla$ along $\gamma$ to be the isomorphism between $E_{\gamma(0)}$ and $E_{\gamma(1)}$ induced by the flat section. \pop{TODO: prove this is an isomorphism}
+\end{definition}
+
+\noindent Now, let us consider the added condition that $\nabla$ is a flat connection.
+
+\begin{claim}
+    If $\nabla$ is a flat connection, then $P_{\gamma} = P_{\gamma'}$ for $\gamma$ and $\gamma'$ which are path-homotopic.
+\end{claim}
+
+\begin{proof}
+    \pop{TODO: Spend some time trying to fill in this proof, seems probably of non-trivial difficulty.}
+\end{proof}
+
+\begin{definition}[Lie algebroid representation]
+    We replace $(V, \rho)$ with $(E, \nabla)$, where $E$ is a vector bundle over $M$, the base manifold of the Lie algebroid $A \rightarrow M$, and $\nabla$ is a flat connection.
+\end{definition}
+
+\begin{remark}
+    Just as a Lie algebra representation gives us a map from the Lie algebra to operators on some vector space, the Lie algebroid representation gives a map $\nabla$ which 
+    takes a section $\Gamma(A)$ and induces a map from $\Gamma(E)$ to itself. Moreover, such a map induces isomorphisms between all fibres of the vector bundle $E$ via parallel transport.
+\end{remark}
+
+\section{Representations up to homotopy}
+
+\noindent Now, let us begin our discussion of representation up to homotopy.
+
+\begin{remark}
+    Again drawing from Abad and Crainic, we note the main idea of representation up to homotopy: \emph{``the idea is to represent
+    Lie algebroids in cochain complexes of vector bundles, rather than in vector bundles''}.
+\end{remark}
+
+Note that given a Lie algebroid $A$, since it is a vector bundle, there is an associated De Rham complex $\Omega^{\bullet}(A) = \Gamma(\wedge^{\bullet} A^{*})$ where 
+the differential operator $d_A : \Omega^{k}(A) \rightarrow \Omega^{k + 1}(A)$ defined by the Koszul formula
+\begin{align}
+    d_A \omega(\alpha_1, \dots, \alpha_{k + 1}) &= \sum_{i < j} (-1)^{i + j} \omega([\alpha_i, \alpha_j]_A, \dots, \widehat{\alpha_i}, \dots, \widehat{\alpha_j}, \dots, \alpha_{k + 1}) 
+    \\ &+ \sum_{i} (-1)^{i} \mathcal{L}_{\rho(\alpha_i)} \omega(\alpha_1, \dots, \widehat{\alpha}_i, \dots, \alpha_{k + 1})
+\end{align}
+where each $\alpha_k \in \Gamma(A)$. One can easily check that in the case $A = TM$, $d_A$ is the standard exterior derivative and we are left with the standard De Rham cohomology.
+
+\begin{remark}
+Note that this formula is actually a valid definition of a differential form, which takes elements of the vector bundle as arguments (not necessarily vector fields). One can 
+show that given $\alpha_1, \dots, \alpha_{k + 1}$ in some fibre $A_p$, then any extension to smooth vector fields $\widetilde{\alpha}_1, \dots, \widetilde{\alpha}_{k + 1}$ will yield the same value $d_A \omega(\widetilde{\alpha}_1, \dots, \widetilde{\alpha}_{k + 1})_p$.
+\end{remark}
+
+Let us also make note of the fact that if $\nabla$ is an $E$-connection for $A$, then we can define \emph{another} operator $d_{\nabla}$ on $\Omega^{\bullet}(A, E) = \Gamma(\wedge^{\bullet} A^{*} \otimes E)$ given 
+by a similar formula
+\begin{align}
+    d_{\nabla} \omega(\alpha_1, \dots, \alpha_{k + 1}) &= \sum_{i < j} (-1)^{i + j} \omega([\alpha_i, \alpha_j]_A, \dots, \widehat{\alpha_i}, \dots, \widehat{\alpha_j}, \dots, \alpha_{k + 1}) 
+    \\ &+ \sum_{i} (-1)^{i} \mathcal{L}_{\rho(\alpha_i)} \omega(\alpha_1, \dots, \widehat{\alpha}_i, \dots, \alpha_{k + 1})
+\end{align}
+Note that $d_{\nabla}$ satisfies the Leibniz rule always, but squares to $0$ only when $\nabla$ is flat.
+
+\begin{definition}[Representation up to homotopy]
+    A representation up to homotopy of $A$ on a graded vector bundle $E$ is a differential operator $D : \Omega^{k}(A, E) \rightarrow \Omega^{k + 1}(A, E)$ (where degree is computed by taking the sum 
+    of the degrees in $\wedge^{\bullet} A^{*}$ and $E^{\bullet}$). In particular, 
+    it satisfies
+    \begin{equation}
+        D(\alpha \wedge \beta) = (D\alpha) \wedge \beta + (-1)^{|\alpha|} \alpha \wedge (D\beta)
+    \end{equation}
+    as well as $D^2 = 0$.
+\end{definition}
+
+\noindent \pop{If $(E, \nabla)$ is a representation of Lie algebroid $A$, so $\nabla$ is flat, is $(E, d_{\nabla})$ a representation up to homotopy? I still don't feel like I really appreciate this definition. 
+What does this have to do with deformation cohomology, I keep seeing this in other papers...}
+
+\noindent Now we move in to the contents of the paper, \emph{The $A_{\infty}$ de Rham theorem and integration of representations up to homotopy}. We start by 
+defining a representation up to homotopy. \pop{Going to have to revisit after I get a better grasp of what representations up to homotopy are.}
+
+\section{Chen's iterated integral and the Igusa map}
+
+\noindent Sec. 3 of Ref.~\cite{a_infty} begins by stating its intention to construct an $A_{\infty}$-quasi-isomorphism of $DG$-algebras, from $(\Omega(M), -d, \wedge)$ to $(C(M), \delta, \cup)$.
+We start by defining the \emph{bar complex} as the graded algebra of $DG$-algebra $(A, d, \wedge)$, given by
+\begin{equation}
+    B(sA) = \bigoplus_{k \geq 1} (sA)^{\otimes k}
+\end{equation}
+where $sA$ is the suspension: it shifts the index of the grading of $A$ by $1$ forward, so $(sA)^{k} = A^{k + 1}$. $B(sA)$ is graded because
+\begin{equation}
+    (a_1 \otimes \cdots \otimes a_{j}) \otimes (b_1 \otimes \cdots \otimes b_k) \in (sA)^{\otimes (j + k)}.
+\end{equation}
+clearly. \pop{Why do we even need the suspension?} Note that the bar complex carries coboundary $D$ (formula in the paper).
+
+\begin{definition}[Path space]
+    Let $M$ be a smooth manifold, the path space $PM$ is $C^{\infty}([0, 1], M)$ equipped with the $C^1$-topology. We say that a map $f : X \rightarrow PM$ 
+    is smooth if $(t, x) \mapsto f(x)(t)$ is smooth. The $C^1$-topology is defined as follows: we take the coarsest topology making the map 
+    from $C^{\infty}([0, 1], M)$ to $C(T[0, 1], TM) = C([0, 1] \times \mathbb{R}, TM)$ with the compact-open topology, which sends $f \mapsto f_{*}$, continuous.
+    Note that the compact-open topology is the topology on a function space where we take the collection of all $V(K, U)$, sets of functions 
+    from a compact subset to an open subset, as a subbasis for the topology.
+\end{definition}
+
+\noindent At a high-level, we want the differential to be the piece of data which determines the topology. The compact-open topology for the codomain is also a natural choice. \pop{why?}
+After some investigation, it appears as though path space doesn't really have a natural smooth manifold structure. This means that in order to define a ``differential form on path space'', 
+we will have to take a different approach.
+
+\begin{definition}[Forms on $PM$]
+    The idea with defining a differential form on $PM$ is by specifying its "pullback" to every smooth manifold under every possible smooth map $f : X \rightarrow PM$.
+    To be more specific, we have data which associated a differential form $f^{*} \alpha$ on $X$ with a pair $(X, f)$: this allows us to ``recover $\alpha$", which can be thought 
+    of as the differential form on $PM$.
+
+    To be more precise, the paper takes $C^{\infty}(-, PM)$ to be the category of all $(X, f)$ where $X$ is a finite dimensional smooth manifold and $f : X \rightarrow PM$ is smooth (with 
+    smoothness defined above). The morphisms from $(X, f)$ to $(Y, g)$ are smooth maps $h : X \rightarrow Y$ such that $f = h^{*}(g) = g \circ h$. One can easily check 
+    this constitutes a valid category.
+
+    We then let $\underline{\mathbb{R}}(-)$ be the trivial functor from $C^{\infty}(-, PM)$ to $\texttt{Vect}$, the category of real vector space, which collapses 
+    all objects to $\mathbb{R}$ and all morphisms to $\text{id}$. Finally, we define functor $\underline{\Omega}(-)$ from $C^{\infty}(-, PM)$ to $\texttt{Vect}$ 
+    taking $(X, f)$ to $\Omega(X)$ and $h \mapsto h^{*}$.
+
+    We say that \emph{a form on $PM$ is a natrual transformation from $\underline{\mathbb{R}}(-)$ to $\underline{\Omega}(-)$}. Let us unpack this: we must have
+    a family of morphisms $\eta_{(X, f)} : \underline{\mathbb{R}}(X, f) = \mathbb{R} \rightarrow \Omega(X)$ such that for $h : (X, f) \rightarrow (Y, g)$, we have
+    \begin{equation}
+        \eta_{(X, f)} = \eta_{(X, h^{*} g)} = h^{*} \circ \eta_{(Y, g)}
+    \end{equation}
+    \pop{Still figuring out why this definition coincides with the intuition of the first few sentences.}
+\end{definition}
+
+\section{Resources}
+
+\begin{itemize}
+    \item \emph{The $A_{\infty}$ de Rham theorem and integration of representations up to homotopy:} \href{https://arxiv.org/pdf/1011.4693}{\texttt{https://arxiv.org/pdf/1011.4693}}
+    \item \emph{Representations up to homotopy of Lie algebroids:} \href{https://arxiv.org/pdf/0901.0319}{\texttt{https://arxiv.org/pdf/0901.0319}}
+    \item \emph{Deformations of Lie brackets: cohomological aspects:} \href{https://arxiv.org/pdf/math/0403434}{\texttt{https://arxiv.org/pdf/math/0403434}}
+    \item \emph{Pursuing stacks:} \href{https://thescrivener.github.io/PursuingStacks/ps-online.pdf}{\texttt{https://thescrivener.github.io/PursuingStacks/ps-online.pdf}}
+    \item \emph{Camilo Arias Abad's thesis on representations up to homotopy}
+\end{itemize}
+
+\section{Questions}
+
+\begin{itemize}
+    \item
+\end{itemize}
+
+\end{document}
