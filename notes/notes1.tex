@@ -384,6 +384,20 @@ we will have to take a different approach.
     \pop{Still figuring out why this definition coincides with the intuition of the first few sentences.}
 \end{definition}
 
+\noindent From here, we make some other definitions inspired by the theory of smooth manifolds: a continuous map $f : PM \rightarrow PN$ is said to be smooth 
+if the pre-composition $f \circ g$ with smooth $g : X \rightarrow PM$ is smooth. Note that if $f : PM \rightarrow PN$ is smooth, then there is an induced 
+pullback map $f^{*} : \Omega(PN) \rightarrow \Omega(PM)$ where natural transformation $\eta \in \Omega(PN)$ is sent to $f^{*} \eta \in \Omega(PM)$ defined as 
+\begin{equation}
+    (f^{*} \eta)_{(X, g)} = \eta_{(X, f \circ g)}
+\end{equation}
+Note that if $h : (X, g) \rightarrow (Y, g')$ is an arrow, then $g = g' \circ h$, so $f \circ g = f \circ g' \circ h$, implying that $h : (X, f \circ g) \rightarrow (Y, f \circ g')$ is an arrow. Thus,
+\begin{equation}
+    (f^{*} \eta)_{(X, g)} = \eta_{(X, f \circ g)} = h^{*} \circ \eta_{(Y, f \circ g')} = h^{*} \circ (f^{*} \eta)_{(Y, g')}
+\end{equation}
+which immediately implies that $f^{*} \eta$ is a valid natural transformation.
+
+Clearly, it is also true that a smooth map $h : M \rightarrow N$ induces a smooth map from $Ph : PM \rightarrow PN$.
+
 \section{Resources}
 
 \begin{itemize}

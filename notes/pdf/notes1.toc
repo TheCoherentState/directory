@@ -8,4 +8,4 @@
 \contentsline {section}{\numberline {II}Representations up to homotopy}{5}{section.2}%
 \contentsline {section}{\numberline {III}Chen's iterated integral and the Igusa map}{5}{section.3}%
 \contentsline {section}{\numberline {IV}Resources}{6}{section.4}%
-\contentsline {section}{\numberline {V}Questions}{6}{section.5}%
+\contentsline {section}{\numberline {V}Questions}{7}{section.5}%

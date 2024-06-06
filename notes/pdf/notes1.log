@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.8.13)  6 JUN 2024 11:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.8.13)  6 JUN 2024 11:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -815,23 +815,27 @@ Package natbib Warning: Citation `a_infty' on page 5 undefined on input line 34
 3.
 
 [5]
-Overfull \hbox (33.55888pt too wide) in paragraph at lines 390--391
+Overfull \hbox (33.55888pt too wide) in paragraph at lines 402--403
 []\OT1/cmr/m/it/10 The $\OML/cmm/m/it/10 A[]$ \OT1/cmr/m/it/10 de Rham the-o-re
 m and in-te-gra-tion of rep-re-sen-ta-tions up to ho-mo-topy: [][]\OT1/cmtt/m/n
 /10 https://arxiv.org/pdf/1011.4693[][] 
  []
 
+[6]
 No file notes1.bbl.
 
 Package natbib Warning: There were undefined citations.
 
-[6] (pdf/notes1.aux)
+[7] (pdf/notes1.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `notes1.out' has not changed.
 (rerunfilecheck)             Checksum: C3E8953BDE0C010F2A2E1F30D688289D;1658.
  ) 
 Here is how much of TeX's memory you used:
- 17420 strings out of 478994
- 247199 string characters out of 5858184
+ 17423 strings out of 478994
+ 247231 string characters out of 5858184
  663254 words of memory out of 5000000
  34514 multiletter control sequences out of 15000+600000
  412218 words of font info for 64 fonts, out of 8000000 for 9000
@@ -858,10 +862,10 @@ xmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/2021/
 texmf-dist/fonts/type1/public/amsfonts/euler/eufm7.pfb></usr/local/texlive/2021
 /texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/
 2021/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on pdf/notes1.pdf (6 pages, 233430 bytes).
+Output written on pdf/notes1.pdf (7 pages, 234970 bytes).
 PDF statistics:
- 261 PDF objects out of 1000 (max. 8388607)
- 230 compressed objects within 3 object streams
- 92 named destinations out of 1000 (max. 500000)
+ 269 PDF objects out of 1000 (max. 8388607)
+ 237 compressed objects within 3 object streams
+ 95 named destinations out of 1000 (max. 500000)
  73 words of extra memory for PDF output out of 10000 (max. 10000000)
 
