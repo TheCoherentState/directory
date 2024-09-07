@@ -1,0 +1,328 @@
+\documentclass[aps,pra,showpacs,notitlepage,onecolumn,superscriptaddress,nofootinbib]{revtex4-1}
+\usepackage[utf8]{inputenc}
+\usepackage[tmargin=1in, bmargin=1.25in, lmargin=1.5in, rmargin=1.5in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{datetime}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{import}
+\usepackage{mathtools}
+\usepackage{thmtools,thm-restate}
+
+
+% package for commutative diagrams
+% \usepackage{tikz-cd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{crimson}{RGB}{186,0,44}
+\definecolor{moss}{RGB}{0, 186, 111}
+\newcommand{\pop}[1]{\textcolor{crimson}{#1}}
+\newcommand{\zcom}[1]{\noindent\textcolor{crimson}{(Z): #1}}
+\newcommand{\jcom}[1]{\noindent\textcolor{moss}{(J): #1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\pqeq}{\succcurlyeq}
+\newcommand{\pleq}{\preccurlyeq}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+    colorlinks,
+    linkcolor={crimson},
+    citecolor={crimson},
+    urlcolor={crimson}
+}
+
+\usepackage{qcircuit}
+\usepackage{comment}
+\usepackage{tikz-cd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{reminder}{Reminder}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{answer}{Answer}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{claim}{Claim}[section]
+\newtheorem{proposition}{Proposition}[section]
+
+\usepackage{geometry}
+\geometry{
+  left=22mm,
+  right=22mm,
+  top=20mm,
+}
+
+\newcommand{\hhrulefill}{\hspace{-1.5em} \hrulefill}
+\renewcommand{\baselinestretch}{1.1} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{unsrt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{MAT436 Problem Set 1}
+\author{Jack Ceroni}
+\date{\today}
+
+\maketitle
+
+\section{Suggested Problem 1}
+
+\noindent \textbf{Part A.} Suppose every absolutely summable sequence is summable. Let $x_n \in X$ be Cauchy. For each $n$, pick some $M_n$
+such that for $j, k \geq M_n$, $||x_j - x_k|| < 1/2^n$. Assume WLOG $M_1, M_2, \dots$ is strictly increasing. Define $y_1 = x_{M_{1}}$ and $y_n = x_{M_{n}} - x_{M_{n-1}}$ for $n \geq 2$. Note that $||y_n|| < 1/2^n$,
+so that the sequence of $y_n$ is absolutely summable, and thus summable. Let $y$ be this sum. Of course, the partial sums $y_1 + \cdots + y_n = x_{M_{n}}$ get arbitrarily close to $y$. Since the sequence of $M_n$
+approaches $\infty$, it follows that $x_n$ is a Cauchy sequence with a convergent subsequence, so it converges, and $X$ is complete.
+
+Conversely, suppose $X$ is complete. Suppose $y_n$ is absolutely summable. Let $x_n = y_n + \cdots + y_1$, and note that for $n > m$,
+\begin{equation}
+  ||x_n - x_m|| = ||y_n + \cdots + y_{m+1}|| \leq ||y_n|| + \cdots + ||y_{m+1}||
+\end{equation}
+Thus, for $n$ and $m$ chosen sufficiently large, the tails of the absolute sum of the above form can be made arbitrarily small (since $y_n$ is absolutely summable),
+so that $x_n$ is Cauchy, and thus converges to a limit in $X$. This immediately means that $y_n$ is summable.
+\newline
+
+\noindent \textbf{Part B.} Note that $\text{Ker}(T) = T^{-1}(\{0\})$. Since normed vector spaces are obviously Hausdorff, $\{0\}$ is closed, so if $T$ is continuous, $\text{Ker}(T)$ must be closed.
+Conversely, suppose the kernel is closed. Let $e_1, \dots, e_n$ be a basis for $Y$. We pick $f_1, \dots, f_n$ such thqat $T f_j = e_j$ for each $j$. Note that for any $x \in X$, we have $Tx = \sum_{j} c_j e_j$,
+so that $T\left( \sum_j c_j f_j \right) = Tx$. It follows that $x - \sum_j c_j f_j \in \text{Ker}(T)$. Since $x = x - \sum_{j} c_j f_j + \sum_j c_j f_j$, it follows that any element of $X$ can
+be written as some linear combination of the $f_1, \dots, f_n$, plus an element of the kernel.
+
+Since $\text{Ker}(T)$ is closed, $X/\text{Ker}(T)$ is a normed vector space with the infimum norm, and from the above argument, it is finite-dimensional as it is spanned by $[f_1], \dots, [f_n]$.
+Let us define $\widetilde{T} : X/\text{Ker}(T) \rightarrow Y$ as $\widetilde{T}[x] = Tx$. This is a linear map between finite-dimensional vector spaces, and is thus continuous. It follows that $T = \widetilde{T} \circ \pi$,
+where $\pi$ is the quotient map, is continuous as well.
+\newline
+
+\noindent \textbf{Part C.} Suppose $X$ is finite-dimensional. Then $X$ is homeomorphic to $\mathbb{R}^{n}$ for some $n$ via a linear map. Let $\Phi$ be the linear homeomorphism, let $B$ be the
+unit ball in $X$. Then $\Phi^{-1}(B)$ is closed in $\mathbb{R}^{n}$ as $\Phi$ is continuous. Moreover, since $\Phi^{-1} : X \rightarrow \mathbb{R}^{n}$ is continuous, it is bounded, so $||\Phi^{-1}(x)|| \leq M ||x||$
+for some $M$, implying that $\Phi^{-1}(B)$ is bounded in $\mathbb{R}^{n}$. Thus, $\Phi^{-1}(B)$ is closed and bounded in Euclidean space, so it compact. Then $B = \Phi \Phi^{-1}(B)$ is the continuous image
+of a compact space and thus is compact.
+
+Conversely, suppose $B \subset X$ is compact. Suppose $B$ is not finite-dimensional, so we can choose a sequence $x_1, x_2, \dots$ such that for each set $S_n = \{x_1, \dots, x_n\}$, we cannot write $x_{n + 1}$ as a linear combination
+of the elements of $S_n$. \pop{I want to show that such a sequence, constructed n the right way, cannot have a convergent subsequence, but I'm a bit stumped right now. I will keep thinking about this
+  and if I make more progress will include in the next problem set submission}.
+
+\begin{comment}
+\noindent \emph{As one of my problems, I would like to independently prove a theorem of Pedersen (I haven't read the proof), which I used above.}
+
+\begin{theorem}
+  Every finite-dimensional subspace $D$ of normed space $X$ is a Banach space (thus closed). Moreover, if $\dim(D) = n$, then every linear isomorphism of $\mathbb{F}^n$
+  to $D$ is a homeomorphism.
+\end{theorem}
+\begin{proof}
+  Let $e_1, \dots, e_n$ be a normalized basis for $D$. Let $\Phi : \mathbb{F}^n \rightarrow D$ be the map defined as
+  \begin{equation}
+    \Phi(c_1, \dots, c_n) = \sum_{j = 1}^{n} c_j e_j
+  \end{equation}
+  which is clearly continuous, as we know arithmetic is continuous. In fact, we know that $\Phi$ is a linear isomorphism of spaces.
+  We must show that $\Phi^{-1}$ is continuous. Let $V$ be an open ball centred at $0 \in D$ of radius $R$. Note that
+  $R e_j = \Phi(0, \dots, R, \dots, 0)$ is in $\Phi(V)$ for each $j$. Moreover, the convex hull of the points $Re_1, \dots, Re_n$
+  is in $\Phi(V)$, as
+  \begin{equation}
+    \left|\left| \sum_{j = 1}^{n} \alpha_j (R e_j) \right|\right| \leq R \sum_{j = 1}^{n} \alpha_j = R
+  \end{equation}
+  for $\alpha_1 + \cdots + \alpha_n = 1$.
+\end{proof}
+\end{comment}
+
+\section{Suggested Problem 2}
+
+\noindent \textbf{Part A.} Since $X$ is Banach, note that $B(X)$ is also Banach. Let $S_n = \sum_{k=0}^{n} T^k$. Note that for $m > n$, we have
+\begin{equation}
+||S_m - S_n|| = \left|\left| \sum_{k = n + 1}^{m} T^{k} \right|\right| \leq \sum_{k = n + 1}^{m} ||T||^k = ||T||^{n + 1} \sum_{k = 0}^{m - n - 1} ||T||^{k} \leq \frac{||T||^{n + 1}}{1 - ||T||}
+\end{equation}
+which can be made arbitrarily small for choice of $n$ (and thus $m$) sufficiently large. It follows that the sequence of partial sums $S_n$ is Cauchy, this converges. In addition, note that
+\begin{equation}
+  S_n (I - T) = (I - T) S_n = S_n - S_{n + 1} + I
+\end{equation}
+It is then easy to see that $\lim S_n \cdot (I - T) = (I - T) \cdot \lim S_n = I$, as desired.
+\newline
+
+\noindent \textbf{Part B.} Consider $\text{GL}(B(X)) \subset B(X)$. Given invertible $Y \in B(X)$, suppose $||T - Y|| < ||Y^{-1}||^{-1}$, so that $||I - Y^{-1} T|| \leq ||Y^{-1}|| ||Y - T|| < 1$,
+implying that $Y^{-1} T$ is invertible. Thus, $T$ is invertible. It follows that there is an open ball around $Y$ which is contained in $\text{GL}(B(X))$, so it is an open set.
+
+\section{Suggested Problem 3}
+
+\noindent \textbf{Part A.} First, note that
+\begin{equation}
+  T(v + w) = T\left( \frac{2v + 2w}{2} \right) = \frac{T(2v) + T(2w)}{2}
+\end{equation}
+Moreover, since $T(0) = 0$,
+\begin{equation}
+  T(2^n v) = T\left(\frac{2^{n+1} v + 0}{2}\right) = \frac{T(2^{n + 1} v) + T(0)}{2} \Longrightarrow T(2^{n + 1} v) = 2T(2^{n} v)
+\end{equation}
+for any $n$. In the case that $n = 0$, we have $T(2v) = 2T(v)$, so that $T(v + w) = T(v) + T(w)$. Moreover, via induction, it is easy to see that $T(2^n v) = 2^n T(v)$ for any $n \in \mathbb{Z}$.
+Let $\alpha$ be a rational number with a finite binary expansion, so that $\alpha = \sum_{n \in \mathbb{Z}} x_n 2^n$ where $x_n = 1$ for finitely many $n$ and is $0$ for the remaining $n$. We then have
+\begin{equation}
+  T(\alpha v) = T \left( \sum_{n \in \mathbb{Z}} x_n 2^n v \right) = \sum_{n \in \mathbb{Z}} x_n 2^n T(v) = \alpha T(v)
+\end{equation}
+Clearly, the collection of $\alpha$ with this property is dense in the reals, so since $T$ is continuous, we have $T(\alpha v) = \alpha T(v)$ for all $\alpha \in \mathbb{R}$. It follows that $T$ is linear.
+\newline
+
+\noindent \textbf{Part B.} Note that
+\begin{align}
+  \text{mdef}_{v_1, v_2}(A)& = \left|\left| \frac{1}{2} A\left( \frac{v_1 + v_2}{2} \right) - \frac{A(v_1)}{2} + \frac{1}{2} A \left( \frac{v_1 + v_2}{2} \right) - \frac{A(v_2)}{2} \right|\right|
+  \\ & \leq \left|\left| \frac{1}{2} A\left( \frac{v_1 + v_2}{2} \right) - \frac{A(v_1)}{2} \right|\right| + \left|\left| \frac{1}{2} A \left( \frac{v_1 + v_2}{2} \right) - \frac{A(v_2)}{2} \right|\right|
+  \\ & = \frac{1}{2} \left|\left| \frac{v_1 + v_2}{2} - \frac{2v_1}{2} \right|\right| + \frac{1}{2} \left|\left| \frac{v_1 + v_2}{2} - \frac{2v_2}{2} \right|\right| = \frac{1}{2} ||v_1 - v_2||.
+\end{align}
+which completes the proof.
+\newline
+
+\noindent \textbf{Part C.} Note that $R_z(v) = z + (z - v) = 2z - v$. Since $A$ is an isometry, it is injective, as if $Av = Aw$, then $Av - Aw = 0$, so $v - w = 0$. Since it is also surjective, it is a bijection. Moreover,
+$A^{-1}$ is also an isometry, as $||A^{-1} v - A^{-1} w|| = ||A A^{-1} v - A A^{-1} w || = ||v - w||$. It follows that
+\begin{equation}
+  B \left( v \right) = A^{-1} R_z A \left( v \right) = A^{-1} \left( A(v_1) + A(v_2) - A \left( v\right) \right)
+\end{equation}
+which immediately means that
+\begin{equation}
+  B\left(\frac{v_1 + v_2}{2}\right) = A^{-1} \left( A(v_1) + A(v_2) - A \left( \frac{v_1 + v_2}{2} \right) \right)
+\end{equation}
+as well as
+\begin{equation}
+  \frac{B(v_1) + B(v_2)}{2} = \frac{1}{2} \left[ A^{-1}(A(v_2)) + A^{-1}(A(v_1)) \right] = \frac{v_1 + v_2}{2} = A^{-1} \left( A \left( \frac{v_1 + v_2}{2} \right) \right).
+\end{equation}
+We then have
+\begin{align}
+  \text{mdef}_{(v_1, v_2)}(B) &= \left|\left| B\left(\frac{v_1 + v_2}{2}\right) -  \frac{B(v_1) + B(v_2)}{2} \right|\right|
+  \\ &= \left|\left| A^{-1} \left( A(v_1) + A(v_2) - A \left( \frac{v_1 + v_2}{2} \right) \right) -  A^{-1} \left( A \left( \frac{v_1 + v_2}{2} \right) \right) \right|\right|
+  \\ &= \left|\left| A(v_1) + A(v_2) - 2 A \left( \frac{v_1 + v_2}{2} \right) \right|\right| = 2 \text{mdef}_{(v_1, v_2)}(A)
+\end{align}
+as desired, and the proof is complete.
+\newline
+
+\noindent \textbf{Part D.} Part B implied that the midpoint defect is bounded above by the quantity $\frac{1}{2} ||v_1 + v_2||$. However, it also follows from Part C that given surjective isometry $A$,
+we can let $A_1 = A$ and choose a sequence $A_k$ of surjective isometries such that
+\begin{equation}
+  \text{mdef}_{(v_1, v_2)}(A_{k+1}) = 2 \text{mdef}_{(v_1, v_2)}(A_k) \Longrightarrow \text{mdef}_{(v_1, v_2)}(A_{k+1}) = 2^k \text{mdef}_{(v_1, v_2)}(A)
+\end{equation}
+If $\text{mdef}_{(v_1, v_2)}(A) \neq 0$, then it follows that $\text{mdef}_{(v_1, v_2)}(A_{k+1})$ can be made arbitrarily large for sufficiently large $k$, thus contradicting the fact that
+each element of this sequence must be bounded above by $\frac{1}{2} ||v_1 + v_2||$. It follows that $\text{mdef}_{(v_1, v_2)}(A) = 0$.
+\newline
+
+\noindent \textbf{Part E.} Note that since $A$ is an isometry, it is automatically continuous. Let $w_0 = A(0)$. Then it is clear that $A'(v) = A(v) - w_0$ is a surjective isometry with $A'(0) = 0$.
+Since $A'$ is also continuous, and it preserves midpoints, from Part D, it follows from Part A that it is linear, and the proof is complete.
+
+\section{Suggested Problem 4}
+
+\noindent We must show that the ``derivative norm'' is both a valid norm, and that it makes $C_b^k(U)$ into a Banach space. First, note that
+\begin{align}
+  ||f + g|| = \max_{|\alpha| \leq k} ||\partial_{\alpha} (f + g) ||_{\infty} &= \max_{|\alpha| \leq k} ||\partial_{\alpha} f + \partial_{\alpha} g||_{\infty}
+  \\ & \leq \max_{|\alpha| \leq k} ||\partial_{\alpha} f||_{\infty} + \max_{|\alpha| \leq k} ||\partial_{\alpha} g||_{\infty}
+  \\ & = ||f|| + ||g||
+\end{align}
+as well as
+\begin{align}
+  ||\beta f|| = \max_{|\alpha| \leq k} ||\partial_{\alpha} (\beta f) ||_{\infty} = |\beta| \max_{|\alpha| \leq k} ||\partial_{\alpha} f||_{\infty} = |\beta| ||f||.
+\end{align}
+Both of these results follow from the fact that we know the standard uniform norm on functions is in fact a norm. Finally, note that if $f = 0$, then $||f|| = 0$. Moreover,
+if $||f|| = 0$, then from the case $\alpha = (0, \dots, 0)$, we have
+\begin{equation}
+  ||\partial_{(0, \dots, 0)} f||_{\infty} = ||f||_{\infty} \leq \max_{|\alpha| \leq k} ||\partial_{\alpha} f||_{\infty} = ||f|| = 0
+\end{equation}
+which means that $||f||_{\infty} = 0$, so $f = 0$. It follows that $||\cdot||$ is in fact a norm.
+
+To prove that $(C_b^k(U), ||\cdot||)$ is in fact a Banach space, let $f_j$ be a Cauchy sequence. We already know that $(C_b(U), ||\cdot||_{\infty})$ is a Banach space, which is
+the $k = 0$ case of the statement we are trying to prove. If $f_j$ is Cauchy realative to $||\cdot||$, it follows that each of the sequences of derivatives $\partial_{\alpha} f_j$
+for $|\alpha| \leq k$ is Cauchy relative to the standard infinity-norm, as
+\begin{equation}
+  ||\partial_{\alpha} f_m - \partial_{\alpha} f_n ||_{\infty} \leq \max_{|\alpha| \leq k} ||\partial_{\alpha} f_m - \partial_{\alpha} f_n ||_{\infty} = ||f_m - f_n||.
+\end{equation}
+Thus, each of the sequences $\partial_{\alpha} f_j$ converge uniformly to a bounded continuous function $f^{(\alpha)}$. Let $f = f^{(0 \dots 0)}$. It is a basic fact from real analysis that given a sequence
+of $C^k$ functions converging uniformly, with uniformly converging derivatives of all orders, the resulting limit, in this case $f$, is also $C^k$, with its derivatives given by the limits
+of the derivative sequences.
+
+Thus, it follows that the Cauchy sequence $f_j$ does in fact converge to a $C^k$ function $f$ in the norm $||\cdot||$ (as we showed all derivatives $\partial_{\alpha} f_j$ converge uniformly to derivatives $\partial_{\alpha} f$,
+which exist). It follows immediately that our space is Banach, and we are done.
+
+\section{Suggested Problem 5}
+
+\noindent The existence of $\beta$ follows immediately. Let $e_1, \dots, e_d$ be the standard normalized basis for $\mathbb{R}^d$:
+\begin{equation}
+  \left|\left| \sum_{j = 1}^{d} \alpha_j e_j \right|\right| \leq \sum_{j = 1}^{d} |\alpha_j| ||e_j|| \leq M \sum_{j = 1}^{d} |\alpha_j| = M  \left|\left| \sum_{j = 1}^{d} \alpha_j e_j \right|\right|_1
+\end{equation}
+where $M = \max_j ||e_j||$. This immediately implies that the function $F : \mathbb{R}^d \rightarrow \mathbb{R}$ given by $F(x) = ||x||$ is continuous in the topology generated by $||\cdot||_1$, as fixing some $y$ and some $\varepsilon > 0$,
+note that if we set $||x - y||_1 < \varepsilon/M$, then
+\begin{equation}
+  | F(x) - F(y) | = | ||x|| - ||y|| | \leq ||x - y|| \leq M ||x - y||_1 < \varepsilon
+\end{equation}
+as desired.
+
+Of course, the unit ball $B$ in the norm $||\cdot||_1$ is compact. It follows from the extreme value theorem that $F = ||\cdot||$ takes on a minimum. Moreover, this minimum must be greater than $0$,
+as $0 \notin B$. In other words, there exists $\alpha > 0$ such that $\alpha \leq ||x||$ for all $x$ with $||x||_1 = 1$. It then follows that for arbitrary $x$,
+\begin{equation}
+  ||x|| = ||x||_1 \cdot \left|\left| \frac{x}{||x||_1} \right|\right| \geq \alpha ||x||_1.
+\end{equation}
+We have therefore shown that $\alpha ||x||_1 \leq ||x|| \leq M ||x||_1$ for all $x \in \mathbb{R}^d$.
+
+\section{Suggested Problem 6}
+
+\noindent \textbf{Part A.} This follows immediately from the Leibniz integral rule. Indeed,
+\begin{equation}
+  f'(x) = -\sin(x) + \int_{0}^{x} \cos(x - t) g(t) \ dt
+\end{equation}
+and
+\begin{equation}
+  f''(x) = -\cos(x) + \cos(0) g(x) - \int_{0}^{x} \sin(x - t) g(t) \ dt
+\end{equation}
+so that
+\begin{equation}
+  f''(x) + f(x) = -\cos(x) + g(x) - \int_{0}^{x} \sin(x - t) g(t) \ dt + \cos(x) + \int_{0}^{x} \sin(x - t) g(t) \ dt = g(x)
+\end{equation}
+as desired. Checking that $f$ satisfies the initial conditions is trivial.
+\newline
+
+\noindent \textbf{Part B.} Suppose $f$ is a function satisfying the equation
+\begin{equation}
+  f(x) = \cos(x) + \int_{0}^{x} \sin(x - t) \sigma(t) f(t) \ dt
+\end{equation}
+Then, from Part A, $f$ solves the given ODE with the given initial conditions.
+
+Thus, we let $u(x) = \cos(x)$ (which is smooth) and we define $K$ as the operator taking $f(x)$ to $\int_{0}^{x} \sin(x-t) \sigma(t) f(t) \ dt$. Clearly,
+the new function is twice-differentiable. Of course, $K$ is linear, and it is also bounded. Let $||\cdot||$ denote the usual uniform norm on function space, we have
+\begin{equation}
+  ||Kf|| = \sup_{x \in [0, 1]} \left|\left| \int_{0}^{x} \sin(x-t) \sigma(t) f(t) \right|\right| \leq \sup_{x \in [0, 1]} \int_{0}^{x} |\sin(x-t) \sigma(t) f(t)| \ dt \leq \sup_{t \in [0, 1]} |\sigma(t)| |f(t)| \leq M ||f||
+\end{equation}
+where $M = \sup_{t \in [0, 1]} |\sigma(t)|$.
+\newline
+
+\noindent \textbf{Part C.} It is easy to see that
+\begin{align}
+  (K^n f)(x) = \displaystyle\int_{0 \leq t_n \leq \cdots \leq t_t \leq x} \sin(x - t_1) \sin(t_1 - t_2) \cdots \sin(t_{n-1} - t_n) \sigma(t_1) \cdots \sigma(t_n) f(t_n) \ dt_1 \cdots dt_n
+\end{align}
+which means that, since $\sin(x) \leq x$ for $x \in [0, 1]$, we will have
+\begin{align}
+  | (K^n f)(x) | &\leq \displaystyle\int_{0 \leq t_n \leq \cdots \leq t_t \leq x} \left| \sin(x - t_1) \sin(t_1 - t_2) \cdots \sin(t_{n-1} - t_n) \sigma(t_1) \cdots \sigma(t_n) f(t_n) \right| dt_1 \cdots dt_n
+  \\ & \leq M^n ||f|| \displaystyle\int_{0 \leq t_n \leq \cdots \leq t_t \leq x} \left| \sin(x - t_1) (t_1 - t_2) \cdots (t_{n-1} - t_n) \right| dt_1 \cdots dt_n
+  \\ & \leq M^n ||f|| \displaystyle\int_{0 \leq t_n \leq \cdots \leq t_t \leq x} t_1 \cdots t_{n-1} \ dt_1 \cdots dt_n
+  \\ & \leq M^n ||f|| \displaystyle\int_{0 \leq t_n \leq \cdots \leq t_1 \leq x} t_1^{n - 1} \ dt_1 \cdots dt_n
+  \\ & \leq M^n ||f|| \int_{0}^{x} \cdots \int_{0}^{x} t_1^{n - 1} dt_1 \cdots dt_n
+  \\ & = \frac{M^n ||f|| t_1^n x^{n - 1}}{n!} \leq \frac{M^n ||f||}{n!}
+\end{align}
+where $M = \max_{[0, 1]} \sigma$, which achieves its maximum as a continuous function on a compact domain. We also know that $0 \leq x \leq 1$ (we use this fact in the last inequality). It follows that $||K^n f|| \leq \frac{M^n ||f||}{n!}$,
+so immediately we have $||K^n|| \leq \frac{M^n}{n!}$, by definition of the operator norm.
+\newline
+
+\noindent \textbf{Part D.} Note that $f = u + Kf$ if and only if $(1 - K) f = u$. Moreover, the operator $K' = \sum_{n = 0}^{\infty} K^n$ is well-defined as the space of bounded operators $B(C[0, 1])$ is Banach, and the
+partial sums $S_N = \sum_{n=0}^{M} K^n$ are Cauchy, since
+\begin{equation}
+  ||S_M - S_N|| = \left|\left| \sum_{n = N+1}^{M} K^n \right|\right| \leq ||K^{N+1}|| \sum_{n=0}^{M-N-1} ||K^n|| \leq \frac{C^{N+1}}{(N+1)!} \sum_{n=0}^{\infty} \frac{C^n}{n!} = \frac{\exp(C) C^{N + 1}}{(N+1)!}
+\end{equation}
+which eventually becomes arbitrarily small for sufficiently large $N$ and thus $M \geq N$. Thus, the limit $K'$ is well-defined, and by the same logic as Problem 2, $K'$ is the inverse of $1 - K$. It follows immediately that
+setting $f = K' u$ is a well-defined solution to $f = u + Kf$. We showed that a solution to this equation solves the desired ODE with the desired initial conditions, so the proof is complete.
+
+\bibliography{refs}
+
+\end{document}
