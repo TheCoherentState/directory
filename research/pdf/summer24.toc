@@ -1,0 +1,14 @@
+\contentsline {title}{Summer 2024 math notes}{1}{section*.1}%
+\tocdepth@munge 
+\tocdepth@restore 
+\contentsline {section}{\numberline {I}Introduction}{1}{section.1}%
+\contentsline {section}{\numberline {II}Background}{1}{section.2}%
+\contentsline {section}{\numberline {III}$A_{\infty }$-algebras}{2}{section.3}%
+\contentsline {section}{\numberline {IV}The Chen map}{3}{section.4}%
+\contentsline {section}{\numberline {V}The Igusa map}{3}{section.5}%
+\contentsline {section}{\numberline {VI}An $A_{\infty }$-de Rham theorem}{3}{section.6}%
+\contentsline {section}{\numberline {VII}Discrete path space and Chen map}{3}{section.7}%
+\contentsline {section}{\numberline {VIII}Lie algebroids, connections, and parallel transport}{4}{section.8}%
+\appendix 
+\contentsline {section}{\numberline {A}Review of simplicial complexes}{7}{appendix.A}%
+\contentsline {section}{\numberline {B}Review of algebraic topology}{7}{appendix.B}%

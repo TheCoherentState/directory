@@ -1,0 +1,4 @@
+\contentsline {title}{MAT477 running research notes}{1}{section*.1}%
+\tocdepth@munge 
+\tocdepth@restore 
+\contentsline {section}{\numberline {I}Non-linear Katz-Oda calculations}{1}{section.1}%
