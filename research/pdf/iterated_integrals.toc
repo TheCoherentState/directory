@@ -3,4 +3,6 @@
 \tocdepth@restore 
 \contentsline {section}{\numberline {I}Introduction}{1}{section.1}%
 \contentsline {section}{\numberline {II}The Chen map}{1}{section.2}%
-\contentsline {section}{\numberline {III}Applications}{3}{section.3}%
+\contentsline {section}{\numberline {III}Application: an $A_{\infty }$-De Rham theorem}{4}{section.3}%
+\contentsline {subsection}{\numberline {A}$A_{\infty }$-algebras}{5}{subsection.3.1}%
+\contentsline {subsection}{\numberline {B}The quasi-isomorphism}{6}{subsection.3.2}%

@@ -1,0 +1,6 @@
+\contentsline {title}{Non-linear Grothendieck-Katz and the $p$-curvature conjecture}{1}{section*.1}%
+\tocdepth@munge 
+\tocdepth@restore 
+\contentsline {section}{\numberline {I}Introduction}{1}{section.1}%
+\contentsline {section}{\numberline {II}Prior work}{1}{section.2}%
+\contentsline {section}{\numberline {III}Non-linear problem}{2}{section.3}%
