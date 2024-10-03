@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.8.13)  26 SEP 2024 19:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.8.13)  3 OCT 2024 18:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1096,42 +1096,99 @@ Class revtex4-1 Info: Taking \maketitle back from hyperref on input line 76.
 
 Class revtex4-1 Warning: Assuming \noaffiliation for authors.
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 119--122
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 131--135
+
+ []
+
 [1{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 121--124
+Underfull \hbox (badness 10000) in paragraph at lines 136--139
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 154--159
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 163--166
+
+ []
+
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 179--183
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 184--188
+
+ []
+
+
+Overfull \hbox (19.325pt too wide) detected at line 204
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 208--211
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 223--226
+
+ []
+
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 227--231
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 235--238
 
  []
 
 No file mat436_a3.bbl.
-[2] (pdf/mat436_a3.aux)
+[4] (pdf/mat436_a3.aux)
 Package rerunfilecheck Info: File `mat436_a3.out' has not changed.
-(rerunfilecheck)             Checksum: C73821352B502EBBAAC1D5F3BE853774;461.
+(rerunfilecheck)             Checksum: 4CF240C38465D000B48DFC6336F76189;1102.
  ) 
 Here is how much of TeX's memory you used:
- 27979 strings out of 478994
- 489265 string characters out of 5858184
- 875162 words of memory out of 5000000
- 44937 multiletter control sequences out of 15000+600000
+ 27999 strings out of 478994
+ 489494 string characters out of 5858184
+ 879163 words of memory out of 5000000
+ 44940 multiletter control sequences out of 15000+600000
  410325 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 101i,8n,102p,1424b,379s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 101i,9n,102p,1424b,379s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></
 usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></u
 sr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
-r/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/
-local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/lo
-cal/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local
-/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/te
-xlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texli
-ve/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/
-2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2
-021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/202
-1/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on pdf/mat436_a3.pdf (2 pages, 132912 bytes).
+r/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/
+local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/lo
+cal/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loca
+l/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/t
+exlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texl
+ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive
+/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/20
+21/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/202
+1/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2021/
+texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2
+021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
+Output written on pdf/mat436_a3.pdf (4 pages, 173735 bytes).
 PDF statistics:
- 101 PDF objects out of 1000 (max. 8388607)
- 82 compressed objects within 1 object stream
- 15 named destinations out of 1000 (max. 500000)
- 37 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 142 PDF objects out of 1000 (max. 8388607)
+ 118 compressed objects within 2 object streams
+ 32 named destinations out of 1000 (max. 500000)
+ 53 words of extra memory for PDF output out of 10000 (max. 10000000)
 
