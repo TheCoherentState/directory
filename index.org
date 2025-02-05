@@ -6,26 +6,14 @@
 Welcome to the *directory*, the place where I store most of the academic work/content that I create. This includes all notes and solution sets, among other things.
 Linked below are the subpages of this website, grouped by category.
 
-----------------
-For my math diary, click [[./diary/index.html][here]].
-----------------
+--------------------
 
-* Mathematics
+* Solution Manuals
+   + [[./lee/index.html][Solution manual for Lee's /Introduction to Smooth Manifolds/]]
+   + [[./hatcher/index.html][Solution manual for Hatcher's /Introduction to Algebraic Topology/]]
 
-For my big, long-term project (a book on geometry and topology), click [[./book/index.html][here]]
+* Notes
+   + [[./soul_conjecture.pdf][Perelman's proof of the soul conjecture]]
 
-** Solution Manuals
-   + [[./diff_geo/lee/index.html][Solution manual for Lee's /Introduction to Smooth Manifolds/]]
-   + [[./topology/munkres/index.html][Solution manual for Munkres' /Topology/]]
-   + [[./topology/hatcher/index.html][Solution manual for Hatcher's /Introduction to Algebraic Topology/]]
-
-** Notes
-   + [[./analysis.html][Lecture notes on complex analysis]]
-   
-* Physics
-
-  + [[./physics/tqft.html][Lecture notes on topological quantum field theory]]
-
-* Computation
-
-  *Under construction*
+* Other
+   + [[./urysohn.html][A short proof of Urysohn's lemma]]

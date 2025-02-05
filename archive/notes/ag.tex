@@ -1,0 +1,235 @@
+\documentclass[aps,pra,showpacs,notitlepage,onecolumn,superscriptaddress,nofootinbib]{revtex4-1}
+\usepackage[utf8]{inputenc}
+\usepackage[tmargin=1in, bmargin=1.25in, lmargin=1.5in, rmargin=1.5in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{datetime}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{import}
+\usepackage{mathtools}
+\usepackage{thmtools,thm-restate}
+\usepackage{tikz-cd}
+\usepackage[many]{tcolorbox}
+
+% package for commutative diagrams
+% \usepackage{tikz-cd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{crimson}{RGB}{186,0,44}
+\definecolor{moss}{RGB}{0, 186, 111}
+\newcommand{\pop}[1]{\textcolor{crimson}{#1}}
+\newcommand{\zcom}[1]{\noindent\textcolor{crimson}{(Z): #1}}
+\newcommand{\jcom}[1]{\noindent\textcolor{moss}{(J): #1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\pqeq}{\succcurlyeq}
+\newcommand{\pleq}{\preccurlyeq}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+    colorlinks,
+    linkcolor={crimson},
+    citecolor={crimson},
+    urlcolor={crimson}
+}
+
+\usepackage{qcircuit}
+\usepackage{comment}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\newtheorem{lemma}{Lemma}[section]
+
+\newtheorem{theorem}{Theorem}[section]
+
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{corollary*}{Corollary}
+
+\newtheorem{remark}{Remark}[section]
+
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{reminder}{Reminder}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{answer}{Answer}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{claim}{Claim}[section]
+\newtheorem{prop}{Proposition}[section]
+
+\newtheorem{solution}{Solution}[section]
+\tcolorboxenvironment{solution}{
+  colback=blue!5!white,
+  boxrule=0pt,
+  boxsep=1pt,
+  left=3pt,right=3pt,top=5pt,bottom=5pt,
+  oversize=2pt,
+  sharp corners,
+  before skip=\topsep,
+  after skip=\topsep,
+}
+
+\usepackage{geometry}
+\geometry{
+  left=25mm,
+  right=25mm,
+  top=20mm,
+}
+
+\newcommand{\hhrulefill}{\hspace{-1.5em} \hrulefill}
+\renewcommand{\baselinestretch}{1.1} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{unsrt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{Algebraic geometry}
+\author{Jack Ceroni}
+\email{jack.ceroni@mail.utoronto.ca}
+\date{\today}
+\maketitle
+
+\tableofcontents
+
+\newpage
+
+\section{Introduction}
+
+\noindent Notes on basic algebraic geometry.
+
+\section{Affine algebraic sets}
+
+\begin{definition}[Affine algebraic set]
+  A simultaneous zero-set of a collection of polynomials over some field $k$. If $S$ is a collection of $k[X_1, \dots, X_n]$, then we let $V(S)$ denote their zero-set/corresponding algebraic set.
+\end{definition}
+
+\noindent It is worthwhile to note that for $F, G \in k[X_1, \dots, X_n]$, we have $V(FG) = V(F) \cup V(G)$, which is trivial to verify.
+
+\begin{definition}
+  Given some $X \subset \mathbb{A}^n(k)$, let $I(X)$ be the ideal of $F \in k[X_1, \dots, X_n]$ such that $F|_X = 0$. It is an ideal because it is clearly subring, and given $F$ vanishing
+  on $X$, so does $GF$ for any $G \in k[X_1, \dots, X_n]$.
+  \end{definition}
+
+\begin{remark}
+  If $X$ is a set and $F^n \in I(X)$, then $F \in I(X)$. Note that if $F(X_1, \dots, X_n)^n = 0$
+  for all $(X_1, \dots, X_n) \in X$, then $F(X_1, \dots, X_n) = 0$ for all such points as well. Thus,
+  $I(X)$ is a \emph{radical ideal}, in the sense that it is equal to its radical: the set of all $n$-th roots
+  of an ideal, which we denote $\text{Rad}(I)$ for arbitrary ideal $I$.
+  \end{remark}
+
+\begin{theorem}[Hilbert basis theorem]
+  If $R$ is Noetherian (i.e. every ideal is finitely-generated), then $R[X_1, \dots, X_n]$ is Noetherian.
+  \end{theorem}
+
+\begin{proof}
+  \pop{TODO}
+  \end{proof}
+
+\begin{corollary}
+  Every algebraic set is the intersection of a finite set of hypersurfaces (that is, $V(F)$ for a single polynomial $F$).
+  \end{corollary}
+
+\begin{proof}
+  Every algebraic set $V(S)$ is equal to $V(I)$ for an ideal $I$, so if $I \subset k[X_1, \dots, X_n]$ is finitely-generated,
+  then $I = (F_1, \dots, F_m)$ and $V(I) = V(F_1) \cap \cdots \cap V(F_m)$. Since $k$ is a field,
+  it is a PID so obvious Noetherian and Hilbert basis theorem implies $I$ is Noetherian.
+  \end{proof}
+
+\noindent We call an affine algebraic set $V$ \emph{reducible} if it can be written as a union of proper algebraic
+subsets of $V$.
+
+\begin{prop}
+  \label{prop:prime}
+  An algebraic set is irreducible if and only if $I(V)$ is a prime ideal.
+\end{prop}
+
+\begin{proof}
+ If $I(V)$ is not prime, so $F G \in I(V)$ with $F, G \notin I(V)$. Then $V = (V \cap V(F)) \cup (V \cap V(G))$
+ with both subsets being proper algebraic subsets so $V$ is reducible. Conversely, if $V = V_1 \cup V_2$ for proper
+ algebraic subsets, then there necessarily exists some $F \in V_1$ which is not in $V_2$ and $G \in V_2$ which is not in $V_1$.
+ Note that $FG$ vanishes on $V_1$ and $V_2$, thus on $V$, then $FG \in I(V)$ with $F, G \notin I(V)$ so $I(V)$ is not prime.
+  \end{proof}
+
+\begin{theorem}
+  Any affine algebraic set $V$ is the unique union of a finite number of irreducible algebraic subsets $V_1, \dots, V_m$
+  such that $V_i \cap V_j^{C} \neq \emptyset$ for each $i$ and $j$. We refer to an irreducible algebraic set as an \emph{affine algebraic variety}. 
+  \end{theorem}
+
+\begin{definition}
+  If $V$ is a variety, then $I(V)$ is prime from Prop.~\ref{prop:prime} which implies that
+  $k[X_1, \dots, X_n]/I(V)$ is a domain (easy algebra fact). We define $\Gamma(V)$ to be this domain and
+  call it the \emph{coordinate ring} of $V$. It is immediately obvious that we can identify $\Gamma(V)$
+  with the collection of polynomial functions on $V$, as two formal polynomials determine the same function
+  if and only if their difference vanishes on $V$ (i.e. the difference is in $I(V)$).
+  \end{definition}
+
+\begin{definition}
+  A map $\varphi : V \rightarrow W$ between varieties in $\mathbb{A}^n$ and $\mathbb{A}^m$ respectively is a \emph{polynomial map} if
+  it can be written as $(T_1, \dots, T_m)$ for $T_j \in k[X_1, \dots, X_n]$.
+  \end{definition}
+
+\noindent Given some map $\varphi : V \rightarrow W$, let $\varphi^{*} : \mathcal{F}(W, k) \rightarrow \mathcal{F}(V, k)$ denote the induced homomorphism
+of rings of functions going from $W$ and $V$ to the field $k$. This homomorphism has the property that it sends the copy of $k$ inside $\mathcal{F}(W, k)$: the
+subring of constant functions, to $k$ in $\mathcal{F}(V, k)$. In the specific case that $\varphi$ is a polynomial map, then $\varphi^{*}(\Gamma(W)) \subset \Gamma(W)$,
+when we identify the coordinate ring with the polynomial functions. This means that $\varphi^{*} : \Gamma(W) \rightarrow \Gamma(V)$ is a well-defined ring homomorphism.
+
+\begin{prop}
+In the specific case that $V = \mathbb{A}^n$ and $W = \mathbb{A}^m$, and $T_1, \dots, T_m \in k[X_1, \dots, X_n]$ determine a polynomial map $T$, then we can
+recover the $T_j$ from $T$ (i.e. they are uniquely determined by $T$).
+  \end{prop}
+
+\begin{prop}
+There is a natural $1$-to-$1$ correspondence between polynomial maps $\varphi : V \rightarrow W$ between varieties and the homomorphisms $\psi : \Gamma(W) \rightarrow \Gamma(V)$
+via $\varphi^{*}$.
+  \end{prop}
+
+\begin{proof}
+  \pop{\textbf{TODO}}
+  \end{proof}
+
+\noindent Given a variety $V$ and its coordinate ring $\Gamma(V)$, since it is a domain, we can consider the quotient field $k(V)$ of \emph{rational functions}. Given
+some $p \in V$, we take $\mathcal{O}_p(V)$ to be the set of rational functions that are defined at $p$ (i.e. $f$ is such that $f = a/b$ for $a, b \in \Gamma(V)$ and $b(p) \neq 0$ for some $a$ and $b$).
+One can verify that $\mathcal{O}_p(V)$ is a subring of $k(V)$ which contains $\Gamma(V)$, the polynomial functions.
+
+\begin{definition}
+We call $\mathcal{O}_p(V)$ the \emph{local ring} of $V$ at $p$. We also call the ideal $\mathfrak{m}_p(V) = \{ f \in \mathcal{O}_p(V) \ | \ f(p) = 0 \}$ inside the local
+ring the \emph{maximal ideal} of $V$ at $p$.
+\end{definition}
+
+\noindent Note that $\mathcal{O}_p(V) / \mathfrak{m}_p(V)$ is isomorphic to $k$, as the maximal ideal is the kernel of the evaluation map $f \mapsto f(p)$,
+so this follows from the first isomorphism theorem. In addition, note that $f \in \mathcal{O}_p(V)$ is a unit if and only if $f(p) \neq 0$, so $\mathfrak{m}_p(V)$
+consists of all non-units of the local ring.
+
+\begin{prop}
+  The following are equivalent:
+  \begin{enumerate}
+    \item The set of non-units of ring $R$ form an ideal.
+      \item $R$ has a unique maximal ideal that contains every proper ideal of $R$.
+    \end{enumerate}
+  \end{prop}
+
+\noindent When a ring satisfies either of these equivalent criteria, we call it \emph{local}. This justifies our calling $\mathcal{O}_p(V)$ \emph{the} local ring of $V$ and $p$ and $\mathfrak{m}_p(V)$
+the maximal ideal: the above proposition implies that $\mathfrak{m}_p(V)$ is the unique maximal ideal of the ring $\mathcal{O}_p(V)$.
+
+\begin{remark}
+  All of the properties of $V$ which depend only on a neighbourhood of $p$ are reflected in $\mathcal{O}_p(V)$, hence the name.
+  \end{remark}
+
+\begin{prop}
+  Let $R$ be a domain (but not a field), then the following are equivalent:
+  \begin{enumerate}
+    \item $R$ is Noetherian and local and the maximal ideal is principal.
+      \item There is an irreducible $t \in R$ 
+    \end{enumerate}
+  \end{prop}
+
+\end{document}

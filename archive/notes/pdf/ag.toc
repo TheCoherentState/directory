@@ -1,0 +1,5 @@
+\contentsline {title}{Crash course in algebraic geometry}{1}{section*.1}%
+\tocdepth@munge 
+\tocdepth@restore 
+\contentsline {section}{\numberline {I}Introduction}{2}{section.1}%
+\contentsline {section}{\numberline {II}Affine algebraic sets}{2}{section.2}%
