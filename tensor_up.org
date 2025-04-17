@@ -1,0 +1,18 @@
+#+TITLE:Tensor product via universal property
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+
+I want to write down a concrete example of a universal property, in the super-concrete, non-hand-wavy, category-theoretic sense.
+Let $F : C \rightarrow D$ be a functor between categories $C$ and $D$. A /universal morphism/ (or a /universal property/) from $X \in \text{Obj}(D)$ to
+$F$ is a pair $(A, u)$ where $A \in \text{Obj}(C)$, and $u : X \rightarrow F(A)$ is a morphism such that for any morphism $f : X \rightarrow F(A')$
+in $D$, there exists a /unique/ morphism $h : A \rightarrow A'$ which makes the following diagram commute:
+
+#+ATTR_HTML: :width 300px
+[[./img/im1.png]]
+
+To make this abstract definition more concrete, consider the tensor product, which we may define in terms of a universal property.
+In particular, we let both $C$ and $D$ be $\texttt{Vect}_k$ and $F$ be the identity. Let $V, W \in \text{Obj}(\texttt{Vect}_k)$.
+We need some way to think of bilinear maps within the category of vector spaces. Note that a bilinear map $V \times W \rightarrow Z$
+can be identified with linear maps $V \rightarrow (W \rightarrow Z) = \text{Hom}(W, Z)$.
+
+

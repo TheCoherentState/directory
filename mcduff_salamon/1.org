@@ -1,0 +1,141 @@
+#+TITLE:McDuff-Salamon Chapter 1
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+
+* Solutions
+
+** Problem 1.1.5
+
+We are assuming that $(x, y) : I \rightarrow \mathbb{R}^{2n}$ is a trajectory such that
+
+\begin{equation}
+\dot{x}_j(t) = \frac{d H}{d y_j}(t, x(t), y(t)) \ \ \ \ \text{and} \ \ \ \ \dot{y}_j(t) = -\frac{d H}{dx_j}(t, x(t), y(t))
+\end{equation}
+
+We are also assuming that $\det \frac{d^2 H}{dy_i dy_j} \neq 0$. Consider the equation, $v = \frac{d H}{d y}(t, x, y)$, suppose $(v_0, t_0, x_0, y_0)$ satisfies the equation. The condition
+and implicit function theorem implies that in a neighbourhood of $(v_0, t_0, x_0)$, we can write
+$y = G(v, t, x)$ with $y_0 = G(v_0, t_0, x_0)$. We then define
+
+\begin{equation}
+L(t, x, v) = \sum_{j} v_j G_j(v, t, x) - H(t, x, G(v, t, x))
+\end{equation}
+
+in a neighbourhood of $(t_0, x_0, v_0)$. Suppose we consider the point $(v_0, t_0, x_0, y_0) = (\dot{x}(t_0), t_0, x(t_0), y(t_0))$ for some $t_0$. Clearly, such a point will satisfy the above
+criterion, so we can define $L$ in a neighbourhood of $(\dot{x}(t_0), t_0, x(t_0))$. We have
+
+\begin{align}
+\frac{d L}{d v_j}(t, x(t), \dot{x}(t)) &= G_j(\dot{x}(t), t, x(t)) + \sum_{i} \left[ \dot{x}_i(t) \frac{d G_i}{dv_j}(\dot{x}(t), t, x(t)) - \frac{d H}{dy_i}(t, x(t), y(t)) \frac{dG_i}{dv_j}(\dot{x}(t), t, x(t)) \right]
+\\ &= G_j(\dot{x}(t), t, x(t)) = y_j(t)
+\end{align}
+
+which means that
+
+\begin{equation}
+\frac{d}{dt} \frac{d L}{d v_j}(t, x(t), \dot{x}(t)) = \dot{y}_j(t) = -\frac{d H}{dx_j}(t, x(t), y(t))
+\end{equation}
+
+From here, note that
+
+\begin{align}
+\frac{d L}{d x_j}(t, x(t), \dot{x}(t)) &= \sum_{i} \left[ \dot{x}_i(t) \frac{d G_i}{dx_j}(\dot{x}(t), t, x(t)) - \frac{d H}{dy_i}(t, x(t), y(t)) \frac{d G_i}{d x_j}(\dot{x}(t), t, x(t)) \right] - \frac{d H}{dx_j}(t, x(t), y(t))
+\\ &= -\frac{d H}{dx_j}(t, x(t), y(t))
+\end{align}
+
+which implies that the prior equation is exactly the Euler-Lagrange equation, as desired.
+
+** Problem 1.1.20
+
+Note that
+
+\begin{equation}
+\omega_0(X_F, X_G) = dF(X_G) = X_G(F) = -(\nabla F)^T J_0 \nabla G = \{F, G\}
+\end{equation}
+
+Thus, if $X = X_F$ and $Y = X_G$ are symplectic vector fields, then
+
+\begin{equation}
+X_{\omega_0(X, Y)} = X_{\{F, G\}} = [X_F, X_G] = [X, Y]
+\end{equation}
+
+** Problem 1.1.24
+
+In the particular case of geodesic flow, let us begin by noting that
+
+\begin{equation}
+\frac{d^2 L(x, v)}{dv_i dv_j} = \frac{d^2}{dv_i dv_j} \frac{1}{2} \sum_{ij} g_{ij}(x) v_i v_j = \frac{1}{2} (g_{ij}(x) + g_{ji}(x)) = g_{ij}(x)
+\end{equation}
+which means that the determinant is non-zero, as the metric is a non-degenerate symmetric two-tensor. Thus, we may apply the Legendre transform
+everywhere to get $y_k = \frac{dL}{dv_k} = \sum_{j} g_{kj}(x) v_j$. This means that $v_j = \sum_{k} g^{jk}(x) y_k$, and we get as our Hamiltonian
+
+\begin{align}
+H(x, y) = \sum_{j} y_j v_j - L &= \sum_{j} g^{jk}(x) y_j y_k - \frac{1}{2} \sum_{ijk \ell} g_{ij}(x) g^{ik}(x) g^{j \ell}(x) y_k y_{\ell}
+\\ &= \sum_{jk} g^{jk}(x) y_j y_k - \frac{1}{2} \sum_{ik} g^{ik}(x) y_k y_{i}
+\\ &= \frac{1}{2} \sum_{jk} g^{jk}(x) y_j y_k = \frac{1}{2} \langle y, g^{-1}(x) y \rangle
+\end{align}
+
+which implies that Hamilton's equations become
+
+\begin{equation}
+\dot{y}_k = -\frac{1}{2} \sum_{ij} \frac{d g^{ij}(x)}{dx_k} y_i y_j \ \ \ \ \text{and} \ \ \ \ \dot{x}_k = \frac{1}{2} \sum_{j} g^{jk}(x) y_j
+\end{equation}
+
+To prove that $|\cdot|_g$ is constant along geodesics, we can show that the smooth function $\frac{1}{2} |v|^2_g = \frac{1}{2} \langle v, g(x) v \rangle$ is constant along geodesics, $(x, v) = (x(t), \dot{x}(t))$.
+But of course, $v = g^{-1}(x) y$, so if $(x(t), y(t))$ is the phase space trajectory, then $\dot{x}(t) = g^{-1}(x(t)) y(t)$, and
+
+\begin{equation}
+\frac{1}{2} |\dot{x}(t)|^2_g = \langle g^{-1}(x(t)) y(t), y(t) \rangle = H(x(t), y(t))
+\end{equation}
+
+We know that the Hamiltonian $H$ will remain constant over geodesics, so the norm velocity will as well.
+
+** Problem 1.2.2
+
+Note that for Hamiltonian functions $H$ and $H'$ such that $S = H^{-1}(c) = (H')^{-1}(c')$ for regular values $c$ and $c'$, the Hamiltonian vector fields $X_H(z)$ and $X_{H'}(z)$
+lie in the rank-one subbundle of $T_z S$ given by $J_0 N_z S$, where $N_z S$ is the normal bundle at $z$. Note that $\omega(X_H(z), J_0 X_H(z)) = -||X_H(z)||^2$, so we can define
+$\lambda(z) = -\omega(X_{H'}(z), J_0 X_H(z)) ||X_H(z)||^{-2}$, provided that $X_H(z) \neq 0$, which we may assume as $c$ is a regular value, implying $H$ has non-zero derivative at every $z \in S$.
+We then have $X_{H'}(z) = \lambda(z) X_H(z)$. Note that $\lambda$ is always non-zero.
+
+Consider the function $\lambda \circ z : \mathbb{R} \rightarrow \mathbb{R}$, where $z$ is the solution of the $H$ -system. By existence of uniqueness, the ODE $\dot{\tau}(t) = (\lambda \circ z)(\tau(t))$
+has a unique solution with $\tau(0) = 0$ on the same time interval that $z$ is defined on (all of $\mathbb{R}$). It is a reparametrization as $\dot{\tau}(t) \neq 0$, as $\lambda \circ z$ never is $0$.
+
+To find $T'$ such that $\tau(kT') = kT$ for all $k \in \mathbb{Z}$, note that we can of course find unique $T'$ such that $\tau(T') = T$. Let $\sigma(t + k T') = \tau(t) + k T$
+for $t \in [0, T']$ and $k \in \mathbb{Z}$. Note that $\sigma(kT') = \tau(0) + k T = kT$ while $\sigma(T' + (k - 1) T') = \tau(T') + (k - 1) T = kT$, so this function is well-defined
+and continuous. It is smooth on each interval $(kT', (k + 1) T')$. In addition,
+
+\begin{equation}
+(\lambda \circ z)(\sigma(t + kT')) = \lambda(z(\tau(t) + kT)) = \lambda(z(\tau(t))) = \dot{\tau}(t) = \dot{\sigma}(t + k T')
+\end{equation}
+
+on each of these open intervals. Hence, by uniqueness, $\sigma = \tau$ on each of the open intervals, and by continuity, they will be equal everywhere. In particular, we have $\sigma(kT') = kT$
+for all $k$, as desired. It follows immediately that
+
+\begin{equation}
+\frac{d}{dt} (z \circ \tau)(t) = \dot{z}(\tau(t)) \dot{\tau}(t) = \lambda(z(\tau(t))) X_H(z(\tau(t))) = X_{H'}(z(\tau(t)))
+\end{equation}
+
+so that $z \circ \tau$ is a time-periodic solution of the $H'$ -system, as desired.
+
+* Notes
+
++ A Lagrangian $L : T \mathbb{R}^n \rightarrow \mathbb{R}$ which is a critical point of the action functional satisfies the Euler-Lagrange equations, given by
+
+  \begin{equation}
+  \frac{d}{dt} \frac{d L}{d v_j} = \frac{d L}{dx_j}
+  \end{equation}
+
+  Note that for some trajectory $x(t)$, we have
+  \begin{equation}
+  \frac{d}{dt} \frac{d L}{d v_j}(t, x(t), \dot{x}(t)) = \frac{d}{ds} \frac{d L}{d v_j}(s, x(t), \dot{x}(t)) \biggr\rvert_{s = t} + \sum_{i} \left[ \dot{x}(t) \frac{d^2 L}{d x_i d v_j}(t, x(t), \dot{x}(t)) +
+  \ddot{x}(t) \frac{d^2 L}{d v_i d v_j}(t, x(t), \dot{x}(t))\right]
+  \end{equation}
+
+  In the case that we have the Legendre condition on $L$, as explained in the book, then the above is a system of second-order differential equations for $x(t)$. As
+  per usual, we may convert a system of second-order differential equations into a larger first-order system. Usually, we do this by setting $y(t) = \dot{x}(t)$, however,
+  in this case, we can be somewhat more tactful and utilize the Legendre transform, where we set $y_k(t) = \frac{dL}{dx_k}(x(t), \dot{x}(t))$, which is some function of $x(t)$
+  and $\dot{x}(t)$ rather than just $\dot{x}(t)$.
+
++ Note that when we use the implicit function theorem in order to go from the Lagrange picture to the Hamiltonian picture, the function we obtain locally is /unique/, and we
+  may glue together these local functions in any region where the Legendre condition is satisfied.
+
++ One can show that the rank-one distribution $L_z = \{J_0 v \ | \ v \in T_z S\}$ for Hamiltonian hypersurface $S$ is involutive very easily, so by Frobenius' theorem,
+  the integral manifolds (i.e. the integral curves associated with this distribution) define a foliation.

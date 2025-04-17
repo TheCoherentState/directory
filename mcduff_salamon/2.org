@@ -1,0 +1,28 @@
+#+TITLE:McDuff-Salamon Chapter 2
+#+DESCRIPTION:Directory
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+
+* Solutions
+
+** Problem 2.1.2
+
+First suppose that $\Psi : V \rightarrow V$ is a linear symplectomorphism. Consider the vector space $V \times V$ and subspace $\Gamma_{\Psi}$. Note that
+
+\begin{equation}
+((-\omega) \oplus \omega)((v_1, v_2), (w_1, w_2)) = \omega(w_1, w_2) - \omega(v_1, v_2) = - ((-\omega) \oplus \omega)((w_1, w_2), (v_1, v_2))
+\end{equation}
+
+so that $(-\omega) \oplus \omega$ is skew-symmetric. It is non-degenerate, as if $((-\omega) \oplus \omega)((v_1, \cdot), (w_1, \cdot)) = 0$ no matter
+what $(v_2, w_2)$ we plug in, this is true for $(v_2, 0)$ and $(0, w_2)$, implying $v_1 = w_1 = 0$, as $\omega$ is non-degenerate. It follows that
+we have a valid symplectic form on our vector space. Note
+
+\begin{equation}
+((-\omega) \oplus \omega)((v, w), (\Psi v, \Psi w)) = \omega(\Psi v, \Psi w) - \omega(v, w) = 0
+\end{equation}
+
+so $\Gamma_{\Psi}$ is isotropic. Since it is half the dimension of $V \times V$, it follows that it is Lagrangian. On the other hand, suppose $\Gamma_{\Psi}$
+is Lagrangian, so in particular, it is isotropic. Then from the above equation, $\Psi^{*} \omega(v, w) = \omega(v, w)$ for all $v, w \in V$. Thus, $\Psi$ preserves the symplectic form.
+Moreover, if $\Psi(v) = 0$, then $\omega(v, w) = 0$ for all $w$, so $v = 0$, implying $\Psi$ is injective, thus an isomorphism.
+
+** Problem 

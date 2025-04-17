@@ -3,12 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-04-17 Thu 10:46 -->
+<!-- 2025-03-07 Fri 14:28 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Directory</title>
+<title>Tensor product via universal property</title>
 <meta name="author" content="Jack Ceroni" />
-<meta name="description" content="Directory" />
 <meta name="generator" content="Org Mode" />
 <style>
   #content { max-width: 60em; margin: auto; }
@@ -196,62 +195,65 @@
 </style>
 <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
 <style> body {font-size:15px;} </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Directory</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#orgd7e61dc">1. Solution Manuals</a></li>
-<li><a href="#org99efdb8">2. Notes</a></li>
-<li><a href="#orgfa1672b">3. Other</a></li>
-</ul>
-</div>
-</div>
+<h1 class="title">Tensor product via universal property</h1>
 <p>
-Linked below are the subpages of this website, grouped by category.
+I want to write down a concrete example of a universal property, in the super-concrete, non-hand-wavy, category-theoretic sense.
+Let \(F : C \rightarrow D\) be a functor between categories \(C\) and \(D\). A <i>universal morphism</i> (or a <i>universal property</i>) from \(X \in \text{Obj}(D)\) to
+\(F\) is a pair \((A, u)\) where \(A \in \text{Obj}(C)\), and \(u : X \rightarrow F(A)\) is a morphism such that for any morphism \(f : X \rightarrow F(A')\)
+in \(D\), there exists a <i>unique</i> morphism \(h : A \rightarrow A'\) which makes the following diagram commute:
 </p>
 
-<hr />
 
-<div id="outline-container-orgd7e61dc" class="outline-2">
-<h2 id="orgd7e61dc"><span class="section-number-2">1.</span> Solution Manuals</h2>
-<div class="outline-text-2" id="text-1">
-<ul class="org-ul">
-<li>Solution manual and notes for McDuff and Salamon's <i>Introduction to Symplectic Topology</i> <a href="./pdf/mcduff_salamon.pdf">(pdf)</a></li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-org99efdb8" class="outline-2">
-<h2 id="org99efdb8"><span class="section-number-2">2.</span> Notes</h2>
-<div class="outline-text-2" id="text-2">
-<ul class="org-ul">
-<li>Perelman's proof of the Soul Conjecture, final project for MAT464 (Riemannian geometry) at the University of Toronto <a href="./pdf/soul_conjecture.pdf">(pdf)</a></li>
-<li>A complete proof of the Myers-Steenrod theorem (as there isn't a good, complete one available online) <a href="./pdf/myers_steenrod.pdf">(pdf)</a></li>
-<li>Lecture notes from a talk I gave at the Fields Institute in November 2024: <i>The A-infinity De Rham theorem and representations up to homotopy</i> <a href="./pdf/a_infty.pdf">(pdf)</a></li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-orgfa1672b" class="outline-2">
-<h2 id="orgfa1672b"><span class="section-number-2">3.</span> Other</h2>
-<div class="outline-text-2" id="text-3">
-<p>
-Shorter than notes!
+<div id="org0e0ffcd" class="figure">
+<p><img src="./img/im1.png" alt="im1.png" width="300px" />
 </p>
+</div>
 
-<ul class="org-ul">
-<li><a href="./urysohn.html">Urysohn's lemma</a></li>
-</ul>
-</div>
-</div>
+<p>
+To make this abstract definition more concrete, consider the tensor product, which we may define in terms of a universal property.
+In particular, we let both \(C\) and \(D\) be \(\texttt{Vect}_k\) and \(F\) be the identity. Let \(V, W \in \text{Obj}(\texttt{Vect}_k)\).
+We need some way to think of bilinear maps within the category of vector spaces. Note that a bilinear map \(V \times W \rightarrow Z\)
+can be identified with linear maps \(V \rightarrow (W \rightarrow Z) = \text{Hom}(W, Z)\).
+</p>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jack Ceroni</p>
-<p class="date">Created: 2025-04-17 Thu 10:46</p>
+<p class="date">Created: 2025-03-07 Fri 14:28</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

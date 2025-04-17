@@ -3,17 +3,19 @@
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
 #+HTML_HEAD: <style> body {font-size:15px;} </style>
 
-Welcome to the *directory*, the place where I store most of the academic work/content that I create. This includes all notes and solution sets, among other things.
 Linked below are the subpages of this website, grouped by category.
 
 --------------------
 
 * Solution Manuals
-   + [[./lee/index.html][Solution manual for Lee's /Introduction to Smooth Manifolds/]]
-   + [[./hatcher/index.html][Solution manual for Hatcher's /Introduction to Algebraic Topology/]]
+   + Solution manual and notes for McDuff and Salamon's /Introduction to Symplectic Topology/ [[./pdf/mcduff_salamon.pdf][(pdf)]]
 
 * Notes
-   + [[./soul_conjecture.pdf][Perelman's proof of the soul conjecture]]
+   + Perelman's proof of the Soul Conjecture, final project for MAT464 (Riemannian geometry) at the University of Toronto [[./pdf/soul_conjecture.pdf][(pdf)]]
+   + A complete proof of the Myers-Steenrod theorem (as there isn't a good, complete one available online) [[./pdf/myers_steenrod.pdf][(pdf)]]
+   + Lecture notes from a talk I gave at the Fields Institute in November 2024: /The A-infinity De Rham theorem and representations up to homotopy/ [[./pdf/a_infty.pdf][(pdf)]]
 
 * Other
-   + [[./urysohn.html][A short proof of Urysohn's lemma]]
+   Shorter than notes!
+
+   + [[./urysohn.html][Urysohn's lemma]]

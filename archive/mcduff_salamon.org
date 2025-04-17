@@ -1,0 +1,22 @@
+#+TITLE:Notes on McDuff-Salamon
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+
+These are some notes clarifying certain points in McDuff and Salamon's book on symplectic topology.
+
++ A Lagrangian $L : T \mathbb{R}^n \rightarrow \mathbb{R}$ which is a critical point of the action functional satisfies the Euler-Lagrange equations, given by
+
+  \begin{equation}
+  \frac{d}{dt} \frac{d L}{d v_j} = \frac{d L}{dx_j}
+  \end{equation}
+
+  Note that for some trajectory $x(t)$, we have
+  \begin{equation}
+  \frac{d}{dt} \frac{d L}{d v_j}(t, x(t), \dot{x}(t)) = \frac{d}{ds} \frac{d L}{d v_j}(s, x(t), \dot{x}(t)) \biggr\rvert_{s = t} + \sum_{i} \left[ \dot{x}(t) \frac{d L}{d x_i d v_j}(t, x(t), \dot{x}(t)) +
+  \ddot{x}(t) \frac{d L}{d v_i d v_j}(t, x(t), \dot{x}(t))\right]
+  \end{equation}
+
+  In the case that we have the Legendre condition on $L$, as explained in the book, then the above is a system of second-order differential equations for $x(t)$. As
+  per usual, we may convert a system of second-order differential equations into a larger first-order system. Usually, we do this by setting $y(t) = \dot{x}(t)$, however,
+  in this case, we can be somewhat more tactful and utilize the Legendre transform, where we set $y_k(t) = \frac{dL}{dx_k}(x(t), \dot{x}(t))$, which is some function of $x(t)$
+  and $\dot{x}(t)$ rather than just $\dot{x}(t)$.

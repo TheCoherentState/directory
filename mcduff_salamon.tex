@@ -1,0 +1,330 @@
+\documentclass[aps,pra,showpacs,notitlepage,onecolumn,superscriptaddress,nofootinbib]{revtex4-1}
+\usepackage[utf8]{inputenc}
+\usepackage[tmargin=1in, bmargin=1.25in, lmargin=1.5in, rmargin=1.5in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{datetime}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{import}
+\usepackage{mathtools}
+\usepackage{thmtools,thm-restate}
+\usepackage{tikz-cd}
+\usepackage[many]{tcolorbox}
+
+% package for commutative diagrams
+% \usepackage{tikz-cd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{crimson}{RGB}{186,0,44}
+\definecolor{moss}{RGB}{0, 186, 111}
+\newcommand{\pop}[1]{\textcolor{crimson}{#1}}
+\newcommand{\zcom}[1]{\noindent\textcolor{crimson}{(Z): #1}}
+\newcommand{\jcom}[1]{\noindent\textcolor{moss}{(J): #1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\pqeq}{\succcurlyeq}
+\newcommand{\pleq}{\preccurlyeq}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+    colorlinks,
+    linkcolor={crimson},
+    citecolor={crimson},
+    urlcolor={crimson}
+}
+
+\usepackage{qcircuit}
+\usepackage{comment}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\newtheorem{lemma}{Lemma}[section]
+
+\newtheorem{theorem}{Theorem}[section]
+
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{corollary*}{Corollary}
+
+\newtheorem{remark}{Remark}[section]
+
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{reminder}{Reminder}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{answer}{Answer}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{claim}{Claim}[section]
+\newtheorem{prop}{Proposition}[section]
+
+\newtheorem{solution}{Solution}[section]
+
+\usepackage{geometry}
+\geometry{
+  left=25mm,
+  right=25mm,
+  top=20mm,
+}
+
+\newcommand{\hhrulefill}{\hspace{-1.5em} \hrulefill}
+\renewcommand{\baselinestretch}{1.1} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{unsrt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{Basic Symplectic Topology}
+\author{Jack Ceroni}
+\email{jceroni@uchicago.edu}
+\date{\today}
+\maketitle
+
+\tableofcontents
+
+\section{Introduction}
+
+\noindent The goal of these notes is to fill-in details and provide solutions to selected exercises in McDuff and Salamon's book, \emph{Introduction to Symplectic Topology}.
+I may also draw from other sources, when relevant, as there are some arguments in McDuff-Salamon which rely on material that warrants further discussion for a novice (such as myself).
+
+\section{Chapter 1}
+
+\subsection{Notes}
+
+\noindent I would like to begin these notes to filling in a few details which are glossed-over in the discussion of the Lagrangian-Hamiltonian correspondence of McDuff-Salamon.
+It is straightforward to demonstrate that a path $x(t)$ is a critical point of the action functional corresponding to Lagrangian $L$ if and only if
+it is a solution to the Euler-Lagrange equation,
+\begin{equation}
+  \frac{d}{dt} \frac{d L}{d v_i}(t, x(t), \dot{x}(t)) - \frac{d L}{d x_i}(t, x(t), \dot{x}(t)) = 0
+  \end{equation}
+over all $i = 1, \dots, n$. Note that
+\begin{equation}
+  \frac{d}{dt} \frac{d L}{d v_j}(t, x(t), \dot{x}(t)) = \frac{d}{ds} \frac{d L}{d v_j}(s, x(t), \dot{x}(t)) \biggr\rvert_{s = t} + \sum_{i} \left[ \dot{x}(t) \frac{d^2 L}{d x_i d v_j}(t, x(t), \dot{x}(t)) +
+    \ddot{x}(t) \frac{d^2 L}{d v_i d v_j}(t, x(t), \dot{x}(t))\right]
+\end{equation}
+In the case that we have the Legendre condition on $L$, as explained in the book, then the above is a system of second-order differential equations for $x(t)$. As
+per usual, we may convert a system of second-order differential equations into a larger first-order system. Usually, we do this by setting $y = \dot{x}$, however,
+in this case, we can be somewhat more tactful and utilize the Legendre transform, where we define the functions $y_k(t, x, v) = \frac{dL}{dv_k}(t, x, v)$, and we use the notation
+$y_k(t) = y_k(t, x(t), \dot{x}(t)) = \frac{dL}{dv_k}(t, x(t), \dot{x}(t))$ for some trajectory $x(t)$. It then follows that $x(t)$ being a solution to the original Euler-Lagrange equation is equivalent to the condition that
+\begin{equation}
+  \label{eq:1}
+  \dot{y_k}(t) = \frac{d}{dt} \frac{dL}{dv_k}(t, x(t), \dot{x}(t)) = \frac{dL}{dx_k}(t, x(t), \dot{x}(t))
+  \end{equation}
+Suppose that the Legendre condition holds at some point $(t_0, x_0, v_0)$ with $y_0 = \frac{dL}{dv}(t_0, x_0, v_0)$, then it follows from implicit function theorem that in a neighbourhood of this
+point there are unique smooth functions $G_k(t, x, y)$ such that $y - \frac{dL}{dv}(t, x, G(t, x, y)) = 0$ in a neighbourhood $U$ of $(t_0, x_0, y_0)$. We can use the notation $v_k = G_k(t, x, y)$ as shorthand.
+It follows that on $U$, we can define a \emph{Hamiltonian} $H : U \rightarrow \mathbb{R}$ as
+\begin{equation}
+  H(t, x, y) = \sum_{j = 1}^{n} y_j G_j(t, x, y) - L(t, x, G(t, x, y)) = \sum_{k = 1}^{n} y_j v_j - L
+  \end{equation}
+Note that
+\begin{equation}
+  \label{eq:g}
+  \frac{dH}{dy_j}(t, x, y) = G_j(t, x, y) + \sum_{k = 1}^{n} \frac{dG_k}{dy_j} \left[ y_k - \frac{dL}{dv_k}(t, x, G(t, x, y)) \right] = G_j(t, x, y)
+  \end{equation}
+and
+\begin{equation}
+  \label{eq:l}
+  \frac{dH}{dx_j}(t, x, y) = \sum_{k = 1}^{n} \frac{dG_k}{dx_j} \left[y_k - \frac{dL}{dv_k}(t, x, G(t, x, y))\right] - \frac{dL}{dx_j} = - \frac{dL}{dx_j}(t, x, G(t, x, y))
+  \end{equation}
+on $U$. It follows immediately that if $x(t)$ is a solution to the Euler-Lagrange equation, and the Legendre condition is satisfied at $(t_0, x(t_0), \dot{x}(t_0))$, then in a neighbourhood $U$
+of $(t_0, x(t_0), y(t_0))$, the Hamiltonian will be defined. We can choose $t$ sufficiently close to $t_0$ (i.e. in $(t_0 - \varepsilon, t_0 + \varepsilon)$) so that $(t, x(t), y(t)) \in U$, and we will have
+\begin{equation}
+  \label{eq:2}
+  \frac{dH}{dy_j}(t, x(t), y(t)) = G_j(t, x(t), y(t)) \ \ \ \ \text{and} \ \ \ \ \frac{dH}{dx_j}(t, x(t), y(t)) = -\frac{dL}{dx_j}(t, x(t), G(t, x(t), y(t)))
+  \end{equation}
+By definition, $y(t) = \frac{dL}{dv}(t, x(t), \dot{x}(t))$, so both $t \mapsto G(t, x(t), \dot{x}(t))$ and $t \mapsto \dot{x}(t)$ are smooth functions on $(t_0 - \varepsilon, t_0 + \varepsilon)$
+such that $y(t) - \frac{dL}{dv}(t, x(t), v(t)) = 0$ when plugged-in as $v(t)$. However, the Legendre condition and implicit function theorem imply that such a $v(t)$ in a neighbourhood of $t_0$ is unique,
+so on interval $(t_0 - \delta, t_0 + \delta)$, we have $\dot{x}(t) = G(t, x(t), y(t))$, and using Eq.~\eqref{eq:1}, we have
+\begin{equation}
+  \label{eq:3}
+  \frac{dH}{dy_j}(t, x(t), y(t)) = \dot{x}_j(t) \ \ \ \ \text{and} \ \ \ \ \frac{dH}{dx_j}(t, x(t), y(t)) = -\dot{y}_j(t)
+\end{equation}
+Thus, in summary, we have shown that if $x(t)$ is a solution to the Euler-Lagrange equation, and the Legendre condition is satisfied at $(t_0, x(t_0), \dot{x}(t_0))$, then
+there exists an interval around $t_0$ such that $x(t)$ and $y(t)$ satisfy the above differential equations, which we refer to as the \emph{Hamilton equations}.
+
+Conversely, suppose the Legendre condition of the Lagrangian $L$ is satisfied at point $(t_0, x_0, v_0)$. We define $G_j(t, x, y)$
+as before, so that $y - \frac{dL}{dv}(t, x, G(t, x, y)) = 0$ on $U$ about $(t_0, x_0, y_0)$ with $y_0 = \frac{dL}{dv}(t_0, x_0, v_0)$.
+Suppose the functions $x(t)$ and $y(t)$ with $x(t_0) = x_0$ and $y(t_0) = y_0$
+satisfy the Hamilton equations on some interval about $t_0$. Note that Eq.~\eqref{eq:g} and Eq.~\eqref{eq:3} imply $G(t, x(t), y(t)) = \dot{x}(t)$ so $y(t) = \frac{dL}{dv}(t, x(t), \dot{x}(t))$, and we have
+\begin{align}
+  0 = \dot{y}_j(t) - \frac{d}{dt} \frac{dL}{dv_j}(t, x(t), \dot{x}(t)) &= -\frac{dH}{dx_j}(t, x(t), y(t)) - \frac{d}{dt} \frac{dL}{dv_j}(t, x(t), \dot{x}(t))
+  \\ &= \frac{dL}{dx_j}(t, x(t), \dot{x}(t)) - \frac{d}{dt} \frac{dL}{dv_j}(t, x(t), \dot{x}(t))
+  \end{align}
+where the final equality uses Eq.~\eqref{eq:l}. This is precisely the Euler-Lagrange equation. Hence, we have proved the following claim:
+
+\begin{claim}
+  If $L$ is a Lagrangian which satisfies the Legendre condition at some point $(t_0, x_0, v_0)$, then trajectory $x(t)$ with $x(t_0) = x_0$ and $\dot{x}(t_0) = v_0$ satisfies the Euler-Lagrange
+  equation on some open interval around $t_0$ if and only if there exists some $y(t)$ also defined on an interval around $t_0$ with $y(t_0) = y_0 = \frac{dL}{dv}(t_0, x_0, v_0)$ such that $x(t)$
+  and $y(t)$ satisfy the Hamilton equations, for the Hamiltonian $H$ defined on some open set around $(t_0, x_0, y_0)$. Moreover, when such a $y$ exists, it is always the case that $y(t) = \frac{dL}{dv}(t, x(t), \dot{x}(t))$.
+  \end{claim}
+
+\subsection{Solutions}
+
+\begin{solution}[Problem 1.1.5]
+  We are assuming that $(x, y) : I \rightarrow \mathbb{R}^{2n}$ is a trajectory such that
+
+\begin{equation}
+\dot{x}_j(t) = \frac{d H}{d y_j}(t, x(t), y(t)) \ \ \ \ \text{and} \ \ \ \ \dot{y}_j(t) = -\frac{d H}{dx_j}(t, x(t), y(t))
+\end{equation}
+We are also assuming that $\det \frac{d^2 H}{dy_i dy_j} \neq 0$. Consider the equation, $v = \frac{d H}{d y}(t, x, y)$, suppose $(v_0, t_0, x_0, y_0)$ satisfies the equation. The condition
+and implicit function theorem implies that in a neighbourhood of $(v_0, t_0, x_0)$, we can write
+$y = G(v, t, x)$ with $y_0 = G(v_0, t_0, x_0)$. We then define
+\begin{equation}
+L(t, x, v) = \sum_{j} v_j G_j(v, t, x) - H(t, x, G(v, t, x))
+\end{equation}
+in a neighbourhood of $(t_0, x_0, v_0)$. Suppose we consider the point $(v_0, t_0, x_0, y_0) = (\dot{x}(t_0), t_0, x(t_0), y(t_0))$ for some $t_0$. Clearly, such a point will satisfy the above
+criterion, so we can define $L$ in a neighbourhood of $(\dot{x}(t_0), t_0, x(t_0))$. We have
+\begin{align}
+\frac{d L}{d v_j}(t, x(t), \dot{x}(t)) &= G_j(\dot{x}(t), t, x(t)) + \sum_{i} \left[ \dot{x}_i(t) \frac{d G_i}{dv_j}(\dot{x}(t), t, x(t)) - \frac{d H}{dy_i}(t, x(t), y(t)) \frac{dG_i}{dv_j}(\dot{x}(t), t, x(t)) \right]
+\\ &= G_j(\dot{x}(t), t, x(t)) = y_j(t)
+\end{align}
+which means that
+\begin{equation}
+\frac{d}{dt} \frac{d L}{d v_j}(t, x(t), \dot{x}(t)) = \dot{y}_j(t) = -\frac{d H}{dx_j}(t, x(t), y(t))
+\end{equation}
+From here, note that
+\begin{align}
+\frac{d L}{d x_j}(t, x(t), \dot{x}(t)) &= \sum_{i} \left[ \dot{x}_i(t) \frac{d G_i}{dx_j}(\dot{x}(t), t, x(t)) - \frac{d H}{dy_i}(t, x(t), y(t)) \frac{d G_i}{d x_j}(\dot{x}(t), t, x(t)) \right] - \frac{d H}{dx_j}(t, x(t), y(t))
+\\ &= -\frac{d H}{dx_j}(t, x(t), y(t))
+\end{align}
+which implies that the prior equation is exactly the Euler-Lagrange equation, as desired.
+  \end{solution}
+
+\begin{solution}[Problem 1.1.20]
+  Note that
+  \begin{equation}
+    \omega_0(X_F, X_G) = dF(X_G) = X_G(F) = -(\nabla F)^T J_0 \nabla G = \{F, G\}
+  \end{equation}
+  Thus, if $X = X_F$ and $Y = X_G$ are symplectic vector fields, then
+  \begin{equation}
+    X_{\omega_0(X, Y)} = X_{\{F, G\}} = [X_F, X_G] = [X, Y]
+  \end{equation}
+  \end{solution}
+
+\begin{solution}[Problem 1.1.24]
+  In the particular case of geodesic flow, let us begin by noting that
+\begin{equation}
+\frac{d^2 L(x, v)}{dv_i dv_j} = \frac{d^2}{dv_i dv_j} \frac{1}{2} \sum_{ij} g_{ij}(x) v_i v_j = \frac{1}{2} (g_{ij}(x) + g_{ji}(x)) = g_{ij}(x)
+\end{equation}
+which means that the determinant is non-zero, as the metric is a non-degenerate symmetric two-tensor. Thus, we may apply the Legendre transform
+everywhere to get $y_k = \frac{dL}{dv_k} = \sum_{j} g_{kj}(x) v_j$. This means that $v_j = \sum_{k} g^{jk}(x) y_k$, and we get as our Hamiltonian
+\begin{align}
+H(x, y) = \sum_{j} y_j v_j - L &= \sum_{j} g^{jk}(x) y_j y_k - \frac{1}{2} \sum_{ijk \ell} g_{ij}(x) g^{ik}(x) g^{j \ell}(x) y_k y_{\ell}
+\\ &= \sum_{jk} g^{jk}(x) y_j y_k - \frac{1}{2} \sum_{ik} g^{ik}(x) y_k y_{i}
+\\ &= \frac{1}{2} \sum_{jk} g^{jk}(x) y_j y_k = \frac{1}{2} \langle y, g^{-1}(x) y \rangle
+\end{align}
+which implies that Hamilton's equations become
+\begin{equation}
+\dot{y}_k = -\frac{1}{2} \sum_{ij} \frac{d g^{ij}(x)}{dx_k} y_i y_j \ \ \ \ \text{and} \ \ \ \ \dot{x}_k = \frac{1}{2} \sum_{j} g^{jk}(x) y_j
+\end{equation}
+To prove that $|\cdot|_g$ is constant along geodesics, we can show that the smooth function $\frac{1}{2} |v|^2_g = \frac{1}{2} \langle v, g(x) v \rangle$ is constant along geodesics, $(x, v) = (x(t), \dot{x}(t))$.
+But of course, $v = g^{-1}(x) y$, so if $(x(t), y(t))$ is the phase space trajectory, then $\dot{x}(t) = g^{-1}(x(t)) y(t)$, and
+\begin{equation}
+\frac{1}{2} |\dot{x}(t)|^2_g = \langle g^{-1}(x(t)) y(t), y(t) \rangle = H(x(t), y(t))
+\end{equation}
+We know that the Hamiltonian $H$ will remain constant over geodesics, so the norm velocity will as well.
+  \end{solution}
+
+\begin{solution}[Problem 1.2.2]
+  Note that for Hamiltonian functions $H$ and $H'$ such that $S = H^{-1}(c) = (H')^{-1}(c')$ for regular values $c$ and $c'$, the Hamiltonian vector fields $X_H(z)$ and $X_{H'}(z)$
+lie in the rank-one subbundle of $T_z S$ given by $J_0 N_z S$, where $N_z S$ is the normal bundle at $z$. Note that $\omega(X_H(z), J_0 X_H(z)) = -||X_H(z)||^2$, so we can define
+$\lambda(z) = -\omega(X_{H'}(z), J_0 X_H(z)) ||X_H(z)||^{-2}$, provided that $X_H(z) \neq 0$, which we may assume as $c$ is a regular value, implying $H$ has non-zero derivative at every $z \in S$.
+We then have $X_{H'}(z) = \lambda(z) X_H(z)$. Note that $\lambda$ is always non-zero. Consider the function $\lambda \circ z : \mathbb{R} \rightarrow \mathbb{R}$, where $z$ is the solution of the $H$ -system. By existence of uniqueness, the ODE $\dot{\tau}(t) = (\lambda \circ z)(\tau(t))$
+has a unique solution with $\tau(0) = 0$ on the same time interval that $z$ is defined on (all of $\mathbb{R}$). It is a reparametrization as $\dot{\tau}(t) \neq 0$, as $\lambda \circ z$ never is $0$. To find $T'$ such that $\tau(kT') = kT$ for all $k \in \mathbb{Z}$, note that we can of course find unique $T'$ such that $\tau(T') = T$. Let $\sigma(t + k T') = \tau(t) + k T$
+for $t \in [0, T']$ and $k \in \mathbb{Z}$. Note that $\sigma(kT') = \tau(0) + k T = kT$ while $\sigma(T' + (k - 1) T') = \tau(T') + (k - 1) T = kT$, so this function is well-defined
+and continuous. It is smooth on each interval $(kT', (k + 1) T')$. In addition,
+\begin{equation}
+(\lambda \circ z)(\sigma(t + kT')) = \lambda(z(\tau(t) + kT)) = \lambda(z(\tau(t))) = \dot{\tau}(t) = \dot{\sigma}(t + k T')
+\end{equation}
+on each of these open intervals. Hence, by uniqueness, $\sigma = \tau$ on each of the open intervals, and by continuity, they will be equal everywhere. In particular, we have $\sigma(kT') = kT$
+for all $k$, as desired. It follows immediately that
+\begin{equation}
+\frac{d}{dt} (z \circ \tau)(t) = \dot{z}(\tau(t)) \dot{\tau}(t) = \lambda(z(\tau(t))) X_H(z(\tau(t))) = X_{H'}(z(\tau(t)))
+\end{equation}
+so that $z \circ \tau$ is a time-periodic solution of the $H'$ -system, as desired.
+  \end{solution}
+
+\section{Chapter 2}
+
+\subsection{Notes}
+
+\begin{definition}[Fibration]
+  A fibration is a continuous map $p : E \rightarrow B$ satisfying the homotopy lifting property for all topological spaces $X$. This means that given any homotopy
+  $F : X \times [0, 1] \rightarrow B$ and any lift of $F(\cdot, 0)$ to $E$, there exists a homotopy lifting $F$ which begins at the given lift of $F(\cdot, 0)$.
+  A \emph{Serre fibration} refers to the weaker condition where $X$ need only be a CW-complex.
+  \end{definition}
+
+\noindent One of the main, useful properites of fibrations is that they fit into a long exact sequence of homotopy groups.
+
+\begin{claim}
+  The map $\det : U(n) \rightarrow S^1$ is a fibration.
+  \end{claim}
+\begin{proof}
+  \end{proof}
+
+\subsubsection{Maslov index}
+
+\noindent We proved that the spaces $\text{Sp}(2n)$ and $U(n)$ are homotopy equivalent, which implies that $\pi_1(\text{Sp}(2n)) = \pi_1(U(n)) = \pi_1(S^1) \simeq \mathbb{Z}$. The Maslov index
+is an explicit homomorphism from $\pi_1(\text{Sp}(2n), x_0)$, where $x_0$ is a fixed basepoint, to $\mathbb{Z}$. In particular, we have the map $f : \text{Sp}(2n) \rightarrow U(n)$ which takes
+$\Psi$ to
+\begin{equation}
+\Psi (\Psi^{T} \Psi)^{-1/2} = \begin{pmatrix} X & -Y \\ Y & X \end{pmatrix} \simeq X + iY \in U(n)
+\end{equation}
+We then take $X + iY$ to $S^1$ via $\det : U(n) \rightarrow S^1$. Note that $f$ is a homotopy equivalence, so $f_{*} : \pi_1(\text{Sp}(2n), x_0) \rightarrow \pi_1(U(n), f(x_0))$ is an isomorphism of fundamental groups.
+Similarly, it is proved in the textbook that $\det : U(n) \rightarrow S^1$ induces an isomorphism of fundamental groups via $\det_{*}$. Finally, we know that the degree of self-map of the circle is an isomorphism
+of $\pi_1(S^1, y_0)$ with $\mathbb{Z}$. Composing these maps together, $\deg \circ \det_{*} \circ f_{*}$, yields an isomorphism of $\pi_1(\text{Sp}(2n), x_0)$ with $\mathbb{Z}$, as desired.
+
+\begin{claim}
+  The Maslov index is the unique map satisfying the provided axioms in the book.
+  \end{claim}
+\begin{proof}
+  Let $\mu$ be the Maslov index constructed above, let $\psi$ be another map satisfying the same properties. Let $\Psi : S^1 \rightarrow \text{Sp}(2n)$ be a loop based at the identity and let
+  $m = \mu([\Psi]) \in \mathbb{Z}$. Define $U_{m}^{(n)} : S^1 \rightarrow U(n)$ as $U_m^{(n)}(t) = \text{diag}(e^{i m t}, 0, \dots, 0)$. It is easy to see that $\mu([U_m^{(n)}]) = m$ via the properties of $\mu$,
+  which means that $[U_m^{(n)}] = [\Psi]$ in the fundamental group. But this then implies via the properties we assumed that $\psi$ satisfies,
+  \begin{equation}
+    \psi(\Psi) = \psi(U_m^{(n)}) = \psi(e^{i m t}) + \psi(1) + \cdots + \psi(1) = m = \mu(\Psi)
+    \end{equation}
+  so $\psi$ and $\mu$ are equal.
+\end{proof}
+
+\subsection{Solutions}
+
+\begin{solution}[2.1.2]
+  First suppose that $\Psi : V \rightarrow V$ is a linear symplectomorphism. Consider the vector space $V \times V$ and subspace $\Gamma_{\Psi}$. Note that
+\begin{equation}
+((-\omega) \oplus \omega)((v_1, v_2), (w_1, w_2)) = \omega(w_1, w_2) - \omega(v_1, v_2) = - ((-\omega) \oplus \omega)((w_1, w_2), (v_1, v_2))
+\end{equation}
+so that $(-\omega) \oplus \omega$ is skew-symmetric. It is non-degenerate, as if $((-\omega) \oplus \omega)((v_1, \cdot), (w_1, \cdot)) = 0$ no matter
+what $(v_2, w_2)$ we plug in, this is true for $(v_2, 0)$ and $(0, w_2)$, implying $v_1 = w_1 = 0$, as $\omega$ is non-degenerate. It follows that
+we have a valid symplectic form on our vector space. Note
+\begin{equation}
+((-\omega) \oplus \omega)((v, w), (\Psi v, \Psi w)) = \omega(\Psi v, \Psi w) - \omega(v, w) = 0
+\end{equation}
+so $\Gamma_{\Psi}$ is isotropic. Since it is half the dimension of $V \times V$, it follows that it is Lagrangian. On the other hand, suppose $\Gamma_{\Psi}$
+is Lagrangian, so in particular, it is isotropic. Then from the above equation, $\Psi^{*} \omega(v, w) = \omega(v, w)$ for all $v, w \in V$. Thus, $\Psi$ preserves the symplectic form.
+Moreover, if $\Psi(v) = 0$, then $\omega(v, w) = 0$ for all $w$, so $v = 0$, implying $\Psi$ is injective, thus an isomorphism.
+  \end{solution}
+
+\section{Background material}
+
+\subsection{Frobenius' theorem}
+
+\noindent In this section, we provide a concise proof of Frobenius' theorem, which is an important result relating to foliations (which arise frequently in symplectic topology).
+
+\subsection{Some homotopy theory}
+
+\noindent There are a few results in this book that require some homotopy-theoretic results, particularly related to fibrations and the associated homotopy long exact sequence.
+
+\subsection{Intersection number}
+
+\bibliography{refs}
+
+\end{document}

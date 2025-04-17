@@ -1,0 +1,451 @@
+\documentclass[aps,pra,showpacs,notitlepage,onecolumn,superscriptaddress,nofootinbib]{revtex4-1}
+\usepackage[utf8]{inputenc}
+\usepackage[tmargin=1in, bmargin=1.25in, lmargin=1.5in, rmargin=1.5in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{datetime}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{import}
+\usepackage{mathtools}
+\usepackage{thmtools,thm-restate}
+\usepackage{tikz-cd}
+\usepackage[many]{tcolorbox}
+
+% package for commutative diagrams
+% \usepackage{tikz-cd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{crimson}{RGB}{186,0,44}
+\definecolor{moss}{RGB}{0, 186, 111}
+\newcommand{\pop}[1]{\textcolor{crimson}{#1}}
+\newcommand{\zcom}[1]{\noindent\textcolor{crimson}{(Z): #1}}
+\newcommand{\jcom}[1]{\noindent\textcolor{moss}{(J): #1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\pqeq}{\succcurlyeq}
+\newcommand{\pleq}{\preccurlyeq}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+    colorlinks,
+    linkcolor={crimson},
+    citecolor={crimson},
+    urlcolor={crimson}
+}
+
+\usepackage{qcircuit}
+\usepackage{comment}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\tcolorboxenvironment{definition}{
+  colback=red!5!white,
+  boxrule=0pt,
+  boxsep=1pt,
+  left=5pt,right=5pt,top=5pt,bottom=5pt,
+  oversize=2pt,
+  sharp corners,
+  before skip=\topsep,
+  after skip=\topsep,
+}
+
+\newtheorem{lemma}{Lemma}[section]
+\tcolorboxenvironment{lemma}{
+  colback=blue!5!white,
+  boxrule=0pt,
+  boxsep=1pt,
+  left=3pt,right=3pt,top=5pt,bottom=5pt,
+  oversize=2pt,
+  sharp corners,
+  before skip=\topsep,
+  after skip=\topsep,
+}
+
+\newtheorem{theorem}{Theorem}[section]
+\tcolorboxenvironment{theorem}{
+  colback=yellow!5!white,
+  boxrule=0pt,
+  boxsep=1pt,
+  left=2pt,right=2pt,top=5pt,bottom=5pt,
+  oversize=2pt,
+  sharp corners,
+  before skip=\topsep,
+  after skip=\topsep,
+}
+
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{corollary*}{Corollary}
+
+\newtheorem{remark}{Remark}[section]
+\tcolorboxenvironment{remark}{
+  colback=red!5!white,
+  boxrule=0pt,
+  boxsep=1pt,
+  left=2pt,right=2pt,top=5pt,bottom=5pt,
+  oversize=2pt,
+  sharp corners,
+  before skip=\topsep,
+  after skip=\topsep,
+}
+
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{reminder}{Reminder}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{answer}{Answer}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{claim}{Claim}[section]
+\newtheorem{prop}{Proposition}[section]
+\tcolorboxenvironment{prop}{
+  colback=green!5!white,
+  boxrule=0pt,
+  boxsep=1pt,
+  left=2pt,right=2pt,top=5pt,bottom=5pt,
+  oversize=2pt,
+  sharp corners,
+  before skip=\topsep,
+  after skip=\topsep,
+}
+
+\newtheorem{solution}{Solution}[section]
+\tcolorboxenvironment{solution}{
+  colback=blue!5!white,
+  boxrule=0pt,
+  boxsep=1pt,
+  left=3pt,right=3pt,top=5pt,bottom=5pt,
+  oversize=2pt,
+  sharp corners,
+  before skip=\topsep,
+  after skip=\topsep,
+}
+
+\usepackage{geometry}
+\geometry{
+  left=25mm,
+  right=25mm,
+  top=20mm,
+}
+
+\newcommand{\hhrulefill}{\hspace{-1.5em} \hrulefill}
+\renewcommand{\baselinestretch}{1.1} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{unsrt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{The Myers-Steenrod Theorem}
+\author{Jack Ceroni}
+\date{\today}
+\maketitle
+
+\section{Introduction}
+
+\noindent For some reason, I cannot 
+
+\section{Proof}
+
+\noindent One direction is easy: suppose $\varphi : (M, g) \rightarrow (N, \widetilde{g})$ is a Riemannian isometry, so it is a diffeomorphism which preserves the metric.
+If $\gamma$ is an admissible curve in $M$, then $\widetilde{\gamma} = \varphi \circ \gamma$ is an admissible curve in $N$. Similarly, if $\gamma$ is an admissible curve in $N$, $\varphi^{-1} \circ \gamma$ is an admissible curve in $M$.
+
+Let $L_M$ be the length function
+for $M$, let $L_N$ be the length function for $N$. We have
+\begin{align}
+  L_M(\gamma) = \int_{a}^{b} \sqrt{g_{\gamma(t)}(\dot{\gamma}(t), \dot{\gamma}(t))} \ dt &= \int_{a}^{b} \sqrt{\varphi^{*}(\widetilde{g})_{\gamma(t)}(\dot{\gamma}(t), \dot{\gamma}(t))} \ dt
+  \\ &= \int_{a}^{b} \sqrt{\widetilde{g}_{(\varphi \circ \gamma)(t)}(\varphi_{*}\dot{\gamma}(t), \varphi_{*}\dot{\gamma}(t))} \ dt
+  \\ &= \int_{a}^{b} \sqrt{\widetilde{g}_{(\varphi \circ \gamma)(t)}(\dot{\widetilde{\gamma}}(t), \dot{\widetilde{\gamma}}(t))} \ dt = L_N(\varphi \circ \gamma)
+\end{align}
+Therefore, given $p$ and $q$ in $M$, we note that
+\begin{align}
+  d_M(p, q) = \inf \{ L_M(\gamma) \ | \ \gamma(a) = p, \gamma(b) = q\} &=  \inf \{ L_N(\varphi \circ \gamma) \ | \ \gamma(a) = p, \gamma(b) = q\}
+  \\ &\geq \inf \{L_N(\gamma) \ | \ \gamma(a) = \varphi(p), \gamma(b) = \varphi(q)\} = d_N(\varphi(p), \varphi(q))
+\end{align}
+where we are taking the infimum over admissible curves $\gamma$ between $p$ and $q$ on the first line, and the infimum over admissible curves between $\varphi(p)$ and $\varphi(q)$ on the second line. We also have, similarly,
+\begin{align}
+  d_N(\varphi(p), \varphi(q)) = \inf \{L_N(\gamma) \ | \ \gamma(a) = \varphi(p), \gamma(b) = \varphi(q)\} &=  \inf \{L_M(\varphi^{-1} \circ \gamma) \ | \ \gamma(a) = \varphi(p), \gamma(b) = \varphi(q)\} \nonumber
+  \\ & \geq \inf \{L_M(\gamma) \ | \ \gamma(a) = p, \gamma(b) = q\} = d_M(p, q)
+\end{align}
+so that $d_M(p, q) = d_N(\varphi(p), \varphi(q))$, implying that $\varphi$ is a isometry in the metric sense.
+
+\subsection{Part B}
+
+\noindent I've broken up this solution into multiple parts, in order to make the proof somewhat more organized.
+
+\hhrulefill
+
+\subsubsection{Part 0}
+
+\noindent Before proceeding, we need a particular construction which is \emph{stronger} than the existence of uniformly normal coordinates. This is Theorem 6.17 of the 2nd edition of Lee's textbook,
+and its proof is assigned as a multi-step problem in the 1st edition. I'm \textbf{really} not sure how to complete this proof without invoking this result.
+
+\begin{definition}[Geodesic convexity]
+  We say that an open subset $U \subset M$ is geodesically convex if for every $p, q \in U$, there exists a unique minimizing geodesic segment from $p$ to $q$ wtih image lying entirely in $U$.
+\end{definition}
+
+\begin{theorem}[Existence of convex geodesic balls]
+  \label{thm:1}
+  If $(M, g)$ is a Riemannian manifold, for each $p \in M$, there is a $\varepsilon_0 > 0$ such that every geodesic ball centred at $p$ of radius less than or equal to $\varepsilon_0$ is geodesically convex.
+  We call such a ball a convex geodesic ball.
+\end{theorem}
+
+\hhrulefill
+
+\subsubsection{Part 1}
+
+\noindent Let us begin with an important result:
+
+\begin{prop}
+\label{prop:1}
+A metric isometry $\varphi : (M, g) \to (N, \widetilde{g})$ sends geodesics into other geodesics. To be more precise, if $\gamma : I \rightarrow M$ is a geodesic in $M$ with $\gamma(0) = p$
+and $U$ is a sufficiently small convex geodesic ball around $p$, then every point in the curve, $\gamma(t)$, inside $U$ is sent to the image of $\widetilde{\gamma} : I \rightarrow N$: a geodesic in
+$N$ with $\widetilde{\gamma}(0) = \varphi(p)$.
+\end{prop}
+
+\begin{remark}
+  The main idea is to use the notion of a geodesic ``aiming at'' a point, this was used in the proof of Hopf-Rinow.
+  \end{remark}
+
+\begin{proof}
+  Pick some convex geodesic ball $V = \exp_{\varphi(p)}(B_{\varepsilon}(0))$ around $\varphi(p)$. Since $\varphi$ is continuous, we can pick a small convex geodesic ball $U = \exp_{p}(B_{\delta}(0))$ around
+  $p$ such that $\varphi(U) \subset V$. Let us pick some $q \in U$ and $\varphi(q) \in \varphi(U)$. Note that from Lee Proposition 6.10, the radial geodesic $\gamma$ from $\gamma(0) = p$ to $\gamma(1) = q$ in $U$,
+  and the radial geodesic $\widetilde{\gamma}$ from $\widetilde{\gamma}(0) = \varphi(p)$ to $\widetilde{\gamma}(1) = \varphi(q)$ are both the unique minimizing curves between these points.
+  \newline
+
+  \noindent Suppose $x$ is a point of $V$ such that $d(\varphi(q), \varphi(p)) = d(\varphi(q), x) + d(x, \varphi(p))$. Let $\widetilde{\gamma}_1$ be the minimizing geodesic in $V$ connecting $\varphi(q)$
+  and $x$, and let $\widetilde{\gamma}_2$ be the minimizing geodesic in $V$ connecting $x$ and $\varphi(p)$. The concatenation of these curves is itself admissible, and has length $d(x, \varphi(q)) + d(x, \varphi(p))$,
+  which is precisely $d(\varphi(q), \varphi(p))$: the length of the minimizing geodesic $\widetilde{\gamma}$. It follows from uniqueness of this minimizing curve that $\widetilde{\gamma}$ must be equal to
+  this concatenation, up to reparametrization, so $x$ must lie in the image of $\widetilde{\gamma}$.
+  \newline
+
+  \noindent To conclude, note that if we pick some point $\gamma(t)$ on the minimizing geodesic, then $d(p, q) = d(p, \gamma(t)) + d(\gamma(t), q)$. The reason for this is that $L(\gamma) = L(\gamma|_{[0, t]}) + L(\gamma|_{[t, 1]})$.
+  Note that $L(\gamma) = d(p, q)$ and $L(\gamma_{[0, t]}) = d(p, \gamma(t))$, as $\gamma|_{[0, t]}$ is the minimizing radial geodesic from $p$ to $\gamma(t)$. Thus,
+  \begin{equation}
+    d(\gamma(t), q) \leq L(\gamma|_{[t, 1]}) = L(\gamma) - L(\gamma|_{[0, t]}) = d(p, q) - d(p, \gamma(t)) \leq d(\gamma(t), q)
+  \end{equation}
+  so $L(\gamma|_{[t, 1]}) = d(\gamma(t), q)$, and we have the equality. It follows that
+  \begin{align}
+    d(\varphi(p), \varphi(q)) = d(p, q) &= d(p, \gamma(t)) + d(\gamma(t), q)
+    \\ &= d(\varphi(p), \varphi(\gamma(t)) ) + d(\varphi(\gamma(t)), \varphi(q))
+  \end{align}
+  so it follows that $\varphi(\gamma(t))$ must lie on the geodesic $\widetilde{\gamma}$.
+  \newline
+
+  \noindent Now, note that be uniqueness of geodesics, any geodesic through $p$ will necessarily be one of the radial geodesics in $U$ when restricted to this neighbourhood.
+  Moreover, points lying on the same radial geodesic are sent by $\varphi$ to the same radial geodesic in $V$. This gives the desired result.
+\end{proof}
+
+\noindent From here, we will attempt to define a map $\Phi$ which makes the following diagram commute:
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJCX3tcXHZhcmVwc2lsb259KDApIFxcc3Vic2V0IFRfcCBNIl0sWzIsMCwiVF97XFx2YXJwaGkocCl9IFxcd2lkZXRpbGRle019Il0sWzIsMiwiXFx3aWRldGlsZGV7TX0iXSxbMCwyLCJNIl0sWzAsMSwiXFxQaGkiXSxbMSwyLCJcXGV4cF97XFx2YXJwaGkocCl9Il0sWzAsMywiXFxleHBfcCIsMl0sWzMsMiwiXFx2YXJwaGkiLDJdXQ==
+\[\begin{tikzcd}
+	          {B_{\varepsilon}(0) \subset T_p M} && {T_{\varphi(p)} N} \\
+	          \\
+	          M && {N}
+	          \arrow["\Phi", from=1-1, to=1-3]
+	          \arrow["{\exp_p}"', from=1-1, to=3-1]
+	          \arrow["{\exp_{\varphi(p)}}", from=1-3, to=3-3]
+	          \arrow["\varphi"', from=3-1, to=3-3]
+\end{tikzcd}\]
+
+\noindent Let $p$ be a point in $M$, so $\varphi(p) \in N$. Note that $\exp_{\varphi(p)}$ is a local diffeomorphism around the origin, so we can choose some neighbourhood $B_{\delta}(0) \subset T_{\varphi(p)} N$ (distance is taken relative to the metric $g$)
+where $\exp_{\varphi(p)} : B_{\delta}(0) \rightarrow V$
+is a diffeomorphism. Moreover, we can assume $\delta$ is small enough such that this ball is a convex geodesic ball.
+Since $\varphi$ and $\exp_p$ are both continuous, $U = \exp_p^{-1}(\varphi^{-1}(V))$ is open in $T_p M$, and clearly contains $0$ as $\exp_p(0) = p$ and $\varphi(p) \in V$. Thus, without loss of generality,
+we can pick an convex geodesic ball $B_{\varepsilon}(0) \subset U \subset T_p M$ relative to normal coordinates $\phi = (x^1, \dots, x^n)$. These are defined as $\phi = E^{-1} \circ \exp_p^{-1}$,
+where $E(v^1, \dots, v^n) = v^j E_j$ with $E_j$ some orthonormal frame for $T_p M$. Moreover, we can assume that $B_{\varepsilon}(0)$ is small enough so that the criteria in Proposition~\ref{prop:1} is satisfied.
+We let $W = \exp_p(B_{\varepsilon}(0))$
+\newline
+
+\noindent From Proposition~\ref{prop:1}, note that $\varphi$ will take points lying on the same radial geodesics in $W$ to points lying on the same radial geodesic in $V$. Since $\varphi$ is a bijection, this
+pairing is $1$-to-$1$. Moreover, we know that a point on a radial geodesic in $W$ can be written uniquely as $\exp_p(X)$ where $|X|_g \in [0, \varepsilon)$. and a point in $V$
+  can be written uniquely as $\exp_{\varphi(p)}(\widetilde{X})$ for $|\widetilde{X}|_g \in [0, \delta)$.
+
+    \begin{definition}
+    We define $\Phi : B_{\varepsilon}(0) \rightarrow B_{\delta}(0)$ as taking
+    $X \in B_{\varepsilon}(0)$ to the unique $\widetilde{X} \in B_{\delta}(0)$ such that $\exp_{\varphi(p)}(\widetilde{X}) = \varphi(\exp_p(X))$.
+    \end{definition}
+
+    \begin{prop}
+      For scalar $t \in [0, 1]$ and $V \in B_{\varepsilon}(0)$, $\Phi(tV) = \Psi(t) \Phi(V)$, where $\Psi : [0, 1] \rightarrow [0, 1]$ is a continuous function satisfying $|\Psi(t)| = |t|$.
+    \end{prop}
+    \begin{proof}
+      Note that $\exp_p(tV) = \gamma(t)$, a point on the geodesic $\gamma$ with initial velocity $V$. It follows that $\varphi(\gamma(t))$ will be some point $\widetilde{\gamma}(t')$ on the
+      geodesic $\widetilde{\gamma}$ with initial velocity $\Phi(V)$, as $\varphi$ sends geodesics to geodesics. In particular, it will be $\exp_p(t' \Phi(V))$. Thus, $\Phi(tV) = t' \Phi(V)$.
+      Since $\varphi(\gamma(t)) = \widetilde{\gamma}(t')$, and $\widetilde{\gamma}$ is locally invertible with continuous inverse, $t'$ varies continuously with $t$. We write $t' = \Psi(t)$,
+      so $\Phi(tV) = \Psi(t) \Phi(V)$. Note that this implies $|\Psi(1)| = 1$.
+      We then have
+      \begin{equation}
+        d_{\widetilde{g}}(\widetilde{\gamma}(\Psi(t)), \varphi(p)) = d_{\widetilde{g}}(\varphi(\gamma(t)), \varphi(p)) = d_g(\gamma(t), p)
+      \end{equation}
+      so in other words, the length of the radial geodesic extending from $p$ to $\gamma(t)$ must be equal to the length of the radial geodesic from $\varphi(p)$ to $\widetilde{\gamma}(\Psi(t))$.
+      But we know that these lengths will just be $|t||V|_g$ and $|\Psi(t)||\Phi(V)|_{\widetilde{g}}$ respectively, so we have $|\Psi(t)| = \frac{|V|_g}{|\Phi(V)|_{\widetilde{g}}} |t|$. Since $|\Psi(t)| = 1$,
+      it follows that $|\Psi(t)| = |t|$
+      \end{proof}
+
+    \hhrulefill
+
+    \subsubsection{Part 2}
+
+    \noindent Let us now recall a particular point from Lee 1st edition (Proposition 5.11), namely,
+that the first partial derivatives of $g_{ij} : E^{-1}(B_{\varepsilon}(0)) \rightarrow M_{n}(\mathbb{R})$: the matrix representing the Riemannian metric in normal coordinates are all $0$ at $0$. Also recall from this same
+proposition that $g_{ij}(0) = \mathbb{I}$.
+\newline
+
+\noindent It follows from the definition of the derivative that in a neighbourhood $A$ of $0 \in E^{-1}(B_{\varepsilon}(0)) \subset \mathbb{R}^n$, we will have
+\begin{equation}
+  g_{ij}(h) = g_{ij}(0) + Dg_{ij}(0) \cdot h + F(h)
+\end{equation}
+where $F(h)$ is smooth and $\lim_{h \to 0} \frac{F(h)}{||h||} = 0$. Since $Dg_{ij}(0) = 0$ and $g_{ij}(0) = \mathbb{I}$, the identity,
+we have $g_{ij}(h) = \mathbb{I} + F(h)$ in this neighbourhood and $||\cdot||$ is the Euclidean norm.
+\newline
+
+\noindent Let us assume that $\varepsilon$ defining our convex geodesic ball is small enough so that $E^{-1}(B_{\varepsilon}(0)) \subset A$, and for any $h \in E^{-1}(B_{\varepsilon}(0))$, we have $||F(h)|| \leq ||h|| < 1$,
+where $||F(h)|| = \sup_v \frac{|\langle v, F v \rangle|}{\langle v, v\rangle}$ is the spectral norm of this matrix.
+The reason why we can do this is because $||E^{-1}(V)|| = |V|_g$ for $V \in T_p M$, as $E$ describes an orthonormal frame of $g$.
+Moreover, we know that shrinking a convex geodesic ball will yield a convex geodesic ball, from Theorem~\ref{thm:1}.
+\newline
+
+\noindent It follows that if $\gamma$ is some curve with image lying in $W$ (the convex geodesic ball), we will have $(\phi \circ \gamma)(t) = (\gamma^1(t), \dots, \gamma^n(t)) \in \mathbb{R}^n$ and $\dot{\gamma}(t) = \dot{\gamma}^j(t) \frac{d}{dx^j}$
+in normal coordinates. Since $\gamma(t)$ lies in $\exp_p(B_{\varepsilon}(0))$, $\phi(\gamma(t))$ lies in $E^{-1}(B_{\varepsilon}(0))$. From the norm equivalence above, we have $||\phi(\gamma(t))|| \leq \varepsilon$. We also have
+\begin{align}
+  |\dot{\gamma}(t)|^2_g = g_{\gamma(t)}(\dot{\gamma}(t), \dot{\gamma}(t)) = g_{ij}(\phi(\gamma(t))) \dot{\gamma}^i(t) \dot{\gamma}^j(t) = \dot{\gamma}^i(t) \dot{\gamma}^i(t) + F(\phi(\gamma(t)))_{ij} \dot{\gamma}^i(t) \dot{\gamma}^j(t)
+\end{align}
+which implies that
+\begin{equation}
+  |\dot{\gamma}(t)|_g = ||\phi_{*}(\dot{\gamma}(t)|| \sqrt{1 + \frac{\langle \phi_{*}(\dot{\gamma}(t)), F(\phi(\gamma(t))) \phi_{*}(\dot{\gamma}(t)) \rangle}{\langle \phi_{*}(\dot{\gamma}(t)), \phi_{*}(\dot{\gamma}(t)) \rangle}}
+  \end{equation}
+where the inner product inside the square-root is Euclidean. Of course, we have, by assumption
+\begin{equation}
+  \frac{|\langle \phi_{*}(\dot{\gamma}(t)), F(\phi(\gamma(t))) \phi_{*}(\dot{\gamma}(t)) \rangle|}{\langle \phi_{*}(\dot{\gamma}(t)), \phi_{*}(\dot{\gamma}(t)) \rangle} \leq ||F(\phi(\gamma(t)))|| \leq ||h|| < 1
+\end{equation}
+which means that
+\begin{equation}
+  \sqrt{1 - || \phi(\gamma(t))||} \leq \sqrt{1 + \frac{\langle \phi_{*}(\dot{\gamma}(t)), F(\phi(\gamma(t))) \phi_{*}(\dot{\gamma}(t)) \rangle}{\langle \phi_{*}(\dot{\gamma}(t)), \phi_{*}(\dot{\gamma}(t)) \rangle}} \leq \sqrt{1 + || \phi(\gamma(t))||}
+\end{equation}
+We then have
+\begin{equation}
+  \sqrt{1 + || \phi(\gamma(t))||} \leq 1 + ||\phi(\gamma(t))|| \ \ \ \ \text{and} \ \ \ \ \sqrt{1 - || \phi(\gamma(t))||} \geq 1 - || \phi(\gamma(t))||
+\end{equation}
+which means that
+\begin{equation}
+  ||\phi_{*}(\dot{\gamma}(t)|| (1 - || \phi(\gamma(t))||) \leq |\dot{\gamma}(t)|_g \leq ||\phi_{*}(\dot{\gamma}(t)|| (1 + || \phi(\gamma(t))||)
+\end{equation}
+The idea from here is to use the fact that straight lines will minimize length in Euclidean distance, and from the above inequalities, the corresponding Riemannian distance cannot be too different.
+To be more specific, take $X, Y \in B_{\varepsilon}(0)$, so $tX, tY \in B_{|t| \varepsilon}(0)$ for $t \in [-1, 1]$ and $\exp_p(tX)$ and $\exp_p(tY)$ are in $W$. Note that $B_{|t| \varepsilon}(0)$ will be a convex
+geodesic ball. Moreover, any curve $\gamma$ lying in $\exp_p(B_{|t| \varepsilon}(0))$ will satisfy $||\phi(\gamma(t))|| \leq \varepsilon |t|$, as we argued earlier, so that
+\begin{equation}
+  ||\phi_{*}(\dot{\gamma}(t)|| \left(1 - \varepsilon |t|\right) \leq |\dot{\gamma}(t)|_g \leq ||\phi_{*}(\dot{\gamma}(t)|| \left( 1 + \varepsilon |t| \right)
+\end{equation}
+which immediately means, from integrating both sides,
+\begin{equation}
+  \left(1 - \varepsilon |t|\right) L_{\text{Euclidean}}(\phi \circ \gamma) \leq L_g(\gamma) \leq \left( 1 + \varepsilon |t| \right) L_{\text{Euclidean}}(\phi \circ \gamma)
+\end{equation}
+for any curve $\gamma$ lying in $\exp_p(B_{|t| \varepsilon}(0))$. Note that since $B_{|t| \varepsilon}(0)$ is a \textbf{convex} goedesic ball, taking the infimum over all admissible curves $\gamma$
+between $\exp_p(tX)$ and $\exp_p(tY)$ is the same as taking the infimum over all admissible cuves between the points \emph{which lie entirely in $\exp_p(B_{|t| \varepsilon}(0))$}.
+\newline
+
+\noindent Of course,
+a curve $\gamma$ lying in this convex ball which minimizes $L_{\text{Euclidean}}(\phi \circ \gamma)$ is the curve $\ell(s) = \exp_p((1 - s) t X + s t Y)$, so that $(\phi \circ \ell)(s) = (1 - s) E^{-1}(t X) + s E^{-1}(t Y)$
+is a straight line between $E^{-1}(tX)$ and $E^{-1}(tY)$. In other words,
+\begin{equation}
+  \inf_{\gamma} L_{\text{Euclidean}}(\phi \circ \gamma) = L_{\text{Euclidean}}(\phi \circ \ell)
+\end{equation}
+where we are taking the infimum over curves in $W$ with the desired endpoints. We have
+\begin{equation}
+  \left(1 - \varepsilon |t|\right) \inf_{\gamma} L_{\text{Euclidean}}(\phi \circ \gamma) \leq \inf_{\gamma} L_g(\gamma) \leq \left( 1 + \varepsilon |t| \right) \inf_{\gamma} L_{\text{Euclidean}}(\phi \circ \gamma)
+\end{equation}
+so it follows that since $\inf_{\gamma} L_g(\gamma) = d_g(\exp_p(tX), \exp_p(tY))$ (again, as $W$ is convex), and $L_{\text{Euclidean}}(\phi \circ \ell) = ||E^{-1}(tX - tY)|| = |tX - tY|_g$, we have
+  \begin{equation}
+    \left(1 - \varepsilon |t| \right) |tX - tY|_g \leq d_g(\exp_p(tX), \exp_p(tY)) \leq \left( 1 + \varepsilon |t| \right) |tX - tY|_g
+  \end{equation}
+  which immediately means that
+  \begin{equation}
+    \lim_{t \to 0} \frac{d_g(\exp_p(tX), \exp_p(tY))}{|t|} = |X - Y|_g
+  \end{equation}
+  Note that we could have equally done this entire argument inside $N$ as well, around $\varphi(p)$.
+
+\begin{remark}
+  We can summarize what we proved in this section in the following equations:
+  \begin{equation}
+    \lim_{t \to 0} \frac{d_g(\exp_p(tX), \exp_p(tY))}{|t|} = |X - Y|_g \ \ \ \ \ \text{and} \ \ \ \ \ \lim_{t \to 0} \frac{d_{\widetilde{g}}(\exp_{\varphi(p)}(t\widetilde{X}), \exp_{\varphi(p)}(t\widetilde{Y}))}{|t|} = |\widetilde{X} - \widetilde{Y}|_{\widetilde{g}}
+  \end{equation}
+  for $X, Y \in B_{\varepsilon}(0)$ with $\varepsilon$ sufficiently small and $\exp_p(B_{\varepsilon}(0))$ a convex geodesic ball, and for $\widetilde{X}, \widetilde{Y} \in B_{\delta}(0)$ with $\delta$ sufficiently small and $\exp_{\varphi(p)}(B_{\delta}(0))$
+  a convex geodesic ball.
+  \end{remark}
+
+    \hhrulefill
+
+    \subsubsection{Part 3}
+
+    \noindent At this point, we've more or less done all of the difficult work: it is just a matter of assembling it together now. Specifically, we have, using Part 1 and Part 2, for $X, Y \in B_{\varepsilon}(0)$,
+    \begin{align}
+      |\Phi(X) - \Phi(Y)|_{\widetilde{g}} = \lim_{t \to 0} \frac{d_{\widetilde{g}}(\exp_{\varphi(p)}(t\Phi(X)), \exp_{\varphi(p)}(t\Phi(Y)))}{|t|}
+    \end{align}
+    Recall that $\Psi(t)$ is continuous and $|\Psi(t)| = |t|$, so $\Psi(0) = 0$. Thus,
+    \begin{align}
+      \lim_{t \to 0} \frac{d_{\widetilde{g}}(\exp_{\varphi(p)}(t\Phi(X)), \exp_{\varphi(p)}(t\Phi(Y)))}{|t|} &= \lim_{t \to 0} \frac{d_{\widetilde{g}}(\exp_{\varphi(p)}(\Psi(t)\Phi(X)), \exp_{\varphi(p)}(\Psi(t)\Phi(Y)))}{|\Psi(t)|}
+      \\ &= \lim_{t \to 0} \frac{d_{\widetilde{g}}(\exp_{\varphi(p)}(\Phi(tX)), \exp_{\varphi(p)}(\Phi(tY)))}{|t|}
+      \\ &= \lim_{t \to 0} \frac{d_{\widetilde{g}}(\varphi(\exp_{p}(tX)), \varphi(\exp_{p}(tY)))}{|t|}
+      \\ &= \lim_{t \to 0} \frac{d_{g}(\exp_{p}(tX), \exp_{p}(tY))}{|t|} = |X - Y|_g
+      \end{align}
+
+    \noindent so $\Phi : B_{\varepsilon}(0) \rightarrow B_{\delta}(0)$ preserves distances. We require YAL (yet another lemma):
+
+    \begin{prop}
+      \label{prop:11}
+      Suppose $S \subset V$ is an open subset of a finite-dimensional inner product space around the origin, and $T : S \rightarrow W$ is a map (where $W$ is also a finite-dimensional inner product space of the same dimension)
+      such that $T(0) = 0$ and $|T(X) - T(Y)| = |X - Y|$ for all $X, Y \in S$. Then $T$ is the restriction of a linear isometry from $V$ to $W$, to $S$.
+    \end{prop}
+
+    \begin{proof}
+      First, note that $T$ preserves inner products (this follows from the polarization identity: we can write inner products as sums of squared-norms). In particular,
+      \begin{align}
+        \langle T(X), T(Y) \rangle &= \frac{1}{2}\left( |T(X)|^2 + |T(Y)|^2 - |T(X) - T(Y)|^2 \right)
+        \\ &= \frac{1}{2}\left( |X|^2 + |X|^2 - |X - Y|^2 \right) = \langle X, Y \rangle
+      \end{align}
+      where $|T(X)| = |X|$ as $T(0) = 0$. Note that
+      \begin{multline}
+        \langle T(X + Y) - [T(X) + T(Y)], T(X + Y) - [T(X) + T(Y)]\rangle \\ = \langle T(X + Y), T(X + Y) \rangle - 2 \langle T(X + Y), T(X) + T(Y) \rangle + \langle T(X) + T(Y), T(X) + T(Y) \rangle
+        \\ = \langle X + Y, X + Y \rangle - 2 \langle X + Y, X \rangle - 2 \langle X + Y, Y \rangle + \langle X, X \rangle + 2 \langle X, Y \rangle + \langle Y, Y \rangle = 0
+      \end{multline}
+      so $T(X + Y) = T(X) + T(Y)$. Moreover,
+      \begin{equation}
+        \langle T(cX) - c T(X), T(cX) - cT(X) \rangle = c^2 \langle X, X \rangle - 2 c^2 \langle X, X \rangle + c^2 \langle X, X \rangle = 0
+      \end{equation}
+      so $T(cX) = cT(X)$ and $T$ is linear.
+      \newline
+
+      \noindent Since $S$ is open around the origin, we have $B_{\varepsilon}(0) \subset S$, so we can choose an orthogonal basis for $V$ inside this ball, $e_1, \dots, e_n$, and compute $Te_j$ for each $j$.
+      Then $T$ is the restriction of $\overline{T}$: the unique linear isometry from $V$ to $W$ taking $e_j$ to $Te_j$.
+    \end{proof}
+
+    \noindent Note that $\Phi : B_{\varepsilon}(0) \rightarrow B_{\delta}(0)$ is a map of the form in Proposition~\ref{prop:11} (in particular, we know $\dim T_p M = \dim T_{\varphi(p)} N$ as $\varphi$ is a homeomorphism, so this follows from
+    invariance of domain).
+    \newline
+
+    \noindent With this result, we know that $\Phi : B_{\varepsilon}(0) \rightarrow B_{\delta}(0) \subset T_{\varphi(p)} N$ is the restriction of a linear isometry (thus smooth).
+    Note that $\Phi(B_{\varepsilon}(0)) = B_{\varepsilon}(0) \subset B_{\delta}(0)$, we let $V' \subset V$ be $V' = \exp_{\varphi(p)}(B_{\varepsilon}(0))$. As a map from $B_{\varepsilon}(0)$ to $B_{\varepsilon}(0)$,
+    since $\Phi$ is a linear isometry, it is invertible. The map $\varphi|_W : W \rightarrow V'$ from a neighbourhood in $M$ to a neighbourhood in $N$
+    is equal to $\exp_{\varphi(p)} \circ \Phi \circ \exp_p^{-1}$: it is smooth with smooth inverse. In addition,
+    \begin{equation}
+      \varphi_{*, p} \circ (\exp_p)_{*, 0} = (\exp_{\varphi(p)})_{*, 0} \circ \Phi_{*, 0} \Longrightarrow \varphi_{*, p} = \overline{\Phi}
+    \end{equation}
+    as the pushforward of the exponential at the origin is the identity, and it is easy to see that the pushforward of the linear map $\Phi$ on $B_{\varepsilon}(0)$ is the global linear isometry to which it extends, $\overline{\Phi}$.
+    To recap: we have shown that $\varphi$ is a local diffeomorphism and has pushforward which is a linear isometry. Since $\varphi$ is a homeomorphism,
+    it is a global diffeomorphism. Thus, $\varphi$ is a Riemannian isometry, and we are (finally) done.
+
+\begin{comment}
+      Note that due to this, $\Phi(B_{\varepsilon}(0)) \subset B_{\varepsilon}(0) \subset T_{\varphi(p)} N$, so $\varepsilon \leq \delta$,
+      and we can shrink $\delta$ to think of $\Phi$ as a map from $B_{\varepsilon}(0)$ to $B_{\varepsilon}(0)$.
+\end{comment}
+
+    \hhrulefill
+
+\end{document}

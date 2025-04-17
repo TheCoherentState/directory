@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-04-17 Thu 10:46 -->
+<!-- 2025-03-16 Sun 17:06 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Directory</title>
+<title>McDuff-Salamon Chapter 2</title>
 <meta name="author" content="Jack Ceroni" />
 <meta name="description" content="Directory" />
 <meta name="generator" content="Org Mode" />
@@ -196,62 +196,92 @@
 </style>
 <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
 <style> body {font-size:15px;} </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Directory</h1>
+<h1 class="title">McDuff-Salamon Chapter 2</h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgd7e61dc">1. Solution Manuals</a></li>
-<li><a href="#org99efdb8">2. Notes</a></li>
-<li><a href="#orgfa1672b">3. Other</a></li>
+<li><a href="#org8619887">1. Solutions</a>
+<ul>
+<li><a href="#org142753c">1.1. Problem 2.1.2</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
-<p>
-Linked below are the subpages of this website, grouped by category.
-</p>
 
-<hr />
-
-<div id="outline-container-orgd7e61dc" class="outline-2">
-<h2 id="orgd7e61dc"><span class="section-number-2">1.</span> Solution Manuals</h2>
+<div id="outline-container-org8619887" class="outline-2">
+<h2 id="org8619887"><span class="section-number-2">1.</span> Solutions</h2>
 <div class="outline-text-2" id="text-1">
-<ul class="org-ul">
-<li>Solution manual and notes for McDuff and Salamon's <i>Introduction to Symplectic Topology</i> <a href="./pdf/mcduff_salamon.pdf">(pdf)</a></li>
-</ul>
 </div>
-</div>
-
-<div id="outline-container-org99efdb8" class="outline-2">
-<h2 id="org99efdb8"><span class="section-number-2">2.</span> Notes</h2>
-<div class="outline-text-2" id="text-2">
-<ul class="org-ul">
-<li>Perelman's proof of the Soul Conjecture, final project for MAT464 (Riemannian geometry) at the University of Toronto <a href="./pdf/soul_conjecture.pdf">(pdf)</a></li>
-<li>A complete proof of the Myers-Steenrod theorem (as there isn't a good, complete one available online) <a href="./pdf/myers_steenrod.pdf">(pdf)</a></li>
-<li>Lecture notes from a talk I gave at the Fields Institute in November 2024: <i>The A-infinity De Rham theorem and representations up to homotopy</i> <a href="./pdf/a_infty.pdf">(pdf)</a></li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-orgfa1672b" class="outline-2">
-<h2 id="orgfa1672b"><span class="section-number-2">3.</span> Other</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-org142753c" class="outline-3">
+<h3 id="org142753c"><span class="section-number-3">1.1.</span> Problem 2.1.2</h3>
+<div class="outline-text-3" id="text-1-1">
 <p>
-Shorter than notes!
+First suppose that \(\Psi : V \rightarrow V\) is a linear symplectomorphism. Consider the vector space \(V \times V\) and subspace \(\Gamma_{\Psi}\). Note that
 </p>
 
-<ul class="org-ul">
-<li><a href="./urysohn.html">Urysohn's lemma</a></li>
-</ul>
+\begin{equation}
+((-\omega) \oplus \omega)((v_1, v_2), (w_1, w_2)) = \omega(w_1, w_2) - \omega(v_1, v_2) = - ((-\omega) \oplus \omega)((w_1, w_2), (v_1, v_2))
+\end{equation}
+
+<p>
+so that \((-\omega) \oplus \omega\) is skew-symmetric. It is non-degenerate, as if \(((-\omega) \oplus \omega)((v_1, \cdot), (w_1, \cdot)) = 0\) no matter
+what \((v_2, w_2)\) we plug in, this is true for \((v_2, 0)\) and \((0, w_2)\), implying \(v_1 = w_1 = 0\), as \(\omega\) is non-degenerate. It follows that
+we have a valid symplectic form on our vector space. Note
+</p>
+
+\begin{equation}
+((-\omega) \oplus \omega)((v, w), (\Psi v, \Psi w)) = \omega(\Psi v, \Psi w) - \omega(v, w) = 0
+\end{equation}
+
+<p>
+so \(\Gamma_{\Psi}\) is isotropic. Since it is half the dimension of \(V \times V\), it follows that it is Lagrangian. On the other hand, suppose \(\Gamma_{\Psi}\)
+is Lagrangian, so in particular, it is isotropic. Then from the above equation, \(\Psi^{*} \omega(v, w) = \omega(v, w)\) for all \(v, w \in V\). Thus, \(\Psi\) preserves the symplectic form.
+Moreover, if \(\Psi(v) = 0\), then \(\omega(v, w) = 0\) for all \(w\), so \(v = 0\), implying \(\Psi\) is injective, thus an isomorphism.
+</p>
+</div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jack Ceroni</p>
-<p class="date">Created: 2025-04-17 Thu 10:46</p>
+<p class="date">Created: 2025-03-16 Sun 17:06</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

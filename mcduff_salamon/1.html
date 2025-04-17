@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2025-03-16 Sun 15:35 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>McDuff-Salamon Chapter 1</title>
+<meta name="author" content="Jack Ceroni" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+<style> body {font-size:15px;} </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">McDuff-Salamon Chapter 1</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org694fea3">1. Solutions</a>
+<ul>
+<li><a href="#org1b4b94b">1.1. Problem 1.1.5</a></li>
+<li><a href="#org974fed8">1.2. Problem 1.1.20</a></li>
+<li><a href="#orgb873ce3">1.3. Problem 1.1.24</a></li>
+<li><a href="#orgec318a7">1.4. Problem 1.2.2</a></li>
+</ul>
+</li>
+<li><a href="#orgbfd8593">2. Notes</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org694fea3" class="outline-2">
+<h2 id="org694fea3"><span class="section-number-2">1.</span> Solutions</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org1b4b94b" class="outline-3">
+<h3 id="org1b4b94b"><span class="section-number-3">1.1.</span> Problem 1.1.5</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+We are assuming that \((x, y) : I \rightarrow \mathbb{R}^{2n}\) is a trajectory such that
+</p>
+
+\begin{equation}
+\dot{x}_j(t) = \frac{d H}{d y_j}(t, x(t), y(t)) \ \ \ \ \text{and} \ \ \ \ \dot{y}_j(t) = -\frac{d H}{dx_j}(t, x(t), y(t))
+\end{equation}
+
+<p>
+We are also assuming that \(\det \frac{d^2 H}{dy_i dy_j} \neq 0\). Consider the equation, \(v = \frac{d H}{d y}(t, x, y)\), suppose \((v_0, t_0, x_0, y_0)\) satisfies the equation. The condition
+and implicit function theorem implies that in a neighbourhood of \((v_0, t_0, x_0)\), we can write
+\(y = G(v, t, x)\) with \(y_0 = G(v_0, t_0, x_0)\). We then define
+</p>
+
+\begin{equation}
+L(t, x, v) = \sum_{j} v_j G_j(v, t, x) - H(t, x, G(v, t, x))
+\end{equation}
+
+<p>
+in a neighbourhood of \((t_0, x_0, v_0)\). Suppose we consider the point \((v_0, t_0, x_0, y_0) = (\dot{x}(t_0), t_0, x(t_0), y(t_0))\) for some \(t_0\). Clearly, such a point will satisfy the above
+criterion, so we can define \(L\) in a neighbourhood of \((\dot{x}(t_0), t_0, x(t_0))\). We have
+</p>
+
+\begin{align}
+\frac{d L}{d v_j}(t, x(t), \dot{x}(t)) &= G_j(\dot{x}(t), t, x(t)) + \sum_{i} \left[ \dot{x}_i(t) \frac{d G_i}{dv_j}(\dot{x}(t), t, x(t)) - \frac{d H}{dy_i}(t, x(t), y(t)) \frac{dG_i}{dv_j}(\dot{x}(t), t, x(t)) \right]
+\\ &= G_j(\dot{x}(t), t, x(t)) = y_j(t)
+\end{align}
+
+<p>
+which means that
+</p>
+
+\begin{equation}
+\frac{d}{dt} \frac{d L}{d v_j}(t, x(t), \dot{x}(t)) = \dot{y}_j(t) = -\frac{d H}{dx_j}(t, x(t), y(t))
+\end{equation}
+
+<p>
+From here, note that
+</p>
+
+\begin{align}
+\frac{d L}{d x_j}(t, x(t), \dot{x}(t)) &= \sum_{i} \left[ \dot{x}_i(t) \frac{d G_i}{dx_j}(\dot{x}(t), t, x(t)) - \frac{d H}{dy_i}(t, x(t), y(t)) \frac{d G_i}{d x_j}(\dot{x}(t), t, x(t)) \right] - \frac{d H}{dx_j}(t, x(t), y(t))
+\\ &= -\frac{d H}{dx_j}(t, x(t), y(t))
+\end{align}
+
+<p>
+which implies that the prior equation is exactly the Euler-Lagrange equation, as desired.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org974fed8" class="outline-3">
+<h3 id="org974fed8"><span class="section-number-3">1.2.</span> Problem 1.1.20</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+Note that
+</p>
+
+\begin{equation}
+\omega_0(X_F, X_G) = dF(X_G) = X_G(F) = -(\nabla F)^T J_0 \nabla G = \{F, G\}
+\end{equation}
+
+<p>
+Thus, if \(X = X_F\) and \(Y = X_G\) are symplectic vector fields, then
+</p>
+
+\begin{equation}
+X_{\omega_0(X, Y)} = X_{\{F, G\}} = [X_F, X_G] = [X, Y]
+\end{equation}
+</div>
+</div>
+
+<div id="outline-container-orgb873ce3" class="outline-3">
+<h3 id="orgb873ce3"><span class="section-number-3">1.3.</span> Problem 1.1.24</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+In the particular case of geodesic flow, let us begin by noting that
+</p>
+
+\begin{equation}
+\frac{d^2 L(x, v)}{dv_i dv_j} = \frac{d^2}{dv_i dv_j} \frac{1}{2} \sum_{ij} g_{ij}(x) v_i v_j = \frac{1}{2} (g_{ij}(x) + g_{ji}(x)) = g_{ij}(x)
+\end{equation}
+<p>
+which means that the determinant is non-zero, as the metric is a non-degenerate symmetric two-tensor. Thus, we may apply the Legendre transform
+everywhere to get \(y_k = \frac{dL}{dv_k} = \sum_{j} g_{kj}(x) v_j\). This means that \(v_j = \sum_{k} g^{jk}(x) y_k\), and we get as our Hamiltonian
+</p>
+
+\begin{align}
+H(x, y) = \sum_{j} y_j v_j - L &= \sum_{j} g^{jk}(x) y_j y_k - \frac{1}{2} \sum_{ijk \ell} g_{ij}(x) g^{ik}(x) g^{j \ell}(x) y_k y_{\ell}
+\\ &= \sum_{jk} g^{jk}(x) y_j y_k - \frac{1}{2} \sum_{ik} g^{ik}(x) y_k y_{i}
+\\ &= \frac{1}{2} \sum_{jk} g^{jk}(x) y_j y_k = \frac{1}{2} \langle y, g^{-1}(x) y \rangle
+\end{align}
+
+<p>
+which implies that Hamilton's equations become
+</p>
+
+\begin{equation}
+\dot{y}_k = -\frac{1}{2} \sum_{ij} \frac{d g^{ij}(x)}{dx_k} y_i y_j \ \ \ \ \text{and} \ \ \ \ \dot{x}_k = \frac{1}{2} \sum_{j} g^{jk}(x) y_j
+\end{equation}
+
+<p>
+To prove that \(|\cdot|_g\) is constant along geodesics, we can show that the smooth function \(\frac{1}{2} |v|^2_g = \frac{1}{2} \langle v, g(x) v \rangle\) is constant along geodesics, \((x, v) = (x(t), \dot{x}(t))\).
+But of course, \(v = g^{-1}(x) y\), so if \((x(t), y(t))\) is the phase space trajectory, then \(\dot{x}(t) = g^{-1}(x(t)) y(t)\), and
+</p>
+
+\begin{equation}
+\frac{1}{2} |\dot{x}(t)|^2_g = \langle g^{-1}(x(t)) y(t), y(t) \rangle = H(x(t), y(t))
+\end{equation}
+
+<p>
+We know that the Hamiltonian \(H\) will remain constant over geodesics, so the norm velocity will as well.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgec318a7" class="outline-3">
+<h3 id="orgec318a7"><span class="section-number-3">1.4.</span> Problem 1.2.2</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+Note that for Hamiltonian functions \(H\) and \(H'\) such that \(S = H^{-1}(c) = (H')^{-1}(c')\) for regular values \(c\) and \(c'\), the Hamiltonian vector fields \(X_H(z)\) and \(X_{H'}(z)\)
+lie in the rank-one subbundle of \(T_z S\) given by \(J_0 N_z S\), where \(N_z S\) is the normal bundle at \(z\). Note that \(\omega(X_H(z), J_0 X_H(z)) = -||X_H(z)||^2\), so we can define
+\(\lambda(z) = -\omega(X_{H'}(z), J_0 X_H(z)) ||X_H(z)||^{-2}\), provided that \(X_H(z) \neq 0\), which we may assume as \(c\) is a regular value, implying \(H\) has non-zero derivative at every \(z \in S\).
+We then have \(X_{H'}(z) = \lambda(z) X_H(z)\). Note that \(\lambda\) is always non-zero.
+</p>
+
+<p>
+Consider the function \(\lambda \circ z : \mathbb{R} \rightarrow \mathbb{R}\), where \(z\) is the solution of the \(H\) -system. By existence of uniqueness, the ODE \(\dot{\tau}(t) = (\lambda \circ z)(\tau(t))\)
+has a unique solution with \(\tau(0) = 0\) on the same time interval that \(z\) is defined on (all of \(\mathbb{R}\)). It is a reparametrization as \(\dot{\tau}(t) \neq 0\), as \(\lambda \circ z\) never is \(0\).
+</p>
+
+<p>
+To find \(T'\) such that \(\tau(kT') = kT\) for all \(k \in \mathbb{Z}\), note that we can of course find unique \(T'\) such that \(\tau(T') = T\). Let \(\sigma(t + k T') = \tau(t) + k T\)
+for \(t \in [0, T']\) and \(k \in \mathbb{Z}\). Note that \(\sigma(kT') = \tau(0) + k T = kT\) while \(\sigma(T' + (k - 1) T') = \tau(T') + (k - 1) T = kT\), so this function is well-defined
+and continuous. It is smooth on each interval \((kT', (k + 1) T')\). In addition,
+</p>
+
+\begin{equation}
+(\lambda \circ z)(\sigma(t + kT')) = \lambda(z(\tau(t) + kT)) = \lambda(z(\tau(t))) = \dot{\tau}(t) = \dot{\sigma}(t + k T')
+\end{equation}
+
+<p>
+on each of these open intervals. Hence, by uniqueness, \(\sigma = \tau\) on each of the open intervals, and by continuity, they will be equal everywhere. In particular, we have \(\sigma(kT') = kT\)
+for all \(k\), as desired. It follows immediately that
+</p>
+
+\begin{equation}
+\frac{d}{dt} (z \circ \tau)(t) = \dot{z}(\tau(t)) \dot{\tau}(t) = \lambda(z(\tau(t))) X_H(z(\tau(t))) = X_{H'}(z(\tau(t)))
+\end{equation}
+
+<p>
+so that \(z \circ \tau\) is a time-periodic solution of the \(H'\) -system, as desired.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbfd8593" class="outline-2">
+<h2 id="orgbfd8593"><span class="section-number-2">2.</span> Notes</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li><p>
+A Lagrangian \(L : T \mathbb{R}^n \rightarrow \mathbb{R}\) which is a critical point of the action functional satisfies the Euler-Lagrange equations, given by
+</p>
+
+\begin{equation}
+\frac{d}{dt} \frac{d L}{d v_j} = \frac{d L}{dx_j}
+\end{equation}
+
+<p>
+Note that for some trajectory \(x(t)\), we have
+</p>
+\begin{equation}
+\frac{d}{dt} \frac{d L}{d v_j}(t, x(t), \dot{x}(t)) = \frac{d}{ds} \frac{d L}{d v_j}(s, x(t), \dot{x}(t)) \biggr\rvert_{s = t} + \sum_{i} \left[ \dot{x}(t) \frac{d^2 L}{d x_i d v_j}(t, x(t), \dot{x}(t)) +
+\ddot{x}(t) \frac{d^2 L}{d v_i d v_j}(t, x(t), \dot{x}(t))\right]
+\end{equation}
+
+<p>
+In the case that we have the Legendre condition on \(L\), as explained in the book, then the above is a system of second-order differential equations for \(x(t)\). As
+per usual, we may convert a system of second-order differential equations into a larger first-order system. Usually, we do this by setting \(y(t) = \dot{x}(t)\), however,
+in this case, we can be somewhat more tactful and utilize the Legendre transform, where we set \(y_k(t) = \frac{dL}{dx_k}(x(t), \dot{x}(t))\), which is some function of \(x(t)\)
+and \(\dot{x}(t)\) rather than just \(\dot{x}(t)\).
+</p></li>
+
+<li>Note that when we use the implicit function theorem in order to go from the Lagrange picture to the Hamiltonian picture, the function we obtain locally is <i>unique</i>, and we
+may glue together these local functions in any region where the Legendre condition is satisfied.</li>
+
+<li>One can show that the rank-one distribution \(L_z = \{J_0 v \ | \ v \in T_z S\}\) for Hamiltonian hypersurface \(S\) is involutive very easily, so by Frobenius' theorem,
+the integral manifolds (i.e. the integral curves associated with this distribution) define a foliation.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Jack Ceroni</p>
+<p class="date">Created: 2025-03-16 Sun 15:35</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -3,12 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-04-17 Thu 10:46 -->
+<!-- 2025-03-09 Sun 10:04 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Directory</title>
+<title>Notes on McDuff-Salamon</title>
 <meta name="author" content="Jack Ceroni" />
-<meta name="description" content="Directory" />
 <meta name="generator" content="Org Mode" />
 <style>
   #content { max-width: 60em; margin: auto; }
@@ -196,62 +195,74 @@
 </style>
 <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
 <style> body {font-size:15px;} </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Directory</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#orgd7e61dc">1. Solution Manuals</a></li>
-<li><a href="#org99efdb8">2. Notes</a></li>
-<li><a href="#orgfa1672b">3. Other</a></li>
-</ul>
-</div>
-</div>
+<h1 class="title">Notes on McDuff-Salamon</h1>
 <p>
-Linked below are the subpages of this website, grouped by category.
-</p>
-
-<hr />
-
-<div id="outline-container-orgd7e61dc" class="outline-2">
-<h2 id="orgd7e61dc"><span class="section-number-2">1.</span> Solution Manuals</h2>
-<div class="outline-text-2" id="text-1">
-<ul class="org-ul">
-<li>Solution manual and notes for McDuff and Salamon's <i>Introduction to Symplectic Topology</i> <a href="./pdf/mcduff_salamon.pdf">(pdf)</a></li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-org99efdb8" class="outline-2">
-<h2 id="org99efdb8"><span class="section-number-2">2.</span> Notes</h2>
-<div class="outline-text-2" id="text-2">
-<ul class="org-ul">
-<li>Perelman's proof of the Soul Conjecture, final project for MAT464 (Riemannian geometry) at the University of Toronto <a href="./pdf/soul_conjecture.pdf">(pdf)</a></li>
-<li>A complete proof of the Myers-Steenrod theorem (as there isn't a good, complete one available online) <a href="./pdf/myers_steenrod.pdf">(pdf)</a></li>
-<li>Lecture notes from a talk I gave at the Fields Institute in November 2024: <i>The A-infinity De Rham theorem and representations up to homotopy</i> <a href="./pdf/a_infty.pdf">(pdf)</a></li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-orgfa1672b" class="outline-2">
-<h2 id="orgfa1672b"><span class="section-number-2">3.</span> Other</h2>
-<div class="outline-text-2" id="text-3">
-<p>
-Shorter than notes!
+These are some notes clarifying certain points in McDuff and Salamon's book on symplectic topology.
 </p>
 
 <ul class="org-ul">
-<li><a href="./urysohn.html">Urysohn's lemma</a></li>
+<li><p>
+A Lagrangian \(L : T \mathbb{R}^n \rightarrow \mathbb{R}\) which is a critical point of the action functional satisfies the Euler-Lagrange equations, given by
+</p>
+
+\begin{equation}
+\frac{d}{dt} \frac{d L}{d v_j} = \frac{d L}{dx_j}
+\end{equation}
+
+<p>
+Note that for some trajectory \(x(t)\), we have
+</p>
+\begin{equation}
+\frac{d}{dt} \frac{d L}{d v_j}(t, x(t), \dot{x}(t)) = \frac{d}{ds} \frac{d L}{d v_j}(s, x(t), \dot{x}(t)) \biggr\rvert_{s = t} + \sum_{i} \left[ \dot{x}(t) \frac{d L}{d x_i d v_j}(t, x(t), \dot{x}(t)) +
+\ddot{x}(t) \frac{d L}{d v_i d v_j}(t, x(t), \dot{x}(t))\right]
+\end{equation}
+
+<p>
+In the case that we have the Legendre condition on \(L\), as explained in the book, then the above is a system of second-order differential equations for \(x(t)\). As
+per usual, we may convert a system of second-order differential equations into a larger first-order system. Usually, we do this by setting \(y(t) = \dot{x}(t)\), however,
+in this case, we can be somewhat more tactful and utilize the Legendre transform, where we set \(y_k(t) = \frac{dL}{dx_k}(x(t), \dot{x}(t))\), which is some function of \(x(t)\)
+and \(\dot{x}(t)\) rather than just \(\dot{x}(t)\).
+</p></li>
 </ul>
-</div>
-</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jack Ceroni</p>
-<p class="date">Created: 2025-04-17 Thu 10:46</p>
+<p class="date">Created: 2025-03-09 Sun 10:04</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

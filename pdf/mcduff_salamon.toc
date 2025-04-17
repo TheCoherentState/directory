@@ -1,0 +1,15 @@
+\contentsline {title}{Basic Symplectic Topology}{1}{section*.1}%
+\tocdepth@munge 
+\tocdepth@restore 
+\contentsline {section}{\numberline {I}Introduction}{1}{section.1}%
+\contentsline {section}{\numberline {II}Chapter 1}{1}{section.2}%
+\contentsline {subsection}{\numberline {A}Notes}{1}{subsection.2.1}%
+\contentsline {subsection}{\numberline {B}Solutions}{3}{subsection.2.2}%
+\contentsline {section}{\numberline {III}Chapter 2}{5}{section.3}%
+\contentsline {subsection}{\numberline {A}Notes}{5}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {1}Maslov index}{5}{subsubsection.3.1.1}%
+\contentsline {subsection}{\numberline {B}Solutions}{5}{subsection.3.2}%
+\contentsline {section}{\numberline {IV}Background material}{6}{section.4}%
+\contentsline {subsection}{\numberline {A}Frobenius' theorem}{6}{subsection.4.1}%
+\contentsline {subsection}{\numberline {B}Some homotopy theory}{6}{subsection.4.2}%
+\contentsline {subsection}{\numberline {C}Intersection number}{6}{subsection.4.3}%
