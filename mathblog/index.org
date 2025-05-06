@@ -2,5 +2,5 @@
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
 #+HTML_HEAD: <style> body {font-size:15px;} </style>
 
-- May 5th, 2025 | [[./myers_steenrod.html][A complete proof of the Myers-Steenrod theorem]]
+- May 6th, 2025 | [[./myers_steenrod.html][A complete proof of the Myers-Steenrod theorem]]
 - May 5th, 2025 | [[./fibre_integrals.html][Fibre integrals]]

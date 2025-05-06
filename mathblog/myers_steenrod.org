@@ -2,7 +2,7 @@
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
 #+HTML_HEAD: <style> body {font-size:15px;} </style>
 
-/Originally published: May 5th, 2025/
+/Originally published: May 6th, 2025/
 
 -----------------
 
@@ -123,7 +123,7 @@ so $\Phi(tV) = \Psi(t) \Phi(V)$. Note that this implies $\Psi(1) = 1$.
       \end{equation}
       so in other words, the length of the radial geodesic extending from $p$ to $\gamma(t)$ must be equal to the length of the radial geodesic from $\varphi(p)$ to $\widetilde{\gamma}(\Psi(t))$.
       But we know that these lengths will just be $|t||V|_g$ and $|\Psi(t)||\Phi(V)|_{\widetilde{g}}$ respectively, so we have $|\Psi(t)| = \frac{|V|_g}{|\Phi(V)|_{\widetilde{g}}} |t|$. Since $|\Psi(t)| = 1$,
-      it follows that $|\Psi(t)| = |t|$, so $\Psi(t) = t$.
+      it follows that $|\Psi(t)| = |t|$, so $\Psi(t) = t$. $\blacksquare$
 
 --------------------
 

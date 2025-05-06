@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-06 Tue 11:06 -->
+<!-- 2025-05-06 Tue 11:18 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>A complete proof of the Myers-Steenrod theorem</title>
@@ -235,20 +235,20 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org5484ed7">1. Introduction</a></li>
-<li><a href="#org3768750">2. The easy direction</a></li>
-<li><a href="#org752d903">3. The hard direction</a></li>
+<li><a href="#org723852d">1. Introduction</a></li>
+<li><a href="#orgfbcc4b5">2. The easy direction</a></li>
+<li><a href="#orgfb4393a">3. The hard direction</a></li>
 </ul>
 </div>
 </div>
 <p>
-<i>Originally published: May 5th, 2025</i>
+<i>Originally published: May 6th, 2025</i>
 </p>
 
 <hr />
 
-<div id="outline-container-org5484ed7" class="outline-2">
-<h2 id="org5484ed7"><span class="section-number-2">1.</span> Introduction</h2>
+<div id="outline-container-org723852d" class="outline-2">
+<h2 id="org723852d"><span class="section-number-2">1.</span> Introduction</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Recall that if \((M, g)\) and \((N, \widetilde{g})\) are Riemannian manifolds, a Riemannian isometry \(\varphi : M \rightarrow N\) is a diffeomorphism which preserves the metric, \(\varphi^{*} \widetilde{g} = g\). On the other hand, since
@@ -270,8 +270,8 @@ Finally, thank you to Prof. Fedya Manin at UofT, for introducing me to this prob
 </div>
 </div>
 
-<div id="outline-container-org3768750" class="outline-2">
-<h2 id="org3768750"><span class="section-number-2">2.</span> The easy direction</h2>
+<div id="outline-container-orgfbcc4b5" class="outline-2">
+<h2 id="orgfbcc4b5"><span class="section-number-2">2.</span> The easy direction</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Let us begin with the easy direction, which simply involves invoking definitions, more or less. Suppose \(\varphi : (M, g) \rightarrow (N, \widetilde{g})\) is a Riemannian isometry, so it is a diffeomorphism which preserves the metric.
@@ -307,8 +307,8 @@ so that \(d_M(p, q) = d_N(\varphi(p), \varphi(q))\), implying that \(\varphi\) i
 </div>
 </div>
 
-<div id="outline-container-org752d903" class="outline-2">
-<h2 id="org752d903"><span class="section-number-2">3.</span> The hard direction</h2>
+<div id="outline-container-orgfb4393a" class="outline-2">
+<h2 id="orgfb4393a"><span class="section-number-2">3.</span> The hard direction</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 Now comes the main attraction. Before proceeding, we need a particular construction which is stronger than the existence of uniformly normal coordinates. This is Theorem 6.17 of the 2nd edition of Lee's Riemannian geometry textbook,
@@ -381,7 +381,7 @@ From here, we will attempt to define a map \(\Phi\) which makes the following di
 </p>
 
 
-<div id="org9bd6f51" class="figure">
+<div id="orgb50b3a7" class="figure">
 <p><img src="./assets/may_05_25_2.png" alt="may_05_25_2.png" width="400px" />
 </p>
 </div>
@@ -429,7 +429,7 @@ so \(\Phi(tV) = \Psi(t) \Phi(V)\). Note that this implies \(\Psi(1) = 1\).
 <p>
 so in other words, the length of the radial geodesic extending from \(p\) to \(\gamma(t)\) must be equal to the length of the radial geodesic from \(\varphi(p)\) to \(\widetilde{\gamma}(\Psi(t))\).
 But we know that these lengths will just be \(|t||V|_g\) and \(|\Psi(t)||\Phi(V)|_{\widetilde{g}}\) respectively, so we have \(|\Psi(t)| = \frac{|V|_g}{|\Phi(V)|_{\widetilde{g}}} |t|\). Since \(|\Psi(t)| = 1\),
-it follows that \(|\Psi(t)| = |t|\), so \(\Psi(t) = t\).
+it follows that \(|\Psi(t)| = |t|\), so \(\Psi(t) = t\). \(\blacksquare\)
 </p>
 
 <hr />
@@ -625,7 +625,7 @@ it is a global diffeomorphism. Thus, \(\varphi\) is a Riemannian isometry (diffe
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jack Ceroni</p>
-<p class="date">Created: 2025-05-06 Tue 11:06</p>
+<p class="date">Created: 2025-05-06 Tue 11:18</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
