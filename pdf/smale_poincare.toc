@@ -1,0 +1,3 @@
+\contentsline {title}{Smale's proof of the $n \geq 5$ Poincare conjecture}{1}{section*.1}%
+\tocdepth@munge 
+\tocdepth@restore 
