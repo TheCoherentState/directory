@@ -2,6 +2,6 @@
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
 #+HTML_HEAD: <style> body {font-size:15px;} </style>
 
-- May 13th, 2025 | [[./every_hartshorne_ex.html][Every exercise in the first three chapters of Hartshorne]]
+- May 14th, 2025 | [[./every_hartshorne_ex.html][Every exercise in the first three chapters of Hartshorne]]
 - May 6th, 2025 | [[./myers_steenrod.html][A complete proof of the Myers-Steenrod theorem]]
 - May 5th, 2025 | [[./fibre_integrals.html][Fibre integrals]]
