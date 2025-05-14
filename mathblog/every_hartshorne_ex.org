@@ -10,7 +10,7 @@
 #+ATTR_HTML: :width 400px
 [[./assets/hartshorne.jpg]]
 
-I have recently begun work on a new overly-ambitious project: doing every exercise in the first three chapters of Hartshorne before my PhD begins in the Fall.
+I have recently begun work on a new, wildly overly-ambitious project: doing every exercise in the first three chapters of Hartshorne before my PhD begins in the Fall.
 I was inspired by [[https://math.berkeley.edu/~cjdowd/hartshorne.html][this website]]. I don't even think this individual accomplished their goal, and I may not either (in fact, I'd say it is quite likely that I won't). However, as the adage goes,
 "shoot for the stars, land on the moon" or something like that.
 
