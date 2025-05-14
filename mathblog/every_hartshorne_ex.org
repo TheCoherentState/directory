@@ -30,4 +30,5 @@ internalize the modern scheme-theoretic toolkit, which is exactly what Chapter 1
 If I have any extra thoughts of notes about particular problems, I will add them below. Suggestions and/or corrections are much much appreciated, I'm sure there will be typos!
 
 - *May 14th, 2025:* On the original publication date of this blog post, I have finished 9/90 (in other words, 10%) of the problems in Chapter 1. So far so good.
+  If I manage to keep up the pace of solving 3 or 4 problems every day, then I'll easily finish this project by the Fall. Easier said than done!
 
