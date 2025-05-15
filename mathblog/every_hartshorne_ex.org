@@ -23,7 +23,7 @@ internalize the modern scheme-theoretic toolkit, which is exactly what Chapter 1
 
 [[../pdf/hartshorne.pdf][Here]] is a link to my solutions. I'll keep a tally of my progress here:
 
-- Chapter 1 problems completed: 9/90
+- Chapter 1 problems completed: 12/90
 - Chapter 2 problems completed: 1/134
 - Chapter 3 problems completed: 0/88
 
