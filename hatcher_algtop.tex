@@ -1,0 +1,380 @@
+\documentclass[aps,pra,showpacs,notitlepage,onecolumn,superscriptaddress,nofootinbib]{revtex4-1}
+\usepackage[utf8]{inputenc}
+\usepackage[tmargin=1in, bmargin=1.25in, lmargin=1.5in, rmargin=1.5in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{datetime}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{import}
+\usepackage{mathtools}
+\usepackage{thmtools,thm-restate}
+\usepackage{tikz-cd}
+\usepackage[many]{tcolorbox}
+
+% package for commutative diagrams
+% \usepackage{tikz-cd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{crimson}{RGB}{186,0,44}
+\definecolor{moss}{RGB}{0, 186, 111}
+\newcommand{\pop}[1]{\textcolor{crimson}{#1}}
+\newcommand{\zcom}[1]{\noindent\textcolor{crimson}{(Z): #1}}
+\newcommand{\jcom}[1]{\noindent\textcolor{moss}{(J): #1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\pqeq}{\succcurlyeq}
+\newcommand{\pleq}{\preccurlyeq}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+    colorlinks,
+    linkcolor={crimson},
+    citecolor={crimson},
+    urlcolor={crimson}
+}
+
+\usepackage{qcircuit}
+\usepackage{comment}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\newtheorem{lemma}{Lemma}[section]
+
+\newtheorem{theorem}{Theorem}[section]
+
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{corollary*}{Corollary}
+
+\newtheorem{remark}{Remark}[section]
+
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{reminder}{Reminder}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{answer}{Answer}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{claim}{Claim}[section]
+\newtheorem{prop}{Proposition}[section]
+
+\newtheorem{solution}{Solution}[section]
+
+\usepackage{geometry}
+\geometry{
+  left=25mm,
+  right=25mm,
+  top=20mm,
+}
+
+\newcommand{\hhrulefill}{\hspace{-1.5em} \hrulefill}
+\renewcommand{\baselinestretch}{1.1} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{unsrt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{Solutions to Hatcher's algebraic topology book}
+\author{Jack Ceroni}
+\email{jceroni@uchicago.edu}
+\date{\today}
+\maketitle
+
+\section{Chapter 0}
+
+\begin{solution}[Problem 0.1]
+  Recall that $T^2 = S^1 \times S^1$, remove point $(0, 1) \times (0, 1)$. We can represent points in $S^1 \times S^1$ by a pair of angles in $S = [-\pi, \pi] \times [-\pi, \pi] - (0, 0)$, the idea is to homotop
+  this pair to the boundary of the square $[-\pi, \pi] \times [-\pi, \pi]$ (which we can do continuously as we omit the origin). The resulting boundary of the square is precisely the space $-1 \times S^1 \cup S^1 \times -1$,
+  which is a pair of circles wedged at $(-1, -1)$.
+  \end{solution}
+
+\begin{solution}[Problem 0.2]
+  Simply use $F(x, t) = (1 - t) x + \frac{t x}{||x||}$.
+  \end{solution}
+
+\begin{solution}[Problem 0.3]
+  If $X \rightarrow Y$ and $Y \rightarrow Z$ are homotopy equivalences (called $f_1$ and $g_1$ respectively, with corresponding backward maps $f_2$ and $g_2$), then
+  \begin{equation}
+    (g_1 \circ f_1) \circ (f_2 \circ g_2) \simeq g_1 \circ g_2 \simeq \text{id}
+    \end{equation}
+  with similar logic showing that $(f_2 \circ g_2) \circ (g_1 \circ f_1) \simeq \text{id}$, where we construct a homotopy by concatenating the homotopy $f_1 \circ f_2 \simeq \text{id}$
+  and the homotopy $g_1 \circ g_2 \simeq \text{id}$. This same concatenation argument shows that if maps $f, g : X \rightarrow Y$ are homotopic via $F$ and $g, h : X \rightarrow Y$ are homotopic
+  via $G$, then $f$ and $h$ are homotopic via $G \star F$. Finally, if $f$ is homotopic to $g : X \rightarrow Y$, which is a homotopy equivalence with backward map $h : Y \rightarrow X$, then
+  by transitivity of homotopy proved earlier,
+  \begin{equation}
+  f \circ h \simeq g \circ h \simeq \text{id} \ \ \ \text{and} \ \ \ h \circ f \simeq h \circ g \simeq \text{id}
+  \end{equation}
+  so that $f$ is a homotopy equivalence.
+  \end{solution}
+
+\begin{solution}[Problem 0.4]
+  Let $r : X \rightarrow A$ be defined as $r(x) = f_1(x)$. Then note that $r \circ \iota : A \rightarrow A$ is homotopic to the identity via the homotopy $G : A \times [0, 1] \rightarrow A$
+  given by $G(x, t) = f_t(x)$, which is well-defined at $f_t(A) \subset A$ for all $t$. Similarly, $\iota \circ r$ is homotopic to the identity via $F = f_t$.
+  \end{solution}
+
+\section{Chapter 1}
+
+\subsection{Section 1.1}
+
+\begin{solution}[Problem 1.1.17]
+  The idea is to loop the first circle of the wedge around the second one exactly $n$ times. In particular, suppose $S^1 \vee S^1$ is realized as the space $S^1 \times \{1\} \cup \{1\} \times S^1$ (where
+  we think of $S^1 \subset \mathbb{C}$. We define $r_n : S^1 \vee S^1 \rightarrow \{1\} \times S^1$ as
+  \begin{equation}
+    r_n(e^{i \theta} \times 1) = 1 \times e^{i n \theta} \ \ \ \text{and} \ \ \ r_n(1 \times e^{i \theta}) = 1 \times e^{i \theta}.
+    \end{equation}
+  It is clear that this function is continuous. This is clearly a retraction onto $\{1\} \times S^1 \simeq S^1$. To see that all of the $r_n$ are not mutually homotopic, recall that
+  each of the homotopy classes of $S^1$ based at $1$ are represented by the loops $\omega_n : t \mapsto e^{2 \pi i n t}$ for $t \in [0, 1]$. If we had $r_n \simeq r_m$ via homotopy $H$ for $m \neq n$, this would
+  give a homotopy between $\omega_n$ and $\omega_m$ via
+  \begin{equation}
+    G(s, t) = (\pi_2 \circ H)(e^{2 \pi i s} \times 1, t)
+    \end{equation}
+  where $\pi_2 : \{1\} \times S^1 \rightarrow S^1$ is projection. In particular,
+  \begin{equation}
+    G(s, 0) = (\pi_2 \circ H)(e^{2 \pi i s} \times 1, 0) = (\pi_2 \circ r_n)(e^{2 \pi i s} \times 1) = e^{2 \pi i n s} = r_n(s)
+    \end{equation}
+  and
+  \begin{equation}
+    G(s, 1) = (\pi_2 \circ H)(e^{2 \pi i s} \times 1, 1) = (\pi_2 \circ r_m)(e^{2 \pi i s} \times 1) = e^{2 \pi i m s} = r_m(s)
+    \end{equation}
+  which is a contradiction.
+  \end{solution}
+
+\begin{solution}[Problem 1.1.18]
+  Let $f : S^{n - 1} \rightarrow A$ be the attaching map which attaches $e^n$ to $A$ to form $X \simeq D^n \sqcup_f A$. Then $X$ is the union of open sets $e^n = \text{Int}(D^n)$ and
+  $X - \{p\}$ for some $p \in e^n$. The intersection of these open sets is $e^n - \{p\}$ which is path-connected (as $n \geq 2$), and from Lemma 1.15 we can write any loop in $\pi_1(X, x_0)$ for some
+  $x_0 \in e^n - \{p\}$ as a product of loops contained in either of these open sets. Of course, any loop in $e^n$ is nullhomotopic, so any loop is a product of loops contained in $X - \{p\}$.
+
+  Thus, the inclusion $\iota_{*} : \pi(X - \{p\}, x_0) \rightarrow \pi_1(X, x_0)$ is a surjection. We can choose some $y_0 \in A$, and note that since $A$ (thus the whole space $X$ and $X - \{p\}$ are, as we attach a cell of dimension $2$ or more)
+  is path-connected, a path
+  from $x_0$ to $y_0$ will induce isomorphisms $\pi_1(X - \{p\}, x_0) \simeq \pi_1(X - \{p\}, y_0)$ and $\pi_1(X, x_0) \simeq \pi_1(X, y_0)$. The overall effect of composing these maps with $\iota_{*}$
+  is to take a loop in $X - \{p\}$ based at $y_0$, move its basepoint to $x_0$, map it via inclusion into $X$, and move the basepoint back to $x_0$. This is the same map on homotopy classes as the inclusion
+  $\iota_{*} : \pi_1(X - \{p\}, y_0) \rightarrow \pi_1(X, y_0)$, so this map is an inclusion. Finally, note that $\iota_{*} : \pi_1(A, y_0) \rightarrow \pi_1(X - \{p\}, y_0)$ is an isomorphism, as $X - \{p\}$ deformation
+  retracts to $A$. Thus, the inclusion of $A$ in $X$ induces a surjection on fundamental groups. From here:
+  \begin{itemize}
+    \item $S^1 \vee S^2$ is obtained by attaching a two-cell to $S^1$ at a single point, so $\iota_{*} : \pi_1(S^1, x_0) \rightarrow \pi_1(S^1 \vee S^2, x_0)$ is a surjection. Moreover, $S^1 \vee S^2$ retracts to $S^1$,
+      so $\iota_{*}$ is also an injection. Thus, $\pi_1(S^1 \vee S^2, x_0) \simeq \mathbb{Z}$.
+      \item Assuming that $X$ contains finitely many cells, note that $X$ can be constructed by repeatedly attaching cells $e^n$ with $n \geq 2$ to $X^1$. Composing each of these inclusions gives the desired result. In the
+        case that $X$ contains infinitely many cells, we know that a compact subset of $X$ is contained in a finite subset of the cells. Thus, given some $[\gamma] \in \pi_1(X, x_0)$, note that the image of $\gamma$ is
+        compact and therefore contained in some finite subsets of cell $Y$, which can be obtained by attaching finitely many cells to $X^1$. Define $\eta : [0, 1] \rightarrow Y$ as $\eta(t) = \gamma(t)$, so that $j_{*} [\eta] = [\gamma]$
+        for inclusion $j : Y \rightarrow X$. From above, the inclusion $\iota_{*} : \pi_1(X^1, x_0) \rightarrow \pi_1(Y, x_0)$ will be a surjection, so pick $\theta$ where $\iota_{*} [\theta] = j_{*} [\eta] = [\gamma]$, and we have the
+        desired result.
+  \end{itemize}
+  \end{solution}
+
+\begin{solution}[Problem 1.1.19]
+  Let $\gamma$ be a loop in $X$, since $\gamma$ is compact we can assume, without loss of generality, that $X$ is made up of a finite number of cells (see Problem 1.1.18).
+  Let $e_1^1, \dots, e_k^1$ be the set of $1$-cells in $X$. For the $j$-th cell $e_j^1$, let $\Phi_j : D^1 \rightarrow X$ be the corresponding characteristic map. Depending on whether both endpoints of $D^1 \simeq [0, 1]$
+  are attached to $p \in X^0$ or just one, choose an open set $U_j$ of one or both endpoints of the form $[0, \varepsilon)$, $(1 - \varepsilon, 1]$, or $[0, \varepsilon) \cup (1 - \varepsilon, 1]$. Then $\Phi_j(U_j)$ is a contractible open
+  neighbourhood of $p$.
+
+  From here, we cover $X$ with the $1$-cells, along with all of the contractible $\Phi_j(U_j)$. Let $R^j_t : X \rightarrow X$ be the homotopy which shrinks $\Phi_j(U_j)$ to $p$ and stretches $\Phi_j([0, 1] - U_j)$ so that
+  $[0, 1] - U_j$ is mapped homeomorphically onto all of $\overline{e_j^1}$, with the endpoint (or endpoints) in $\partial U_j$ taken to $p$. We note that we can partition $[0, 1]$ into a finite collection on intervals
+  $[s_j, s_{j + 1}]$ taken by $\gamma$ into one of the open sets described (by the Lebesgue number lemma). This allows us to write $\gamma$ as a (finite) product of paths in each of the open sets, $\beta_1 \star \cdots \star \beta_n$.
+
+  Let $R_t$ be the concatenation of all homotopies $R^j_t$. We note that $R_t$ will fix the basepoint $x_0$ of $\gamma$, which is assumed to be a $0$-cell, so $R_t \circ \gamma$ is a path-homotopy, so
+  \begin{equation}
+    \gamma \simeq R_1 \circ \gamma = R_1 \circ (\beta_1 \star \cdots \star \beta_n) = (R_1 \circ \beta_1) \star \cdots \star (R_1 \circ \beta_n)
+    \end{equation}
+  which has the effect of shrinking the $\beta_k$ contained in some $\Phi_j(U_j)$ to a point and stretching $\beta_k$ in $e_j^1$ to the closure $\overline{e_j^1}$. Thus, without loss of generality, we can assume that
+  $\gamma$ is path-homotopic to a composition of paths each of which is contained in some $\overline{e_j^1}$. Moreover, by combining neighbouring paths in the composition which lie in the same cell-closure, we can
+  assume that the endpoints of each $\beta_k$ are the endpoints of a cell. Depending on whether these endpoints are the same or different, we can use a straight-line homotopy, which preserves
+  endpoints, taking $\beta_k$ to its single endpoint, or the path going from one endpoint to the other. This gives us the desired result: $\gamma$ is path-homotopic to a finite composition of paths traversing the edges of the cell-complex.
+  \end{solution}
+
+\subsection{Section 1.2}
+
+\noindent \emph{Before jumping into the exercises of this section, we find it necessary to provide our own brief proof of Seifert Van-Kampen, following both the detailed treatment of Munkres and the brief treatment of Hatcher.}
+\newline
+
+\begin{definition}
+  Let $G$ be a group. A word in $G$ is an element of the set of finite-length tuples of elements of $W(G)$, of the form $(g_1, \dots, g_n)$. A word $(g_1, \dots, g_n)$ represents $g \in G$
+  if $g_1 \cdots g_n = g$.
+  \end{definition}
+
+\begin{definition}[Free product]
+  Given a collection of subgroups $\{G_{\alpha}\}_{\alpha \in J}$, we say that a word $(g_1, \dots, g_n)$ is a word in these subgroups if each $g_j$ is in some $G_{\alpha}$. We say that $(g_1, \dots, g_n)$
+  is reduced if $g_j \neq 1$ for all $j$ and adjacent $g_{j}$ and $g_{j + 1}$ are contained in distinct $G_{\alpha}$.
+  We say that $G$ is a \emph{free product} of the $G_{\alpha}$ if $G_{\alpha} \cap G_{\beta} = \{1\}$ for $\alpha \neq \beta$ and each $g \in G$
+  is represented by a \emph{unique} reduced word in the $G_{\alpha}$.
+  \end{definition}
+
+\begin{lemma}
+  Let $G$ be a group with subgroups $\{G_{\alpha}\}_{\alpha \in J}$, let $(w_1, \dots, w_{\ell})$ be a word in the $G_{\alpha}$ representing $w$. Then there exists a
+  reduced word representing $w$ which can be obtained from $(w_1, \dots, w_{\ell})$ be removing all instances of $1$ and then performing a finite sequence of mappings
+  \begin{align}
+    (w_1, \dots, w_{\ell}) \mapsto (w_1, \dots, w_{n - 1}, w_n w_{n + 1}, w_{n + 2}, \dots, w_{\ell}) \ \ \ \text{when} \ w_n, w_{n + 1} \in G_{\alpha} \ \text{and} \ w_n w_{n + 1} \neq 1 \\
+    (w_1, \dots, w_{\ell}) \mapsto (w_1, \dots, w_{n - 1}, w_{n + 2}, \dots, w_{\ell}) \ \ \ \text{when} \ w_n, w_{n + 1} \in G_{\alpha} \ \text{and} \ w_n w_{n + 1} = 1
+  \end{align}
+  \end{lemma}
+
+\begin{proof}
+  Of course, removing instances of $1$ does not change the element of $G$ that $(w_1, \dots, w_{\ell})$ represents, so without loss of generality, assume $w_j \neq 1$ for all $j$. Additionally,
+  the above operations do not change the element of $G$ that the word represents. If $(w_1, \dots, w_{\ell})$ is a word such that \emph{neither} of the above operations can be performed, we must have all
+  adjacent $w_j$ in distinct $G_{\alpha}$, so $(w_1, \dots, w_{\ell})$ is reduced. Since the above operations strictly reduce the length of the word, it follows by induction on the length of the word that
+  the claim holds.
+  \end{proof}
+
+\begin{prop}[Extension property of free products]
+  Suppose $G$ is a free product of $\{G_{\alpha}\}_{\alpha \in J}$. Then if $H$ is another group, and $\varphi_{\alpha} : G_{\alpha} \rightarrow H$ are homomorphisms, there is a unique homomorphism $\Phi : G \rightarrow H$
+  such that $\Phi|_{G_{\alpha}} = \varphi_{\alpha}$.
+  \end{prop}
+\begin{proof}
+  If $G$ is a free product of the $G_{\alpha}$, given $g \in G$ there is a unique reduced word in the $G_{\alpha}$, called $(g_1, \dots, g_n)$ such that $g_1 \cdots g_n = g$. Define
+  $\Phi(g) = \varphi_{\alpha_1}(g_1) \cdots \varphi_{\alpha_n}(g_n)$ where $g_j \in G_{\alpha_j}$. To check that this is a homomorphism, take some $h$ represented by reduced word $(h_1, \dots, h_m)$
+  with $h_j \in G_{\beta_j}$. We have
+  \begin{equation}
+    \label{eq:a}
+    \Phi(g) \Phi(h) = \varphi_{\alpha_1}(g_1) \cdots \varphi_{\alpha_n}(g_n) \varphi_{\beta_1}(h_1) \cdots \varphi_{\beta_m}(h_m)
+    \end{equation}
+  Consider the word $w = (g_1, \dots, g_n, h_1, \dots, h_m)$. This word represents $gh$, which has a unique reduced representation. As was explained earlier, we can obtain this unique reduced
+  representation by performing a finite sequence of manipulations to $w$:
+  \begin{align}
+    (w_1, \dots, w_{\ell}) \mapsto (w_1, \dots, w_{n - 1}, w_n w_{n + 1}, w_{n + 2}, \dots, w_{\ell}) \ \ \ \text{when} \ \gamma_n = \gamma_{n + 1} \ \text{and} \ w_n w_{n + 1} \neq 1 \\
+    (w_1, \dots, w_{\ell}) \mapsto (w_1, \dots, w_{n - 1}, w_{n + 2}, \dots, w_{\ell}) \ \ \ \text{when} \ \gamma_n = \gamma_{n + 1} \ \text{and} \ w_n w_{n + 1} = 1
+    \end{align}
+  It is easy to see that none of these moves
+
+  \end{proof}
+
+\begin{remark}
+  Conversely, if $G$ satisfies this extension property for some collection of homomorphisms $\varphi_{\alpha} : G_{\alpha} \rightarrow H$ from subgroups, then $G$ is a free
+  product of the $G_{\alpha}$. This proof is harder.
+  \end{remark}
+
+\begin{definition}[External free products]
+  \end{definition}
+
+\noindent We have defined what an external free product of a collection of groups is, but the question still remains as to whether they even \emph{exist}. As it turns out, they do.
+
+\begin{prop}[Existence of external free products]
+  \end{prop}
+
+\begin{remark}
+
+  \end{remark}
+
+\begin{prop}[Extension property of external free products]
+
+\end{prop}
+
+\section{Section 1.3}
+
+\section{Chapter 2}
+
+\subsection{Section 2.2}
+
+\begin{solution}[Problem 2.2.43]
+  First, let us state what it means for a chain complex to split into a direct sum. If we consider the chain complex of groups $C_n$, it splits into a direct sum
+  of chain complexes of groups $A_n$ and $B_n$ if we have a diagram
+  % https://q.uiver.app/#q=WzAsMTUsWzQsMiwiQ19uIl0sWzYsMiwiQ197bisxfSJdLFsyLDIsIkNfe24tMX0iXSxbMCwyLCJcXGNkb3RzIl0sWzgsMiwiXFxjZG90cyJdLFs0LDAsIkFfe259Il0sWzQsNCwiQl9uIl0sWzYsMCwiQV97bisxfSJdLFs2LDQsIkJfe24rMX0iXSxbOCwwLCJcXGNkb3RzIl0sWzgsNCwiXFxjZG90cyJdLFsyLDAsIkFfe24tMX0iXSxbMiw0LCJCX3tuLTF9Il0sWzAsNCwiXFxjZG90cyJdLFswLDAsIlxcY2RvdHMiXSxbMCwxXSxbMSw0XSxbMiwwXSxbMywyXSxbMTQsMTFdLFsxMSw1XSxbNSw3XSxbNyw5XSxbOCwxMF0sWzYsOF0sWzEyLDZdLFsxMywxMl0sWzcsMV0sWzUsMF0sWzExLDJdLFsyLDEyXSxbMCw2XSxbMSw4XV0=
+\[\begin{tikzcd}
+	\cdots && {A_{n-1}} && {A_{n}} && {A_{n+1}} && \cdots \\
+	\\
+	\cdots && {C_{n-1}} && {C_n} && {C_{n+1}} && \cdots \\
+	\\
+	\cdots && {B_{n-1}} && {B_n} && {B_{n+1}} && \cdots
+	\arrow[from=1-1, to=1-3]
+	\arrow[from=1-3, to=1-5]
+	\arrow[from=1-3, to=3-3]
+	\arrow[from=1-5, to=1-7]
+	\arrow[from=1-5, to=3-5]
+	\arrow[from=1-7, to=1-9]
+	\arrow[from=1-7, to=3-7]
+	\arrow[from=3-1, to=3-3]
+	\arrow[from=3-3, to=3-5]
+	\arrow[from=3-3, to=5-3]
+	\arrow[from=3-5, to=3-7]
+	\arrow[from=3-5, to=5-5]
+	\arrow[from=3-7, to=3-9]
+	\arrow[from=3-7, to=5-7]
+	\arrow[from=5-1, to=5-3]
+	\arrow[from=5-3, to=5-5]
+	\arrow[from=5-5, to=5-7]
+	\arrow[from=5-7, to=5-9]
+\end{tikzcd}\]
+where each of the vertical sequences is short exact and splits, that is $C_n \simeq A_n \oplus B_n$ for all $n$. As a first step, consider the short exact sequence
+% https://q.uiver.app/#q=WzAsNSxbNCwwLCJDX24iXSxbNiwwLCJcXHRleHR7SW19KFxccGFydGlhbCkiXSxbMiwwLCJcXHRleHR7S2VyfShcXHBhcnRpYWwpIl0sWzAsMCwiMCJdLFs4LDAsIjAiXSxbMCwxLCJcXHBhcnRpYWwiXSxbMiwwLCJcXHBhcnRpYWwiXSxbMSw0XSxbMywyXV0=
+\[\begin{tikzcd}
+0 && {\text{Ker}(\partial)} && {C_n} && {\text{Im}(\partial)} && 0
+\arrow[from=1-1, to=1-3]
+\arrow["\iota", from=1-3, to=1-5]
+\arrow["\partial", from=1-5, to=1-7]
+\arrow[from=1-7, to=1-9]
+\end{tikzcd}\]
+where the $C_n$ are free Abelian groups. Because $C_n$ is free Abelian, it has a basis $\{x^{(n)}_{\alpha}\}_{\alpha \in J}$ where each subgroup $C_{n, \alpha} = \langle x^{(n)}_{\alpha} \rangle$ is infinite cyclic
+and $C$ is the direct sum of the $C_{n, \alpha}$. Let $I \subset J$ be the collection of $\alpha$ such that $\partial x^{(n)}_{\alpha} = 0$ and let $K = J - I$. We define a family of homomorphisms
+$\phi_{\alpha} : C_{n, \alpha} \rightarrow \text{Ker}(\partial)$ as follows: if $\alpha \in I$, then $\phi_{\alpha} = \iota$, inclusion, and if $\alpha \in K$, then $\phi_{\alpha} = 0$. It then follows from the
+extension property of the direct sum that we can extend this family of homomorphisms uniquely to a homomorphism $\Phi : C_n \rightarrow \text{Ker}(\partial)$ which restricts to the $\phi_{\alpha}$ on the subgroups.
+It is clear that $\Phi \circ \iota = \text{id}$, so from the splitting lemma, our short exact sequence splits and we have $C_n \simeq \text{Ker}(\partial) \oplus \text{Im}(\partial)$.
+
+This procedure gives us the following commutative diagram
+% https://q.uiver.app/#q=WzAsMTMsWzQsMiwiQ19uIl0sWzQsMCwiXFx0ZXh0e0tlcn0oXFxwYXJ0aWFsX24pIl0sWzQsNCwiXFx0ZXh0e0ltfShcXHBhcnRpYWxfbikiXSxbNiwyLCJcXHRleHR7S2VyfShcXHBhcnRpYWxfe24tMX0pIl0sWzYsNCwiXFx0ZXh0e0tlcn0oXFxwYXJ0aWFsX3tuLTF9KSJdLFsyLDIsIlxcdGV4dHtJbX0oXFxwYXJ0aWFsX3tuKzF9KSJdLFs2LDAsIjAiXSxbMiwwLCJcXHRleHR7SW19KFxccGFydGlhbF97bisxfSkiXSxbMCwwLCIwIl0sWzgsNCwiMCJdLFsyLDQsIjAiXSxbOCwyLCIwIl0sWzAsMiwiMCJdLFsxLDAsIlxcaW90YSJdLFswLDIsIlxccGFydGlhbF9uIl0sWzAsMywiXFxwYXJ0aWFsX24iXSxbMiw0LCJcXGlvdGEiXSxbMyw0XSxbNSwwLCJcXGlvdGEiXSxbMSw2XSxbNywxLCJcXGlvdGEiLDJdLFs4LDddLFs0LDldLFsxMCwyXSxbNyw1XSxbNSwxMF0sWzMsMTFdLFsxMiw1XV0=
+\[\begin{tikzcd}
+	0 && {\text{Im}(\partial_{n+1})} && {\text{Ker}(\partial_n)} && 0 \\
+	\\
+	0 && {\text{Im}(\partial_{n+1})} && {C_n} && {\text{Ker}(\partial_{n-1})} && 0 \\
+	\\
+	&& 0 && {\text{Im}(\partial_n)} && {\text{Ker}(\partial_{n-1})} && 0
+	\arrow[from=1-1, to=1-3]
+	\arrow["\iota"', from=1-3, to=1-5]
+	\arrow[from=1-3, to=3-3]
+	\arrow[from=1-5, to=1-7]
+	\arrow["\iota", from=1-5, to=3-5]
+	\arrow[from=3-1, to=3-3]
+	\arrow["\iota", from=3-3, to=3-5]
+	\arrow[from=3-3, to=5-3]
+	\arrow["{\partial_n}", from=3-5, to=3-7]
+	\arrow["{\partial_n}", from=3-5, to=5-5]
+	\arrow[from=3-7, to=3-9]
+	\arrow[from=3-7, to=5-7]
+	\arrow[from=5-3, to=5-5]
+	\arrow["\iota", from=5-5, to=5-7]
+	\arrow[from=5-7, to=5-9]
+\end{tikzcd}\]
+If we let $K_n = \text{Ker}(\partial_n)$ and $L_{n + 1} = \text{Im}(\partial_{n + 1})$, then this diagram becomes
+% https://q.uiver.app/#q=WzAsMTUsWzQsMiwiQ19uIl0sWzQsMCwiS19uIl0sWzQsNCwiTF9uIl0sWzYsMiwiS197bi0xfSJdLFs2LDQsIktfe24tMX0iXSxbMiwyLCJMX3tuKzF9Il0sWzYsMCwiMCJdLFsyLDAsIkxfe24rMX0iXSxbMCwwLCIwIl0sWzgsNCwiMCJdLFsyLDQsIjAiXSxbOCwyLCIwIl0sWzAsMiwiMCJdLFswLDQsIjAiXSxbOCwwLCIwIl0sWzEsMF0sWzAsMl0sWzAsM10sWzIsNF0sWzMsNF0sWzUsMF0sWzEsNl0sWzcsMV0sWzgsN10sWzQsOV0sWzEwLDJdLFs3LDVdLFs1LDEwXSxbMywxMV0sWzEyLDVdLFs2LDNdLFs4LDEyXSxbMTIsMTNdLFsxMywxMF0sWzYsMTRdLFsxNCwxMV0sWzExLDldXQ==
+\[\begin{tikzcd}
+	0 && {L_{n+1}} && {K_n} && 0 && 0 \\
+	\\
+	0 && {L_{n+1}} && {C_n} && {K_{n-1}} && 0 \\
+	\\
+	0 && 0 && {L_n} && {K_{n-1}} && 0
+	\arrow[from=1-1, to=1-3]
+	\arrow[from=1-1, to=3-1]
+	\arrow[from=1-3, to=1-5]
+	\arrow[from=1-3, to=3-3]
+	\arrow[from=1-5, to=1-7]
+	\arrow[from=1-5, to=3-5]
+	\arrow[from=1-7, to=1-9]
+	\arrow[from=1-7, to=3-7]
+	\arrow[from=1-9, to=3-9]
+	\arrow[from=3-1, to=3-3]
+	\arrow[from=3-1, to=5-1]
+	\arrow[from=3-3, to=3-5]
+	\arrow[from=3-3, to=5-3]
+	\arrow[from=3-5, to=3-7]
+	\arrow[from=3-5, to=5-5]
+	\arrow[from=3-7, to=3-9]
+	\arrow[from=3-7, to=5-7]
+	\arrow[from=3-9, to=5-9]
+	\arrow[from=5-1, to=5-3]
+	\arrow[from=5-3, to=5-5]
+	\arrow[from=5-5, to=5-7]
+	\arrow[from=5-7, to=5-9]
+\end{tikzcd}\]
+so that the direct sum of the complexes in the bottom and top row is $0 \rightarrow L_{n + 1} \rightarrow C_n \rightarrow K_{n - 1} \rightarrow 0$. We can repeat this process inductively
+to write the entire chain complex as an iterated direct sum of length-at-most-$2$ subcomplexes.
+
+Moving on to Part B, let us assume that each of the $C_n$ are finitely generated. The goal is to show that we can further split the sequence.
+  \end{solution}
+
+
+\end{document}

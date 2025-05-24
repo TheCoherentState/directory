@@ -1,0 +1,27 @@
+#+TITLE:Poincare's Lemma
+#+DESCRIPTION:Directory
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+
+It is somewhat interesting that the Poincare lemma gives drastically different results when we look at all De Rham cohomology vs. compactly-supported De Rham cohomology.
+Let us prove both versions.
+
+*Poincare's Lemma, standard version:* Let $H^{\bullet}(\mathbb{R}^n)$ denote the cohomology ring of $\Omega^{\bullet}(\mathbb{R}^n)$: the cochain complex
+of differential forms on $\mathbb{R}^n$. Then,
+\begin{equation}
+H^k(\mathbb{R}^n) = \begin{cases}
+\mathbb{R} & \text{if} \ k = 0 \\
+0 & \text{otherwise}
+\end{cases}
+\end{equation}
+
+*Poincare's Lemma, compact support:* Let $H^{\bullet}_c(\mathbb{R}^n)$ denote the cohomology ring of $\Omega^{\bullet}_c(\mathbb{R}^n)$: the cochain complex
+of compactly-supported differential forms on $\mathbb{R}^n$. Then,
+\begin{equation}
+H^k(\mathbb{R}^n) = \begin{cases}
+\mathbb{R} & \text{if} \ k = n \\
+0 & \text{otherwise}
+\end{cases}
+\end{equation}
+
+It is s

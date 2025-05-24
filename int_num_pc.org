@@ -1,0 +1,19 @@
+#+TITLE:Algebraic intersection number of plane curves
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+
+Algebraic intersection theory is very nice because of its rigidity (unlike the analogous topological intersection theory). As it turns out, one can
+define an intersection number of affine plane curves which has all of the desirable properties that one would expect of an "intersection number" purely
+via the algebraic properties of rational functions defined on the curves.
+
+To be more specific, given affine plane curves $F$ and $G$ in $\mathbb{A}^2(k)$ (where $k$ is an algebraically closed field) and $P \in \mathbb{A}^2(k)$, the
+/intersection number/ of $F$ and $G$ and $P$, denoted $I(F \cap G, P)$, is the unique map on triples $(F, G, P)$ to $\mathbb{Z}_{\geq 0} \cup \{\infty\}$ which
+satisfies the following properties:
+
+1. $I(F \cap G, P) = \infty$ if and only if $F$ and $G$ have a common component passing through $P$. $I(F \cap G, P) = 0$ if and only if $F$ and $G$ do not intersect at $P$.
+2. $I(F \cap G, P)$ only depends on the irreducible components of $F$ and $G$ which pass through $P$.
+3. If $T$ is an affine change of coordinates, then $I(F \circ T \cap G \circ T, P) = I(F \cap G, T(P))$.
+4. $I(F \cap G, P) = I(G \cap F, P)$
+5. $I(F \cap G, P) \geq m_P(F) m_P(G)$, where $m_P$ is the multiplicity at $P$, and equality occurs if and only if $F$ and $G$ share no common tangent lines at $P$.
+6. If $F = \prod_{i} F_i$ and $G = \prod_{j} G_j$, then $I(F \cap G, P) = \sum_{ij} I(F_i, \cap G_j, P)$.
+7. For any $A \in k[X, Y]$, $I(F \cap G, P) = I(F \cap (G + AF), P)$.

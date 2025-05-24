@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.2)  14 MAY 2025 22:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.2)  23 MAY 2025 23:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1165,23 +1165,37 @@ Class revtex4-1 Warning: Assuming \noaffiliation for authors.
 \openout8 = `hartshorne.toc'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 95--97
+Underfull \hbox (badness 10000) in paragraph at lines 95--98
 
  []
 
 Package hyperref Info: bookmark level for unknown solution defaults to 0 on inp
-ut line 109.
+ut line 110.
 [1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/l
 ocal/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-[2]
-LaTeX Font Info:    Trying to load font information for U+euf on input line 210
+[2] [3]
+LaTeX Font Info:    Trying to load font information for U+euf on input line 249
 .
  (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
-) [3]
-[4] [5]
+)
+[4] [5] [6] [7]
+Overfull \hbox (109.20743pt too wide) detected at line 435
+[][][]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 A \OT1/cmr/m/n/10 + \OML/cmm/m/it/10 B\
+OT1/cmr/m/n/10 )[] = [] \OML/cmm/m/it/10 x[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 A
+[] \OT1/cmr/m/n/10 + \OML/cmm/m/it/10 B[]\OT1/cmr/m/n/10 ) = [] \OML/cmm/m/it/1
+0 x[]A[] \OT1/cmr/m/n/10 + [] \OML/cmm/m/it/10 x[]B[] \OT1/cmr/m/n/10 = \OML/cm
+m/m/it/10 x[]A[] \OT1/cmr/m/n/10 + \OML/cmm/m/it/10 x[]B[]
+ []
+
+[8]
+Underfull \hbox (badness 10000) in paragraph at lines 473--476
+
+ []
+
+[9]
 No file hartshorne.bbl.
-[6] (pdf/hartshorne.aux)
+[10] (pdf/hartshorne.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -1191,16 +1205,16 @@ L3 programming layer <2024-02-20>
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 Package rerunfilecheck Info: File `hartshorne.out' has not changed.
-(rerunfilecheck)             Checksum: A5796CDF2DA56F731BEDC95A4B5BB227;1220.
+(rerunfilecheck)             Checksum: 87C00C7ED10C899140533608045C2EFB;1340.
  ) 
 Here is how much of TeX's memory you used:
- 33272 strings out of 474116
- 640127 string characters out of 5743683
- 1962187 words of memory out of 5000000
- 54977 multiletter control sequences out of 15000+600000
+ 33306 strings out of 474116
+ 640597 string characters out of 5743683
+ 1959187 words of memory out of 5000000
+ 54980 multiletter control sequences out of 15000+600000
  567896 words of font info for 76 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 98i,10n,101p,1425b,800s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,13n,101p,1425b,800s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></
@@ -1221,10 +1235,10 @@ mf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf
 dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/2024/texm
 f-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/
 texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on pdf/hartshorne.pdf (6 pages, 244604 bytes).
+Output written on pdf/hartshorne.pdf (10 pages, 272793 bytes).
 PDF statistics:
- 285 PDF objects out of 1000 (max. 8388607)
- 234 compressed objects within 3 object streams
- 94 named destinations out of 1000 (max. 500000)
- 85 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 340 PDF objects out of 1000 (max. 8388607)
+ 285 compressed objects within 3 object streams
+ 125 named destinations out of 1000 (max. 500000)
+ 93 words of extra memory for PDF output out of 10000 (max. 10000000)
 

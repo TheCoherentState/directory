@@ -1,0 +1,48 @@
+#+TITLE:Folland Chpater 3 Solutions
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+
+* Section 1
+
+*Problem 3.1.* Since the sequence is increasing, the sets $Q_1 = E_1$ and $Q_n = E_n - E_{n - 1}$ for $n > 1$ are disjoint and their union is the same as the union of the $E_n$. We thus have
+\begin{equation}
+\mu \left( \bigcup_{n = 1}^{\infty} E_n \right) = \mu \left( \bigcup_{n = 1}^{\infty} Q_n \right) = \sum_{n = 1}^{\infty} \mu(Q_n) = \lim_{N \to \infty} \sum_{n = 1}^{N} \mu(Q_n) = \lim_{N \to \infty} \mu(E_N)
+\end{equation}
+Similarly, we let $Q_n = E_n - E_{n + 1}$. Clearly,
+\begin{equation}
+\bigcap_{n = 1}^{\infty} E_n = E_1 - \left( \bigcup_{n = 1}^{\infty} (E_1 - E_n) \right) = E_1 - \bigcup_{n = 1}^{\infty} Q_n
+\end{equation}
+Note that
+\begin{equation}
+\mu \left( \bigcup_{n = 1}^{\infty} Q_n \right) = \sum_{n = 1}^{\infty} \mu(Q_n) = \lim_{N \to \infty} \sum_{n = 1}^{N} \mu(Q_n) = \lim_{N \to \infty} \mu(E_1 - E_N)
+\end{equation}
+Since $\mu(E_1)$ is finite, $\mu(E_1 - E_N) = \mu(E_1) - \mu(E_N)$, which allows us to obtain the desired expression.
+
+*Problem 3.2.* If $E$ is null, then since $P \cap E, N \cap E \subset E$ we have $\nu(P \cap E) = \nu^{+}(E) = 0$ and $\nu(N \cap E) = \nu^{-}(E) = 0$, so $|\nu|(E) = 0$. Conversely, if $|\nu|(E) = 0$,
+$\nu^{+}(E) = \nu^{-}(E) = 0$, then
+for any $F \subset E$ measurable, $\nu^{+}(F) = \nu^{-}(F) = 0$ (as these are standard measures), so $\nu(F \cap N) = \nu(F \cap P) = 0$, so $\nu(F) = 0$. If $\nu \perp \mu$, let $A$ and $B$
+be the corresponding separation of $X$. Then $\nu$ is null on $B$ if and only if $|\nu|$ is null on $B$, which is true if and only if $\nu^{+}$ and $\nu^{-}$ are null on $B$. This gives the result.
+
+*Problem 3.3.* There are a few parts. However, first note that if $\mu$ and $\nu$ are two standard measures on a common measure space, then their sum is a measure, and if $\phi$ is a simple function, then
+\begin{equation}
+\int \phi \ d (\mu + \nu) = \sum_{j = 1}^{N} a_j (\mu(E_j) + \nu(E_j)) = \sum_{j = 1}^{N} \int a_j \mu(E_j) + \sum_{j = 1}^{N} \int a_j \nu(E_j) = \int \phi \ d\mu + \int \phi \ d\nu
+\end{equation}
+It then clearly follows from the definition of the integral that $\int f \ d(\mu + \nu) \leq \int f \ d\mu + \int f \ d\nu$ (we take supremums). On the other hand, given two simple functions $0 \leq \phi, \psi \leq f$,
+we set $\pi = \max(\phi, \psi)$. Obviously, $\pi$ is measurable and has a finite range, so it is simple as well, and $\phi, \psi \leq \pi$. Thus, taking the supremum over pairs $(\phi, \psi)$ is the same as taking
+the supremum over a common simple function, and we have $\int f \ d(\mu + \nu) = \int f \ d\mu + \int f \ d\nu$.
+
+1. If $f \in L^1(\nu)$, then it is $|\nu|$ -measurable and
+   \begin{equation}
+   \int |f| \ d|\nu| = \int |f| \ d(\nu^{+} + \nu^{-}) = \int |f| \ d\nu^{+} + \int |f| \ d\nu^{-} < \infty
+   \end{equation}
+   so $f \in L^{1}(|\nu|)$. Similarly, if $f \in L^1(|\nu|)$ it is $\nu$ -measurable and
+   \begin{equation}
+   \int |f| \ d\nu^{\pm} \leq \int |f| \ d\nu^{\pm} + \int |f| \ d\nu^{\mp} = \int |f| \ d(\nu^{+} + \nu^{-}) = \int |f| \ d|\nu| < \infty
+   \end{equation}
+
+2. By definition,
+   \begin{equation}
+   \left| \int f \ d\nu \right| = \left| \int f \ d\nu^{+} - \int f \ d\nu^{-} \right| \leq \int |f| \ d\nu^{+} + \int |f| \ d\nu^{-} = \int |f| \ d(\nu^{+} + \nu^{-}) = \int |f| \ d|\nu|
+   \end{equation}
+
+3. 

@@ -1,0 +1,203 @@
+\documentclass[aps,pra,showpacs,notitlepage,onecolumn,superscriptaddress,nofootinbib]{revtex4-1}
+\usepackage[utf8]{inputenc}
+\usepackage[tmargin=1in, bmargin=1.25in, lmargin=1.5in, rmargin=1.5in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{datetime}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{import}
+\usepackage{mathtools}
+\usepackage{thmtools,thm-restate}
+\usepackage{tikz-cd}
+\usepackage[many]{tcolorbox}
+
+% package for commutative diagrams
+% \usepackage{tikz-cd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{crimson}{RGB}{186,0,44}
+\definecolor{moss}{RGB}{0, 186, 111}
+\newcommand{\pop}[1]{\textcolor{crimson}{#1}}
+\newcommand{\zcom}[1]{\noindent\textcolor{crimson}{(Z): #1}}
+\newcommand{\jcom}[1]{\noindent\textcolor{moss}{(J): #1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\pqeq}{\succcurlyeq}
+\newcommand{\pleq}{\preccurlyeq}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+    colorlinks,
+    linkcolor={crimson},
+    citecolor={crimson},
+    urlcolor={crimson}
+}
+
+\usepackage{qcircuit}
+\usepackage{comment}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\newtheorem{lemma}{Lemma}[section]
+
+\newtheorem{theorem}{Theorem}[section]
+
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{corollary*}{Corollary}
+
+\newtheorem{remark}{Remark}[section]
+
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{reminder}{Reminder}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{answer}{Answer}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{claim}{Claim}[section]
+\newtheorem{prop}{Proposition}[section]
+
+\newtheorem{solution}{Solution}[section]
+
+\usepackage{geometry}
+\geometry{
+  left=25mm,
+  right=25mm,
+  top=20mm,
+}
+
+\newcommand{\hhrulefill}{\hspace{-1.5em} \hrulefill}
+\renewcommand{\baselinestretch}{1.1} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{unsrt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{Lectures in Differential Topology}
+\author{Jack Ceroni}
+\email{jceroni@uchicago.edu}
+\date{\today}
+\maketitle
+
+\tableofcontents
+
+\section{Introduction}
+
+\noindent Some results in differential geometry and topology that I never want to forget. These notes are not exactly meant to be used as an introduction to the subject, although
+they contain many notions which one would cover in an introductory course. I'm merely trying to write down things which I don't think are articulated quite in the way that I prefer (or at all)
+in most of the textbooks on the subject. I also expect to be teaching geometry/topology one day, and these notes will be a good reference.
+
+\section{Basic results}
+
+\section{Smooth manifolds}
+
+\begin{remark}
+  A good (perhaps essential) mantra that one should always repeat when doing differential geometry is that we can produce many examples of the main objects of interest
+  to starting with a collection of local things, and identifying them in a consistent way to produce something global. This will be evidenced in the next two lemmas, which
+  give two techniques for producing smooth manifolds. The first one involves picking a candidate smooth atlas for an arbitrarily set, and imposing a compatible topology/smooth structure.
+  The second one involves picking some 
+\end{remark}
+
+\begin{lemma}[Chart lemma for smooth manifolds]
+  Let $M$ be a set, let $(U_{\alpha}, \varphi_{\alpha})$ be a collection of subsets, such that as countable subcollection covers $M$, where each map $\varphi_{\alpha} : U_{\alpha} \rightarrow \varphi_{\alpha}(U_{\alpha})$ is a bijection
+  of $U_{\alpha}$ with an open set in $\mathbb{H}^n$. Moreover, suppose all transition maps $\varphi_{\alpha} \circ \varphi_{\beta}^{-1}$ defined on intersections of the cover are smooth, with $\varphi_{\beta}(U_{\alpha} \cap U_{\beta})$
+  and $\varphi_{\alpha}(U_{\alpha} \cap U_{\beta})$ both open sets in $\mathbb{H}^n$. Finally, suppose that for $p \neq q$, either there exists
+  some $U_{\alpha}$ containing both $p$ and $q$, or disjoint $U_{\alpha}$ and $U_{\beta}$ containing $p$ and $q$
+  respectively (this is to ensure that we get the Hausdorff property). Then there exists a unique topology and smooth structure on $M$ turning it into a smooth $n$-manifold.
+  \end{lemma}
+\begin{proof}
+ Our first claim is that the collection of all $\varphi_{\alpha}^{-1}(V)$ for $V$ open in $\varphi_{\alpha}(U_{\alpha})$ forms a basis for a topology on $M$. Indeed, note that each $p$ is
+ contained in $\varphi_{\alpha}^{-1}(\varphi_{\alpha}(U_{\alpha}))$. Moreover, given $\varphi_{\alpha}^{-1}(V)$ and $\varphi_{\beta}^{-1}(W)$ with non-empty intersection,
+ \begin{align}
+   \varphi_{\alpha}^{-1}(V) \cap \varphi_{\beta}^{-1}(W) &= \varphi_{\alpha}^{-1}(V) \cap \varphi_{\beta}^{-1}(W) \cap (U_{\alpha} \cap U_{\beta})
+   \\ &= \varphi_{\alpha}^{-1}\left( V \cap (\varphi_{\alpha} \circ \varphi_{\beta}^{-1})(W \cap \varphi_{\beta}(U_{\alpha} \cap U_{\beta})) \right)
+   \end{align}
+ which is of course an element of our collection of sets, so we do in fact have a basis. From here, second-countability follows from the fact that a countable collection of the $U_{\alpha}$ cover $M$, and
+ each is homeomorphic to a second-countable set (an open subset of $\mathbb{H}^n$). We also immediately have the local Euclidean property: each $(U_{\alpha}, \varphi_{\alpha})$ is a chart and the transition
+ functions are smooth. To finally prove the Hausdorff property, we note that any two points are either in disjoint $U_{\alpha}$ and $U_{\beta}$, or are contained in $U_{\alpha}$ which is homeomorphic to a Hausdorff space.
+
+ To see uniqueness, note that if $M$ had any other topology and smooth structure making the $(U_{\alpha}, \varphi_{\alpha})$ smooth charts, then each set $\varphi_{\alpha}^{-1}(V)$ would necessarily have
+ to be open, so that the topology defined above is coarser than the new topology. However, given open set $U$ in the new topology, note that given $p \in U$, we can pick $U_{\alpha}$ with $p \in U_{\alpha}$, and note that
+ $p \in \varphi_{\alpha}^{-1}(\varphi_{\alpha}(U_{\alpha})) \cap U \subset U$, which means that $U$ is open in the topology generated by the basis (the old topology). Hence, the two topologies are equal. A choice
+ of smooth atlas uniquely determines a smooth structure, so we immediately also have uniqueness of smooth structure as well.
+  \end{proof}
+
+\begin{example}[Circle]
+  Let us construct the circle via the gluing construction. Let $M = \mathbb{R} \sqcup \mathbb{R}$: two disjoint copies of the real line.
+  \end{example}
+
+\begin{lemma}[Gluing lemma for smooth manifolds]
+  Let $U_{\alpha}$ be a countable collection of open subsets of $\mathbb{R}^n$. Let $S$ be a collection of $\varphi_{\alpha \beta} : U_{\alpha} \rightarrow U_{\beta}$: smooth maps
+  between pairs $U_{\alpha}$ and $U_{\beta}$ (not necessarily between all of the open sets) which satisfies the following criteria:
+  \begin{enumerate}
+    \item 
+    \end{enumerate}
+  \end{lemma}
+\begin{proof}
+  \end{proof}
+
+\begin{prop}[Constant rank theorem]
+
+  \end{prop}
+
+\section{Bordism}
+
+\section{Bundles}
+
+\begin{lemma}[Chart lemma for vector bundles]
+
+  \end{lemma}
+
+\begin{lemma}[Gluing lemma for vector bundles]
+  \end{lemma}
+
+\begin{remark}
+  A smooth fibre bundle $\pi : E \rightarrow B$ is a submersion. We have $\pi = \text{proj} \circ \varphi$ locally, where $\varphi$ is a diffeomorphism and $\text{proj}$ is obviously a
+  submersion (as a projection $U \times F \rightarrow U$), so it follows that $\pi$ is a submersion.
+  \end{remark}
+
+\subsection{Subbundles}
+
+\begin{lemma}[Smooth local coframe criterion]
+
+  \end{lemma}
+
+\subsection{Fibre integration}
+
+\noindent Consider an $m$-dimensional fibre bundle $\pi : E \rightarrow B$ over $n$-dimensional manifold $B$, with compact oriented fibres,
+in the smooth category so $\pi$ is a smooth map of manifolds and we have a trivialization of $B$ by open sets $U$
+such that $\pi^{-1}(U)$ is diffeomorphic to $U \times F$.
+
+\begin{lemma}
+  Let $\pi : E \rightarrow B$ be a smooth submersion, let $X$ be a smooth vector field on $B$. Then there exists a smooth vector field $\widetilde{X}$ on $E$ such that $\pi_{*, p}(\widetilde{X}_p) = X_{\pi(p)}$
+  for all $p \in E$.
+  \end{lemma}
+\begin{proof}
+  Given $p \in E$, pick coordinates $(U, \varphi) = (U, x^1, \dots, x^m)$ and $(V, \psi) = (V, y^1, \dots, y^m)$ so that $\psi \circ \pi \circ \varphi^{-1}$
+  is a projection. Write $X$ in $V$ as $\sum_{j = 1}^{m} X^j \frac{d}{dy^j}$ and define $\widetilde{X}|_{U}$ as $\sum_{j = 1}^{m} X^j \frac{d}{d x^j}$. We do this for some open cover $U_{\alpha}$
+  and then combine via a partition of unity subordinate to the cover $\varphi_{\alpha}$ to obtain $\widetilde{X}$.
+  \end{proof}
+
+\noindent From here, let $\alpha$ be a $k$-form on $E$. We can define a $k - (m - n)$ form on $B$ by ``integrating $\alpha$ along the fibres'' (note that $m - n$ is the dimension of each fibre as a submanifold).
+In particular, using the above lemma, given some tangent vectors $v_1, \dots, v_{k - m + n} \in T_p B$, we can always extend to a vector field on $B$ pull-back to smooth vector fields on the fibre $\pi^{-1}(b)$, as we can extend these
+tangent vectors to a vector field and then use the lifting lemma (fibre bundles, locally, are projections, and thus submersions). We are then able to define a 
+
+\section{Differential forms}
+
+\begin{definition}[Lie derivative]
+  \end{definition}
+
+\section{Riemannian geometry}
+
+\bibliography{refs}
+
+\end{document}

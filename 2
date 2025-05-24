@@ -1,0 +1,166 @@
+\documentclass[aps,pra,showpacs,notitlepage,onecolumn,superscriptaddress,nofootinbib]{revtex4-1}
+\usepackage[utf8]{inputenc}
+\usepackage[tmargin=1in, bmargin=1.25in, lmargin=1.5in, rmargin=1.5in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{datetime}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{import}
+\usepackage{mathtools}
+\usepackage{thmtools,thm-restate}
+\usepackage{tikz-cd}
+\usepackage[many]{tcolorbox}
+
+% package for commutative diagrams
+% \usepackage{tikz-cd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{crimson}{RGB}{186,0,44}
+\definecolor{moss}{RGB}{0, 186, 111}
+\newcommand{\pop}[1]{\textcolor{crimson}{#1}}
+\newcommand{\zcom}[1]{\noindent\textcolor{crimson}{(Z): #1}}
+\newcommand{\jcom}[1]{\noindent\textcolor{moss}{(J): #1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\pqeq}{\succcurlyeq}
+\newcommand{\pleq}{\preccurlyeq}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+    colorlinks,
+    linkcolor={crimson},
+    citecolor={crimson},
+    urlcolor={crimson}
+}
+
+\usepackage{qcircuit}
+\usepackage{comment}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\newtheorem{lemma}{Lemma}[section]
+
+\newtheorem{theorem}{Theorem}[section]
+
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{corollary*}{Corollary}
+
+\newtheorem{remark}{Remark}[section]
+
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{reminder}{Reminder}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{answer}{Answer}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{claim}{Claim}[section]
+\newtheorem{prop}{Proposition}[section]
+
+\newtheorem{solution}{Solution}[section]
+
+\usepackage{geometry}
+\geometry{
+  left=25mm,
+  right=25mm,
+  top=20mm,
+}
+
+\newcommand{\hhrulefill}{\hspace{-1.5em} \hrulefill}
+\renewcommand{\baselinestretch}{1.1} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{unsrt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{Solutions to Hatcher's algebraic topology book}
+\author{Jack Ceroni}
+\email{jceroni@uchicago.edu}
+\date{\today}
+\maketitle
+
+\section{Chapter 0}
+
+\begin{solution}[Problem 0.1]
+  Recall that $T^2 = S^1 \times S^1$, remove point $(0, 1) \times (0, 1)$. We can represent points in $S^1 \times S^1$ by a pair of angles in $S = [-\pi, \pi] \times [-\pi, \pi] - (0, 0)$, the idea is to homotop
+  this pair to the boundary of the square $[-\pi, \pi] \times [-\pi, \pi]$ (which we can do continuously as we omit the origin). The resulting boundary of the square is precisely the space $-1 \times S^1 \cup S^1 \times -1$,
+  which is a pair of circles wedged at $(-1, -1)$.
+  \end{solution}
+
+\begin{solution}[Problem 0.2]
+  Simply use $F(x, t) = (1 - t) x + \frac{t x}{||x||}$.
+  \end{solution}
+
+\begin{solution}[Problem 0.3]
+  If $X \rightarrow Y$ and $Y \rightarrow Z$ are homotopy equivalences (called $f_1$ and $g_1$ respectively, with corresponding backward maps $f_2$ and $g_2$), then
+  \begin{equation}
+    (g_1 \circ f_1) \circ (f_2 \circ g_2) \simeq g_1 \circ g_2 \simeq \text{id}
+    \end{equation}
+  with similar logic showing that $(f_2 \circ g_2) \circ (g_1 \circ f_1) \simeq \text{id}$, where we construct a homotopy by concatenating the homotopy $f_1 \circ f_2 \simeq \text{id}$
+  and the homotopy $g_1 \circ g_2 \simeq \text{id}$. This same concatenation argument shows that if maps $f, g : X \rightarrow Y$ are homotopic via $F$ and $g, h : X \rightarrow Y$ are homotopic
+  via $G$, then $f$ and $h$ are homotopic via $G \star F$. Finally, if $f$ is homotopic to $g : X \rightarrow Y$, which is a homotopy equivalence with backward map $h : Y \rightarrow X$, then
+  by transitivity of homotopy proved earlier,
+  \begin{equation}
+  f \circ h \simeq g \circ h \simeq \text{id} \ \ \ \text{and} \ \ \ h \circ f \simeq h \circ g \simeq \text{id}
+  \end{equation}
+  so that $f$ is a homotopy equivalence.
+  \end{solution}
+
+\begin{solution}[Problem 0.4]
+  Let $r : X \rightarrow A$ be defined as $r(x) = f_1(x)$. Then note that $r \circ \iota : A \rightarrow A$ is homotopic to the identity via the homotopy $G : A \times [0, 1] \rightarrow A$
+  given by $G(x, t) = f_t(x)$, which is well-defined at $f_t(A) \subset A$ for all $t$. Similarly, $\iota \circ r$ is homotopic to the identity via $F = f_t$.
+  \end{solution}
+
+\section{Chapter 1}
+
+\subsection{Section 1.1}
+
+\begin{solution}[Problem 1.1.17]
+  The idea is to loop the first circle of the wedge around the second one exactly $n$ times. In particular, suppose $S^1 \vee S^1$ is realized as the space $S^1 \times \{1\} \cup \{1\} \times S^1$ (where
+  we think of $S^1 \subset \mathbb{C}$. We define $r_n : S^1 \vee S^1 \rightarrow \{1\} \times S^1$ as
+  \begin{equation}
+    r_n(e^{i \theta} \times 1) = 1 \times e^{i n \theta} \ \ \ \text{and} \ \ \ r_n(1 \times e^{i \theta}) = 1 \times e^{i \theta}.
+    \end{equation}
+  It is clear that this function is continuous. This is clearly a retraction onto $\{1\} \times S^1 \simeq S^1$. To see that all of the $r_n$ are not mutually homotopic, recall that
+  each of the homotopy classes of $S^1$ based at $1$ are represented by the loops $\omega_n : t \mapsto e^{2 \pi i n t}$ for $t \in [0, 1]$. If we had $r_n \simeq r_m$ via homotopy $H$ for $m \neq n$, this would
+  give a homotopy between $\omega_n$ and $\omega_m$ via
+  \begin{equation}
+    G(s, t) = (\pi_2 \circ H)(e^{2 \pi i s} \times 1, t)
+    \end{equation}
+  where $\pi_2 : \{1\} \times S^1 \rightarrow S^1$ is projection. In particular,
+  \begin{equation}
+    G(s, 0) = (\pi_2 \circ H)(e^{2 \pi i s} \times 1, 0) = (\pi_2 \circ r_n)(e^{2 \pi i s} \times 1) = e^{2 \pi i n s} = r_n(s)
+    \end{equation}
+  and
+  \begin{equation}
+    G(s, 1) = (\pi_2 \circ H)(e^{2 \pi i s} \times 1, 1) = (\pi_2 \circ r_m)(e^{2 \pi i s} \times 1) = e^{2 \pi i m s} = r_m(s)
+    \end{equation}
+  which is a contradiction.
+  \end{solution}
+
+\begin{solution}[Problem 1.1.18]
+  Let $f : S^{n - 1} \rightarrow A$ be the attaching map which attaches $e^n$ to $A$ to form $X \simeq D^n \sqcup_f A$. Then $X$ is the union of open sets $e^n = \text{Int}(D^n)$ and
+  $X - \{p\}$ for some $p \in e^n$. The intersection of these open sets is $e^n - \{p\}$ which is path-connected, and from Lemma 1.15 we can write any loop in $\pi_1(X, x_0)$ for some
+  $x_0 \in e^n - \{p\}$ as a product of loops contained in either of these open sets. Of course, any loop in $e^n$ is nullhomotopic, so any loop is a product of loops contained in $X - \{p\}$
+  which deformation retracts to $A$. Let $\Phi : \pi_1(A, y_0) \rightarrow \pi_1(X - \{p\}, y_0)$ be an isomorphism of fundamental groups.
+
+  Since $A$ is path-connected, it follows that 
+  \end{solution}
+
+\subsection{Section 1.2}
+
+\noindent \emph{Before jumping into the exercises of this section, we find it necessary to provide our own brief proof of Seifert Van-Kampen, following the detailed treatment of Munkres.}
+\newline
+
+
+
+\end{document}
