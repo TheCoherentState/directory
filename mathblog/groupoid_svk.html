@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2025-06-02 Mon 11:34 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Seifert-Van Kampen for fundamental groupoids</title>
+<meta name="author" content="Jack Ceroni" />
+<meta name="description" content="Directory" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+<style> body {font-size:15px;} </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Seifert-Van Kampen for fundamental groupoids</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org835d82a">1. Introduction</a></li>
+<li><a href="#org67ba642">2. Categorical preliminaries</a></li>
+<li><a href="#org891d310">3. Groupoid Seifert-Van Kampen</a></li>
+<li><a href="#org048d607">4. From abstract nonsense to calculations</a></li>
+</ul>
+</div>
+</div>
+<p>
+<i>Originally posted</i>
+</p>
+
+<hr />
+
+<div id="outline-container-org835d82a" class="outline-2">
+<h2 id="org835d82a"><span class="section-number-2">1.</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+I'm in the process of trying to learn homotopy theory: an area of mathematics which is very categorical in its flavour. Unfortunately, all of the algebraic topology I have learned
+up until this point has been from texts which are sparing in their use of the modern, categorical language (Munkres and Hatcher). To fix my deficiencies, I have been going back and re-reading some of the
+foundational results, formulated in the modern way (using the texts of May and tom Dieck).
+</p>
+
+<p>
+The goal of this piece is to go through the details of the proof of Seifert-Van Kampen theorem for fundamental groupoids, following the book of May, and from this derive as a corollary the classical
+Seifert-Van Kampen theorem. We will do the derivation in "categorical" terms, and then bring this language down to Earth later (something which isn't done in much detail in May's text).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org67ba642" class="outline-2">
+<h2 id="org67ba642"><span class="section-number-2">2.</span> Categorical preliminaries</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Given a topological space \(X\), the fundamental groupoid \(\Pi(X)\) is defined to be the category with the points of \(X\) as objects, and paths between points as arrows. It is
+easy to see that \(\Pi(X)\) is, in fact, a groupoid (i.e. a category with reversible arrows). Note that given \(x \in X\), \(\text{Mor}(x, x) \simeq \pi_1(X, x)\), the fundamental group (this is also easy to see). Let us
+briefly review some categorical terminology:
+</p>
+
+<p>
+<b>Definition</b> (Skeleton). Given cateogry \(\mathcal{C}\), we define \(\text{sk}(\mathcal{C})\), a skeleton of \(\mathcal{C}\), to be a full subcategory with objects consisting of one object
+from each isomorphism class in \(\mathcal{C}\). Note that in a groupoid, if there is an arrow between objects, there is an isomorphism between them. It follows that in \(\Pi(X)\), there is
+exactly one isomorphism class of objects corresponding to each path component of \(X\). Moreover, if \(X\) is path-connected, so there is a single isomorphism class, it is clear that \(\pi_1(X, x)\)
+is a skeleton of \(\Pi(X)\) for any \(x \in X\).
+</p>
+
+<p>
+<b>Proposition.</b> If \(\mathcal{C}\) is a category and \(\text{sk}(\mathcal{C})\) is a skeleton, then these are equivalent categories.
+</p>
+
+<p>
+<i>Proof.</i> Let \(J : \text{sk}(\mathcal{C}) \rightarrow \mathcal{C}\) be the inclusion functor. We define functor \(F : \mathcal{C} \rightarrow \text{sk}(\mathcal{C})\) as follows: we \(a \in \text{Obj}(\mathcal{C})\)
+to \(F(a)\), the element in the skeleton which is isomorphic to \(a\). For each \(a \in \text{Obj}(\mathcal{C})\), pick some isomorphism \(j_a : a \rightarrow F(a)\). In the case that \(a \in \text{Obj}(\text{sk}(\mathcal{C}))\),
+so \(F(a) = a\), take \(j_a = \text{id}\). We then define for \(f \in \text{Mor}(a, b)\) the arrow \(F(f) \in \text{Mor}(F(a), F(b))\) to be \(F(f) = j_b \circ f \circ j_a^{-1}\). It is easy to see that \(F\) is a functor. Moreover,
+it is clear that \(FJ\) is the identity. We require natural transformation \(JF \simeq \text{Id}_{\mathcal{C}}\). For some \(a \in \text{Obj}(\mathcal{C})\), take
+</p>
+
+<p>
+The moral of this categorical digression is to emphasize that fundamental groups and fundamental groupoids are equivalent in a nice way, and as a result, it makes sense that the SvK theorem for fundamental groupoids
+will yield the SvK theorem for fundamental groups.
+</p>
+
+<p>
+<b>Definition</b> (\(\mathcal{D}\) -shaped diagram in \(\mathcal{C}\)). Is a functor \(F : \mathcal{D} \rightarrow \mathcal{C}\), where \(\mathcal{D}\) is a small category. We can define a category of \(\mathcal{D}\) -shaped diagrams,
+in \(\mathcal{C}\), denoted \(\mathcal{D}[\mathcal{C}]\) by taking arrows to be natural transformation of functors.
+</p>
+
+<p>
+<b>Definition</b> (Colimit).
+</p>
+
+<p>
+<b>Example.</b> The whole point of colimits is to extract the underlying essence (universal property) which uniquely determine algebraic direct limits. In particular, suppose we take our small category \(\mathcal{D}\)
+to be a directed set \(I\) with preorder \(\leq\) (where we also have upper-bounds on pairs).
+In other words, \(\text{Obj}(\mathcal{D}) = I\), and there is an arrow from \(x\) to \(y\) if \(x \leq y\). Transitivity and reflexivity ensure that these arrows define a valid category. On the other hand, suppose \(\mathcal{C}\)
+is some "algebraic category" (i.e. \(\textbf{Grp}\) or \(\textbf{Ring}\) or something similar). Suppose we have some collection of objects \(A_i \in \mathcal{C}\) for each \(i \in I\) and we have an arrow for
+each \(i \leq j\), \(f_{ij} : A_i \rightarrow A_j\) such that \(f_{ii} = \text{id}\) and \(f_{ik} = f_{jk} \circ f_{ij}\) if \(i \leq j \leq k\). We then can define a \(\mathcal{D}\) -shaped diagram over
+\(\mathcal{C}\) as \(F(i) = A_i\) for \(i \in I\) and \(F(i \rightarrow j) = f_{ij}\). By nature of how we chose the morphisms
+in \(\mathcal{C}\), checking that this is a functor is trivial.
+</p>
+
+<p>
+Note that if \(A\) is some object in \(\mathcal{C}\), any morphism of diagrams \(\eta : F \rightarrow \underline{A}\) is a collection of arrows \(\eta_j : A_j \rightarrow A\) for each \(j \in I\). It follows that
+\(\text{colim} \ F\) is some object in \(\mathcal{C}\) and morphisms \(\pi_j : A_j \rightarrow \text{colim} \ F\), such that if \(\eta_j : A_j \rightarrow A\) is another collection of morphisms with \(A \in \text{Obj}(\mathcal{C})\),
+then there is a unique morphism \(\widetilde{\eta} : \text{colim} \ F \rightarrow A\) making the following diagrams commute:
+</p>
+
+
+<div id="orgd320aa1" class="figure">
+<p><img src="./assets/jun_02_25.png" alt="jun_02_25.png" width="300px" />
+</p>
+</div>
+
+<p>
+To prove that such a colimit exists, which in this context we call a direct limit, we can just write it down. In particular, take
+</p>
+
+\begin{equation}
+\text{colim} \ F = \bigsqcup_{j \in I} A_j \Big/ x_i \sim x_j \ \text{iff} \ f_{ki}(x_i) = f_{kj}(x_j) \ \text{for some} \ k
+\end{equation}
+
+<p>
+and take morphisms \(\pi_j : A_j \rightarrow \text{colim} \ F\) to simply be maps taking elements to their corresponding equivalence class. It is easy to check that \(\text{colim} \ F\) is well-defined, and
+that the morphisms \(\pi_j\) respect the algebraic structure of \(\mathcal{C}\) (depending on what \(\mathcal{C}\) is). To show that this construction satisfies the universal property, note that
+if we have morphisms \(\eta_j : A_j \rightarrow A\), we can take \(\widetilde{\eta}(\pi_i(x_i)) = \eta_i(x_i)\). To see that such a map is well-defined, suppose \(x_j \sim x_i\), so we have \(f_{jk}(x_j) = f_{ik}(x_i)\)
+for some \(k\) where \(i, j \leq k\). Then
+</p>
+\begin{equation}
+\eta_j(x_j) = \eta_k(f_{jk}(x_j)) = \eta_k(f_{ik}(x_i)) = \eta_i(x_i)
+\end{equation}
+<p>
+Checking that this is a valid morphism in the category follows from the fact that the \(\eta_i\) are. Finally, this is clearly the unique morphism which makes the diagrams commute, simply by nature
+of how we have defined it, so we have proved <i>existence</i> of direct limits. Because colimits satisfy a universal property, it follows that the direct limit is <i>unique up to unique isomorphism</i>.
+</p>
+
+<p>
+<b>Definition</b> (Limit).
+</p>
+
+<p>
+<b>Example.</b> Similar to colimits, limits are defined via the universal property of algebraic inverse limits.
+</p>
+
+<p>
+<b>Proposition.</b> 
+</p>
+</div>
+</div>
+
+<div id="outline-container-org891d310" class="outline-2">
+<h2 id="org891d310"><span class="section-number-2">3.</span> Groupoid Seifert-Van Kampen</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+<b>Theorem</b> (Groupoid Seifert-Van Kampen). 
+</p>
+</div>
+</div>
+
+<div id="outline-container-org048d607" class="outline-2">
+<h2 id="org048d607"><span class="section-number-2">4.</span> From abstract nonsense to calculations</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+We need to 
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Jack Ceroni</p>
+<p class="date">Created: 2025-06-02 Mon 11:34</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
