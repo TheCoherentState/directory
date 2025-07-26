@@ -2,6 +2,7 @@
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
 #+HTML_HEAD: <style> body {font-size:15px;} </style>
 
+- July 26th, 2025 | [[./imo_2025.html][Some solutions to problems from the 2025 IMO]]
 - July 1st, 2025 | [[./leray_hirsch.html][Leray-Hirsch theorem]]
 - June 11th, 2025 | [[./groupoid_svk.html][Seifert-Van Kampen for fundamental groupoids in painful detail]]
 - May 14th, 2025 | [[./every_hartshorne_ex.html][Every exercise in the first three chapters of Hartshorne]]
